@@ -16,5 +16,9 @@ int main()
     *p = 12;
     cout << a << endl;
     cout << *p << endl;
+    cout << p << endl;
+    cout << p+1 << endl;
+    cout << sizeof(int) << endl;
+
     return 0;
 }

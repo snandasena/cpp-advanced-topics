@@ -3,4 +3,6 @@ project(advanced_topics)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(advanced_topics main.cpp)
+#add_executable(advanced_topics main.cpp)
+#add_executable(pointers pointers/pointers_01.cpp)
+add_executable(pointers pointers/pointers_02.cpp)
