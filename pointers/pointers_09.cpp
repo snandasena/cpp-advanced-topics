@@ -15,4 +15,6 @@ int main()
 
     p = new int[20]; // allocate 20 * 4 bytes from heap
     delete[] p; // delete from the heap
+
+    return 0;
 }
