@@ -43,6 +43,8 @@ void buildBasicLinkedList()
 
 void InsertIntoBegin(int, Node **);
 
+void InsertIntoSpecificPosition(int position, int data, Node **node);
+
 void PrintLinkedList(Node *);
 
 int main()
@@ -56,6 +58,8 @@ int main()
         InsertIntoBegin(i, &head);
     }
     PrintLinkedList(head);
+    InsertIntoSpecificPosition(3, 3, &head);
+    PrintLinkedList(head);
 
     return 0;
 }
@@ -67,6 +71,29 @@ void InsertIntoBegin(int x, Node **head)
     temp->data = x;
     temp->next = *head;
     *head = temp;
+}
+
+void InsertIntoSpecificPosition(int pos, int data, Node **head)
+{
+    Node *newNode = new Node;
+    newNode->data = data;
+    newNode->next = nullptr;
+
+    if (pos == 1)
+    {
+        newNode->next = *head;
+        *head = newNode;
+        return;
+    }
+
+    Node *tmp = *head;
+    for (int i = 0; i < pos - 2; ++i)
+    {
+        tmp = tmp->next;
+    }
+    newNode->next = tmp->next;
+    tmp->next = newNode;
+
 }
 
 void PrintLinkedList(Node *head)
