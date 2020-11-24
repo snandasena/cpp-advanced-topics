@@ -16,4 +16,6 @@ set(CMAKE_CXX_STANDARD 17)
 #add_executable(pointers pointers/dyanamic_memory_allocation_c_starndand_libs.cpp)
 #add_executable(pointers pointers/pointers_as_function_returns.cpp)
 #add_executable(pointers pointers/function_pointers.cpp)
-add_executable(pointers pointers/function_pointers_and_callbacks.cpp)
+#add_executable(pointers pointers/function_pointers_and_callbacks.cpp)
+
+add_executable(dsstructures ds/linked_list.cpp)
