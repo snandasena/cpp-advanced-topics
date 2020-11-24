@@ -45,6 +45,8 @@ void InsertIntoBegin(int, Node **);
 
 void InsertIntoSpecificPosition(int position, int data, Node **node);
 
+void DeleteDFromSpecificPosition(int, Node **);
+
 void PrintLinkedList(Node *);
 
 int main()
@@ -57,8 +59,17 @@ int main()
     {
         InsertIntoBegin(i, &head);
     }
+    // print the linked list
     PrintLinkedList(head);
+
+    // insert into specific position
     InsertIntoSpecificPosition(3, 3, &head);
+    // print the linked list
+    PrintLinkedList(head);
+
+    // delete a node from a given position
+    DeleteDFromSpecificPosition(3, &head);
+    // print the linked list
     PrintLinkedList(head);
 
     return 0;
@@ -94,6 +105,25 @@ void InsertIntoSpecificPosition(int pos, int data, Node **head)
     newNode->next = tmp->next;
     tmp->next = newNode;
 
+}
+
+void DeleteDFromSpecificPosition(int pos, Node **head)
+{
+    Node *node = *head;
+    if (pos == 1)
+    {
+        *head = node->next;
+        delete (node);
+        return;
+    }
+    for (int i = 0; i < pos - 2; ++i)
+    {
+        node = node->next;
+    }
+
+    Node *tmp = tmp->next;
+    node->next = tmp->next;
+    delete (tmp);
 }
 
 void PrintLinkedList(Node *head)
