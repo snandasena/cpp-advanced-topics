@@ -47,6 +47,8 @@ void InsertIntoSpecificPosition(int position, int data, Node **node);
 
 void DeleteDFromSpecificPosition(int, Node **);
 
+void ReverseLinkedList(Node **);
+
 void PrintLinkedList(Node *);
 
 int main()
@@ -70,6 +72,10 @@ int main()
     // delete a node from a given position
     DeleteDFromSpecificPosition(3, &head);
     // print the linked list
+    PrintLinkedList(head);
+
+    // reverse linked list
+    ReverseLinkedList(&head);
     PrintLinkedList(head);
 
     return 0;
@@ -124,6 +130,23 @@ void DeleteDFromSpecificPosition(int pos, Node **head)
     Node *tmp = tmp->next;
     node->next = tmp->next;
     delete (tmp);
+}
+
+void ReverseLinkedList(Node **head)
+{
+    Node *curr = *head;
+    Node *prev = nullptr;
+    Node *next;
+    while (curr != nullptr)
+    {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+
+    *head = prev;
+
 }
 
 void PrintLinkedList(Node *head)
