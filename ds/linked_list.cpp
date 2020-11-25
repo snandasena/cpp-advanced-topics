@@ -51,6 +51,11 @@ void ReverseLinkedList(Node **);
 
 void PrintLinkedList(Node *);
 
+void PrintLinkedListRecursive(Node *);
+
+void PrintLinkedListRecursiveReverseOrder(Node *);
+
+
 int main()
 {
     buildBasicLinkedList();
@@ -77,6 +82,12 @@ int main()
     // reverse linked list
     ReverseLinkedList(&head);
     PrintLinkedList(head);
+    // print linked list recursive
+    cout << "Recursive print\n";
+    PrintLinkedListRecursive(head);
+    cout << "Recursive print reverse order\n";
+    PrintLinkedListRecursiveReverseOrder(head);
+    cout << el;
 
     return 0;
 }
@@ -158,4 +169,25 @@ void PrintLinkedList(Node *head)
     }
 
     cout << el;
+}
+
+void PrintLinkedListRecursive(Node *head)
+{
+    if (head == nullptr)
+    {
+        cout << el;
+        return;
+    }
+    cout << head->data << " ";
+    PrintLinkedList(head->next);
+}
+
+void PrintLinkedListRecursiveReverseOrder(Node *head)
+{
+    if (head == nullptr)
+    {
+        return;
+    }
+    PrintLinkedListRecursiveReverseOrder(head->next);
+    cout << head->data << " ";
 }
