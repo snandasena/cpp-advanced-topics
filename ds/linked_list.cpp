@@ -43,7 +43,7 @@ void buildBasicLinkedList()
 
 void InsertIntoBegin(int, Node **);
 
-void InsertIntoSpecificPosition(int position, int data, Node **node);
+void InsertIntoSpecificPosition(int, int, Node **);
 
 void DeleteDFromSpecificPosition(int, Node **);
 
@@ -55,6 +55,7 @@ void PrintLinkedListRecursive(Node *);
 
 void PrintLinkedListRecursiveReverseOrder(Node *);
 
+void ReverseLinkedListRecursive(Node **);
 
 int main()
 {
@@ -190,4 +191,17 @@ void PrintLinkedListRecursiveReverseOrder(Node *head)
     }
     PrintLinkedListRecursiveReverseOrder(head->next);
     cout << head->data << " ";
+}
+
+Node *head;
+void ReverseLinkedListRecursive(Node *p)
+{
+    if (p->next == nullptr)
+    {
+        head = p;
+        return;
+    }
+    Node *q = p;
+    q->next = p;
+    p->next = nullptr;
 }
