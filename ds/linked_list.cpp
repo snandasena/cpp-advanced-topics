@@ -57,7 +57,7 @@ void PrintLinkedListRecursiveReverseOrder(Node *);
 
 void ReverseLinkedListRecursive(Node **);
 
-Node *Reverse(Node **);
+Node *Reverse(Node *);
 
 int main()
 {
@@ -91,9 +91,10 @@ int main()
     cout << "Recursive print reverse order\n";
     PrintLinkedListRecursiveReverseOrder(head);
     cout << el;
-//
-//    Reverse(&head);
-//    PrintLinkedListRecursive(head);
+
+    head = Reverse(head);
+    cout << "After reverse\n";
+    PrintLinkedListRecursive(head);
     return 0;
 }
 
@@ -197,29 +198,30 @@ void PrintLinkedListRecursiveReverseOrder(Node *head)
     cout << head->data << " ";
 }
 
-Node *head;
-
-void ReverseLinkedListRecursive(Node *p)
-{
-    if (p->next == nullptr)
-    {
-        head = p;
-        return;
-    }
-    Node *q = p;
-    q->next = p;
-    p->next = nullptr;
-}
-
-//Node *Reverse(Node **head)
-//{
-//    if ((*head)->next == nullptr)
-//    {
-//        return *head;
-//    }
+// Global head pointer
+//Node *head;
 //
-//    Node *rest = Reverse(&(*head)->next);
-//    (*head)->next->next = *head;
-//    (*head)->next = nullptr;
-//    return rest;
+//void ReverseLinkedListRecursive(Node *p)
+//{
+//    if (p->next == nullptr)
+//    {
+//        head = p;
+//        return;
+//    }
+//    Node *q = p;
+//    q->next = p;
+//    p->next = nullptr;
 //}
+
+Node *Reverse(Node *head)
+{
+    if (head->next == nullptr)
+    {
+        return head;
+    }
+
+    Node *rest = Reverse(head->next);
+    head->next->next = head;
+    head->next = nullptr;
+    return rest;
+}
