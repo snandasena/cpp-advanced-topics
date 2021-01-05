@@ -19,5 +19,6 @@ set(CMAKE_CXX_STANDARD 17)
 #add_executable(pointers pointers/function_pointers_and_callbacks.cpp)
 
 #add_executable(dsstructures ds/linked_list.cpp)
-add_executable(dsstructures ds/doubly_linked_list.cpp)
+#add_executable(dsstructures ds/doubly_linked_list.cpp)
+add_executable(dsstructures ds/binary_search_tree.cpp)
 
