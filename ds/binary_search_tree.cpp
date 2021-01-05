@@ -74,7 +74,7 @@ int getMinRecursive(Node *root)
         return root->data;
     }
 
-    getMinRecursive(root->left);
+    return getMinRecursive(root->left);
 }
 
 int getMaxRecursive(Node *root)
@@ -85,6 +85,15 @@ int getMaxRecursive(Node *root)
     }
 
     return getMaxRecursive(root->right);
+}
+
+int findHeight(Node *root)
+{
+    if (root == nullptr)
+        return -1;
+
+    return max(findHeight(root->left), findHeight(root->right)) + 1;
+
 }
 
 int main()
@@ -104,5 +113,6 @@ int main()
     cout << getMinRecursive(root) << "\n";
     cout << getMax(root) << "\n";
     cout << getMaxRecursive(root) << "\n";
+    cout << findHeight(root) << "\n";
     return 0;
 }
