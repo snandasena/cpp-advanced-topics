@@ -45,6 +45,48 @@ bool search(Node *root, int data)
     else return search(root->right, data);
 }
 
+int getMin(Node *root)
+{
+    Node *curr = root;
+    while (curr->left != nullptr)
+    {
+        curr = curr->left;
+    }
+
+    return curr->data;
+}
+
+int getMax(Node *root)
+{
+    Node *curr = root;
+    while (curr->right != nullptr)
+    {
+        curr = curr->right;
+    }
+
+    return curr->data;
+}
+
+int getMinRecursive(Node *root)
+{
+    if (root->left == nullptr)
+    {
+        return root->data;
+    }
+
+    getMinRecursive(root->left);
+}
+
+int getMaxRecursive(Node *root)
+{
+    if (root->right == nullptr)
+    {
+        return root->data;
+    }
+
+    return getMaxRecursive(root->right);
+}
+
 int main()
 {
     Node *root = nullptr;
@@ -58,5 +100,9 @@ int main()
     string out = search(root, 10) ? "Found\n" : "Not found\n";
     cout << out;
 
+    cout << getMin(root) << "\n";
+    cout << getMinRecursive(root) << "\n";
+    cout << getMax(root) << "\n";
+    cout << getMaxRecursive(root) << "\n";
     return 0;
 }
