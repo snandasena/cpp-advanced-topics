@@ -16,6 +16,7 @@ Node *GetNode(int);
 void Print();
 void ReversePrint();
 void InsertAtHead(int);
+void InsertAtTail(int);
 
 int main()
 {
@@ -27,6 +28,8 @@ int main()
 
   Print();
   ReversePrint();
+  InsertAtTail(11);
+  Print();
   return 0;
 }
 
@@ -84,4 +87,24 @@ void ReversePrint()
     tmp = tmp->prev;
   }
   cout<<el;
+}
+
+void InsertAtTail(int x)
+{
+  Node *tmp = head;
+  Node *newNode = GetNode(x);
+  
+  if(head == nullptr)
+  {
+    head = newNode;
+    return;
+  }
+
+  while(tmp->next != nullptr)
+  {
+    tmp = tmp->next;  
+  }
+
+  tmp->next = newNode;
+  newNode->prev = tmp;
 }
