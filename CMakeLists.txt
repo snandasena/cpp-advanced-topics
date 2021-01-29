@@ -21,5 +21,7 @@ set(CMAKE_CXX_STANDARD 17)
 #add_executable(dsstructures ds/linked_list.cpp)
 #add_executable(dsstructures ds/doubly_linked_list.cpp)
 #add_executable(dsstructures ds/binary_search_tree.cpp )
-add_executable(dsstructures localizations/prior_functions.cpp)
+#add_executable(dsstructures localizations/prior_functions.cpp)
+add_executable(dsstructures  lambdaexp/lambda.cpp)
+
 
