@@ -2,3 +2,4 @@
 cmake-build-debug/
 *.iml
 dist/
+path-planning-python-algo/__pycache__/
