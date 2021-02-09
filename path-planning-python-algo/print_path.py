@@ -1,25 +1,28 @@
-# ----------
+# -----------
 # User Instructions:
 #
-# Define a function, search() that returns a list
-# in the form of [optimal path length, row, col]. For
-# the grid shown below, your function should output
-# [11, 4, 5].
+# Modify the the search function so that it returns
+# a shortest path as follows:
 #
-# If there is no valid path from the start point
-# to the goal, your function should return the string
-# 'fail'
+# [['>', 'v', ' ', ' ', ' ', ' '],
+#  [' ', '>', '>', '>', '>', 'v'],
+#  [' ', ' ', ' ', ' ', ' ', 'v'],
+#  [' ', ' ', ' ', ' ', ' ', 'v'],
+#  [' ', ' ', ' ', ' ', ' ', '*']]
+#
+# Where '>', '<', '^', and 'v' refer to right, left,
+# up, and down motions. Note that the 'v' should be
+# lowercase. '*' should mark the goal cell.
+#
+# You may assume that all test cases for this function
+# will have a path from init to goal.
 # ----------
 
-# Grid format:
-#   0 = Navigable space
-#   1 = Occupied space
-
 grid = [[0, 0, 1, 0, 0, 0],
-        [0, 0, 1, 0, 0, 0],
-        [0, 0, 0, 0, 1, 0],
-        [0, 0, 1, 1, 1, 0],
-        [0, 0, 0, 0, 1, 0]]
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 1, 0],
+        [0, 0, 1, 0, 1, 0],
+        [0, 0, 1, 0, 1, 0]]
 init = [0, 0]
 goal = [len(grid) - 1, len(grid[0]) - 1]
 cost = 1
@@ -37,8 +40,9 @@ def search(grid, init, goal, cost):
     # insert code here
     # ----------------------------------------
     closed = [[0 for row in range(len(grid[0]))] for col in range(len(grid))]
-    espand = [[-1 for row in range(len(grid[0]))] for col in range(len(grid))]
     closed[init[0]][init[1]] = 1
+    espand = [[-1 for row in range(len(grid[0]))] for col in range(len(grid))]
+    action = [[-1 for row in range(len(grid[0]))] for col in range(len(grid))]
 
     x = init[0]
     y = init[1]
@@ -79,9 +83,26 @@ def search(grid, init, goal, cost):
                             g2 = g + cost
                             open.append([g2, x2, y2])
                             closed[x2][y2] = 1
+                            action[x2][y2] = i
 
     for i in range(len(espand)):
         print(espand[i])
+
+    policy = [[' ' for row in range(len(grid[0]))] for col in range(len(grid))]
+    x = goal[0]
+    y = goal[1]
+    policy[x][y] = '*'
+
+    while x != init[0] or y != init[1]:
+        x2 = x - delta[action[x][y]][0]
+        y2 = y - delta[action[x][y]][1]
+
+        policy[x2][y2] = delta_name[action[x][y]]
+        x = x2
+        y = y2
+
+    for i in range(len(policy)):
+        print(policy[i])
 
 
 search(grid, init, goal, cost)
