@@ -78,6 +78,7 @@ void tracePath(const array<array<cell, COL>, ROW> &cellDetails, const Pair &dest
     } while (cellDetails[row][col].parent != next_node);
 
     Path.emplace(row, col);
+
     while (!Path.empty())
     {
         Pair p = Path.top();
