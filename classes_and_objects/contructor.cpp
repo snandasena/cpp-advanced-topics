@@ -14,9 +14,9 @@ const string clone_prefix = "clone prefix";
 // Interface
 class Animal
 {
-    string _type;
-    string _name;
-    string _sound;
+    string _type = "";
+    string _name = "";
+    string _sound = "";
 
 public:
     Animal();
@@ -35,7 +35,7 @@ public:
 
 // Implementation
 
-Animal::Animal() : _type(unk), _name(unk), _sound(_sound)
+Animal::Animal() : _type(unk), _name(unk), _sound(unk)
 {
     puts("default constructor");
 }
