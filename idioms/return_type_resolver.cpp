@@ -70,7 +70,8 @@ int main()
     std::string s = "124";
 
     int x = String(s);
-    double y = String(s);
-
+    std::cout << x << '\n';
+    double y = String("3.14");
+    std::cout << y << '\n';
     return 0;
 }
