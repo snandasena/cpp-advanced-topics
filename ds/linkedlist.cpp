@@ -56,6 +56,26 @@ void Delete(Node *head, int item)
     }
 }
 
+Node *Reverse(Node *head)
+{
+    Node *curr, *prev, *next;
+    curr = head;
+    prev = nullptr;
+
+    while (curr != nullptr)
+    {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+
+    }
+
+    head = prev;
+
+    return head;
+}
+
 int main()
 {
     Node *head;
@@ -70,11 +90,22 @@ int main()
 
     Delete(head, 5);
 
-    while (head != nullptr)
+    Node *temp = head;
+    while (temp != nullptr)
     {
-        cout << head->data << " ";
-        head = head->next;
+        cout << temp->data << " ";
+        temp = temp->next;
     }
+
+    head = Reverse(head);
+    temp = head;
+    cout << "\n";
+    while (temp != nullptr)
+    {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+
 
     return 0;
 };
