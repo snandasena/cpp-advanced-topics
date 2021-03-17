@@ -61,18 +61,14 @@ Node *Reverse(Node *head)
     Node *curr, *prev, *next;
     curr = head;
     prev = nullptr;
-
     while (curr != nullptr)
     {
         next = curr->next;
         curr->next = prev;
         prev = curr;
         curr = next;
-
     }
-
     head = prev;
-
     return head;
 }
 
