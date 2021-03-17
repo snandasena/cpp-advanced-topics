@@ -28,4 +28,7 @@ set(CMAKE_CXX_STANDARD 17)
 #add_executable(level-order ds/level_order_traversal.cpp)
 #add_executable(path-planning path-planning/a_star.cpp)
 #add_executable(idioms idioms/return_type_resolver.cpp)
-add_executable(idioms idioms/nullpointer.cpp)
+#add_executable(idioms idioms/nullpointer.cpp)
+#add_executable(idioms idioms/type_erasure.cpp)
+
+add_executable(ds ds/linkedlist.cpp)
