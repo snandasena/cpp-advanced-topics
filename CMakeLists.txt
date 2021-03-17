@@ -32,4 +32,5 @@ set(CMAKE_CXX_STANDARD 17)
 #add_executable(idioms idioms/type_erasure.cpp)
 
 #add_executable(ds ds/linkedlist.cpp)
-add_executable(ds ds/stack.cpp)
+#add_executable(ds ds/stack.cpp)
+add_executable(ds ds/statck_with_linkedlist.cpp)
