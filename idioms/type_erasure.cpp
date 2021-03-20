@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <algorithm>
 #include <vector>
 
 using namespace std;
@@ -24,6 +25,12 @@ namespace example
             }
 
             // Drawback: not safe
+
+            //2. Type erasure using template
+            template<class RandomAccessIterator>
+            void sort(RandomAccessIterator first, RandomAccessIterator last);
+
+            // Drawback:
     }
 
 
@@ -40,5 +47,15 @@ int main()
         std::cout << i << " ";
     }
     std::cout << "\n";
+
+
+    std::vector<int> v2 = {3, 2, 1};
+    std::sort(v2.begin(), v2.end());
+    for (auto &i: v2)
+    {
+        std::cout << i << " ";
+    }
+    std::cout << "\n";
+
     return 0;
 }
