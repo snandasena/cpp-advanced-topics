@@ -36,4 +36,7 @@ set(CMAKE_CXX_STANDARD 17)
 #add_executable(ds ds/statck_with_linkedlist.cpp)
 #add_executable(ds ds/doublylinkedlist.cpp)
 #add_executable(classes_and_objects classes_and_objects/friend_function.cpp)
-add_executable(ds ds/queue.cpp)
+#add_executable(ds ds/queue.cpp)
+#add_executable(idioms idioms/static_polymorphism.cpp)
+
+add_executable(idioms idioms/type_erasure.cpp)
