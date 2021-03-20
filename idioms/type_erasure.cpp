@@ -5,6 +5,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <memory>
 
 using namespace std;
 
@@ -30,7 +31,43 @@ namespace example
             template<class RandomAccessIterator>
             void sort(RandomAccessIterator first, RandomAccessIterator last);
 
-            // Drawback:
+            // Drawback: may lead to many function template instantions
+            // and longer compilation time
+
+            // 3. Type erasure using polymorphism
+
+            struct A
+            {
+                virtual ~A() = default;
+
+                virtual void foo() =0;
+            };
+
+            struct B : A
+            {
+                ~B() = default;
+
+                void foo() override
+                {
+                    std::cout << "B\n";
+                }
+            };
+
+            struct C : A
+            {
+                ~C() = default;
+
+                void foo() override
+                {
+                    std::cout << "C\n";
+                }
+            };
+
+
+            void call(A *p)
+            {
+                p->foo();
+            }
     }
 
 
@@ -56,6 +93,13 @@ int main()
         std::cout << i << " ";
     }
     std::cout << "\n";
+
+
+    std::unique_ptr<example::A> ap1 = std::make_unique<example::B>();
+    std::unique_ptr<example::A> ap2 = std::make_unique<example::C>();
+
+    example::call(ap1.get());
+    example::call(ap2.get());
 
     return 0;
 }
