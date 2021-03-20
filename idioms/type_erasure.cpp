@@ -68,6 +68,26 @@ namespace example
             {
                 p->foo();
             }
+
+            // Drawback: run-time cost (dynamic dispatch, indirection, vtable, etc.)
+
+
+            // 4.  Type erasure using Union(special class that can hold only one of its non static data member at a time)
+
+            struct Data
+            {
+            };
+
+            union U
+            {
+                Data data;
+                std::int32_t n;
+                char c;
+
+                ~U() {}
+            };
+
+            // Drawback: not safe
     }
 
 
@@ -100,6 +120,12 @@ int main()
 
     example::call(ap1.get());
     example::call(ap2.get());
+
+
+    example::U u;
+    u.n = 100;
+    u.c = 'X';
+    new(&u.data) example::Data();
 
     return 0;
 }

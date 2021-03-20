@@ -3,6 +3,10 @@ project(advanced_topics)
 
 set(CMAKE_CXX_STANDARD 17)
 
+add_definitions(-std=c++17)
+
+set(CXX_FLAGS "-Wall")
+
 #add_executable(advanced_topics main.cpp)
 #add_executable(pointers pointers/pointers_01.cpp)
 #add_executable(pointers pointers/pointers_02.cpp)
@@ -39,4 +43,5 @@ set(CMAKE_CXX_STANDARD 17)
 #add_executable(ds ds/queue.cpp)
 #add_executable(idioms idioms/static_polymorphism.cpp)
 
-add_executable(idioms idioms/type_erasure.cpp)
+#add_executable(idioms idioms/type_erasure.cpp)
+add_executable(idioms idioms/type_erasyre_std_examples.cpp)
