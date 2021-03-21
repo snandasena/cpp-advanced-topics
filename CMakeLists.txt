@@ -48,4 +48,10 @@ set(CXX_FLAGS "-Wall")
 #add_executable(idioms idioms/std_any_implementation.cpp)
 #add_executable(idioms idioms/CRTP.cpp)
 #add_executable(idioms idioms/CRTP_continue.cpp)
-add_executable(idioms idioms/virtual_constructor.cpp)
+#add_executable(idioms idioms/virtual_constructor.cpp)
+
+add_subdirectory(logger)
+include_directories(${PROJECT_SOURCE_DIR}/logger/include)
+
+add_executable(idioms idioms/PIMPL.cpp)
+target_link_libraries(idioms logger)
