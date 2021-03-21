@@ -80,7 +80,7 @@ public:
         if (not _weapon) throw std::runtime_error{"null weapon"};
     }
 
-    Player(const Player &rhs) : _weapon(rhs._weapon->clone()) {}
+    Player(const Player &rhs) : _weapon{rhs._weapon->clone()} {}
 
     Player(Player &&) = default;
 
@@ -102,6 +102,9 @@ int main()
     player1.shoot();
 
     player2.shoot();
+    player2.shoot();
+    player2.shoot();
+
     return 0;
 
 }
