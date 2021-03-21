@@ -44,4 +44,5 @@ set(CXX_FLAGS "-Wall")
 #add_executable(idioms idioms/static_polymorphism.cpp)
 
 #add_executable(idioms idioms/type_erasure.cpp)
-add_executable(idioms idioms/type_erasyre_std_examples.cpp)
+#add_executable(idioms idioms/type_erasyre_std_examples.cpp)
+add_executable(idioms idioms/std_any_implementation.cpp)
