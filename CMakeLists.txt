@@ -67,4 +67,5 @@ set(CXX_FLAGS "-Wall")
 #+++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-add_executable(idioms idioms/SFINE.cpp)
+#add_executable(idioms idioms/SFINE.cpp)
+add_executable(idioms idioms/SFINE_continue.cpp)
