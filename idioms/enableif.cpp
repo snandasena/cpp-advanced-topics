@@ -5,13 +5,30 @@
 #include <iostream>
 #include <type_traits>
 
+template<bool>
+struct EnableIf
+{
+};
+
+template<>
+struct EnableIf<true>
+{
+    using type = void;
+};
+
 template<class T>
 void foo(T)
 {
     std::cout << "T is signed\n";
 }
 
-template<class T, class = typename std::enable_if<std::is_unsigned<T>::value>::type>
+//template<class T, class = typename std::enable_if<std::is_unsigned<T>::value>::type>
+//void foo(T)
+//{
+//    std::cout << "T is unsigned\n";
+//};
+
+template<class T, class = typename EnableIf<std::is_unsigned<T>::value>::type>
 void foo(T)
 {
     std::cout << "T is unsigned\n";
@@ -25,7 +42,12 @@ struct B : A
 {
 };
 
-template<class T, class = typename std::enable_if<std::is_base_of<A, T>::value>::type>
+//template<class T, class = typename std::enable_if<std::is_base_of<A, T>::value>::type>
+//struct C : T
+//{
+//};
+
+template<class T, class = typename EnableIf<std::is_base_of<A, T>::value>::type>
 struct C : T
 {
 };
