@@ -18,6 +18,24 @@ public:
 
     ~UniquePointer() { delete ptr; }
 
+    template <typename... Args>
+    UniquePointer(Args&&... args):ptr(new T(std::forward<Args>(args)...)){}
+
+    UniquePointer(const UniquePointer &) = delete; // delete copy constructor
+    UniquePointer(UniquePointer &&other)noexcept : ptr{other.ptr} // move constructor
+    {
+        other.ptr = nullptr;
+    }
+
+    UniquePointer &operator=(const UniquePointer &) = delete;// delete copy asignment operator
+
+    UniquePointer &operator=(UniquePointer &&other)noexcept
+    {
+        delete ptr;
+        ptr = other.ptr;
+        other.ptr = nullptr;
+    }
+
     T *get()
     {
         return ptr;
@@ -58,8 +76,14 @@ int main()
 {
     auto p = UniquePointer<Point>(new Point(5, 10));
     std::cout << std::boolalpha << ((bool) p) << '\n';
+    //
+    //    p.reset();
+    //    std::cout << ((bool) p) << '\n';
+    //
 
-    p.reset();
-    std::cout << ((bool) p) << '\n';
+    auto p2 = std::move(p);
+    std::cout << std::boolalpha << ((bool) p) << '\n';
+    std::cout << std::boolalpha << ((bool) p2) << '\n';
+
     return 0;
 }
