@@ -74,4 +74,9 @@ set(CXX_FLAGS "-Wall")
 #add_executable(idioms idioms/RAII.cpp)
 #add_executable(idioms idioms/ReferenceCounting.cpp)
 #add_executable(idioms idioms/resource_return.cpp)
-add_executable(idioms idioms/SOO.cpp)
+#add_executable(idioms idioms/SOO.cpp)
+#add_executable(idioms idioms/EBO.cpp)
+
+add_executable(main main.cpp)
+
+#add_executable(solid-srp SOLID/SRP/)
