@@ -9,6 +9,7 @@
 #include "employee.h"
 #include "rectangle.h"
 #include "pointer_reference.h"
+#include "virtual_func.h"
 
 void BallRun()
 {
@@ -55,12 +56,21 @@ void PointerReferenceRun()
     std::cout << "pBase is a " << pBase->getName() << " and has a  value " << pBase->getValue() << "\n";
 }
 
+void VirtualFunc()
+{
+    C c;
+    A &rBase{c};
+
+    std::cout << "rBase is a " << rBase.getName() << '\n';
+}
+
 int main()
 {
 //    Rectange rectange{}; // not compile
 //    BallRun();
 //    EmployeeRun();
 //    SimpleRun();
-    PointerReferenceRun();
+//    PointerReferenceRun();
+    VirtualFunc();
     return 0;
 }
