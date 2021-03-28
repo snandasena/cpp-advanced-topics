@@ -4,85 +4,13 @@
 
 #include <iostream>
 #include <string>
+#include "constructor_destructor.h"
+#include "ball.h"
+#include "employee.h"
+#include "rectangle.h"
 
-using std::string;
-
-class Rectange
+void BallRun()
 {
-
-private:
-    double m_length{1.0};
-    double m_width{1.0};
-
-public:
-    Rectange(double lenth, double width) : m_length{lenth}, m_width{width} {}
-
-    void Print()
-    {
-        std::cout << "length: " << m_length << ", width: " << m_width << "\n";
-    }
-};
-
-class Ball
-{
-    string m_color;
-    double m_radius;
-
-public:
-    Ball()
-    {
-        m_color = "black";
-        m_radius = 10.0;
-    }
-
-    Ball(const string &color)
-    {
-        m_color = color;
-        m_radius = 10.0;
-    }
-
-    Ball(double radius)
-    {
-        m_color = "black";
-        m_radius = radius;
-    }
-
-    Ball(const string &color, double radius)
-    {
-        m_color = color;
-        m_radius = radius;
-    }
-
-    void Print()
-    {
-        std::cout << "color: " << m_color << ", radius: " << m_radius << '\n';
-    }
-
-};
-
-// delegating constructors
-
-class Employee
-{
-private:
-    int m_id{};
-    string m_name{};
-
-public:
-    Employee(int id = 0, const string &name = "") : m_id{}, m_name{name}
-    {
-        std::cout << "Employee: " << m_name << " created\n";
-    }
-
-    Employee(const string &name) : Employee{0, name} {};
-};
-
-
-
-int main()
-{
-//    Rectange rectange{}; // not compile
-
     Ball b{};
     b.Print();
 
@@ -95,8 +23,32 @@ int main()
     Ball b3{"green", 19.0};
     b3.Print();
 
+}
 
+void EmployeeRun()
+{
     Employee e{};
     Employee e2{"Tom"};
+
+}
+
+void SimpleRun()
+{
+    Simple simple{1};
+    std::cout << simple.getID() << "\n";
+
+    Simple *pSimple{new Simple{2}};
+    std::cout << pSimple->getID() << "\n";
+
+    delete pSimple;
+}
+
+int main()
+{
+//    Rectange rectange{}; // not compile
+//    BallRun();
+//    EmployeeRun();
+    SimpleRun();
+
     return 0;
 }
