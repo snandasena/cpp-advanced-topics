@@ -8,6 +8,7 @@
 #include "ball.h"
 #include "employee.h"
 #include "rectangle.h"
+#include "pointer_reference.h"
 
 void BallRun()
 {
@@ -43,12 +44,23 @@ void SimpleRun()
     delete pSimple;
 }
 
+void PointerReferenceRun()
+{
+    Derived derived{5};
+    Base &rBase{derived};
+    Base *pBase{&derived};
+
+    std::cout << "derived is a " << derived.getName() << " and has a  value " << derived.getValue() << "\n";
+    std::cout << "rBase is a " << rBase.getName() << " and has a  value " << rBase.getValue() << "\n";
+    std::cout << "pBase is a " << pBase->getName() << " and has a  value " << pBase->getValue() << "\n";
+}
+
 int main()
 {
 //    Rectange rectange{}; // not compile
 //    BallRun();
 //    EmployeeRun();
-    SimpleRun();
-
+//    SimpleRun();
+    PointerReferenceRun();
     return 0;
 }
