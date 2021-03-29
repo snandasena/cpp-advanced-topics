@@ -4,12 +4,14 @@
 
 #include <iostream>
 #include <string>
+#include <memory>
 #include "constructor_destructor.h"
 #include "ball.h"
 #include "employee.h"
 #include "rectangle.h"
 #include "pointer_reference.h"
 #include "virtual_func.h"
+#include "virtual_constructor.h"
 
 void BallRun()
 {
@@ -64,6 +66,12 @@ void VirtualFunc()
     std::cout << "rBase is a " << rBase.getName() << '\n';
 }
 
+void VirtualConstructor()
+{
+    Player player1{std::make_unique<M16>()};
+    player1.shoot();
+}
+
 int main()
 {
 //    Rectange rectange{}; // not compile
@@ -71,6 +79,8 @@ int main()
 //    EmployeeRun();
 //    SimpleRun();
 //    PointerReferenceRun();
-    VirtualFunc();
+//    VirtualFunc();
+
+    VirtualConstructor();
     return 0;
 }
