@@ -81,4 +81,6 @@ set(CXX_FLAGS "-Wall")
 
 #add_executable(solid-srp SOLID/SRP/)
 
-add_executable(oop oop/main.cpp)
+#add_executable(oop oop/main.cpp)
+
+add_executable(idioms idioms/EBO.cpp)
