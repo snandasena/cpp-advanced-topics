@@ -11,7 +11,7 @@
 #include "rectangle.h"
 #include "pointer_reference.h"
 #include "virtual_func.h"
-#include "virtual_constructor.h"
+#include "virtualconstructor.h"
 
 void BallRun()
 {
@@ -70,6 +70,16 @@ void VirtualConstructor()
 {
     Player player1{std::make_unique<M16>()};
     player1.shoot();
+    Player player2(player1);
+
+    player1.shoot();
+    player1.shoot();
+    player1.shoot();
+    player1.shoot();
+    player2.shoot();
+    player2.shoot();
+    player2.shoot();
+    player2.shoot();
 }
 
 int main()

@@ -13,6 +13,7 @@ class Weapon
 {
 public:
     virtual ~Weapon() = default;
+    virtual std::unique_ptr<Weapon> clone() = 0;
     virtual void shoot() = 0;
 };
 
@@ -23,6 +24,11 @@ class AK47 : public Weapon
 
 public:
     ~AK47() = default;
+
+    std::unique_ptr<Weapon> clone()
+    {
+        return std::make_unique<AK47>(*this);
+    }
 
     void shoot() override
     {
@@ -40,6 +46,11 @@ class M16 : public Weapon
 
 public:
     ~M16() = default;
+
+    std::unique_ptr<Weapon> clone()
+    {
+        return std::make_unique<M16>(*this);
+    }
 
     void shoot() override
     {
@@ -65,7 +76,10 @@ public:
         }
     }
 
-    Player(const Player &rhs) = default; // copy constructor
+    Player(const Player &rhs) : _weapon{rhs._weapon->clone()}
+    {
+
+    }; // copy constructor
     Player(Player &&other) = default; // move constructor;
 
     void shoot()
