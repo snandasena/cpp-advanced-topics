@@ -83,5 +83,20 @@ int main()
 
     cout << "X: " << t2.x << " Y: " << t2.y << " Z: " << t2.z << '\n';
 
+
+    int array[5] = {1, 2, 3, 4, 5};
+    int *pArray = array;
+
+    for (int i = 0; i < 5; ++i)
+    {
+        cout << (pArray + i) << " " << (array + i) << " " << *(pArray + i) << "\n";
+    }
+
+    char someStr[] = "Hello";
+    cout << someStr << "\n";
+
+    char *pSomePtr = someStr;
+    cout << pSomePtr << "\n";
+
     return 0;
 }

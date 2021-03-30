@@ -77,10 +77,10 @@ set(CXX_FLAGS "-Wall")
 #add_executable(idioms idioms/SOO.cpp)
 #add_executable(idioms idioms/EBO.cpp)
 
-#add_executable(main main.cpp)
+add_executable(main main.cpp)
 
 #add_executable(solid-srp SOLID/SRP/)
 
 #add_executable(oop oop/main.cpp)
 
-add_executable(idioms idioms/EBO.cpp)
+#add_executable(idioms idioms/EBO.cpp)
