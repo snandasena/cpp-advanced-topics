@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.10)
 project(advanced_topics)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_C_STANDARD 11)
+
 
 add_definitions(-std=c++17)
 
@@ -77,10 +79,12 @@ set(CXX_FLAGS "-Wall")
 #add_executable(idioms idioms/SOO.cpp)
 #add_executable(idioms idioms/EBO.cpp)
 
-add_executable(main main.cpp)
+#add_executable(main main.cpp)
 
 #add_executable(solid-srp SOLID/SRP/)
 
 #add_executable(oop oop/main.cpp)
 
 #add_executable(idioms idioms/EBO.cpp)
+
+add_executable(c-pointers c-pointers/main.c)
