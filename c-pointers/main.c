@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 void set(int *a, int *b)
 {
@@ -251,6 +252,140 @@ void access_buffer2()
     }
 }
 
+void struct_pointers()
+{
+    struct person
+    {
+        char *name;
+        int *age;
+    } my;
+
+    char n[] = "Jeniffer";
+
+    my.age = (int *) malloc(sizeof(int) * 1);
+
+    if (my.age == NULL)
+    {
+        fprintf(stderr, "Allocation error\n");
+    }
+
+    *my.age = 26;
+    my.name = n;
+
+    printf("%s is %d years old\n", my.name, *my.age);
+}
+
+void create_struct_pointers()
+{
+    struct person
+    {
+        char name[32];
+        int age;
+    } president = {
+            "George Washington",
+            53
+    };
+
+    struct person *first;
+    printf("%s is %d years old\n",
+           president.name,
+           president.age);
+
+    first = &president;
+    printf("%s is %d years old\n",
+           first->name,
+           first->age);
+
+}
+
+void allocate_structure_memory()
+{
+    struct person
+    {
+        char name[32];
+        int age;
+    } *first;
+
+
+    first = (struct person *) malloc(sizeof(struct person) * 1);
+
+    if (first == NULL)
+    {
+        fprintf(stderr, "Unable to allocate memory");
+    }
+
+    strcpy(first->name, "George Washington");
+    printf("How old was %s?\n", first->name);
+
+    first->age = 59;
+
+    printf("%s was %d years old\n",
+           first->name,
+           first->age);
+
+}
+
+void save_pointers()
+{
+    int *base, x;
+    FILE *fp;
+
+    base = (int *) malloc(sizeof(int) * 10);
+
+    if (base == NULL)
+    {
+        fprintf(stderr, "Allocation failure\n");
+    }
+
+    for (x = 0; x < 10; ++x)
+    {
+        *(base + x) = x * 100;
+    }
+
+    puts("Memory allocated and filled\n");
+
+    fp = fopen("integers.dat", "w");
+    if (fp == NULL)
+    {
+        fprintf(stderr, "Unable to create a file\n");
+    }
+
+    fwrite(base, sizeof(int), 10, fp);
+    puts("Data saved!");
+}
+
+void read_pointers()
+{
+//    save_pointers();
+    int *base, r, x;
+    FILE *fp;
+    base = (int *) malloc(sizeof(int) * 10);
+    if (base == NULL)
+    {
+        fprintf(stderr, "Allocation failure\n");
+    }
+
+    fp = fopen("integers.dat", "r");
+    if (fp == NULL)
+    {
+        fprintf(stderr, "Unable to read a file\n");
+    }
+    r = fread(base, sizeof(int), 10, fp);
+    if (r != 10)
+    {
+        fprintf(stderr, "File read error\n");
+    }
+    puts("Data read\n");
+
+    fclose(fp);
+    puts("Values: ");
+
+    for (x = 0; x < 10; ++x)
+    {
+        printf("%d\n", *(base + x));
+    }
+}
+
 int main()
 {
 
@@ -264,7 +399,12 @@ int main()
 //    calloc_example();
 //    realloc_example();
 //    access_buffer();
-    access_buffer2();
+//    access_buffer2();
+//    struct_pointers();
+//    create_struct_pointers();
+//    allocate_structure_memory();
+//    save_pointers();
+    read_pointers();
 
     return 0;
 }
