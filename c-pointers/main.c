@@ -191,6 +191,66 @@ void realloc_example()
     puts("Memory freed\n");
 }
 
+
+void access_buffer()
+{
+    int *base, *p, x;
+
+    base = (int *) malloc(sizeof(int) * 10);
+
+    if (base == NULL)
+    {
+        fprintf(stderr, "Allocation failure\n");
+    } else
+    {
+        puts("Memory allocared\n");
+    }
+
+    // retain the base
+    p = base;
+    for (x = 0; x < 10; ++x)
+    {
+        *p = x * 100;
+        p++;
+    }
+    puts("Memory allocated and filled\n");
+
+    p = base;
+    for (int i = 0; i < 10; ++i)
+    {
+        printf("%d\n", *p);
+        p++;
+    }
+}
+
+void access_buffer2()
+{
+    int *p, x;
+
+    p = (int *) malloc(sizeof(int) * 10);
+
+    if (p == NULL)
+    {
+        fprintf(stderr, "Allocation failure\n");
+    } else
+    {
+        puts("Memory allocared\n");
+    }
+
+
+    for (x = 0; x < 10; ++x)
+    {
+        *(p + x) = x * 100;
+    }
+    puts("Memory allocated and filled\n");
+
+    for (int i = 0; i < 10; ++i)
+    {
+        printf("%d\n", *p);
+        p++;
+    }
+}
+
 int main()
 {
 
@@ -202,7 +262,9 @@ int main()
 //    allocate_storage();
 //    malloc_example();
 //    calloc_example();
-    realloc_example();
+//    realloc_example();
+//    access_buffer();
+    access_buffer2();
 
     return 0;
 }
