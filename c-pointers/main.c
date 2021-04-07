@@ -386,6 +386,54 @@ void read_pointers()
     }
 }
 
+
+void save_struct_pointers()
+{
+    struct human
+    {
+        char *name;
+        int age;
+    } *towrite;
+    const char filename[] = "saved.dat";
+    char *r;
+    FILE *fp;
+    towrite = (struct human *) malloc(sizeof(struct human));
+
+    if (towrite == NULL)
+    {
+        fprintf(stderr, "Unable to allocate structure memory\n");
+        exit(1);
+    }
+
+    towrite->name = (char *) malloc(sizeof(char) * 32);
+    if (towrite->name == NULL)
+    {
+        fprintf(stderr, "Unable to allocate structure memory\n");
+        exit(1);
+    }
+    printf("Enter your name: ");
+    r = fgets(towrite->name, 32, stdin);
+    if (r == NULL)
+    {
+        fprintf(stderr, "Input error\n");
+        exit(1);
+    }
+
+    printf("How old are you: ");
+    scanf("%d", &towrite->age);
+
+    fp = fopen(filename, "w");
+    if (fp == NULL)
+    {
+        fprintf(stderr, "Unable to create a file\n");
+        exit(1);
+    }
+
+    fwrite(towrite, sizeof(struct human), 1, fp);
+    fclose(fp);
+    printf("Data written to %s\n", filename);
+}
+
 int main()
 {
 
@@ -404,7 +452,7 @@ int main()
 //    create_struct_pointers();
 //    allocate_structure_memory();
 //    save_pointers();
-    read_pointers();
-
+//    read_pointers();
+    save_struct_pointers();
     return 0;
 }

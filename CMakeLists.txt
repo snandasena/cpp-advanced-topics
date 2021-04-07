@@ -80,11 +80,10 @@ set(CXX_FLAGS "-Wall")
 #add_executable(idioms idioms/EBO.cpp)
 
 #add_executable(main main.cpp)
-
 #add_executable(solid-srp SOLID/SRP/)
-
 #add_executable(oop oop/main.cpp)
-
 #add_executable(idioms idioms/EBO.cpp)
 
 add_executable(c-pointers c-pointers/main.c)
+add_executable(save-pointer c-pointers/memory_allocation_assigment_save.c)
+add_executable(read-pointer c-pointers/memory_allocation_assigment_read.c)
