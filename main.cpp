@@ -4,34 +4,98 @@
 using namespace std;
 
 
-int *getpointer()
+struct Node
 {
+    int data;
+    Node *link;
+};
 
-//    int *i = new int (10);
-    int *i = (int *) malloc(sizeof(int) * 1);
-    *i = 100000;
-    return i;
+struct CharNode
+{
+    char data;
+    CharNode *link;
+};
+
+Node *CreateNode(int data)
+{
+    Node *node = new Node();
+    node->data = data;
+    node->link = nullptr;
+
+    return node;
+}
+
+void InsertAtTail(Node **head, int data)
+{
+    Node *newNode = CreateNode(data);
+    if (*head == nullptr)
+    {
+        *head = newNode;
+    } else
+    {
+        Node *temp = *head;
+        while (temp->link != nullptr)
+        {
+            temp = temp->link;
+        }
+        temp->link = newNode;
+    }
+}
+
+void InsertAtHead(Node **head, int data)
+{
+    Node *newNode = CreateNode(data);
+    newNode->link = *head;
+    *head = newNode;
 }
 
 
+void InsertAtHead(CharNode **head, char c)
+{
+    CharNode *node = new CharNode();
+    node->data = c;
+    node->link = *head;
+    *head = node;
+}
+
 int main()
 {
-    int *j = getpointer();
-    cout << *j << endl;
-    free(j);
-    vector<int *> v;
-    int a = 10;
-    int b = 20;
-    int c = 30;
+    Node *head = nullptr;
+    InsertAtTail(&head, 1);
+    InsertAtTail(&head, 2);
+    InsertAtTail(&head, 3);
+    InsertAtTail(&head, 4);
 
-    v.push_back(&a);
-    v.push_back(&b);
-    v.push_back(&c);
-
-    for (int i = 0; i < 3; ++i)
+    while (head->link != nullptr)
     {
-        cout << *v[i] << endl;
+        cout << head->data << endl;
+        head = head->link;
     }
+    cout << head->data << endl;
+
+    cout << "++++++++++++++++++++++++++++++++++++++++++++++++++\n";
+
+    Node *head2 = nullptr;
+    InsertAtHead(&head2, 1);
+    InsertAtHead(&head2, 2);
+    InsertAtHead(&head2, 3);
+    InsertAtHead(&head2, 4);
+
+    while (head2->link != nullptr)
+    {
+        cout << head2->data << endl;
+        head2 = head2->link;
+    }
+    cout << head2->data;
+
+    string text = "hello";
+    CharNode *charNode = nullptr;
+    for (char c: text)
+    {
+        InsertAtHead(&charNode, c);
+    }
+
+
 
     return 0;
 
