@@ -8,6 +8,8 @@ set(CMAKE_C_STANDARD 11)
 add_definitions(-std=c++17)
 
 set(CXX_FLAGS "-Wall")
+add_subdirectory(c-things)
+
 find_library(Eigen3 REQUIRED)
 
 add_executable(main main.cpp)
