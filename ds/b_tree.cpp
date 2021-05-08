@@ -36,9 +36,27 @@ void InsertBNode(BNode **root, int data)
     }
 }
 
+bool Search(BNode *root, int data)
+{
+    if (root == nullptr)
+    {
+        return false;
+    } else if (root->data == data)
+    {
+        return true;
+    } else if (data < root->data)
+    {
+        return Search(root->left, data);
+    } else
+    {
+        return Search(root->right, data);
+    }
+
+}
+
 int main()
 {
-    BNode *root;
+    BNode *root = nullptr;
     InsertBNode(&root, 15);
     InsertBNode(&root, 10);
     InsertBNode(&root, 20);
@@ -46,6 +64,13 @@ int main()
     InsertBNode(&root, 8);
     InsertBNode(&root, 12);
     InsertBNode(&root, 19);
+
+    cout << root->data << endl;
+    cout << root->left->data << endl;
+    cout << root->right->data << endl;
+
+    cout << boolalpha << Search(root, 8) << endl;
+    cout << boolalpha << Search(root, 50) << endl;
 
     return 0;
 }
