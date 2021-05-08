@@ -4,10 +4,10 @@
 using namespace std;
 
 
-struct Node
+struct BNode
 {
     int data;
-    Node *link;
+    BNode *link;
 };
 
 struct CharNode
@@ -16,24 +16,24 @@ struct CharNode
     CharNode *link;
 };
 
-Node *CreateNode(int data)
+BNode *CreateBNode(int data)
 {
-    Node *node = new Node();
+    BNode *node = new BNode();
     node->data = data;
     node->link = nullptr;
 
     return node;
 }
 
-void InsertAtTail(Node **head, int data)
+void InsertAtTail(BNode **head, int data)
 {
-    Node *newNode = CreateNode(data);
+    BNode *newNode = CreateBNode(data);
     if (*head == nullptr)
     {
         *head = newNode;
     } else
     {
-        Node *temp = *head;
+        BNode *temp = *head;
         while (temp->link != nullptr)
         {
             temp = temp->link;
@@ -42,9 +42,9 @@ void InsertAtTail(Node **head, int data)
     }
 }
 
-void InsertAtHead(Node **head, int data)
+void InsertAtHead(BNode **head, int data)
 {
-    Node *newNode = CreateNode(data);
+    BNode *newNode = CreateBNode(data);
     newNode->link = *head;
     *head = newNode;
 }
@@ -60,7 +60,7 @@ void InsertAtHead(CharNode **head, char c)
 
 int main()
 {
-    Node *head = nullptr;
+    BNode *head = nullptr;
     InsertAtTail(&head, 1);
     InsertAtTail(&head, 2);
     InsertAtTail(&head, 3);
@@ -75,7 +75,7 @@ int main()
 
     cout << "++++++++++++++++++++++++++++++++++++++++++++++++++\n";
 
-    Node *head2 = nullptr;
+    BNode *head2 = nullptr;
     InsertAtHead(&head2, 1);
     InsertAtHead(&head2, 2);
     InsertAtHead(&head2, 3);
