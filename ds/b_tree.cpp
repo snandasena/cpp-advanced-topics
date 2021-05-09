@@ -86,6 +86,8 @@ int FindHeight(BNode *root)
     return max(FindHeight(root->left), FindHeight(root->right)) + 1;
 }
 
+// Depth first traversal
+
 // Data->Left->Right
 void PreOrderTraversal(BNode *root)
 {
@@ -124,6 +126,8 @@ void InOrderTraversal(BNode *root)
     InOrderTraversal(root->right);
 }
 
+
+// Bread first traversal
 void LevelOrderTraversal(BNode *root)
 {
     if (root == nullptr)
