@@ -61,9 +61,18 @@ int FindMin(BNode *root)
     {
         node = node->left;
     }
+    return node->data;
+}
+
+int FindMax(BNode *root)
+{
+    BNode *node = root;
+    while (node->right != nullptr)
+    {
+        node = node->right;
+    }
 
     return node->data;
-
 }
 
 int main()
@@ -85,6 +94,7 @@ int main()
     cout << boolalpha << Search(root, 50) << endl;
 
     cout << "Min : " << FindMin(root) << endl;
+    cout << "Max : " << FindMax(root) << endl;
 
     return 0;
 }
