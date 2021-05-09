@@ -97,6 +97,19 @@ void PreOrderTraversal(BNode *root)
     PreOrderTraversal(root->right);
 }
 
+// Left->Right->Data
+void PostOrderTraversal(BNode *root)
+{
+    if (root == nullptr)
+    {
+        return;
+    }
+
+    PostOrderTraversal(root->left);
+    PostOrderTraversal(root->right);
+    cout << root->data << "\t";
+}
+
 int main()
 {
     BNode *root = nullptr;
@@ -131,5 +144,9 @@ int main()
 
     // 15->10->8->12->20->19->25
     PreOrderTraversal(root);
+    cout << endl;
+
+    // 8->12->10->19->25->20->15
+    PostOrderTraversal(root);
     return 0;
 }
