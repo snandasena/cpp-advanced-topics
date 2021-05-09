@@ -85,6 +85,18 @@ int FindHeight(BNode *root)
     return max(FindHeight(root->left), FindHeight(root->right)) + 1;
 }
 
+// Data->Left->Right
+void PreOrderTraversal(BNode *root)
+{
+    if (root == nullptr)
+    {
+        return;
+    }
+    cout << root->data << "\t";
+    PreOrderTraversal(root->left);
+    PreOrderTraversal(root->right);
+}
+
 int main()
 {
     BNode *root = nullptr;
@@ -95,6 +107,15 @@ int main()
     InsertBNode(&root, 8);
     InsertBNode(&root, 12);
     InsertBNode(&root, 19);
+
+    /*
+     *               15
+     *             /    \
+     *           10      20
+     *          /  \    /   \
+     *         8    12  19   25
+     *
+     */
 
     cout << root->data << endl;
     cout << root->left->data << endl;
@@ -108,5 +129,7 @@ int main()
 
     cout << "Height: " << FindHeight(root) << endl;
 
+    // 15->10->8->12->20->19->25
+    PreOrderTraversal(root);
     return 0;
 }
