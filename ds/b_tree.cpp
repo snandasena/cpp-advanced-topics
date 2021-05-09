@@ -75,6 +75,16 @@ int FindMax(BNode *root)
     return node->data;
 }
 
+int FindHeight(BNode *root)
+{
+    if (root == nullptr)
+    {
+        return -1;
+    }
+
+    return max(FindHeight(root->left), FindHeight(root->right)) + 1;
+}
+
 int main()
 {
     BNode *root = nullptr;
@@ -95,6 +105,8 @@ int main()
 
     cout << "Min : " << FindMin(root) << endl;
     cout << "Max : " << FindMax(root) << endl;
+
+    cout << "Height: " << FindHeight(root) << endl;
 
     return 0;
 }
