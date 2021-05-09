@@ -51,6 +51,18 @@ bool Search(BNode *root, int data)
     {
         return Search(root->right, data);
     }
+}
+
+int FindMin(BNode *root)
+{
+    BNode *node = root;
+
+    while (node->left != nullptr)
+    {
+        node = node->left;
+    }
+
+    return node->data;
 
 }
 
@@ -71,6 +83,8 @@ int main()
 
     cout << boolalpha << Search(root, 8) << endl;
     cout << boolalpha << Search(root, 50) << endl;
+
+    cout << "Min : " << FindMin(root) << endl;
 
     return 0;
 }
