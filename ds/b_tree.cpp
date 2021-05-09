@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <queue>
 
 using namespace std;
 
@@ -123,6 +124,33 @@ void InOrderTraversal(BNode *root)
     InOrderTraversal(root->right);
 }
 
+void LevelOrderTraversal(BNode *root)
+{
+    if (root == nullptr)
+    {
+        return;
+    }
+
+    queue<BNode *> Q;
+    Q.push(root);
+    while (!Q.empty())
+    {
+        BNode *node = Q.front();
+        cout << node->data << "\t";
+        if (node->left != nullptr)
+        {
+            Q.push(node->left);
+        }
+
+        if (node->right != nullptr)
+        {
+            Q.push(node->right);
+        }
+
+        Q.pop();
+    }
+}
+
 int main()
 {
     BNode *root = nullptr;
@@ -165,5 +193,9 @@ int main()
 
     // 8->10->12->15->19->20->25
     InOrderTraversal(root);
+    cout << endl;
+
+    // 15->10->20->8->12->19->25
+    LevelOrderTraversal(root);
     return 0;
 }
