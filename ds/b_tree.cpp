@@ -204,11 +204,32 @@ bool IsBinarySearchTree(BNode *root)
         && IsBinarySearchTree(root->right))
     {
         return true;
-    } else{
+    } else
+    {
 
         return false;
     }
 }
+
+
+bool IsBST(BNode *root, int minval, int maxval)
+{
+    if (root == nullptr)
+    {
+        return true;
+    }
+
+    if (root->data < minval && root->data > maxval
+        && IsBST(root->left, minval, root->data)
+        && IsBST(root->right, root->data, maxval))
+    {
+        return true;
+    } else
+    {
+        return false;
+    }
+}
+
 
 int main()
 {
@@ -259,5 +280,8 @@ int main()
     cout << endl;
 
     cout << IsBinarySearchTree(root) << endl;
+
+    cout << IsBST(root, INT32_MIN, INT32_MAX) << endl;
+
     return 0;
 }
