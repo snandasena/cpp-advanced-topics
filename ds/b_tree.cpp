@@ -155,6 +155,61 @@ void LevelOrderTraversal(BNode *root)
     }
 }
 
+bool IsSubtreeLesser(BNode *root, int data)
+{
+    if (root == nullptr)
+    {
+        return true;
+    }
+
+    if (root->data <= data
+        && IsSubtreeLesser(root->left, data)
+        && IsSubtreeLesser(root->right, data))
+    {
+        return true;
+    } else
+    {
+        return false;
+    }
+}
+
+bool IsSubtreeGreater(BNode *root, int data)
+{
+    if (root == nullptr)
+    {
+        return true;
+    }
+
+    if (root->data > data
+        && IsSubtreeGreater(root->left, data)
+        && IsSubtreeGreater(root->right, data))
+    {
+        return true;
+    } else
+    {
+        return false;
+    }
+}
+
+bool IsBinarySearchTree(BNode *root)
+{
+    if (root == nullptr)
+    {
+        return true;
+    }
+
+    if (IsSubtreeLesser(root->left, root->data)
+        && IsSubtreeGreater(root->right, root->data)
+        && IsBinarySearchTree(root->left)
+        && IsBinarySearchTree(root->right))
+    {
+        return true;
+    } else{
+
+        return false;
+    }
+}
+
 int main()
 {
     BNode *root = nullptr;
@@ -201,5 +256,8 @@ int main()
 
     // 15->10->20->8->12->19->25
     LevelOrderTraversal(root);
+    cout << endl;
+
+    cout << IsBinarySearchTree(root) << endl;
     return 0;
 }
