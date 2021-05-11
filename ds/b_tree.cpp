@@ -219,7 +219,7 @@ bool IsBST(BNode *root, int minval, int maxval)
         return true;
     }
 
-    if (root->data < minval && root->data > maxval
+    if (root->data > minval && root->data < maxval
         && IsBST(root->left, minval, root->data)
         && IsBST(root->right, root->data, maxval))
     {
