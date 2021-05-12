@@ -230,6 +230,56 @@ bool IsBST(BNode *root, int minval, int maxval)
     }
 }
 
+BNode *FindMinNode(BNode *root)
+{
+    while (root->left != nullptr)
+    {
+        root = root->left;
+    }
+    return root;
+}
+
+BNode *DeleteBNode(BNode *root, int data)
+{
+    if (root == nullptr)
+    {
+        return root;
+    } else if (data < root->data)
+    {
+        root->left = DeleteBNode(root->left, data);
+    } else if (data > root->data)
+    {
+        root->right = DeleteBNode(root->right, data);
+    } else
+    {
+        // Case: 01 - No child
+        if (root->left == nullptr && root->right)
+        {
+            delete root;
+            root = nullptr;
+        }
+            // Case: 02 - One child
+        else if (root->left == nullptr)
+        {
+            BNode *temp = root;
+            root = root->right;
+            delete temp;
+        } else if (root->right == nullptr)
+        {
+            BNode *temp = root;
+            root = root->left;
+            delete temp;
+        }
+            // Case: 03 - 2 Children
+        else
+        {
+            BNode *temp = FindMinNode(root->right);
+            root->data = temp->data;
+            root->right = DeleteBNode(root->right, temp->data);
+        }
+    }
+    return root;
+}
 
 int main()
 {
@@ -282,6 +332,11 @@ int main()
     cout << IsBinarySearchTree(root) << endl;
 
     cout << IsBST(root, INT32_MIN, INT32_MAX) << endl;
+
+
+    root = DeleteBNode(root, 25);
+    InOrderTraversal(root);
+    cout << endl;
 
     return 0;
 }
