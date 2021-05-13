@@ -9,6 +9,7 @@ add_definitions(-std=c++17)
 
 set(CXX_FLAGS "-Wall")
 add_subdirectory(c-things)
+add_subdirectory(cppnano)
 
 find_library(Eigen3 REQUIRED)
 
