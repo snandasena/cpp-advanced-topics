@@ -14,5 +14,10 @@ void func(int &&val)
 int main()
 {
     func(43);
+    int i = 34;
+
+    // cannot bind rvalue reference of type ‘int&&’ to lvalue of type ‘int’
+//    func(i);
+
     return 0;
 }
