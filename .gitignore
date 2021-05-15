@@ -4,3 +4,5 @@ cmake-build-debug/
 dist/
 path-planning-python-algo/__pycache__/
 WASM/www/
+*.out
+*.log
