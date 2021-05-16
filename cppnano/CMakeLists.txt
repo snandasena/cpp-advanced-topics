@@ -1,5 +1,8 @@
 project(cppnano)
 
+add_definitions(-std=c++11)
+set(CXX_FLAGS "-Wall")
+
 add_executable(memory src/memory.cpp)
 add_executable(cache_memory src/cache_memory.cpp)
 add_executable(malloc_v_new src/malloc_v_new.cpp)
@@ -11,3 +14,4 @@ add_executable(deepcopy src/deep_copy.cpp)
 add_executable(sharedcopy src/shared_copy.cpp)
 add_executable(rvalue src/rvalue_references.cpp)
 add_executable(rvalue_example src/rvalue_example.cpp)
+add_executable(ruleofthree src/rule_of_three.cpp)
