@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sajith/CLionProjects/advanced-topics/cppnano/src/my_class.h
+
+/home/sajith/CLionProjects/advanced-topics/cppnano/src/r_32.cpp
+iostream
+-
+memory
+-
+my_class.h
+/home/sajith/CLionProjects/advanced-topics/cppnano/src/my_class.h
+
