@@ -4,21 +4,8 @@
 
 #include <iostream>
 #include <memory>
+#include "my_class.h"
 
-class MyClass
-{
-private:
-    int _member;
-
-public:
-
-    MyClass(int val) : _member{val} {}
-
-    void printVal()
-    {
-        std::cout << ", managed object " << this << " with val = " << _member << "\n";
-    }
-};
 
 void f(std::unique_ptr<MyClass> ptr)
 {
