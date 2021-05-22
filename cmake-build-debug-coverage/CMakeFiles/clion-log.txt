@@ -1,4 +1,0 @@
-/opt/tools/clion-2020.3.3/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS=--coverage -DCMAKE_C_FLAGS=--coverage -G "CodeBlocks - Unix Makefiles" /home/sajith/CLionProjects/advanced-topics
--- Configuring done
--- Generating done
--- Build files have been written to: /home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage

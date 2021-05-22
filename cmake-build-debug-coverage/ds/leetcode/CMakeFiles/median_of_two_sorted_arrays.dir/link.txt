@@ -1,1 +1,0 @@
-/usr/bin/c++  --coverage -g   CMakeFiles/median_of_two_sorted_arrays.dir/src/median_of_two_sorted_arrays.cpp.o  -o median_of_two_sorted_arrays 

@@ -1,1 +1,0 @@
-/usr/bin/cc --coverage -g   CMakeFiles/mainc.dir/main.c.o  -o mainc 
