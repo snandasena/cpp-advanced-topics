@@ -5,12 +5,24 @@
 #include <thread>
 #include <iostream>
 
+void thread_task()
+{
+    std::this_thread::sleep_for(std::chrono::microseconds(100));
+    std::cout << "Finished work in thead\n";
+}
+
 int main()
 {
-    std::cout << " Current thread " << std::this_thread::get_id() << "\n";
+    std::cout << "Current thread " << std::this_thread::get_id() << "\n";
 
     unsigned int cores = std::thread::hardware_concurrency();
     std::cout << "This pc supports concurrency with " << cores << "\n";
+
+    std::thread t(thread_task);
+    std::this_thread::sleep_for(std::chrono::microseconds(50));
+    std::cout << "Finished work in main\n";
+    t.join();
+
     return 0;
 
 }
