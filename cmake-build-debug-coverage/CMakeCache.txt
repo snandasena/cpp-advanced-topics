@@ -247,6 +247,18 @@ cthings_BINARY_DIR:STATIC=/home/sajith/CLionProjects/advanced-topics/cmake-build
 //Value Computed by CMake
 cthings_SOURCE_DIR:STATIC=/home/sajith/CLionProjects/advanced-topics/c-things
 
+//Value Computed by CMake
+leetcode_BINARY_DIR:STATIC=/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/ds/leetcode
+
+//Value Computed by CMake
+leetcode_SOURCE_DIR:STATIC=/home/sajith/CLionProjects/advanced-topics/ds/leetcode
+
+//Value Computed by CMake
+threads_BINARY_DIR:STATIC=/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/cppnano/src/threads
+
+//Value Computed by CMake
+threads_SOURCE_DIR:STATIC=/home/sajith/CLionProjects/advanced-topics/cppnano/src/threads
+
 
 ########################
 # INTERNAL cache entries
@@ -360,7 +372,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=3
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=5
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

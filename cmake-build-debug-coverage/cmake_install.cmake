@@ -41,6 +41,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/c-things/cmake_install.cmake")
   include("/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/cppnano/cmake_install.cmake")
+  include("/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/ds/leetcode/cmake_install.cmake")
 
 endif()
 

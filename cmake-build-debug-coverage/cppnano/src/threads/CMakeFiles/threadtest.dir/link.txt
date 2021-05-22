@@ -1,0 +1,1 @@
+/usr/bin/c++  -std=c++17 -pthread -O3 -pedantic -Wall -Werror -g   CMakeFiles/threadtest.dir/thread_test.cpp.o  -o threadtest 

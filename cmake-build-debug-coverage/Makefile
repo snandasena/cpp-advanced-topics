@@ -182,6 +182,32 @@ r34/fast:
 	$(MAKE) $(MAKESILENT) -f cppnano/CMakeFiles/r34.dir/build.make cppnano/CMakeFiles/r34.dir/build
 .PHONY : r34/fast
 
+#=============================================================================
+# Target rules for targets named threadtest
+
+# Build rule for target.
+threadtest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 threadtest
+.PHONY : threadtest
+
+# fast build rule for target.
+threadtest/fast:
+	$(MAKE) $(MAKESILENT) -f cppnano/src/threads/CMakeFiles/threadtest.dir/build.make cppnano/src/threads/CMakeFiles/threadtest.dir/build
+.PHONY : threadtest/fast
+
+#=============================================================================
+# Target rules for targets named median_of_two_sorted_arrays
+
+# Build rule for target.
+median_of_two_sorted_arrays: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 median_of_two_sorted_arrays
+.PHONY : median_of_two_sorted_arrays
+
+# fast build rule for target.
+median_of_two_sorted_arrays/fast:
+	$(MAKE) $(MAKESILENT) -f ds/leetcode/CMakeFiles/median_of_two_sorted_arrays.dir/build.make ds/leetcode/CMakeFiles/median_of_two_sorted_arrays.dir/build
+.PHONY : median_of_two_sorted_arrays/fast
+
 ds/b_tree.o: ds/b_tree.cpp.o
 
 .PHONY : ds/b_tree.o
@@ -247,7 +273,9 @@ help:
 	@echo "... btree"
 	@echo "... main"
 	@echo "... mainc"
+	@echo "... median_of_two_sorted_arrays"
 	@echo "... r34"
+	@echo "... threadtest"
 	@echo "... ds/b_tree.o"
 	@echo "... ds/b_tree.i"
 	@echo "... ds/b_tree.s"

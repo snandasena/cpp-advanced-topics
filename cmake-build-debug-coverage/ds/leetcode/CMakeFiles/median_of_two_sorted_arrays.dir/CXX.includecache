@@ -1,0 +1,12 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sajith/CLionProjects/advanced-topics/ds/leetcode/src/median_of_two_sorted_arrays.cpp
+bits/stdc++.h
+-
+

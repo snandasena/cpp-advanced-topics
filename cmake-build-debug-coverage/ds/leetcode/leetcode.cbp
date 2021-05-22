@@ -2,24 +2,24 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6"/>
 	<Project>
-		<Option title="cthings"/>
+		<Option title="leetcode"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
 		<Option virtualFolders="CMake Files\;CMake Files\c-things\;CMake Files\cppnano\;CMake Files\cppnano\src\;CMake Files\cppnano\src\threads\;CMake Files\ds\;CMake Files\ds\leetcode\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/c-things"/>
+				<Option working_dir="/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/ds/leetcode"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/c-things/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/c-things/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/c-things/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/c-things/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/ds/leetcode/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/ds/leetcode/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/ds/leetcode/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/ds/leetcode/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="mainc">
-				<Option output="/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/c-things/mainc" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/c-things"/>
+			<Target title="median_of_two_sorted_arrays">
+				<Option output="/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/ds/leetcode/median_of_two_sorted_arrays" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/ds/leetcode"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -35,15 +35,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/c-things/Makefile&quot;  VERBOSE=1 mainc"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/c-things/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/c-things/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/c-things/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/ds/leetcode/Makefile&quot;  VERBOSE=1 median_of_two_sorted_arrays"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/ds/leetcode/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/ds/leetcode/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/ds/leetcode/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="mainc/fast">
-				<Option output="/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/c-things/mainc" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/c-things"/>
+			<Target title="median_of_two_sorted_arrays/fast">
+				<Option output="/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/ds/leetcode/median_of_two_sorted_arrays" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/ds/leetcode"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -59,15 +59,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/c-things/Makefile&quot;  VERBOSE=1 mainc/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/c-things/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/c-things/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/c-things/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/ds/leetcode/Makefile&quot;  VERBOSE=1 median_of_two_sorted_arrays/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/ds/leetcode/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/ds/leetcode/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/sajith/CLionProjects/advanced-topics/cmake-build-debug-coverage/ds/leetcode/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/sajith/CLionProjects/advanced-topics/c-things/main.c">
-			<Option target="mainc"/>
+		<Unit filename="/home/sajith/CLionProjects/advanced-topics/ds/leetcode/src/median_of_two_sorted_arrays.cpp">
+			<Option target="median_of_two_sorted_arrays"/>
 		</Unit>
 		<Unit filename="/home/sajith/CLionProjects/advanced-topics/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
