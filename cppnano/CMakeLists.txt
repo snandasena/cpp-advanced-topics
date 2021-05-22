@@ -3,6 +3,8 @@ project(cppnano)
 add_definitions(-std=c++11)
 set(CXX_FLAGS "-Wall")
 
+add_subdirectory(src/threads)
+
 #add_executable(memory src/memory.cpp)
 #add_executable(cache_memory src/cache_memory.cpp)
 #add_executable(malloc_v_new src/malloc_v_new.cpp)
