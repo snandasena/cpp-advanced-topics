@@ -6,3 +6,4 @@ path-planning-python-algo/__pycache__/
 WASM/www/
 *.out
 *.log
+cmake-build-debug-coverage/
