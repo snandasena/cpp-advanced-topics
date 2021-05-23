@@ -23,7 +23,7 @@ public:
         _id = id;
     }
 
-    void printId()
+    void printId() const
     {
         std::cout << "Vehicle ID= " << _id << std::endl;
     }
