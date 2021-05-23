@@ -19,9 +19,12 @@ int main()
     std::cout << "This pc supports concurrency with " << cores << "\n";
 
     std::thread t(thread_task);
+
+    t.detach(); // detach thead and continue with main
+
     std::this_thread::sleep_for(std::chrono::microseconds(50));
     std::cout << "Finished work in main\n";
-    t.join();
+//    t.join();
 
     return 0;
 
