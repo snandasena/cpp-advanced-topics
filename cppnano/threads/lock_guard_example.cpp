@@ -26,7 +26,7 @@ void divideByNumber(double num, double denom)
         if (denom != 0)
         {
             std::lock_guard<std::mutex> lock(mtx);
-            result = num / denom;
+            result = num / denom; // common access object
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
             printResult(denom);
         } else
