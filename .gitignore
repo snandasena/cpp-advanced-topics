@@ -7,3 +7,4 @@ WASM/www/
 *.out
 *.log
 cmake-build-debug-coverage/
+c-things/build/*
