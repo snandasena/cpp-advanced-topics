@@ -28,13 +28,17 @@ void callFunction(const voidReturnType *func, size_t size)
     }
 }
 
+void voidReturnNoParamAdapter(const char *message)
+{
+    voidReturnTypeNoParam();
+}
 
 int main()
 {
     voidReturnType functionList[3];
     functionList[0] = voidReturn;
-    functionList[1] = (voidReturnType) (intReturn); // breaks in emscripten
-    functionList[2] = (voidReturnType) (voidReturnTypeNoParam); // breaks in emscripten
+    functionList[1] = (voidReturnType) intReturn; // breaks in emscripten
+    functionList[2] = voidReturnNoParamAdapter; // breaks in emscripten
 
     callFunction(functionList, 3);
     return 0;
