@@ -11,7 +11,7 @@ set(CXX_FLAGS "-Wall")
 add_subdirectory(c-things)
 add_subdirectory(cppnano)
 add_subdirectory(ds/leetcode)
-
+add_subdirectory(WASM)
 find_library(Eigen3 REQUIRED)
 
 add_executable(main main.cpp)
