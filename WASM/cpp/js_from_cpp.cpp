@@ -4,11 +4,15 @@
 
 #include <emscripten.h>
 
-EM_JS(void, call_alert,(int x),
+extern "C"
 {
-    alert ( "Hello world! "+ x);
-//    throw "all done";
-});
+    EM_JS(void, call_alert,(int x),
+    {
+        alert ( "Hello world! "+ x);
+    //    throw "all done";
+    });
+
+}
 
 
 int main()
