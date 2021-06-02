@@ -12,6 +12,7 @@ add_subdirectory(c-things)
 add_subdirectory(cppnano)
 add_subdirectory(ds/leetcode)
 add_subdirectory(WASM)
+add_subdirectory(websocket)
 find_library(Eigen3 REQUIRED)
 
 add_executable(main main.cpp)

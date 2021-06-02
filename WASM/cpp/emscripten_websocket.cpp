@@ -64,7 +64,7 @@ int main()
         return 0;
     }
     EmscriptenWebSocketCreateAttributes ws_attrs = {
-            "wss://echo.websocket.org",
+            "ws://localhost:4567",
             NULL,
             EM_TRUE
     };
