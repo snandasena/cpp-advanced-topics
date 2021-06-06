@@ -25,8 +25,12 @@ endif (NOT OPENGL_FOUND)
 #--- GL includes
 include_directories(
         "/usr/include/GL"
+        "${PROJECT_SOURCE_DIR}/include"
 )
 
-add_executable(inidemo src/opengl_init.cpp)
+#add_executable(inidemo src/opengl_init.cpp)
+#target_link_libraries(inidemo ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
 
-target_link_libraries(inidemo ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
+add_executable(opendotdemo src/opengl_dot_demo.cpp)
+target_link_libraries(opendotdemo ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
+
