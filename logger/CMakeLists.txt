@@ -7,7 +7,7 @@ add_definitions(-std=c++17)
 
 set(CXX_FLAGS "-Wall")
 
-include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(../opengl/include)
 
 set(SOURCE ${PROJECT_SOURCE_DIR}/src/Logger.cpp)
 
