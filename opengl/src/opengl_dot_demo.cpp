@@ -2,9 +2,9 @@
 // Created by sajith on 6/6/21.
 //
 
-#include <stdio.h>
+#include <GL/glew.h>
 #include <GL/freeglut.h>
-//#include <GL/glew.h>
+#include <stdio.h>
 #include "ogldev_math_3d.h"
 
 static void RenderSceneCB()
