@@ -22,9 +22,14 @@ if (NOT OPENGL_FOUND)
 endif (NOT OPENGL_FOUND)
 
 
+#
+find_package(GLEW REQUIRED)
+include_directories(${GLEW_INCLUDE_DIRS})
+link_libraries(${GLEW_LIBRARIES})
+
 #--- GL includes
 include_directories(
-        "/usr/include/GL"
+#        "/usr/include/GL"
         "${PROJECT_SOURCE_DIR}/include"
 )
 
