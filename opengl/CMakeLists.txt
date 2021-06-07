@@ -36,6 +36,9 @@ include_directories(
 #add_executable(inidemo src/opengl_init.cpp)
 #target_link_libraries(inidemo ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
 
-add_executable(opendotdemo src/opengl_dot_demo.cpp)
-target_link_libraries(opendotdemo ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
+#add_executable(opendotdemo src/opengl_dot_demo.cpp)
+#target_link_libraries(opendotdemo ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
+
+add_executable(triangle src/opengl_triangle.cpp)
+target_link_libraries(triangle ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
 

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -95,7 +96,7 @@ int main()
         InsertAtHead(&charNode, c);
     }
 
-
+    cout << "\n" << INT_MAX << "\n" << INT_MIN << "\n";
 
     return 0;
 

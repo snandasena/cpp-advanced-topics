@@ -5,6 +5,6 @@ CPPFLAGS="-I../include"
 LDFLAGS=`pkg-config --libs glew`
 LDFLAGS="$LDFLAGS -lglut"
 
-$CC opengl_dot_demo.cpp $CPPFLAGS $LDFLAGS -o ../../cmake-build-debug/opengl_dot_demo
+$CC $1 $CPPFLAGS $LDFLAGS -o ../../cmake-build-debug/opengldemo
 
-../../cmake-build-debug/opengl_dot_demo
+../../cmake-build-debug/opengldemo
