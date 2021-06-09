@@ -83,6 +83,9 @@ static void CompileShaders()
         exit(1);
     };
 
+
+    printf("%s\n", vs.c_str());
+
     AddShader(ShaderProgram, vs.c_str(), GL_VERTEX_SHADER);
 
     if (!ReadFile(pFSFileName, fs))
