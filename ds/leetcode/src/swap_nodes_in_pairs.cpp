@@ -13,6 +13,10 @@
  * };
  */
 
+#include <bits/stdc++.h>
+
+using namespace std;
+
 struct ListNode
 {
     int val;
@@ -65,3 +69,30 @@ public:
         return head;
     }
 };
+
+void PrintLinkList(ListNode *head)
+{
+    ListNode *temp = head;
+    while (temp->next)
+    {
+        cout << temp->val << " ";
+        temp = temp->next;
+    }
+    cout << temp->val << endl;
+
+}
+
+int main()
+{
+    ListNode *head = new ListNode(1);
+    head->next = new ListNode(2);
+    head->next->next = new ListNode(3);
+    head->next->next->next = new ListNode(4);
+
+    PrintLinkList(head);
+    Solution solution;
+
+    head = solution.swapPairs(head);
+    PrintLinkList(head);
+    return 0;
+}
