@@ -79,7 +79,6 @@ void PrintLinkList(ListNode *head)
         temp = temp->next;
     }
     cout << temp->val << endl;
-
 }
 
 int main()
