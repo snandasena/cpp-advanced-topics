@@ -8,3 +8,4 @@ WASM/www/
 *.log
 cmake-build-debug-coverage/
 c-things/build/*
+WASM/cpp/build/
