@@ -19,7 +19,14 @@ public:
         unordered_map<string, int> wordBankMap;
         for (auto const &str:  words)
         {
-            wordBankMap[str]++;
+            if (wordBankMap.find(str) == wordBankMap.end())
+            {
+                wordBankMap[str] = 1;
+            }
+            else
+            {
+                wordBankMap[str]++;
+            }
         }
 
         if (wordLength * numberOfWords > s.length())
@@ -33,9 +40,13 @@ public:
 
             for (int j = i; j < i + (numberOfWords * wordLength); j += wordLength)
             {
-                if (wordBankMap[s.substr(j, wordLength)] > 0)
+                if (wordBankMap.find(s.substr(j, wordLength)) == wordBankMap.end())
                 {
                     break;
+                }
+                else if (wordsUsedMap.find(s.substr(j, wordLength)) == wordsUsedMap.end())
+                {
+                    wordsUsedMap[s.substr(j, wordLength)] = 1;
                 }
                 else
                 {
@@ -67,7 +78,6 @@ int main()
     {
         cout << i << " ";
     }
-
 
 
     return 0;
