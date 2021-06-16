@@ -87,6 +87,8 @@ int main()
     ListNode *head3 = new ListNode(2);
     head3->next = new ListNode(6);
 
+    lists.emplace_back(head3);
+
     Solution solution;
     solution.mergeKLists(lists);
 
