@@ -15,7 +15,7 @@ void guessGame(void *_guess)
     std::cout << "Please enter a guess (1:100) \n";
 
     std::cin >> userGuess;
-
+    std::cout << "User input: " << userGuess << "\n";
     if (userGuess > 100 || userGuess < 1)
     {
         std::cerr << "Invalid input\n";
@@ -42,6 +42,7 @@ int main()
 {
     srand(time(nullptr));
     unsigned int *guess = new unsigned int(rand() % 100 + 1);
+    std::cout << "Guessed: " << *guess << "\n";
 
     emscripten_set_main_loop_arg(guessGame, guess, 0, false);
 
