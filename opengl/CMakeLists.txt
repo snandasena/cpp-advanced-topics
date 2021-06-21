@@ -40,5 +40,5 @@ include_directories(
 #target_link_libraries(opendotdemo ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
 
 add_executable(triangle src/ogldev_util.cpp src/opengl_triangle.cpp )
-target_link_libraries(triangle ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
+target_link_libraries(triangle ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} ${GLEW_LIBRARIES})
 
