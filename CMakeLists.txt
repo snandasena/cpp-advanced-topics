@@ -15,7 +15,7 @@ add_subdirectory(WASM)
 #add_subdirectory(websocket)
 
 add_subdirectory(opengl)
-find_library(Eigen3 REQUIRED)
+#find_library(Eigen3 REQUIRED)
 
 add_executable(main main.cpp)
 

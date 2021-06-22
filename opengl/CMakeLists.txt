@@ -13,7 +13,7 @@ endif (NOT GLUT_FOUND)
 
 
 #--- Find OpenGL
-find_package(OpenGL REQUIRED)
+#find_package(OpenGL REQUIRED)
 include_directories(${OpenGL_INCLUDE_DIRS})
 link_directories(${OpenGL_LIBRARY_DIRS})
 add_definitions(${OpenGL_DEFINITIONS})
