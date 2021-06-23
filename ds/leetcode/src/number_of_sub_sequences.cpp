@@ -43,15 +43,16 @@ public:
 
 int main()
 {
-    string s = "abcdefabdrse";
+    string s = "abcde";
+    vector<string> words = {"a", "bb", "acd", "ace"};
 
-    int indx = s.find_first_of('z', 5);
+    Solution solution;
+    cout << solution.numMatchingSubseq(s, words) << endl;
 
-    if (indx == string::npos)
-    {
-        cout << boolalpha << true;
-    }
+    s = "dsahjpjauf";
+    words.clear();
+    words = {"ahjpjau", "ja", "ahbwzgqnuk", "tnmlanowax"};
+    cout << solution.numMatchingSubseq(s, words) << endl;
 
-    cout << indx << endl;
     return 0;
 }
