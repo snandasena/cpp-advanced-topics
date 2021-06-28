@@ -15,8 +15,8 @@ add_subdirectory(ds/leetcode)
 #add_subdirectory(WASM)
 #add_subdirectory(websocket)
 #add_subdirectory(classes_and_objects)
-
-add_subdirectory(packedpubwasm)
+add_subdirectory(cppthings)
+#add_subdirectory(packedpubwasm)
 #add_subdirectory(opengl)
 #find_library(Eigen3 REQUIRED)
 
