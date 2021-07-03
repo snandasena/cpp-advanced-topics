@@ -98,6 +98,9 @@ int main()
 
     cout << "\n" << INT_MAX << "\n" << INT_MIN << "\n";
 
+
+    cout << "\x1b[42m Hello World\n";
+
     return 0;
 
 }
