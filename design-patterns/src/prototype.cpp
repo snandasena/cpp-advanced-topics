@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <string>
-#include <utility>
+#include <unordered_map>
 
 using namespace std;
 enum Type
@@ -63,10 +63,64 @@ private:
 public:
     ConcretePrototype2(string prototype_name, float concrete_prototype_field)
             : Prototype(std::move(prototype_name)), concrete_prototype_field2_(concrete_prototype_field) {}
+
+    Prototype *Clone() const override
+    {
+        return new ConcretePrototype2(*this);
+    }
 };
 
 
+class PrototypeFactory
+{
+private:
+    std::unordered_map<Type, Prototype *, std::hash<int>> prototypes_;
+
+public:
+    PrototypeFactory()
+    {
+        prototypes_[Type::PROTOTYPE_1] = new ConcretePrototype1("PROTOTYPE_1", 50.f);
+        prototypes_[Type::PROTOTYPE_2] = new ConcretePrototype2("PROTOTYPE_2", 60.f);
+    }
+
+    ~PrototypeFactory()
+    {
+        delete prototypes_[Type::PROTOTYPE_1];
+        delete prototypes_[Type::PROTOTYPE_2];
+    }
+
+    Prototype *CreatePrototype(Type type)
+    {
+        return prototypes_[type]->Clone();
+    }
+
+};
 
 
+void ClientCode(PrototypeFactory &prototype_factory)
+{
+    std::cout << "Let's create a Prototype 1\n";
 
+    Prototype *prototype = prototype_factory.CreatePrototype(Type::PROTOTYPE_1);
+    prototype->Method(90);
 
+    delete prototype;
+
+    std::cout << "\n";
+    std::cout << "Let's create a Prototype 2\n";
+
+    prototype = prototype_factory.CreatePrototype(Type::PROTOTYPE_2);
+    prototype->Method(10);
+
+    delete prototype;
+}
+
+int main()
+{
+    PrototypeFactory *factory = new PrototypeFactory;
+    ClientCode(*factory);
+
+    delete factory;
+
+    return 0;
+}
