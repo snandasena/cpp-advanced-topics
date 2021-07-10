@@ -28,7 +28,7 @@ public:
 class Solution
 {
 public:
-    int maxDepth(Node *root)
+    int maxDepth2(Node *root)
     {
         if (root == nullptr)
         {
@@ -39,9 +39,41 @@ public:
 
         for (Node *n: root->children)
         {
-            ans = max(ans, maxDepth(n));
+            ans = max(ans, maxDepth2(n));
         }
 
         return ans + 1;
+    }
+
+    // BFS
+    int maxDepth(Node *root)
+    {
+        if (root == nullptr)
+        {
+            return 0;
+        }
+
+        queue<Node *> que;
+        que.push(root);
+
+        int depth = 0;
+        while (!que.empty())
+        {
+            size_t se = que.size();
+
+            while (se--)
+            {
+                Node *curr = que.front();
+                que.pop();
+                for (Node *n: curr->children)
+                {
+                    que.push(n);
+                }
+            }
+
+            depth++;
+        }
+
+        return depth;
     }
 };
