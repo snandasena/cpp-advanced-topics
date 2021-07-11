@@ -37,19 +37,22 @@ class Command
 public:
     virtual  ~Command() = default;
 
-    virtual void execute() = 0;
+    virtual void Execute() = 0;
 
 };
 
-
 class Button
 {
+private:
+    Command *_command;
 
 public:
+    Button(Command *command) : _command(command) {};
 
-    virtual ~Button() = default;
-
-    virtual void Click() = 0;
+    void Click()
+    {
+        _command->Execute();
+    };
 };
 
 class AddShapeCommand : public Command
@@ -61,55 +64,51 @@ private:
 public:
     AddShapeCommand(const string shapeName, Canvas *canvas) : _shapeName(shapeName), _canvas(canvas) {}
 
-    void execute() override
+    void Execute() override
     {
         _canvas->AddShape(_shapeName);
     }
 };
 
-class AddTriangleButton : public Button
+class ClearCommand : public Command
 {
-private:
-    Canvas *_canvas;
-public:
 
-    AddTriangleButton(Canvas *canvas) : _canvas(canvas)
-    {
-
-    }
-
-    void Click() override
-    {
-        _canvas->AddShape("Triangle");
-    }
-};
-
-
-class AddSquareButton : public Button
-{
 private:
     Canvas *_canvas;
 
 public:
-    AddSquareButton(Canvas *canvas) : _canvas(canvas) {}
-
-    void Click() override
+    ClearCommand(Canvas *canvas) : _canvas(canvas)
     {
-        _canvas->AddShape("Square");
+
     }
-};
 
-
-class ClearButton : public Button
-{
-private:
-    Canvas *_canvas;
-
-public:
-    ClearButton(Canvas *canvas) : _canvas(canvas) {}
-
-    void Click() override
+    void Execute() override
     {
         _canvas->ClearAll();
     }
 };
+
+string vectorToString(const vector<std::string> &v)
+{
+    string result;
+    for (auto iStr = v.begin(); iStr != v.end(); ++iStr)
+    {
+        if (iStr != v.end())
+        {
+            result += *iStr;
+        } else
+        {
+            result += *iStr + ", ";
+        }
+    }
+
+    return result;
+}
+
+int main()
+{
+    Canvas *canvas = new Canvas;
+//    Button *addTriangle
+
+    return 0;
+}
