@@ -19,7 +19,7 @@ add_subdirectory(cppthings)
 #add_subdirectory(packedpubwasm)
 #add_subdirectory(opengl)
 #find_library(Eigen3 REQUIRED)
-
+add_subdirectory(c-pointers)
 add_subdirectory(design-patterns)
 
 add_executable(main main.cpp)
