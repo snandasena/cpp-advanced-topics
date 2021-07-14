@@ -95,11 +95,16 @@ int main()
     {
         InsertAtHead(&charNode, c);
     }
-
     cout << "\n" << INT_MAX << "\n" << INT_MIN << "\n";
+//    cout << "\x1b[42m Hello World\n";
 
+    vector<int> v{1, 2, 4, 5, 6, 7, 8};
 
-    cout << "\x1b[42m Hello World\n";
+    cout << endl << endl;
+    for (auto i = v.rbegin(); i != v.rend(); ++i)
+    {
+        cout << *i << " ";
+    }
 
     return 0;
 
