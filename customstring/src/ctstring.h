@@ -33,6 +33,8 @@ constexpr const char *_ctstring_vertion = "1.0.0";
 constexpr size_t _ctstring_max_len = 65535;
 constexpr size_t _ctstring_max_split = 65535;
 
+typedef long int LI;
+
 // simple smart C-string
 class CTString
 {
@@ -49,7 +51,7 @@ class CTString
     mutable size_t _split_count = 0;
 
     // private methods
-    void _reset_split_arary() const;
+    void _reset_split_array() const;
 
     void _append_split_array(const CTString &s) const;
 
@@ -66,11 +68,11 @@ public:
 
 
     // data management
-    const char *allo_str(size_t sz); // smart alloc string
+    const char *alloc_str(size_t sz); // smart alloc string
     void reset(); // reset data
     void swap(CTString &b); // member function swap
     const char *c_str() const;  // getter
-    const char *copy_str() const;  // alloc and copy
+    const char *copy_str(const char *);  // alloc and copy
 
 
     // Operators
