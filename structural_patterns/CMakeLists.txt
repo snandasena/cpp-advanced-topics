@@ -23,4 +23,14 @@ set(flightsimclass
         src/flightsim-class-method/Accelorometer.cpp
         src/flightsim-class-method/simapp.cpp)
 
-add_executable(flightsim-classmethod ${flightsimclass})
+#add_executable(flightsim-classmethod ${flightsimclass})
+
+set(facadebasic
+        src/facade-basic/A.cpp
+        src/facade-basic/B.cpp
+        src/facade-basic/C.cpp
+        src/facade-basic/Client.cpp
+        src/facade-basic/Facade.cpp
+        src/facade-basic/main.cpp)
+
+add_executable(facadebasic ${facadebasic})
