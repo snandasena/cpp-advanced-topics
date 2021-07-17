@@ -17,6 +17,8 @@ public:
 
     double GetVerticalAxis();
 
+    virtual std::pair<int, int> Initialize();
+
 };
 
 #endif //ADVANCED_TOPICS_ACCELOROMETER_H
