@@ -5,11 +5,10 @@
 #ifndef ADVANCED_TOPICS_FACADE_H
 #define ADVANCED_TOPICS_FACADE_H
 
-class A;
+#include "A.h"
+#include "B.h"
+#include "C.h"
 
-class B;
-
-class C;
 
 class Facade
 {

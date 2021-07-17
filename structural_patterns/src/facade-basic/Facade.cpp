@@ -3,9 +3,6 @@
 //
 
 #include "Facade.h"
-#include "A.h"
-#include "B.h"
-#include "C.h"
 
 Facade::Facade()
 {
