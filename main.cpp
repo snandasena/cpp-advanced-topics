@@ -109,3 +109,68 @@ int main()
     return 0;
 
 }
+
+
+struct TreeNode
+{
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+
+
+class Solution
+{
+public:
+    void recoverTree(TreeNode *root)
+    {
+        if (root == nullptr)
+        {
+            return;
+        }
+        TreeNode *previous, *firstval, *secondval;
+        previous = firstval = secondval = NULL;
+        TreeNode *rightMost = NULL;
+        TreeNode *current = root;
+
+        while (current != NULL)
+        {
+            if (previous != NULL && current->val < previous->val)
+            {
+                if (firstval == NULL)
+                    firstval = previous;
+
+                secondval = current;
+            }
+
+            if (current->left != NULL)
+            {
+                rightMost = current->left;
+                while (rightMost->right != NULL && rightMost->right != current)
+                    rightMost = rightMost->right;
+
+                if (rightMost->right == current)
+                {
+                    rightMost->right = NULL;
+                    previous = current;
+                    current = current->right;
+                } else
+                {
+                    rightMost->right = current;
+                    current = current->left;
+                }
+            } else
+            {
+                previous = current;
+                current = current->right;
+            }
+        }
+        swap(firstval->val, secondval->val);
+    }
+};

@@ -33,4 +33,11 @@ set(facadebasic
         src/facade-basic/Facade.cpp
         src/facade-basic/main.cpp)
 
-add_executable(facadebasic ${facadebasic})
+#add_executable(facadebasic ${facadebasic})
+
+set(proxybasic
+        src/proxcybasic/Proxy.cpp
+        src/proxcybasic/RealSubject.cpp
+        src/proxcybasic/main.cpp)
+
+add_executable(proxyb ${proxybasic})
