@@ -12,13 +12,17 @@
 class BitmapProxy : public Image
 {
     std::string m_Filename;
-    Bitmap *m_BitmapImage{};
+    Bitmap *m_pBitmap{};
+    bool m_IsLoaded{false};
 
 public:
 
-    using Image::Image;
+//    using Image::Image;
+    BitmapProxy();
 
-    ~BitmapProxy();
+    BitmapProxy(const std::string &filename);
+
+    ~BitmapProxy() override;
 
     void Display() override;
 
