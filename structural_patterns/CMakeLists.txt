@@ -45,6 +45,7 @@ set(proxybasic
 set(virtualp1
         src/virtual-proxy1/Image.cpp
         src/virtual-proxy1/Bitmap.cpp
+        src/virtual-proxy1/BitmapProxy.cpp
         src/virtual-proxy1/main.cpp)
 
 add_executable(virtualpexe ${virtualp1})
