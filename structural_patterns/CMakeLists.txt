@@ -40,4 +40,11 @@ set(proxybasic
         src/proxcybasic/RealSubject.cpp
         src/proxcybasic/main.cpp)
 
-add_executable(proxyb ${proxybasic})
+#add_executable(proxyb ${proxybasic})
+
+set(virtualp1
+        src/virtual-proxy1/Image.cpp
+        src/virtual-proxy1/Bitmap.cpp
+        src/virtual-proxy1/main.cpp)
+
+add_executable(virtualpexe ${virtualp1})
