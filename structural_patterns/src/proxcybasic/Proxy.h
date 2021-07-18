@@ -10,7 +10,7 @@
 
 class Proxy : public Subject
 {
-    RealSubject *m_pSubject;
+    RealSubject *m_pSubject{nullptr};
 public:
     ~Proxy();
 

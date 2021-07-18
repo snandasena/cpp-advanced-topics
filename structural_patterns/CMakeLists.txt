@@ -35,9 +35,9 @@ set(facadebasic
 
 #add_executable(facadebasic ${facadebasic})
 
-file(GLOB headers src/proxcybasic/*.h)
-file(GLOB headercpp src/proxcybasic/*.cpp)
-
-set(proxybasic ${headers} ${headercpp})
+set(proxybasic
+        src/proxcybasic/Proxy.cpp
+        src/proxcybasic/RealSubject.cpp
+        src/proxcybasic/main.cpp)
 
 add_executable(proxyb ${proxybasic})
