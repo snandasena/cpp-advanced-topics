@@ -3,10 +3,12 @@
 //
 
 #include "Bitmap.h"
+#include "Pointer.h"
+
 
 int main()
 {
-    Bitmap *p = new Bitmap{"../../data/Smiley.txt"};
+    Pointer<Bitmap> p = new Bitmap{"../../data/Smiley.txt"};
     p->Load();
     p->Display();
 
