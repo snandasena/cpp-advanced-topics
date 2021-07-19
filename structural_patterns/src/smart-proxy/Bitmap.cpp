@@ -8,6 +8,11 @@
 #include <iostream>
 #include <stdexcept>
 
+Bitmap::~Bitmap()
+{
+    std::cout << "~Bitmap called\n" << "\n";
+}
+
 void Bitmap::Display()
 {
     std::cout << m_Buffer;

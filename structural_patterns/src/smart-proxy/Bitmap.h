@@ -14,6 +14,8 @@ class Bitmap : public Image
 public:
     using Image::Image;
 
+    ~Bitmap();
+
     void Display() override;
 
     void Load() override;
