@@ -57,4 +57,12 @@ set(protectionproxysrc
         src/protection-proxy/RepoProxy.cpp
         src/protection-proxy/main.cpp)
 
-add_executable(protectprox ${protectionproxysrc})
+#add_executable(protectprox ${protectionproxysrc})
+
+
+set(remoteprcxy
+        src/smart-proxy/Bitmap.cpp
+        src/smart-proxy/Image.cpp
+        src/smart-proxy/main.cpp)
+
+add_executable(remoteprx ${remoteprcxy})
