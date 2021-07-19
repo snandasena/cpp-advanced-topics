@@ -3,12 +3,49 @@
 //
 
 #include "BitmapProxy.h"
+#include <iostream>
 
-void BitmapProxy::Display()
+
+BitmapProxy::BitmapProxy() : BitmapProxy{""}
 {
 
 }
 
-void BitmapProxy::Load() {}
+BitmapProxy::BitmapProxy(const std::string &filename)
+{
+    m_pBitmap = new Bitmap{filename};
+}
 
-void BitmapProxy::Load(const std::string &filename) {}
+BitmapProxy::~BitmapProxy()
+{
+    delete m_pBitmap;
+}
+
+void BitmapProxy::Display()
+{
+    if (!m_IsLoaded)
+    {
+        std::cout << "[Proxy] Loading Bitmap\n";
+
+        if (m_Filename.empty())
+        {
+            m_pBitmap->Load();
+        }
+        else
+        {
+            m_pBitmap->Load(m_Filename);
+        }
+
+        m_pBitmap->Display();
+    }
+}
+
+void BitmapProxy::Load()
+{
+    m_Filename.clear();
+}
+
+void BitmapProxy::Load(const std::string &filename)
+{
+    m_Filename = filename;
+}
