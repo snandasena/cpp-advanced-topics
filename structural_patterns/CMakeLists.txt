@@ -48,4 +48,13 @@ set(virtualp1
         src/virtual-proxy1/BitmapProxy.cpp
         src/virtual-proxy1/main.cpp)
 
-add_executable(virtualpexe ${virtualp1})
+#add_executable(virtualpexe ${virtualp1})
+
+set(protectionproxysrc
+        src/protection-proxy/Storage.cpp
+        src/protection-proxy/Repository.cpp
+        src/protection-proxy/Employee.cpp
+        src/protection-proxy/RepoProxy.cpp
+        src/protection-proxy/main.cpp)
+
+add_executable(protectprox ${protectionproxysrc})
