@@ -6,6 +6,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <memory>
 
 class Dog
 {
@@ -41,9 +42,14 @@ class Wrapper
 {
 public:
     template<typename T>
-    Wrapper(T &&speakable)
+    Wrapper(T &&speakable):ptr{std::make_unique<Model < T>>(std::forward<T>(speakable))}
     {
 
+    }
+
+    void speak() const
+    {
+        ptr->speak();
     }
 
 private:
@@ -53,9 +59,28 @@ private:
     public:
         virtual ~Concept() = default;
 
-        virtual void speak() = 0;
+        virtual void speak() const = 0;
 
     };
+
+    template<typename T>
+    class Model : public Concept
+    {
+    public:
+        Model(T &&speakable) : m_speakable{std::move(speakable)} {};
+
+        void speak() const override
+        {
+            std::cout << "Logic extended: ";
+            m_speakable.speak();
+        }
+
+    private:
+        T m_speakable;
+    };
+
+    std::unique_ptr<Concept> ptr;
+
 };
 
 
@@ -63,7 +88,8 @@ void talk(const std::vector<Wrapper> &vec)
 {
     for (const auto &e: vec)
     {
-        std::cout << "Hello. " << e.speak();
+        std::cout << "Hello. ";
+        e.speak();
     }
 }
 
