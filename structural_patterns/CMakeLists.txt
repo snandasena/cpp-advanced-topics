@@ -60,13 +60,13 @@ set(protectionproxysrc
 #add_executable(protectprox ${protectionproxysrc})
 
 
-set(remoteprcxy
+set(smartproxcy
         src/smart-proxy/Bitmap.cpp
         src/smart-proxy/Image.cpp
         src/smart-proxy/Pointer.cpp
         src/smart-proxy/main.cpp)
 
-#add_executable(remoteprx ${remoteprcxy})
 
+#add_executable(smartypxcy ${smartproxcy})
 
 add_executable(openclose src/SOLID/openclosed_temaplate_specilization.cpp)
