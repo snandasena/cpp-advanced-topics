@@ -66,4 +66,7 @@ set(smartproxcy
         src/smart-proxy/Pointer.cpp
         src/smart-proxy/main.cpp)
 
-add_executable(smartypxcy ${smartproxcy})
+
+#add_executable(smartypxcy ${smartproxcy})
+
+add_executable(openclose src/SOLID/openclosed_temaplate_specilization.cpp)
