@@ -69,4 +69,5 @@ set(smartproxcy
 
 #add_executable(smartypxcy ${smartproxcy})
 
-add_executable(openclose src/SOLID/openclosed_temaplate_specilization.cpp)
+#add_executable(openclose src/SOLID/openclosed_temaplate_specilization.cpp)
+add_executable(opencloseruntime src/SOLID/openclosed_runtime_concept.cpp)
