@@ -1,10 +1,13 @@
 project(cppthings)
 
-add_subdirectory(threads)
+#add_subdirectory(threads)
 #add_executable(basicsyntacxs src/basic_syntaxs.cpp)
 #add_executable(fileio src/file_io.cpp)
 #add_executable(binaryfile src/binary_file.cpp)
 #add_executable(unformatted_chars src/unformatted_chars.cpp)
 #add_executable(app src/main.cpp)
 #add_executable(map_filter_reduce src/map_filter_reduce.cpp)
-add_executable(operator_overloading src/operator_overloading.cpp)
+#add_executable(operator_overloading src/operator_overloading.cpp)
+
+add_executable(uniqueptr1 smart-pointers/unique_pointers.cpp)
+
