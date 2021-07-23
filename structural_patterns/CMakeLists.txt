@@ -81,4 +81,13 @@ set(decoratorbasic
         src/decorator/Decorator.cpp
         src/decorator/main.cpp)
 
-add_executable(decoratorbsc ${decoratorbasic})
+#add_executable(decoratorbsc ${decoratorbasic})
+
+set(streamdeco
+        src/streaming-decorator/FileInputStream.cpp
+        src/streaming-decorator/FileOutputStream.cpp
+        src/streaming-decorator/BufferOutputStream.cpp
+        src/streaming-decorator/BufferedInputStream.cpp
+        src/streaming-decorator/main.cpp)
+
+add_executable(streamdecorator ${streamdeco})
