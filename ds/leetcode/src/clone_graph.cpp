@@ -6,6 +6,10 @@
 
  */
 
+#include <bits/stdc++.h>
+
+using namespace std;
+
 class Node
 {
 public:
@@ -36,6 +40,37 @@ class Solution
 public:
     Node *cloneGraph(Node *node)
     {
+        if (node == nullptr)
+        {
+            return nullptr;
+        }
 
+        map<Node *, Node *> mp;
+        queue<Node *> que;
+
+        Node *clone = new Node(node->val);
+        que.push(node);
+        mp.insert({node, clone});
+
+        while (!que.empty())
+        {
+
+            Node *curr = que.front();
+            que.pop();
+
+            for (const auto &child : curr->neighbors)
+            {
+                if (mp[child] == nullptr)
+                {
+                    Node *temp = new Node(child->val);
+                    mp[child] = temp;
+                    que.push(child);
+                }
+
+                mp[curr]->neighbors.push_back(mp[child]);
+            }
+        }
+
+        return mp[node];
     }
 };
