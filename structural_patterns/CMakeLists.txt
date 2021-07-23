@@ -78,6 +78,7 @@ set(decoratorbasic
         src/decorator/ConcreteComponent.cpp
         src/decorator/ConcreteDecoratorA.cpp
         src/decorator/ConcreteDecoratorB.cpp
+        src/decorator/Decorator.cpp
         src/decorator/main.cpp)
 
 add_executable(decoratorbsc ${decoratorbasic})

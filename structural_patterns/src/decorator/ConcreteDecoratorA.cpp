@@ -9,5 +9,5 @@
 void ConcreteDecoratorA::Operation()
 {
     std::cout << "[ConcreteDecoratorA] Operation invoked\n";
-    m_ptr->Operation();
+    Decorator::Operation();
 }
