@@ -6,6 +6,12 @@
 #include "ConcreteDecoratorA.h"
 #include "ConcreteDecoratorB.h"
 
+// client code
+void Operate(Component *component)
+{
+    component->Operation();
+}
+
 int main()
 {
 
@@ -15,5 +21,9 @@ int main()
 
     ConcreteDecoratorB decB{&decA};
     decB.Operation();
+    decB.OtherOperation();
+
+    Operate(&decB);
+
     return 0;
 }

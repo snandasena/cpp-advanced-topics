@@ -5,15 +5,12 @@
 #ifndef ADVANCED_TOPICS_CONCRETEDECORATORA_H
 #define ADVANCED_TOPICS_CONCRETEDECORATORA_H
 
-#include "Component.h"
+#include "Decorator.h"
 
-class ConcreteDecoratorA : public Component
+class ConcreteDecoratorA : public Decorator
 {
-
-    Component *m_ptr;
-
+    using Decorator::Decorator;
 public:
-    ConcreteDecoratorA(Component *ptr) : m_ptr{ptr} {}
 
     void Operation() override;
 };
