@@ -70,4 +70,14 @@ set(smartproxcy
 #add_executable(smartypxcy ${smartproxcy})
 
 #add_executable(openclose src/SOLID/openclosed_temaplate_specilization.cpp)
-add_executable(opencloseruntime src/SOLID/openclosed_runtime_concept.cpp)
+#add_executable(opencloseruntime src/SOLID/openclosed_runtime_concept.cpp)
+
+
+set(decoratorbasic
+        src/decorator/Component.cpp
+        src/decorator/ConcreteComponent.cpp
+        src/decorator/ConcreteDecoratorA.cpp
+        src/decorator/ConcreteDecoratorB.cpp
+        src/decorator/main.cpp)
+
+add_executable(decoratorbsc ${decoratorbasic})
