@@ -90,4 +90,7 @@ set(streamdeco
         src/streaming-decorator/BufferedInputStream.cpp
         src/streaming-decorator/main.cpp)
 
-add_executable(streamdecorator ${streamdeco})
+#add_executable(streamdecorator ${streamdeco})
+
+
+add_executable(funcdeco src/func-decorator/main.cpp)
