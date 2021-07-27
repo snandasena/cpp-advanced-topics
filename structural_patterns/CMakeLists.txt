@@ -92,5 +92,12 @@ set(streamdeco
 
 #add_executable(streamdecorator ${streamdeco})
 
+#add_executable(funcdeco src/func-decorator/main.cpp)
 
-add_executable(funcdeco src/func-decorator/main.cpp)
+set(compositebasic
+        src/composite-basic/Component.cpp
+        src/composite-basic/Leaf.cpp
+        src/composite-basic/Composite.cpp
+        src/composite-basic/main.cpp)
+
+add_executable(compobasic ${compositebasic})
