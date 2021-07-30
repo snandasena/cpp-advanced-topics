@@ -100,4 +100,9 @@ set(compositebasic
         src/composite-basic/Composite.cpp
         src/composite-basic/main.cpp)
 
-add_executable(compobasic ${compositebasic})
+#add_executable(compobasic ${compositebasic})
+
+set(uicompo
+        src/UIComposite/main.cpp)
+
+add_executable(uicomposite ${uicompo})
