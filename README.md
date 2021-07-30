@@ -1,2 +1,1 @@
-# cpp-advanced-topics
-# Updated
+# cpp-advanced-topicsi C++
