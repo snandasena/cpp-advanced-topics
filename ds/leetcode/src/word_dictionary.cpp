@@ -6,66 +6,52 @@
 
 using namespace std;
 
-class Trie
+class WordDictionary
 {
-    vector<Trie *> children;
-    bool isEndOfWord;
 
+    unordered_map<char, WordDictionary *> children;
+    bool isEndOfWord{false};
 public:
     /** Initialize your data structure here. */
-    Trie()
-    {
-        children.assign(26, nullptr);
-        isEndOfWord = false;
-    }
+    WordDictionary() = default;
 
-    /** Inserts a word into the trie. */
-    void insert(string word)
+    void addWord(string word)
     {
-        Trie *curr = this;
+        WordDictionary *curr = this;
         for (const char &c: word)
         {
-            if (curr->children[c - 'a'] == nullptr)
+            if (!curr->children.count(c))
             {
-                curr->children[c - 'a'] = new Trie;
+                curr->children[c] = new WordDictionary;
             }
-            curr = curr->children[c - 'a'];
+            curr = curr->children[c];
         }
         curr->isEndOfWord = true;
     }
 
-    /** Returns if the word is in the trie. */
     bool search(string word)
     {
-        Trie *curr = this;
-        for (const char &c: word)
+        if (word.length() == 0)
         {
-            if (curr->children[c - 'a'] == nullptr)
+            return this->isEndOfWord;
+        }
+        WordDictionary *curr = this;
+
+        if (curr->children.count(word[0]))
+        {
+            return curr->children[word[0]]->search(word.substr(1, word.length() - 1));
+        } else if (word[0] == '.')
+        {
+            for (auto &it : curr->children)
             {
-                return false;
+                bool find = it.second->search(word.substr(1, word.length() - 1));
+                if (find)
+                {
+                    return true;
+                }
             }
-            curr = curr->children[c - 'a'];
         }
-        if (curr->isEndOfWord)
-        {
-            return true;
-        }
+
         return false;
-    }
-
-    /** Returns if there is any word in the trie that starts with the given prefix. */
-    bool startsWith(string prefix)
-    {
-        Trie *curr = this;
-        for (const char &c: prefix)
-        {
-            if (curr->children[c - 'a'] == nullptr)
-            {
-                return false;
-            }
-            curr = curr->children[c - 'a'];
-        }
-
-        return true;
     }
 };
