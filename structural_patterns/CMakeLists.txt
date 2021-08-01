@@ -1,6 +1,12 @@
 project(structuraldesignpatterns)
 
+#find_package(PkgConfig REQUIRED)
+
+
 SET(CMAKE_CXX_FLAGS "-std=c++17 -pthread -O3 -pedantic -Wall -Werror")
+#SET(CMAKE_CXX_FLAGS "-lsimple2d -I/usr/include/SDL2 -D_REENTRANT -lSDL2 -lGL -lm -lSDL2_image -lSDL2_mixer -lSDL2_ttf")
+#SET(CMAKE_CXX_FLAGS "-lSDL2 -lGL -lm -lSDL2_image -lSDL2_mixer -lSDL2_ttf")
+#add_compile_options(`simple2d --libs`)
 
 set(adapterbasic
         src/adapaterbasic/adapterclient.cpp
@@ -107,4 +113,12 @@ set(uicompo
         src/UIComposite/Frame.cpp
         src/UIComposite/main.cpp)
 
-add_executable(uicomposite ${uicompo})
+#add_executable(uicomposite ${uicompo})
+
+#pkg_check_modules(MY_PKG REQUIRED IMPORTED_TARGET )
+
+set(SIMPLE2D_IBS -lsimple2d -I/usr/include/SDL2 -D_REENTRANT -lSDL2 -lGL -lm -lSDL2_image -lSDL2_mixer -lSDL2_ttf)
+
+add_executable(bridge src/bridge/main.cpp)
+target_link_libraries(bridge ${SIMPLE2D_IBS})
+#target_compile_options(bridge simple2d --libs)
