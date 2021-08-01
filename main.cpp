@@ -106,6 +106,12 @@ int main()
         cout << *i << " ";
     }
 
+
+    if (auto i = 10; i < 100)
+    {
+        std::cout << "\nHello from 'if with initialization'..\n";
+    }
+
     return 0;
 
 }

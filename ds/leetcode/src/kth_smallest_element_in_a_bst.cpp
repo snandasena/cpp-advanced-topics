@@ -22,18 +22,23 @@ struct TreeNode
 
 class Solution
 {
-    vector<int> ans{};
+    int ans{0}, cnt{0};
 public:
 
-    void inorder(TreeNode *root)
+    void inorder(TreeNode *root, int k)
     {
         if (root == nullptr)
         {
             return;
         }
-        inorder(root->left);
-        ans.push_back(root->val);
-        inorder(root->right);
+        inorder(root->left, k);
+        cnt++;
+        if (cnt == k)
+        {
+            ans = root->val;
+            return;
+        }
+        inorder(root->right, k);
     }
 
     int kthSmallest(TreeNode *root, int k)
@@ -43,7 +48,37 @@ public:
             return 0;
         }
 
-        inorder(root);
-        return ans[k - 1];
+        inorder(root, k);
+        return ans;
+    }
+
+    int kthSmallest2(TreeNode *root, int k)
+    {
+        if (root == nullptr)
+        {
+            return 0;
+        }
+
+        stack<TreeNode *> stck;
+
+        while (root != nullptr || !stck.empty())
+        {
+            while (root != nullptr)
+            {
+                stck.push(root);
+                root = root->left;
+            }
+
+            root = stck.top();
+            stck.pop();
+
+            if (--k == 0)
+            {
+                return root->val;
+            }
+
+            root = root->right;
+        }
+        return ans;
     }
 };

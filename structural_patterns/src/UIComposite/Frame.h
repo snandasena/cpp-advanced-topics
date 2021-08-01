@@ -10,7 +10,7 @@
 
 class Frame : public Widget
 {
-    std::vector<Widget *> m_Children;
+    std::vector<Widget*> m_Children{};
 public:
     void Paint() override;
     void SetVisibility(bool visibility) override;
