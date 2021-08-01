@@ -8,9 +8,9 @@ using namespace std;
 
 class WordDictionary
 {
-
     unordered_map<char, WordDictionary *> children;
     bool isEndOfWord{false};
+
 public:
     /** Initialize your data structure here. */
     WordDictionary() = default;

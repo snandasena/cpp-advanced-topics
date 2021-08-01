@@ -103,6 +103,8 @@ set(compositebasic
 #add_executable(compobasic ${compositebasic})
 
 set(uicompo
+        src/UIComposite/Button.cpp
+        src/UIComposite/Frame.cpp
         src/UIComposite/main.cpp)
 
 add_executable(uicomposite ${uicompo})
