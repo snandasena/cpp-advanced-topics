@@ -119,6 +119,14 @@ set(uicompo
 
 set(SIMPLE2D_IBS -lsimple2d -I/usr/include/SDL2 -D_REENTRANT -lSDL2 -lGL -lm -lSDL2_image -lSDL2_mixer -lSDL2_ttf)
 
-add_executable(bridge src/bridge/main.cpp)
-target_link_libraries(bridge ${SIMPLE2D_IBS})
+#add_executable(bridge src/bridge/main.cpp)
+#target_link_libraries(bridge ${SIMPLE2D_IBS})
+
 #target_compile_options(bridge simple2d --libs)
+
+set(bridgebasic
+        src/bridge-basic/ConcreateImplementationA.cpp
+        src/bridge-basic/ConcreteImplementorB.cpp
+        src/bridge-basic/main.cpp)
+
+add_executable(bridgebasic ${bridgebasic})
