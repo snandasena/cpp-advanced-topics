@@ -27,7 +27,7 @@ add_subdirectory(ds/leetcode)
 #add_subdirectory(customstring)
 #add_subdirectory(structural_patterns)
 #add_subdirectory(idioms)
-#add_executable(main main.cpp)
+add_executable(main main.cpp)
 
 #add_executable(advanced_topics main.cpp)
 #add_executable(pointers pointers/pointers_01.cpp)
