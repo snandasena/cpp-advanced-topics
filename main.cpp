@@ -112,6 +112,9 @@ int main()
         std::cout << "\nHello from 'if with initialization'..\n";
     }
 
+    cout<< (4>>1)<<endl;
+
+
     return 0;
 
 }
