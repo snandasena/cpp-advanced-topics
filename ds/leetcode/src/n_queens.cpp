@@ -81,4 +81,18 @@ public:
         solve(board, 0, n);
         return ans;
     }
+
+    int totalNQueens(int n)
+    {
+        vector<string> board(n);
+        string s(n, '.');
+        for (int i = 0; i < n; ++i)
+        {
+            board[i] = s;
+        }
+
+        solve(board, 0, n);
+        return ans.size();
+    }
+
 };
