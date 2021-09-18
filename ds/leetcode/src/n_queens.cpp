@@ -69,7 +69,7 @@ public:
         }
     }
 
-    void buildBoard(int n, vector<string> &board)
+    static void buildBoard(int n, vector<string> &board)
     {
         string s(n, '.');
         for (int i = 0; i < n; ++i)
