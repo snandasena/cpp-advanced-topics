@@ -61,7 +61,7 @@ void InsertAtHead(CharNode **head, char c)
 
 void test(int x, int arr[])
 {
-    
+
 }
 
 int main()
@@ -119,6 +119,21 @@ int main()
 
     cout << (4 >> 1) << endl;
 
+
+    string s = "abcde";
+    int wint = 0;
+    for (auto &c: s)
+    {
+        int b = 1 << (c - 'a');
+        wint |= b;
+    }
+
+    cout << wint << endl;
+
+    int z1 = 1;
+    int z2 = 3;
+
+    cout<< (z1&z2)<< endl;
 
     return 0;
 
@@ -187,5 +202,5 @@ public:
         }
         swap(firstval->val, secondval->val);
     }
-}
+};
 
