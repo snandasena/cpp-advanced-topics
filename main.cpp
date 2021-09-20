@@ -59,6 +59,11 @@ void InsertAtHead(CharNode **head, char c)
     *head = node;
 }
 
+void test(int x, int arr[])
+{
+    
+}
+
 int main()
 {
     BNode *head = nullptr;
@@ -112,7 +117,7 @@ int main()
         std::cout << "\nHello from 'if with initialization'..\n";
     }
 
-    cout<< (4>>1)<<endl;
+    cout << (4 >> 1) << endl;
 
 
     return 0;
@@ -182,4 +187,5 @@ public:
         }
         swap(firstval->val, secondval->val);
     }
-};
+}
+
