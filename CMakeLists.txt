@@ -17,7 +17,7 @@ add_subdirectory(ds/leetcode)
 #add_subdirectory(WASM)
 #add_subdirectory(websocket)
 #add_subdirectory(classes_and_objects)
-#add_subdirectory(cppthings)
+add_subdirectory(cppthings)
 #add_subdirectory(packedpubwasm)
 #add_subdirectory(opengl)
 #find_library(Eigen3 REQUIRED)
@@ -126,3 +126,6 @@ add_executable(main main.cpp)
 #add_executable(btree ds/b_tree.cpp)
 
 #add_executable(lambda lambdaexp/polymorphic_lambda.cpp)
+
+
+add_executable(sol2 test/sol2.cpp)
