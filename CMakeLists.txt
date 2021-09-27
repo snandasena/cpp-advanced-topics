@@ -126,6 +126,4 @@ add_executable(main main.cpp)
 #add_executable(btree ds/b_tree.cpp)
 
 #add_executable(lambda lambdaexp/polymorphic_lambda.cpp)
-
-
-add_executable(sol2 test/sol2.cpp)
+#add_executable(sol2 test/sol2.cpp)
