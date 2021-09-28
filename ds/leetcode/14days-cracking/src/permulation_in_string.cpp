@@ -33,11 +33,11 @@ public:
             }
 
             right += 1;
-            if (right != s2.length()) // step 1 increase from the end
+            if (right != s2.length()) // 1 step increase from the end
             {
                 s2v[s2[right] - 'a'] += 1;
             }
-            s2v[s2[left] - 'a'] -= 1; // step 1 increase from the begin
+            s2v[s2[left] - 'a'] -= 1; // 1 step increase from the begin
             left += 1;
         }
         return false;
