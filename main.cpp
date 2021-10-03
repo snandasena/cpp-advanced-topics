@@ -119,7 +119,6 @@ int main()
 
     cout << (4 >> 1) << endl;
 
-
     string s = "abcde";
     int wint = 0;
     for (auto &c: s)
@@ -127,7 +126,6 @@ int main()
         int b = 1 << (c - 'a');
         wint |= b;
     }
-
     cout << wint << endl;
 
     int z1 = 1;
@@ -136,7 +134,6 @@ int main()
     cout<< (z1&z2)<< endl;
 
     return 0;
-
 }
 
 
