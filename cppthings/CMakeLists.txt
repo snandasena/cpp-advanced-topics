@@ -12,5 +12,7 @@ add_subdirectory(stl)
 #add_executable(map_filter_reduce src/map_filter_reduce.cpp)
 #add_executable(operator_overloading src/operator_overloading.cpp)
 
-add_executable(uniqueptr1 smart-pointers/unique_pointers.cpp)
+#add_executable(uniqueptr1 smart-pointers/unique_pointers.cpp)
+
+add_executable(staticpoly src/static_polymorphism.cpp)
 
