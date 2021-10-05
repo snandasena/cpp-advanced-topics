@@ -4,9 +4,23 @@
 
 #include "base.h"
 
-class Solution {
+class Solution
+{
 public:
-    ListNode* reverseList(ListNode* head) {
+    ListNode *reverseList(ListNode *head)
+    {
+        ListNode *prev = nullptr;
+        ListNode *curr = head;
+        ListNode *next = nullptr;
 
+        while (curr != nullptr)
+        {
+            next = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+        return head;
     }
 };
