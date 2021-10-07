@@ -9,3 +9,5 @@ WASM/www/
 cmake-build-debug-coverage/
 c-things/build/*
 WASM/cpp/build/
+
+venv/
