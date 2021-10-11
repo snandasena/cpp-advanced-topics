@@ -7,7 +7,7 @@
 class Solution
 {
 public:
-    int rangeBitwiseAnd(int left, int right)
+    int rangeBitwiseAnd(int left, int right)   
     {
         int ans = 0;
         for (int i = 30; i >= 0; i--)
