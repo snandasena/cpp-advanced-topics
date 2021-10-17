@@ -15,4 +15,4 @@ add_subdirectory(stl)
 #add_executable(uniqueptr1 smart-pointers/unique_pointers.cpp)
 
 add_executable(staticpoly src/static_polymorphism.cpp)
-
+add_executable(constructor src/constructor_things.cpp)
