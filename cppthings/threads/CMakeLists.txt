@@ -1,6 +1,6 @@
 project(llthreads)
 
-SET(CMAKE_CXX_FLAGS "-std=c++17 -pthread -O3 -pedantic -Wall -Werror")
+SET(CMAKE_CXX_FLAGS "-std=c++17 -pthread -Wall -Werror")
 
 #add_executable(demo src/main.cpp)
 #add_executable(mtx src/mutual_exclusion.cpp)
@@ -15,4 +15,8 @@ SET(CMAKE_CXX_FLAGS "-std=c++17 -pthread -O3 -pedantic -Wall -Werror")
 
 #add_executable(helloworl_thred udemy/hello_world.cpp)
 #add_executable(callable_objects udemy/callable_objects.cpp)
-add_executable(promises_future udemy/promises_futures.cpp)
+#add_executable(promises_future udemy/promises_futures.cpp)
+#add_executable(package_task udemy/package_task.cpp)
+#add_executable(conditionalvrs udemy/conditional_vars.cpp)
+#add_executable(blocking_queue udemy/blocking_que.cpp)
+add_executable(asyncdemos udemy/async_demos.cpp)

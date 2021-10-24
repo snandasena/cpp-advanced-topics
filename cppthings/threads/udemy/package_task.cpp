@@ -1,5 +1,5 @@
 //
-// Created by sajith on 10/23/21.
+// Created by sajith on 10/24/21.
 //
 
 #include <iostream>
@@ -23,22 +23,12 @@ double calculate_pi(int itrs)
     return sum * 4;
 }
 
+
 int main()
 {
-    promise<double> promise;
-    auto do_calc = [&](int term)
-    {
-        try
-        {
-            auto res = calculate_pi(term);
-            promise.set_value(res);
-        } catch (...)
-        {
-            promise.set_exception(current_exception());
-        }
-    };
-    thread t(do_calc, 1e8);
-    future<double> future = promise.get_future();
+    packaged_task<double(int)> task1(calculate_pi);
+    future<double> future = task1.get_future();
+    thread t(move(task1), 1e7);
     try
     {
         cout << setprecision(15) << future.get() << endl;
