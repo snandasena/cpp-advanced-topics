@@ -10,4 +10,9 @@ SET(CMAKE_CXX_FLAGS "-std=c++17 -pthread -O3 -pedantic -Wall -Werror")
 #add_executable(deadlock  src/deadlock_demo.cpp)
 #add_executable(abandoned_lock  src/abandoned_lock.cpp)
 #add_executable(starvation_lock src/starvation_lock.cpp)
-add_executable(llivelock_demo src/llivelock_demo.cpp)
+#add_executable(llivelock_demo src/llivelock_demo.cpp
+
+
+#add_executable(helloworl_thred udemy/hello_world.cpp)
+#add_executable(callable_objects udemy/callable_objects.cpp)
+add_executable(promises_future udemy/promises_futures.cpp)
