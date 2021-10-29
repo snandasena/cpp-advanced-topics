@@ -20,6 +20,10 @@ void LinkedList()
     cout << "\nSum of all nodes : " << AddValuesInLinkedList(root);
     cout << "\nMax of linked list : " << FindMaxValueOfLinkedList(root);
     cout << "\nMax of linked list : " << FindMaxValueOfLinkedListRecursive(root);
+    Node *res = LinearSearch(root, 40);
+    cout<<"\n"<<res->data;
+    res = LinerSearchRecursive(root, 40);
+    cout<<"\n"<<res->data<<endl;
 }
 
 
