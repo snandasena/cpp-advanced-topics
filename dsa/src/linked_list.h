@@ -104,6 +104,28 @@ namespace dsa
         return max(x, root->data);
     }
 
+    Node *LinearSearch(Node *root, int data)
+    {
+        Node *temp = root;
+        while (temp != nullptr)
+        {
+            if (temp->data == data)
+            {
+                return temp;
+            }
+            temp = temp->next;
+        }
+
+        return nullptr;
+    }
+
+    Node *LinerSearchRecursive(Node *root, int data)
+    {
+        if (root == nullptr) return nullptr;
+
+        if (root->data == data) return root;
+        else return LinerSearchRecursive(root->next, data);
+    }
 }
 
 
