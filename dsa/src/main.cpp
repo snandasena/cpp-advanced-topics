@@ -26,8 +26,26 @@ void LinkedList()
     cout << "\n" << res->data << endl;
     InsertNodeHead(&root, 60);
     DisplayLinkedList(root);
-    cout<<"\n";
+    cout << "\n";
     InsertNodeAt(root, 35, 4);
+    DisplayLinkedList(root);
+    cout << endl;
+    Node *head = new Node(0);
+    InsertLinkedList(arr, 5, head);
+    InsertNodeSortedLinkedList(&head, -5);
+    DisplayLinkedList(head);
+    InsertNodeSortedLinkedList(&head, 5);
+    cout << endl;
+    DisplayLinkedList(head);
+    InsertNodeSortedLinkedList(&head, 60);
+    cout << endl;
+    DisplayLinkedList(head);
+    DeleteHeadNodeFromLinkedList(&head);
+    DeleteHeadNodeFromLinkedList(&head);
+    cout << endl;
+    DisplayLinkedList(head);
+    DeleteNodeFromLinkedList(root, 30);
+    cout << endl;
     DisplayLinkedList(root);
 }
 
