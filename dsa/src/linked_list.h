@@ -126,6 +126,32 @@ namespace dsa
         if (root->data == data) return root;
         else return LinerSearchRecursive(root->next, data);
     }
+
+    void InsertNodeHead(Node **root, int data)
+    {
+        Node *node = new Node(data);
+        node->next = *root;
+        *root = node;
+    }
+
+    void InsertNodeAt(Node *root, int data, int pos)
+    {
+        Node *node = new Node(data);
+        while (--pos)
+        {
+            if(root)
+            {
+                root = root->next;
+            }
+        }
+
+        if (root)
+        {
+            node->next = root->next;
+            root->next = node;
+        }
+
+    }
 }
 
 
