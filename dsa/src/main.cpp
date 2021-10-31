@@ -21,9 +21,14 @@ void LinkedList()
     cout << "\nMax of linked list : " << FindMaxValueOfLinkedList(root);
     cout << "\nMax of linked list : " << FindMaxValueOfLinkedListRecursive(root);
     Node *res = LinearSearch(root, 40);
-    cout<<"\n"<<res->data;
+    cout << "\n" << res->data;
     res = LinerSearchRecursive(root, 40);
-    cout<<"\n"<<res->data<<endl;
+    cout << "\n" << res->data << endl;
+    InsertNodeHead(&root, 60);
+    DisplayLinkedList(root);
+    cout<<"\n";
+    InsertNodeAt(root, 35, 4);
+    DisplayLinkedList(root);
 }
 
 
