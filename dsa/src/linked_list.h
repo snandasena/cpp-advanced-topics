@@ -139,7 +139,7 @@ namespace dsa
         Node *node = new Node(data);
         while (--pos)
         {
-            if(root)
+            if (root)
             {
                 root = root->next;
             }
@@ -150,7 +150,45 @@ namespace dsa
             node->next = root->next;
             root->next = node;
         }
+    }
 
+    void InsertNodeSortedLinkedList(Node **root, int data)
+    {
+        Node *n = new Node(data);
+        if (data < (*root)->data)
+        {
+            n->next = *root;
+            *root = n;
+            return;
+        }
+        Node *q;
+        Node *p = *root;
+        while (p && p->data < data)
+        {
+            q = p;
+            p = p->next;
+        }
+        n->next = q->next;
+        q->next = n;
+    }
+
+    void DeleteHeadNodeFromLinkedList(Node **head)
+    {
+        Node *node = *head;
+        *head = (*head)->next;
+        delete node;
+    }
+
+    void DeleteNodeFromLinkedList(Node *root, int data)
+    {
+        while (root && root->data != data)
+        {
+            root = root->next;
+        }
+
+        Node *p = root;
+        root= root->next;
+        delete p;
     }
 }
 
