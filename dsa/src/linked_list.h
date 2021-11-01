@@ -183,9 +183,66 @@ namespace dsa
     {
         Node *p = root;
         Node *q = nullptr;
-        for (int i = 0; i < ; ++i)
+        for (int i = 0; i < pos - 1; ++i)
         {
+            q = p;
+            p = p->next;
+        }
+        if (p)
+        {
+            q->next = p->next;
+            delete p;
+        }
+    }
 
+    void DeleteNodeFromLinkedListData(Node *root, int data)
+    {
+        Node *p = root;
+        Node *q = nullptr;
+        while (p && p->data != data)
+        {
+            q = p;
+            p = p->next;
+        }
+        if (p)
+        {
+            q->next = p->next;
+            delete p;
+        }
+    }
+
+    bool IsSortedLinkedList(Node *root)
+    {
+        int x = root->data;
+        root = root->next;
+        while (root)
+        {
+            if (x > root->data)
+            {
+                return false;
+            }
+            x = root->data;
+            root = root->next;
+        }
+        return true;
+    }
+
+    void DeleteDuplicatesFromSortedLinkedList(Node *root)
+    {
+        Node *q = root->next;
+        while (q)
+        {
+            if (root->data != q->data)
+            {
+                root = q;
+                q = q->next;
+            }
+            else
+            {
+                root->next = q->next;
+                delete q;
+                q = root->next;
+            }
         }
     }
 }
