@@ -44,9 +44,24 @@ void LinkedList()
     DeleteHeadNodeFromLinkedList(&head);
     cout << endl;
     DisplayLinkedList(head);
-    DeleteNodeFromLinkedList(root, 30);
+    DeleteNodeFromLinkedList(head, 5);
     cout << endl;
-    DisplayLinkedList(root);
+    DisplayLinkedList(head);
+    cout << endl;
+    DeleteNodeFromLinkedListData(head, 30);
+    DisplayLinkedList(head);
+
+    cout << endl << boolalpha << IsSortedLinkedList(head) << endl;
+    cout << boolalpha << IsSortedLinkedList(root) << endl;
+
+    InsertNodeSortedLinkedList(&head, 60);
+    InsertNodeSortedLinkedList(&head, 60);
+    InsertNodeSortedLinkedList(&head, 60);
+
+    DisplayLinkedList(head);
+    DeleteDuplicatesFromSortedLinkedList(head);
+    cout<<endl;
+    DisplayLinkedList(head);
 }
 
 
