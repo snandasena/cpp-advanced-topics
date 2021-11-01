@@ -179,16 +179,14 @@ namespace dsa
         delete node;
     }
 
-    void DeleteNodeFromLinkedList(Node *root, int data)
+    void DeleteNodeFromLinkedList(Node *root, int pos)
     {
-        while (root && root->data != data)
-        {
-            root = root->next;
-        }
-
         Node *p = root;
-        root= root->next;
-        delete p;
+        Node *q = nullptr;
+        for (int i = 0; i < ; ++i)
+        {
+
+        }
     }
 }
 
