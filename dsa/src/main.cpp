@@ -60,7 +60,10 @@ void LinkedList()
 
     DisplayLinkedList(head);
     DeleteDuplicatesFromSortedLinkedList(head);
-    cout<<endl;
+    cout << endl;
+    DisplayLinkedList(head);
+    ReverseLinkedListReverseLinks(&head);
+    cout << endl;
     DisplayLinkedList(head);
 }
 

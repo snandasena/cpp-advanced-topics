@@ -245,6 +245,20 @@ namespace dsa
             }
         }
     }
+
+    void ReverseLinkedListReverseLinks(Node **root)
+    {
+        Node *p = *root;
+        Node *r, *q = nullptr;
+        while (p)
+        {
+            r = q;
+            q = p;
+            p = p->next;
+            q->next = r;
+        }
+        *root = q;
+    }
 }
 
 
