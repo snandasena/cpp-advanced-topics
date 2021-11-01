@@ -259,6 +259,17 @@ namespace dsa
         }
         *root = q;
     }
+
+    void ReverseLinkedListRecursive(Node **root, Node *q, Node *p)
+    {
+        if (p)
+        {
+            ReverseLinkedListRecursive(root, p, p->next);
+            p->next = q;
+            return;
+        }
+        *root = q;
+    }
 }
 
 
