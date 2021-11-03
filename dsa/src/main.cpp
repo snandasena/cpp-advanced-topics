@@ -63,14 +63,18 @@ void LinkedList()
     cout << endl;
     DisplayLinkedList(head);
     ReverseLinkedListReverseLinks(&head);
-    cout << endl;
+    cout << endl<<"Display before reverse \n";
     DisplayLinkedList(head);
 
-    ReverseLinkedListRecursive(&head, nullptr, nullptr);
-    cout << endl;
+    ReverseLinkedListRecursive(&head, nullptr, head);
+    cout << endl<<"Display reverse : \n";
     DisplayLinkedList(head);
+    cout << endl<<"Display root : \n";
     DisplayLinkedList(root);
-    cout<<endl;
+    cout<<endl<<"Display concat: \n";
+
+    ConcatTwoLinkedList(head, root);
+    DisplayLinkedList(head);
 }
 
 
