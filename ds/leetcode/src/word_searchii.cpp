@@ -71,22 +71,6 @@ class Solution
         }
         board[i][j] = c;
     }
-
-public:
-    vector<string> findWords2(vector<vector<char>> &board, vector<string> &words)
-    {
-        Trie trie;
-        for (auto &s: words) trie.insert(s);
-        for (int i = 0; i < board.size(); ++i)
-        {
-            for (int j = 0; j < board[0].size(); ++j)
-            {
-                dfs(board, i, j, &trie, "");
-            }
-        }
-        return vector<string>(res.begin(), res.end());
-    }
-
 };
 
 

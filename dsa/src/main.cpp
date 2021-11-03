@@ -69,6 +69,8 @@ void LinkedList()
     ReverseLinkedListRecursive(&head, nullptr, nullptr);
     cout << endl;
     DisplayLinkedList(head);
+    DisplayLinkedList(root);
+    cout<<endl;
 }
 
 
