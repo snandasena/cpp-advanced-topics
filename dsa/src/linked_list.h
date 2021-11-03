@@ -271,7 +271,16 @@ namespace dsa
         *root = q;
     }
 
-    void MergeTwoLinkedLists(Node *first, Node *second)
+    void ConcatTwoLinkedList(Node *first, Node *second)
+    {
+        while (first->next)
+        {
+            first = first->next;
+        }
+        first->next = second;
+    }
+
+    void MergeTwoSortedLinkedLists(Node *first, Node *second)
     {
 
     }
