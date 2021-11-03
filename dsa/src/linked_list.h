@@ -270,6 +270,11 @@ namespace dsa
         }
         *root = q;
     }
+
+    void MergeTwoLinkedLists(Node *first, Node *second)
+    {
+
+    }
 }
 
 
