@@ -67,6 +67,7 @@ int main()
                        for (int i = 0; i < 100000; ++i)
                        {
                            lockFreeQueue.push(i);
+                           printf("PUSHED %d\n", i);
                        }
                    });
 
@@ -75,6 +76,7 @@ int main()
                        for (int i = 0; i < 100000; ++i)
                        {
                            lockFreeQueue.pop(i);
+                           printf("POPED %d\n", i);
                        }
                    });
 
