@@ -9,13 +9,22 @@ class Solution
 public:
     int singleNumber(vector<int> &nums)
     {
-        int x = 0;
-        for (int &i: nums)
+        int res = 0;
+        int bits[32] = {0};
+        for (int i = 0; i < 32; ++i)
         {
-            x ^= i;
+            for (int &num: nums)
+            {
+                bits[i] += num >> i & 1;
+                bits[i] %= 3;
+            }
         }
 
-        return x;
+        for (int i = 0; i < 32; ++i)
+        {
+            res |= (bits[i] << i);
+        }
+        return res;
     }
 };
 
@@ -23,6 +32,6 @@ int main()
 {
     vector<int> nums = {0, 1, 0, 1, 0, 1, 99};
     Solution solution;
-    solution.singleNumber(nums);
+    cout << solution.singleNumber(nums) << endl;
     return 0;
 }
