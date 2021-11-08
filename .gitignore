@@ -11,3 +11,5 @@ c-things/build/*
 WASM/cpp/build/
 
 venv/
+
+asio/
