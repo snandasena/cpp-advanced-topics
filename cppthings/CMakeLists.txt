@@ -3,7 +3,7 @@ project(cppthings)
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=leak")
 
 #find_package(GTest CONFIG REQUIRED)
-include_directories(../googletest/include)
+#include_directories(../googletest/include)
 
 #add_subdirectory(stl)
 

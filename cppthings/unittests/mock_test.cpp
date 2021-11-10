@@ -72,6 +72,6 @@ TEST(MyDBtest, LoginTest)
 
 int main()
 {
-    testing::InitGo ogleTest();
+    testing::InitGoogleTest();
     return RUN_ALL_TESTS();
 }
