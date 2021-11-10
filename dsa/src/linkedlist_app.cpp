@@ -80,8 +80,13 @@ void LinkedList()
     cout<<endl;
     cout<<endl;
 
-    Node *third = new Node;
-    MergeTwoSortedLinkedLists(root, head, third);
+    Node *third = nullptr;
+    Node *l1 = new Node(0);
+    Node *l2 = new Node(0);
+    InsertLinkedList(arr, 5, l1);
+    int arr2[] = {1,2,3,4,5};
+    InsertLinkedList(arr2,5, l2);
+    MergeTwoSortedLinkedLists(l1, l2, &third);
     DisplayLinkedList(third);
 }
 
