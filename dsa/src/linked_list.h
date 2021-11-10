@@ -15,7 +15,7 @@ namespace dsa
 
         int data;
         Node *next;
-
+        Node(){}
         Node(int data) : data{data} {}
     };
 
@@ -280,8 +280,42 @@ namespace dsa
         first->next = second;
     }
 
-    void MergeTwoSortedLinkedLists(Node *first, Node *second)
+    void MergeTwoSortedLinkedLists(Node *first, Node *second, Node *third)
     {
+        Node *last;
+        if (first->data < second->data)
+        {
+            third = last = first;
+            first = first->next;
+            third->next = nullptr;
+        }
+        else
+        {
+            third = last = second;
+            second = second->next;
+            third->next = nullptr;
+        }
+
+        while (first && second)
+        {
+            if (first->data < second->data)
+            {
+                last->next = first;
+                last = first;
+                first = first->next;
+                last->next = nullptr;
+            }
+            else
+            {
+                last->next = second;
+                last = second;
+                second = second->next;
+                last->next = nullptr;
+            }
+        }
+
+        if (first) last->next = first;
+        if (second) last->next = second;
 
     }
 }
