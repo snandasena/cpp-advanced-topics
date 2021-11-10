@@ -2,11 +2,47 @@
 // Created by sajith on 11/9/21.
 //
 
+
+#include <iostream>
+#include <memory>
 #include "gtest/gtest.h"
 
-TEST (SquareTest /*test suite name*/, PosZeroNeg /*test name*/) {
-    EXPECT_EQ (9.0, (3.0*2.0)); // fail, test continues
-    ASSERT_EQ (0.0, (0.0));     // success
-    ASSERT_EQ (9, (3)*(-3.0));  // fail, test interrupts
-    ASSERT_EQ (-9, (-3)*(-3.0));// not executed due to the previous assert
+using namespace std;
+
+class Employee
+{
+public:
+    shared_ptr<string> name;
+    char *department;
+
+    Employee(const shared_ptr<string> &name, char *department) : name(name), department(department) {}
+};
+
+
+TEST(name, case1)
+{
+    ASSERT_TRUE(1 == 1);
+    ASSERT_FALSE(1 == 3);
+}
+
+TEST(name, case2)
+{
+    ASSERT_EQ(1, 1);
+}
+
+int main()
+{
+    testing::InitGoogleTest();
+
+    shared_ptr<string> name = make_shared<string>("Name of the employee");
+    char *department = "IT DEPARTMENT";
+    Employee employee(name, department);
+
+    [employee]()
+    {
+        cout << employee.department << endl;
+        cout << *employee.name << endl;
+    }();
+    return RUN_ALL_TESTS();
+
 }

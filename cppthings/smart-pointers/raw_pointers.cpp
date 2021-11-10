@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include <memory>
+#include <algorithm>
+#include <string>
 
 using namespace std;
 
@@ -25,5 +27,14 @@ int main()
 {
 //    test_ptr();
     auto t = make_unique<myobj>(myobj{10, 20});
+    char lastc = 0;
+    string s = "big light in sky slated to appear in east";
+    transform(s.begin(), s.end(), s.begin(), [&](const char &c)
+    {
+        const char r = (lastc == ' ' || lastc == 0) ? toupper(c) : c;
+        lastc = c;
+        return r;
+    });
+    cout << s << endl;
     return 0;
 }
