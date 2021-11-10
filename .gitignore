@@ -13,3 +13,4 @@ WASM/cpp/build/
 venv/
 
 asio/
+googletest/
