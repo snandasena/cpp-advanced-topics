@@ -75,6 +75,14 @@ void LinkedList()
 
     ConcatTwoLinkedList(head, root);
     DisplayLinkedList(head);
+    cout<<endl;
+    cout<<endl;
+    cout<<endl;
+    cout<<endl;
+
+    Node *third = new Node;
+    MergeTwoSortedLinkedLists(root, head, third);
+    DisplayLinkedList(third);
 }
 
 
