@@ -11,6 +11,7 @@ void LinkedList()
     Node *root = new Node(0);
     int arr[] = {10, 20, 30, 40, 50};
     InsertLinkedList(arr, 5, root);
+    cout << "PRINT ROOT\n";
     DisplayLinkedList(root);
     cout << endl;
     DisplayLinkedListRecursive(root);
