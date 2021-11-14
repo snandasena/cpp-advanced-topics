@@ -7,11 +7,11 @@
 class Solution
 {
 public:
-    ListNode *reverseList(ListNode *head)
+    Node *reverseList(Node *head)
     {
-        ListNode *prev = nullptr;
-        ListNode *curr = head;
-        ListNode *next = nullptr;
+        Node *prev = nullptr;
+        Node *curr = head;
+        Node *next = nullptr;
 
         while (curr != nullptr)
         {

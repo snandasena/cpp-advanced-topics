@@ -10,16 +10,16 @@
 using namespace std;
 
 
-struct ListNode
+struct Node
 {
     int val;
-    ListNode *next;
+    Node *next;
 
-    ListNode() : val(0), next(nullptr) {}
+    Node() : val(0), next(nullptr) {}
 
-    ListNode(int x) : val(x), next(nullptr) {}
+    Node(int x) : val(x), next(nullptr) {}
 
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
+    Node(int x, Node *next) : val(x), next(next) {}
 };
 
 struct TreeNode
