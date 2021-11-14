@@ -7,6 +7,7 @@ project(cppthings)
 
 #add_subdirectory(stl)
 add_subdirectory(src/inheritance)
+add_subdirectory(src/lamdas)
 add_subdirectory(threads)
 #add_executable(basicsyntacxs src/basic_syntaxs.cpp)
 #add_executable(fileio src/file_io.cpp)
