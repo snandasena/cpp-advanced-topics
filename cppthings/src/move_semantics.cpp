@@ -4,20 +4,25 @@
 
 #include <iostream>
 #include <string>
+#include <list>
 
 using namespace std;
 
 
-void printString(string str)
+template<typename T>
+void exercise(int size, string commonname)
 {
-    cout << str << endl;
+    T v;
+    T::template value_type res1("starting entry");
 }
+
 
 int main()
 {
     string s = "Hello from main";
     string s2 = move(s);
     printString(s2);
-    cout<<s<<endl;
+    cout << s << endl;
+
     return 0;
 }
