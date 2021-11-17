@@ -98,7 +98,7 @@ int main()
             delete ptr;
         });
     }
-    catch (std::exception &e)
+    catch (std::exception const &e)
     {
         cout << "Caught exception\n";
     }
