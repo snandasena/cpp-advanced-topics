@@ -8,7 +8,6 @@ using lli = long long int;
 
 class Solution
 {
-    set<int> cache;
 public:
     int next(int n)
     {

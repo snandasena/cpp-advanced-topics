@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <random>
 #include <algorithm>
 
 using namespace std;
@@ -54,6 +55,36 @@ int main()
     auto maxEmp = *max_element(staff.begin(), staff.end(), comp);
 
     stable_sort(staff.begin(), staff.end(), emp_comp);
+
+    vector<int> v{1, 3, 4, 5, 6, 7, 7, 1, 4, 5, 6, -1, -4, 5 - 9};
+    sort(v.begin(), v.end());
+
+    int positive = *upper_bound(v.begin(), v.end(), 4);
+    cout << positive << endl;
+
+    int negative = *lower_bound(v.begin(), v.end(), 0);
+    cout << negative << endl;
+
+    random_device rdevice;
+    mt19937 generator(rdevice());
+    shuffle(v.begin(), v.end(), generator);
+
+//    partial_sort(v.begin(), v.end(), v.begin() + 4);
+
+    partial_sort(v.begin(), find(v.begin(), v.end(), 4), v.end());
+
+    auto issorted_until = is_sorted_until(v.begin(), v.end());
+    cout << *issorted_until << endl;
+
+    vector<int> vcopy(4);
+    partial_sort_copy(v.begin(), v.end(), vcopy.begin(), vcopy.end());
+
+    shuffle(v.begin(), v.end(), generator);
+
+    cout<< *(v.begin()+4)<<endl;
+    nth_element(v.begin(), v.begin()+4, v.end());
+    auto nthelement = (v.begin()+4);
+    cout<<*nthelement<<endl;
     return 0;
 }
 
