@@ -314,6 +314,21 @@ namespace dsa
         if (!first) curr->next = second;
         else curr->next = first;
     }
+
+    bool IsLoop(Node *head)
+    {
+        Node *fast = head;
+        Node *slow = head;
+
+        while (fast)
+        {
+            if (fast == slow) return true;
+            fast = fast->next->next;
+            slow = slow->next;
+        }
+        return false;
+    }
+
 }
 
 
