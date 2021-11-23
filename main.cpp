@@ -53,5 +53,15 @@ int main()
     c.disp();
     F f;
     f.disp();
+
+    int t = 1;
+    for (int i = 0; i < 10; ++i)
+    {
+        t *= 3;
+        cout << t << "\t";
+    }
+
     return 0;
 }
+
+// 14 + 13 = 27
