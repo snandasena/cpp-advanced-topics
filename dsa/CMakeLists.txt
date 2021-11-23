@@ -6,4 +6,5 @@ file(GLOB SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h")
 
 #add_executable(linkedlist src/linkedlist_app.cpp ${SOURCES})
 #add_executable(queuedemo src/queue_app.cpp ${SOURCES})
-add_executable(treeapp src/trees_app.cpp ${SOURCES})
+#add_executable(treeapp src/trees_app.cpp ${SOURCES})
+add_executable(graphapp src/graoh_app.cpp ${SOURCES})
