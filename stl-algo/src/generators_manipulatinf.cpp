@@ -4,6 +4,9 @@
 
 #include <iostream>
 #include <algorithm>
+#include <numeric>
+
+#include "resource.h"
 
 using namespace std;
 
@@ -30,9 +33,38 @@ int main()
     copy_backward(v3.begin(), v3.end(), source.end());
     copy_backward(source.begin(), source.end() - 1, source.end());
 
-    auto newend = remove(source.begin(), source.end(),3 );
-    auto s= source.size();
+    auto newend = remove(source.begin(), source.end(), 3);
+    auto s = source.size();
     auto logicalsize = newend - source.begin();
     source.erase(newend, source.end());
+
+    vector<Resource> vr(2);
+    vr[0].setValue(8);
+    vr[1].setValue(9);
+
+    auto newend2 = remove_if(vr.begin(), vr.end(), [](Resource const &r) { return r.getValue() == 8; });
+    vr.erase(newend2, vr.end());
+
+
+    // FILL
+    vector<int> v6(10);
+    fill(v6.begin(), v6.end(), 1);
+    fill_n(v6.begin(), 6, 2);
+    iota(v6.begin(), v6.end(), 10);
+
+    int idx = 10;
+    generate(v6.begin(), v6.end(), [&idx]() { return --idx; });
+    source = v6;
+    idx = 1;
+    generate_n(v6.begin(), 7, [&idx]() { return idx *= 2; });
+
+    replace(v6.begin(), v6.end(), 2, 7);
+    replace_if(v6.begin(), v6.end(), [](int const &i) { return i < 16; }, 7);
+
+    transform(source.begin(), source.end(), source.begin(), [](int const &i) { return i * 2; });
+    transform(source.begin(), source.end() - 1, source.begin() + 1, v6.begin(),
+              [](int const &ele1, int const &ele2) { return ele1 - ele2; });
+
+
     return 0;
 }
