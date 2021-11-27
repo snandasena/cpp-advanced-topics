@@ -61,6 +61,7 @@ int main()
         cout << t << "\t";
     }
 
+
     return 0;
 }
 
