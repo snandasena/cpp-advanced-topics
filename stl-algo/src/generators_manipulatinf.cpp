@@ -65,6 +65,23 @@ int main()
     transform(source.begin(), source.end() - 1, source.begin() + 1, v6.begin(),
               [](int const &ele1, int const &ele2) { return ele1 - ele2; });
 
+    vector<int> v7(10);
+    transform(source.begin(), source.end(), v6.begin(), v7.begin(),
+              [](int const elm1, int const elm2) { return elm1 + elm2; });
+    unique(v2.begin(), v2.end());
+    v2[3] = -2;
+    auto v8 = v2;
+    v2.erase(unique(v2.begin(), v2.end()), v2.end());
 
+    unique_copy(v8.begin(), v8.end(), v7.begin());
+
+    string sentence = "Hello, World!";
+    reverse(sentence.begin(), sentence.end());
+
+    iter_swap(v7.begin(), v7.end()-1);
+    string orig="               ";
+    reverse_copy(sentence.begin(), sentence.end(), orig.begin());
+    string  x{"abcdef"};
+    iota(x.begin(), x.end(), 'g');
     return 0;
 }
