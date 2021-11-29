@@ -28,3 +28,13 @@ std::string Employee::GetInfo() const
     out << '[' << m_Role << ']' << m_Name << ' ';
     return out.str();
 }
+
+double abc_company::Employee::getSalary() const
+{
+    return salary;
+}
+
+void abc_company::Employee::setSalary(double salary)
+{
+    Employee::salary = salary;
+}
