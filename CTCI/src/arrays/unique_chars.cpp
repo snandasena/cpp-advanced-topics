@@ -35,3 +35,18 @@ bool check_permutations(string const &str1, string const &str2)
 
     return true;
 }
+
+void URLify(string &str)
+{
+    for (auto it = str.rbegin(); it != str.rend(); ++it)
+    {
+        cout<< *it<< endl;
+    }
+}
+
+int main()
+{
+    string str = "Mr  John  Smith     ";
+    URLify(str);
+    return 0;
+}
