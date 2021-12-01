@@ -36,17 +36,44 @@ bool check_permutations(string const &str1, string const &str2)
     return true;
 }
 
-void URLify(string &str)
+string URLify(string &str, int truelength)
 {
-    for (auto it = str.rbegin(); it != str.rend(); ++it)
+    int spaceCount = 0;
+    int index;
+    int i;
+    for (i = 0; i < str.length(); ++i)
     {
-        cout<< *it<< endl;
+        if (str[i] == ' ') ++spaceCount;
     }
+
+    index = truelength + spaceCount * 2;
+    if (truelength < str.length())
+    {
+        str[truelength] = '\0';
+    }
+
+    for (i = truelength - 1; i >= 0; --i)
+    {
+        if (str[i] == ' ')
+        {
+            str[index - 1] = '0';
+            str[index - 2] = '2';
+            str[index - 3] = '%';
+            index -= 3;
+        }
+        else
+        {
+            str[index - 1] = str[i];
+            --index;
+        }
+    }
+
+    return str;
 }
 
 int main()
 {
-    string str = "Mr  John  Smith     ";
-    URLify(str);
+    string str = "Mr John Smith";
+    cout << URLify(str, 13) << endl;
     return 0;
 }
