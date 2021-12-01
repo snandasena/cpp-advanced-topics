@@ -1,3 +1,3 @@
 project(arraysproj)
 
-add_executable(arraysquize unique_chars.cpp)
+add_executable(arraysquize arrays_ctci.cpp)
