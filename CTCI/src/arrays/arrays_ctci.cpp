@@ -41,7 +41,7 @@ string URLify(string &str, int truelength)
     int spaceCount = 0;
     int index;
     int i;
-    for (i = 0; i < str.length(); ++i)
+    for (i = 0; i < truelength; ++i)
     {
         if (str[i] == ' ') ++spaceCount;
     }
@@ -73,7 +73,7 @@ string URLify(string &str, int truelength)
 
 int main()
 {
-    string str = "Mr John Smith";
+    string str = "Mr John Smith    ";
     cout << URLify(str, 13) << endl;
     return 0;
 }
