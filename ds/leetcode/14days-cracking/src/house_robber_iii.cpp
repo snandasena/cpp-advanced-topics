@@ -11,7 +11,7 @@ class Solution
         if (!root) return {0, 0};
 
         auto[leftwith, leftwithout] = dfs(root->left);
-        auto[rightwith, rightwithout] = dfs(root->right);
+        auto[rightwith,     rightwithout] = dfs(root->right);
 
         int with = root->val + leftwithout + rightwithout;
         int without = max(leftwith, leftwithout) + max(rightwith, rightwithout);
