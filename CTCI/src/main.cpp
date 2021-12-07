@@ -20,13 +20,7 @@ int dosm(int x)
 
 int main()
 {
-
-
-    vector<int> v1;
-    vector<int> v2;
-
-    int s1 =0;
-    int s2 =0;
+    cout<<sizeof(string);
 
     return 0;
 }
