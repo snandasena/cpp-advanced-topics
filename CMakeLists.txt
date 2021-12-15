@@ -23,6 +23,8 @@ add_subdirectory(low_latency)
 add_subdirectory(stl-algo)
 add_subdirectory(CTCI)
 
+add_subdirectory(algo)
+
 #add_subdirectory(ds/cf)
 #add_subdirectory(WASM)
 #add_subdirectory(websocket)
