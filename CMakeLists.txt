@@ -10,6 +10,7 @@ add_definitions(-std=c++17)
 
 
 add_subdirectory(asio-samples)
+add_subdirectory(sorting-algo)
 
 set(CXX_FLAGS "-Wall")
 #add_subdirectory(c-things)
