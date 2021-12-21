@@ -6,18 +6,24 @@
 
 using std::cout;
 
+#include <bitset>
+
 int main()
 {
 
     vector<int> arr{2, 7, 4, 1, 5, 3};
 //    SelectionSort(arr);
-    BubbleSort(arr);
+//    BubbleSort(arr);
+//    InsertionSort(arr);
+
+    MergeSort(arr);
     for (auto &i: arr)
     {
         cout << i << '\t';
     }
 
     cout << '\n';
+
 
     return 0;
 }
