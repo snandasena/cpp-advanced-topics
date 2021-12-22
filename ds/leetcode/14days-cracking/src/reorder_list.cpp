@@ -8,7 +8,7 @@
 class Solution
 {
 public:
-    void reorderList(ListNode *head)
+    void reorderList1(ListNode *head)
     {
         stack<ListNode *> stck;
         ListNode *curr = head;
@@ -31,6 +31,44 @@ public:
             curr = curr->next;
         }
         curr->next = nullptr;
+    }
+
+    void reorderList(ListNode *head)
+    {
+        ListNode *slow = head;
+        ListNode *fast = head;
+
+        while (fast && fast->next)
+        {
+            fast = fast->next->next;
+            slow = slow->next;
+        }
+
+        ListNode *curr = slow;
+        ListNode *next;
+        ListNode *pre = nullptr;
+
+        while (curr)
+        {
+            next = curr->next;
+            curr->next = pre;
+            pre = curr;
+            curr = next;
+        }
+
+        ListNode *n1 = head;
+        ListNode *n2 = pre;
+
+        while (n2 && n2->next)
+        {
+            next = n1->next;
+            n1->next = n2;
+            n1 = next;
+
+            next = n2->next;
+            n2->next = n1;
+            n2 = next;
+        }
     }
 };
 
