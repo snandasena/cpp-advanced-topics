@@ -119,3 +119,29 @@ void MergeSort(vector<int> &A)
     MergeSort(R);
     MergeSort(L, R, A);
 }
+
+int Partition(vector<int> &A, int start, int end)
+{
+    int pivot = A[end];
+    int pIndex = start;
+    for (int i = start; i < end; ++i)
+    {
+        if (A[i] <= pivot)
+        {
+            swap_elements(A[i], A[pIndex]);
+            pIndex += 1;
+        }
+    }
+    swap_elements(A[pIndex], A[end]);
+    return pIndex;
+}
+
+void QuickSort(vector<int> &A, int start, int end)
+{
+    if (start < end)
+    {
+        int pIndex = Partition(A, start, end);
+        QuickSort(A, start, pIndex - 1);
+        QuickSort(A, pIndex + 1, end);
+    }
+}
