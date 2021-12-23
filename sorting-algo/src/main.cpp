@@ -11,12 +11,13 @@ using std::cout;
 int main()
 {
 
-    vector<int> arr{2, 7, 4, 1, 5, 3};
+    vector<int> arr{2, 7, 4, 1, 5, 3, 8, 6};
 //    SelectionSort(arr);
 //    BubbleSort(arr);
 //    InsertionSort(arr);
 
-    MergeSort(arr);
+//    MergeSort(arr);
+    QuickSort(arr, 0, arr.size() - 1);
     for (auto &i: arr)
     {
         cout << i << '\t';
