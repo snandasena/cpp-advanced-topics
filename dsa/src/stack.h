@@ -39,8 +39,29 @@ public:
     {
         return top != -1;
     }
+};
 
+class LinkedListStack
+{
+    struct Node
+    {
+        int data{};
+        std::unique_ptr<Node> next{};
 
+        Node() = default;
+
+        explicit Node(int x) : data{x} {}
+    };
+
+    std::unique_ptr<Node> head{nullptr};
+
+public:
+    LinkedListStack() = default;
+
+    void Push(int x);
+    void Pop();
+    int Top() const;
+    bool IsEmpty() const;
 };
 
 
