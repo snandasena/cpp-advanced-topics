@@ -9,7 +9,6 @@ class Solution
 public:
     int numPairsDivisibleBy60(vector<int> &time)
     {
-
         vector<int> v(60, 0);
         int res = 0;
         int curr;
