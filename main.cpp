@@ -46,22 +46,17 @@ struct F : virtual B, virtual D
     }
 };
 
+
+
 int main()
 {
+    string s{"waterbottle"};
+    string k{"erbottlewat"};
 
-    C c;
-    c.disp();
-    F f;
-    f.disp();
-
-    int t = 1;
-    for (int i = 0; i < 10; ++i)
-    {
-        t *= 3;
-        cout << t << "\t";
-    }
-
-
+    s +=s;
+    auto i = s.find(k);
+    cout<<i<<endl;
+    cout<< s.substr(i, k.length())<<endl;
     return 0;
 }
 
