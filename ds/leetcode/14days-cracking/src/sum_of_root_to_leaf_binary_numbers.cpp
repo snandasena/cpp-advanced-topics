@@ -8,7 +8,7 @@ class Solution
 {
     int ans = 0;
 
-    int strtoint(string const &str)
+    int strtoint(string_view const &str)
     {
         int k = 0;
         int res = 0;
