@@ -92,12 +92,36 @@ public:
                 prev->next = node->next;
                 node = node->next;
                 delete temp;
-            }else
+            }
+            else
             {
                 cache.insert(node->data);
                 prev = node;
                 node = node->next;
             }
+        }
+    }
+
+    void DeleteDuplicateNodes2()
+    {
+        Node *node = head;
+        while (node != nullptr)
+        {
+            Node *curr = node;
+            while (curr->next != nullptr)
+            {
+                if (node->data == curr->next->data)
+                {
+                    Node *temp = curr->next;
+                    curr->next = curr->next->next;
+                    delete temp;
+                }
+                else
+                {
+                    curr = curr->next;
+                }
+            }
+            node = node->next;
         }
     }
 
@@ -122,7 +146,8 @@ int main()
     ll.DeleteNode(200);
 
     ll.PrintAll();
-    ll.DeleteDuplicatesNodes();
+//    ll.DeleteDuplicatesNodes();
+    ll.DeleteDuplicateNodes2();
     ll.PrintAll();
 
     return 0;
