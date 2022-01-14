@@ -65,8 +65,8 @@ public:
 
     void PrintLevelOrder()
     {
-        queue<pair<Node *, int>> que;
-        que.push({this->root, 0});
+        queue<pair<shared_ptr<Node>, int>> que;
+        que.emplace(this->root, 0);
         while (!que.empty())
         {
             auto[node, level] = que.front();
@@ -74,8 +74,8 @@ public:
             if (node != nullptr)
             {
                 cout << "(" << node->data << "," << level << ")" << "\n";
-                que.push({node->left, level + 1});
-                que.push({node->right, level + 1});
+                que.emplace(node->left, level + 1);
+                que.emplace(node->right, level + 1);
             }
         }
 
@@ -104,10 +104,10 @@ public:
             return;
         }
 
-        Node *key_node = nullptr;
-        Node *curr;
+        shared_ptr<Node> key_node{nullptr};
+        shared_ptr<Node> curr;
 
-        queue<Node *> que;
+        queue<shared_ptr<Node>> que;
         que.push(root);
 
         while (!que.empty())
@@ -131,10 +131,10 @@ public:
             }
         }
 
-        if (key_node)
-        {
-
-        }
+//        if (key_node)
+//        {
+//
+//        }
 
     }
 };
@@ -142,7 +142,7 @@ public:
 
 int main()
 {
-    Tree *tree = new Tree();
+    auto tree = make_shared<Tree>();
     tree->InsertLevelOrder(10);
     tree->InsertLevelOrder(20);
     tree->InsertLevelOrder(30);
