@@ -86,9 +86,12 @@ public:
     {
         if (root == nullptr) return;
 
-        if (root->data == key)
+        if (!root->left && !root->right)
         {
-            root = nullptr;
+            if (root->data == key)
+            {
+                root = nullptr;
+            }
             return;
         }
 
@@ -131,11 +134,36 @@ public:
             }
         }
 
-//        if (key_node)
-//        {
-//
-//        }
+        if (key_node)
+        {
+            key_node->data = curr->data;
+            DeleteNode(this->root, curr);
+        }
 
+    }
+
+    void DeleteNode(const shared_ptr<Node> &rt, const shared_ptr<Node> &node)
+    {
+        if (rt == nullptr) return;
+        if (rt == node)
+        {
+            return;
+        }
+
+        if (rt->left == node)
+        {
+            rt->left = nullptr;
+            return;
+        }
+
+        if (rt->right == node)
+        {
+            rt->right = nullptr;
+            return;
+        }
+
+        DeleteNode(rt->left, node);
+        DeleteNode(rt->right, node);
     }
 };
 
@@ -154,5 +182,9 @@ int main()
     tree->InsertLevelOrder(90);
     tree->InsertLevelOrder(100);
     tree->PrintLevelOrder();
+
+    tree->DeleteNode(10);
+    tree->PrintLevelOrder();
+
     return 0;
 }
