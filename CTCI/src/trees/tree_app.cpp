@@ -109,6 +109,8 @@ public:
 
         shared_ptr<Node> key_node{nullptr};
         shared_ptr<Node> curr;
+        shared_ptr<Node> pl{nullptr};
+        shared_ptr<Node> pr{nullptr};
 
         queue<shared_ptr<Node>> que;
         que.push(root);
@@ -126,18 +128,31 @@ public:
             if (curr->left)
             {
                 que.push(curr->left);
+                pl = curr;
+                pr = nullptr;
             }
 
             if (curr->right)
             {
                 que.push(curr->right);
+                pr = curr;
+                pl = nullptr;
             }
         }
 
         if (key_node)
         {
             key_node->data = curr->data;
-            DeleteNode(this->root, curr);
+//            DeleteNode(this->root, curr);
+            if(pl)
+            {
+                pl->left = nullptr;
+            }
+
+            if(pr)
+            {
+                pr->right = nullptr;
+            }
         }
 
     }

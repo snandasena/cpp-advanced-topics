@@ -1,6 +1,6 @@
 project(asio-samples)
 
-add_definitions(-std=c++2a)
+add_definitions(-std=c++17)
 
 include_directories(../asio/include)
 
