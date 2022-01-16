@@ -125,6 +125,96 @@ public:
         }
     }
 
+	// Don't return the element
+	int Helper(Node *node , int k)
+	{
+		if(node == nullptr) return 0;
+		int indx = Helper(node->next, k) +1;
+		if(indx == k)
+		{
+			cout<< "Kth to the last element is " << node->data<<endl; 
+		}
+		return indx;
+	}
+
+
+	Node *KthToLastElement(Node *node , int k, int &index)
+	{
+		if(node == nullptr) return nullptr;
+		
+		Node *curr = KthToLastElement(node->next, k, index);
+		index +=1;
+
+		if(index == k)
+		{
+			return node;
+		}
+		return curr;
+	}
+	
+	void PrintKthLastElement(int k)
+	{
+		Node *node = head;
+		Helper(node, k);
+	}
+
+	void PrintKthLastNode(int k)
+	{
+		int i = 0;
+		Node *node = head;
+		Node *ans = KthToLastElement(node, k, i);
+
+		cout<< "Kth to last element is "<< ans->data<< endl;
+	}
+
+	// O(1) space approach
+	Node *KthToLastLementBest(int k)
+	{
+		Node *n1 = head;
+		Node *n2 = head;
+		
+		for(int i =0; i< k; ++i)
+		{
+			if(n1 == nullptr) return nullptr;
+			n1 = n1->next;
+		}
+
+		while(n1)
+		{
+			n1 = n1->next;
+			n2 = n2->next;
+		}
+
+		return n2;
+	}
+
+	void KthToLastEle(int k)
+	{
+		Node *node = KthToLastLementBest(k);
+		cout<< "Kth to the last element is " << node->data<< endl;
+	}
+	
+	bool DeleteMidNode(Node *mid)
+	{
+		if(mid == nullptr || mid->next == nullptr) return false;
+		Node *next = mid->next;
+		mid->data = next->data;
+		mid->next = next->next;
+		return true;
+	}
+
+	void DelMid()
+	{
+		Node *mid = head;
+		Node *fast = head;
+		while(fast->next->next)
+		{
+			mid = mid->next;
+			fast = fast->next->next;
+		}
+
+		cout<< DeleteMidNode(mid)<<endl;
+	}
 };
 
 
@@ -149,6 +239,14 @@ int main()
 //    ll.DeleteDuplicatesNodes();
     ll.DeleteDuplicateNodes2();
     ll.PrintAll();
+	ll.InsertToTail(600);
+	ll.InsertToTail(700);
+	ll.InsertToTail(800);
+	ll.PrintAll();
+	ll.PrintKthLastElement(3);
+	ll.PrintKthLastNode(3);
+ 	ll.KthToLastEle(3);
+	ll.DelMid();
 
-    return 0;
+	return 0;
 }
