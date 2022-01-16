@@ -125,96 +125,155 @@ public:
         }
     }
 
-	// Don't return the element
-	int Helper(Node *node , int k)
-	{
-		if(node == nullptr) return 0;
-		int indx = Helper(node->next, k) +1;
-		if(indx == k)
-		{
-			cout<< "Kth to the last element is " << node->data<<endl; 
-		}
-		return indx;
-	}
+    // Don't return the element
+    int Helper(Node *node, int k)
+    {
+        if (node == nullptr) return 0;
+        int indx = Helper(node->next, k) + 1;
+        if (indx == k)
+        {
+            cout << "Kth to the last element is " << node->data << endl;
+        }
+        return indx;
+    }
 
 
-	Node *KthToLastElement(Node *node , int k, int &index)
-	{
-		if(node == nullptr) return nullptr;
-		
-		Node *curr = KthToLastElement(node->next, k, index);
-		index +=1;
+    Node *KthToLastElement(Node *node, int k, int &index)
+    {
+        if (node == nullptr) return nullptr;
 
-		if(index == k)
-		{
-			return node;
-		}
-		return curr;
-	}
-	
-	void PrintKthLastElement(int k)
-	{
-		Node *node = head;
-		Helper(node, k);
-	}
+        Node *curr = KthToLastElement(node->next, k, index);
+        index += 1;
 
-	void PrintKthLastNode(int k)
-	{
-		int i = 0;
-		Node *node = head;
-		Node *ans = KthToLastElement(node, k, i);
+        if (index == k)
+        {
+            return node;
+        }
+        return curr;
+    }
 
-		cout<< "Kth to last element is "<< ans->data<< endl;
-	}
+    void PrintKthLastElement(int k)
+    {
+        Node *node = head;
+        Helper(node, k);
+    }
 
-	// O(1) space approach
-	Node *KthToLastLementBest(int k)
-	{
-		Node *n1 = head;
-		Node *n2 = head;
-		
-		for(int i =0; i< k; ++i)
-		{
-			if(n1 == nullptr) return nullptr;
-			n1 = n1->next;
-		}
+    void PrintKthLastNode(int k)
+    {
+        int i = 0;
+        Node *node = head;
+        Node *ans = KthToLastElement(node, k, i);
 
-		while(n1)
-		{
-			n1 = n1->next;
-			n2 = n2->next;
-		}
+        cout << "Kth to last element is " << ans->data << endl;
+    }
 
-		return n2;
-	}
+    // O(1) space approach
+    Node *KthToLastLementBest(int k)
+    {
+        Node *n1 = head;
+        Node *n2 = head;
 
-	void KthToLastEle(int k)
-	{
-		Node *node = KthToLastLementBest(k);
-		cout<< "Kth to the last element is " << node->data<< endl;
-	}
-	
-	bool DeleteMidNode(Node *mid)
-	{
-		if(mid == nullptr || mid->next == nullptr) return false;
-		Node *next = mid->next;
-		mid->data = next->data;
-		mid->next = next->next;
-		return true;
-	}
+        for (int i = 0; i < k; ++i)
+        {
+            if (n1 == nullptr) return nullptr;
+            n1 = n1->next;
+        }
 
-	void DelMid()
-	{
-		Node *mid = head;
-		Node *fast = head;
-		while(fast->next->next)
-		{
-			mid = mid->next;
-			fast = fast->next->next;
-		}
+        while (n1)
+        {
+            n1 = n1->next;
+            n2 = n2->next;
+        }
 
-		cout<< DeleteMidNode(mid)<<endl;
-	}
+        return n2;
+    }
+
+    void KthToLastEle(int k)
+    {
+        Node *node = KthToLastLementBest(k);
+        cout << "Kth to the last element is " << node->data << endl;
+    }
+
+    bool DeleteMidNode(Node *mid)
+    {
+        if (mid == nullptr || mid->next == nullptr) return false;
+        Node *next = mid->next;
+        mid->data = next->data;
+        mid->next = next->next;
+        return true;
+    }
+
+    void DelMid()
+    {
+        Node *mid = head;
+        Node *fast = head;
+        while (fast->next)
+        {
+            mid = mid->next;
+            fast = fast->next->next;
+        }
+
+        cout << boolalpha << DeleteMidNode(mid) << endl;
+    }
+
+    Node *PartitionHelper(Node *node, int val)
+    {
+        Node *h = node;
+        Node *t = node;
+        Node *next;
+        while (node)
+        {
+            next = node->next;
+            if (node->data < val)
+            {
+                node->next = h;
+                h = node;
+            }
+            else
+            {
+                t->next = node;
+                t = node;
+            }
+            node = next;
+        }
+        if (t)
+        {
+            t->next = nullptr;
+        }
+        return h;
+    }
+
+    void PrintListNode(Node *node)
+    {
+        while (node)
+        {
+            cout << node->data << '\t';
+            node = node->next;
+        }
+        cout << '\n';
+    }
+
+    void Partition(int val)
+    {
+        Node *node = head;
+        node = PartitionHelper(node, val);
+        PrintListNode(node);
+    }
+
+    int SumLists()
+    {
+        Node *n1 = head;
+        int i = 1;
+        int res = 0;
+
+        while (n1)
+        {
+            res = res + n1->data * i;
+            i *= 10;
+            n1 = n1->next;
+        }
+        return res;
+    }
 };
 
 
@@ -239,14 +298,42 @@ int main()
 //    ll.DeleteDuplicatesNodes();
     ll.DeleteDuplicateNodes2();
     ll.PrintAll();
-	ll.InsertToTail(600);
-	ll.InsertToTail(700);
-	ll.InsertToTail(800);
-	ll.PrintAll();
-	ll.PrintKthLastElement(3);
-	ll.PrintKthLastNode(3);
- 	ll.KthToLastEle(3);
-	ll.DelMid();
+    ll.InsertToTail(600);
+    ll.InsertToTail(700);
+    ll.InsertToTail(800);
+    ll.InsertToTail(100);
+    ll.InsertToTail(100);
+    ll.InsertToTail(100);
+    ll.InsertToTail(100);
+    ll.InsertToTail(5);
+    ll.InsertToTail(5);
+    ll.InsertToTail(10);
+    ll.PrintAll();
+    ll.PrintKthLastElement(3);
+    ll.PrintKthLastNode(3);
+    ll.KthToLastEle(3);
+    ll.DelMid();
+    ll.PrintAll();
+//
+    ll.Partition(100);
 
-	return 0;
+    LinkedList l1;
+    l1.InsertToHead(6);
+    l1.InsertToHead(1);
+    l1.InsertToHead(7);
+
+    l1.PrintAll();
+
+    int res = l1.SumLists();
+
+    LinkedList l2;
+    l2.InsertToHead(2);
+    l2.InsertToHead(9);
+    l2.InsertToHead(5);
+    l2.PrintAll();
+
+    res += l2.SumLists();
+
+    cout << res << endl;
+    return 0;
 }
