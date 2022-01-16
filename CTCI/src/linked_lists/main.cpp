@@ -216,7 +216,7 @@ public:
         cout << boolalpha << DeleteMidNode(mid) << endl;
     }
 
-    Node  *PartitionHelper(Node *node, int val)
+    Node *PartitionHelper(Node *node, int val)
     {
         Node *h = node;
         Node *t = node;
@@ -236,7 +236,7 @@ public:
             }
             node = next;
         }
-        if(t)
+        if (t)
         {
             t->next = nullptr;
         }
@@ -260,7 +260,20 @@ public:
         PrintListNode(node);
     }
 
+    int SumLists()
+    {
+        Node *n1 = head;
+        int i = 1;
+        int res = 0;
 
+        while (n1)
+        {
+            res = res + n1->data * i;
+            i *= 10;
+            n1 = n1->next;
+        }
+        return res;
+    }
 };
 
 
@@ -304,5 +317,23 @@ int main()
 //
     ll.Partition(100);
 
+    LinkedList l1;
+    l1.InsertToHead(6);
+    l1.InsertToHead(1);
+    l1.InsertToHead(7);
+
+    l1.PrintAll();
+
+    int res = l1.SumLists();
+
+    LinkedList l2;
+    l2.InsertToHead(2);
+    l2.InsertToHead(9);
+    l2.InsertToHead(5);
+    l2.PrintAll();
+
+    res += l2.SumLists();
+
+    cout << res << endl;
     return 0;
 }
