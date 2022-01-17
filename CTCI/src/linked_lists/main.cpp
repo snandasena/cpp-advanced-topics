@@ -276,6 +276,40 @@ public:
     }
 };
 
+struct ListNode
+{
+    int data;
+    ListNode *next{nullptr};
+
+    ListNode() = default;
+
+    explicit ListNode(int d) : data{d} {}
+
+};
+
+ListNode *SumListNodesHelper(ListNode *n1, ListNode *n2, int carry)
+{
+    if (n1 == nullptr && n2 == nullptr && carry == 0) return 0;
+
+    ListNode *res;
+    int value = carry;
+
+    if (n1)
+    {
+        value += n1->data;
+    }
+
+    if (n2)
+    {
+        value += n2->data;
+    }
+}
+
+ListNode *SumLists(ListNode *n1, ListNode *n2)
+{
+
+}
+
 
 int main()
 {
