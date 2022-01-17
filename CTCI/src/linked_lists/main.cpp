@@ -287,11 +287,11 @@ struct ListNode
 
 };
 
-ListNode *SumListNodesHelper(ListNode *n1, ListNode *n2, int carry)
+ListNode *SumListNodesHelper(ListNode *n1, ListNode *n2, int carry = 0)
 {
     if (n1 == nullptr && n2 == nullptr && carry == 0) return 0;
 
-    ListNode *res;
+    auto res = new ListNode;
     int value = carry;
 
     if (n1)
@@ -303,15 +303,94 @@ ListNode *SumListNodesHelper(ListNode *n1, ListNode *n2, int carry)
     {
         value += n2->data;
     }
+
+    res->data = value % 10;
+    if (n1 || n2)
+    {
+        ListNode *more = SumListNodesHelper(n1 == nullptr ? nullptr : n1->next,
+                                            n2 == nullptr ? nullptr : n2->next,
+                                            value >= 10 ? 1 : 0);
+        res->next = more;
+    }
+    return res;
 }
 
 ListNode *SumLists(ListNode *n1, ListNode *n2)
 {
+    return SumListNodesHelper(n1, n2);
+}
 
+void PrintListNode(ListNode *node)
+{
+    while (node)
+    {
+        cout << node->data << '\t';
+        node = node->next;
+    }
+    cout << '\n';
+}
+
+void ListNodeAPI()
+{
+    auto *l1 = new ListNode(7);
+    l1->next = new ListNode(1);
+    l1->next->next = new ListNode(6);
+
+    PrintListNode(l1);
+
+    auto *l2 = new ListNode(5);
+    l2->next = new ListNode(9);
+    l2->next->next = new ListNode(2);
+
+    PrintListNode(l2);
+
+    auto *node = SumLists(l1, l2);
+    PrintListNode(node);
+
+    delete l1;
+    delete l2;
+    delete node;
+}
+
+void RecursiveLL(ListNode *node)
+{
+    if (node == nullptr) return;
+    RecursiveLL(node->next);
+    cout << node->data << '\t';
 }
 
 
-int main()
+ListNode *ReverseLL(ListNode *node)
+{
+    if (node == nullptr || node->next == nullptr)
+    {
+        return node;
+    }
+
+    ListNode *temp = ReverseLL(node->next);
+
+    node->next->next = node;
+    node->next = nullptr;
+    return temp;
+}
+
+
+void TestRecursiveLL()
+{
+    ListNode *head = new ListNode(10);
+    head->next = new ListNode(20);
+    head->next->next = new ListNode(30);
+    head->next->next->next = new ListNode(40);
+    head->next->next->next->next = new ListNode(50);
+
+//    RecursiveLL(head);
+    PrintListNode(head);
+    auto *node = ReverseLL(head);
+    PrintListNode(node);
+}
+
+
+void LLAPI()
 {
     LinkedList ll;
     ll.InsertToHead(10);
@@ -369,5 +448,12 @@ int main()
     res += l2.SumLists();
 
     cout << res << endl;
+}
+
+int main()
+{
+//    ListNodeAPI();
+
+    TestRecursiveLL();
     return 0;
 }

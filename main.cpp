@@ -57,6 +57,9 @@ int main()
     auto i = s.find(k);
     cout<<i<<endl;
     cout<< s.substr(i, k.length())<<endl;
+
+    string x{"5"};
+    cout<<stoi(x)<<endl;
     return 0;
 }
 
