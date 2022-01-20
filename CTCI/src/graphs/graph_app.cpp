@@ -54,13 +54,38 @@ public:
             }
         }
 
-        cout<<endl;
+        cout << endl;
     }
 
     void DFS(int s)
     {
         vector<bool> visited(m_V, false);
         DFS_Rec(s, visited);
+        cout<<endl;
+    }
+
+    void DFSStack(int s)
+    {
+        vector<bool> visited(m_V, false);
+        stack<int> stck;
+        stck.push(s);
+        visited[s] = true;
+        int top;
+        while (!stck.empty())
+        {
+            top = stck.top();
+            stck.pop();
+            cout << top << '\t';
+            for (int const &ele: m_adj[top])
+            {
+                if (!visited[ele])
+                {
+                    stck.push(ele);
+                    visited[ele] = true;
+                }
+            }
+        }
+        cout << endl;
     }
 };
 
@@ -74,6 +99,7 @@ int main()
     G.addEdge(3, 4);
 //    G.BFS(0);
     G.DFS(0);
+    G.DFSStack(0);
 
 
     return 0;
