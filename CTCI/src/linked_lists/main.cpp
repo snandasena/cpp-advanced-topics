@@ -450,10 +450,92 @@ void LLAPI()
     cout << res << endl;
 }
 
+bool IsPalindromeList(ListNode *head)
+{
+    ListNode *slow = head;
+    ListNode *fast = head;
+    stack<int> st;
+    while (fast && fast->next)
+    {
+        st.push(slow->data);
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+
+    if (fast)
+    {
+        slow = slow->next;
+    }
+
+    while (!st.empty() && slow)
+    {
+        auto top = st.top();
+        st.pop();
+        if (slow->data != top)
+        {
+            return false;
+        }
+        slow = slow->next;
+    }
+    return true;
+}
+
+ListNode *FindIntersection(ListNode *l1, ListNode *l2)
+{
+    int len1 = 0;
+    int len2 = 0;
+    ListNode *node1 = l1;
+    ListNode *node2 = l2;
+
+    while ((node1 && node1->next) || (node2 && node2->next))
+    {
+        if (node1)
+        {
+            ++len1;
+            node1 = node1->next;
+        }
+
+        if (node2)
+        {
+            ++len2;
+            node2 = node2->next;
+        }
+    }
+
+    if (node1 != node2) return nullptr;
+
+    ListNode *l = (len1 > len2) ? l1 : l2;
+    ListNode *s = (len1 < len2) ? l2 : l1;
+    int diff = abs(len1 - len2);
+    while (diff && l)
+    {
+        l = l->next;
+        --diff;
+    }
+
+    while (l && s && l != s)
+    {
+        l = l->next;
+        s = s->next;
+    }
+    return s;
+}
+
+
 int main()
 {
 //    ListNodeAPI();
 
     TestRecursiveLL();
+
+    ListNode *head = new ListNode(1);
+    head->next = new ListNode(2);
+    head->next->next = new ListNode(3);
+    head->next->next->next = new ListNode(3);
+    head->next->next->next->next = new ListNode(2);
+    head->next->next->next->next->next = new ListNode(1);
+
+    cout << boolalpha << IsPalindromeList(head) << endl;
+
     return 0;
 }
