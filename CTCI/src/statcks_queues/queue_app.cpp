@@ -13,26 +13,44 @@ class Queue
     {
         Node *next{nullptr};
         int data;
-        explicit Node(int d) : data{d}
+        explicit Node(int d) : data{d}{}
     };
 
 
-    Node *head{nullptr};
-    Node *tail{nullptr};
+    Node *front{nullptr};
+    Node *rear{nullptr};
 public:
 
     Queue() = default;
 
-    void Push(int data)
+    void Enqueue(int data)
     {
         Node *node = new Node(data);
-        if (head == nullptr)
+        if (rear == nullptr)
         {
-            head = tail = node;
+            front = rear = node;
+            return;
         }
 
+        rear->next = node;
+        rear = node;
+    }
+
+    void Dequeue()
+    {
         
     }
 
-
 };
+
+int main()
+{
+    Queue que;
+    que.Enqueue(1);
+    que.Enqueue(2);
+    que.Enqueue(3);
+    que.Enqueue(4);
+
+
+    return 0;
+}
