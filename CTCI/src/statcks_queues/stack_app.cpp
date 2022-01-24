@@ -6,14 +6,15 @@
 
 using namespace std;
 
+template<typename T>
 class Stack
 {
     struct Node
     {
         shared_ptr<Node> next{nullptr};
-        int data;
+        T data;
 
-        explicit Node(int d) : data{d} {}
+        explicit Node(T d) : data{d} {}
     };
 
 
@@ -22,32 +23,87 @@ public:
 
     Stack() = default;
 
-    ~Stack()
+    virtual void Push(T data)
     {
-        if (head)
-        {
-            head = nullptr;
-        }
-    }
-
-    void Push(int data)
-    {
-        auto node =  make_shared<Node>(data);
+        auto node = make_shared<Node>(data);
         node->next = this->head;
         this->head = node;
     }
 
-    int Top() const
+    T Top() const
     {
         if (this->head) return head->data;
-        return -1;
+        throw -1;
     }
 
     void Pop()
     {
-        auto node = head;
         head = head->next;
     }
 
+    bool Empty()
+    {
+
+        return head == nullptr;
+    }
+
 };
+
+struct MinNode
+{
+    int data;
+    int minVal;
+
+};
+
+class MinStack : public Stack<MinNode>
+{
+public:
+
+    MinStack() = default;
+
+    void Push(int data)
+    {
+        int mn = min(data, MinVal());
+        Stack<MinNode>::Push(MinNode{data, mn});
+    }
+
+    int MinVal()
+    {
+        if (this->Empty())
+        {
+            return INT_MAX;
+        }
+        else
+        {
+            return Top().minVal;
+        }
+    }
+};
+
+
+int main()
+{
+    Stack<int> st;
+    st.Push(10);
+    st.Push(20);
+    st.Push(30);
+    st.Push(40);
+
+    cout<<st.Top()<<endl;
+    st.Pop();
+    cout<<st.Top()<<endl;
+
+    MinStack mnStak;
+    mnStak.Push(10);
+    mnStak.Push(5);
+    mnStak.Push(100);
+    mnStak.Push(3);
+    mnStak.Push(1000);
+
+    MinNode mn = mnStak.Top();
+    cout<<mn.minVal<<endl;
+
+    return 0;
+}
 
