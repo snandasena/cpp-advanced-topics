@@ -10,7 +10,7 @@ class Stack
 {
     struct Node
     {
-        Node *next{nullptr};
+        shared_ptr<Node> next{nullptr};
         int data;
 
         explicit Node(int d) : data{d} {}
