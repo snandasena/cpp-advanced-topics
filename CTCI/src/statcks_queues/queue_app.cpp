@@ -13,7 +13,8 @@ class Queue
     {
         Node *next{nullptr};
         int data;
-        explicit Node(int d) : data{d}{}
+
+        explicit Node(int d) : data{d} {}
     };
 
 
@@ -38,7 +39,14 @@ public:
 
     void Dequeue()
     {
-        
+        if (front)
+        {
+            front = front->next;
+        }
+        if (!front)
+        {
+            rear = nullptr;
+        }
     }
 
 };
@@ -50,6 +58,12 @@ int main()
     que.Enqueue(2);
     que.Enqueue(3);
     que.Enqueue(4);
+    que.Enqueue(5);
+    que.Enqueue(6);
+    que.Enqueue(7);
+    que.Dequeue();
+    que.Dequeue();
+    que.Dequeue();
 
 
     return 0;
