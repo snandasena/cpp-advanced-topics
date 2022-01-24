@@ -31,7 +31,6 @@ public:
             front = rear = node;
             return;
         }
-
         rear->next = node;
         rear = node;
     }

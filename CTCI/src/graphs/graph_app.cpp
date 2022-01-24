@@ -38,7 +38,6 @@ public:
         vector<bool> visited(m_V, false);
         que.push(src);
         visited[src] = true;
-
         while (!que.empty())
         {
             auto v = que.front();
@@ -53,7 +52,6 @@ public:
                 }
             }
         }
-
         cout << endl;
     }
 

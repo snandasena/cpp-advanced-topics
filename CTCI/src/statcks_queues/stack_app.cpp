@@ -17,7 +17,7 @@ class Stack
     };
 
 
-    Node *head{nullptr};
+    shared_ptr<Node> head{nullptr};
 public:
 
     Stack() = default;
@@ -26,19 +26,18 @@ public:
     {
         if (head)
         {
-            delete head;
             head = nullptr;
         }
     }
 
     void Push(int data)
     {
-        Node *node = new Node(data);
+        auto node =  make_shared<Node>(data);
         node->next = this->head;
         this->head = node;
     }
 
-    int Top()
+    int Top() const
     {
         if (this->head) return head->data;
         return -1;
@@ -46,10 +45,8 @@ public:
 
     void Pop()
     {
-        Node *node = head;
+        auto node = head;
         head = head->next;
-        delete node;
-
     }
 
 };
