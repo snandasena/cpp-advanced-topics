@@ -17,11 +17,12 @@ class Stack
         explicit Node(T d) : data{d} {}
     };
 
-
     shared_ptr<Node> head{nullptr};
 public:
 
     Stack() = default;
+
+    virtual ~Stack() = default;
 
     virtual void Push(T data)
     {
@@ -30,13 +31,7 @@ public:
         this->head = node;
     }
 
-    T Top() const
-    {
-        if (this->head) return head->data;
-        throw -1;
-    }
-
-    void Pop()
+    virtual void Pop()
     {
         head = head->next;
     }
@@ -47,6 +42,11 @@ public:
         return head == nullptr;
     }
 
+    T Top() const
+    {
+        if (this->head) return head->data;
+        throw -1;
+    }
 };
 
 struct MinNode
@@ -81,6 +81,50 @@ public:
     }
 };
 
+template<typename T, typename S = size_t>
+class CapacityStack : public Stack<T>
+{
+    S size{10};
+    S capacity = 0;
+public:
+
+    CapacityStack() = default;
+
+    explicit CapacityStack(S s) : size{s} {}
+
+    void Push(T data) override
+    {
+        if (!IsFull())
+        {
+            Stack<T>::Push(data);
+            ++capacity;
+        }
+        else
+        {
+            throw -1;
+        }
+    }
+
+    void Pop() override
+    {
+        if (Stack<T>::Empty())
+        {
+
+            throw -1;
+        }
+        else
+        {
+            Stack<T>::Pop();
+            --capacity;
+        }
+    }
+
+    bool IsFull()
+    {
+        return capacity == size;
+    }
+
+};
 
 int main()
 {
@@ -90,9 +134,9 @@ int main()
     st.Push(30);
     st.Push(40);
 
-    cout<<st.Top()<<endl;
+    cout << st.Top() << endl;
     st.Pop();
-    cout<<st.Top()<<endl;
+    cout << st.Top() << endl;
 
     MinStack mnStak;
     mnStak.Push(10);
@@ -102,7 +146,17 @@ int main()
     mnStak.Push(1000);
 
     MinNode mn = mnStak.Top();
-    cout<<mn.minVal<<endl;
+    cout << mn.minVal << endl;
+
+
+    CapacityStack<int> capaStack;
+    capaStack.Push(10);
+    capaStack.Push(20);
+    capaStack.Push(30);
+    capaStack.Push(40);
+    capaStack.Pop();
+
+    cout << capaStack.Top() << endl;
 
     return 0;
 }
