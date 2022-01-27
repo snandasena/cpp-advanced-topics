@@ -161,9 +161,7 @@ void ReverseLinkedList(Node **head)
         prev = curr;
         curr = next;
     }
-
     *head = prev;
-
 }
 
 void PrintLinkedList(Node *head)

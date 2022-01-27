@@ -8,37 +8,58 @@ using namespace std;
 
 class Queue
 {
-
     struct Node
     {
-        Node *next{nullptr};
+        shared_ptr<Node> next{nullptr};
         int data;
-        explicit Node(int d) : data{d}{}
+
+        explicit Node(int d) : data{d} {}
+
     };
 
-
-    Node *front{nullptr};
-    Node *rear{nullptr};
+    shared_ptr<Node> front{nullptr};
+    shared_ptr<Node> rear{nullptr};
 public:
 
     Queue() = default;
 
     void Enqueue(int data)
     {
-        Node *node = new Node(data);
+        auto node = make_shared<Node>(data);
         if (rear == nullptr)
         {
             front = rear = node;
             return;
         }
-
         rear->next = node;
         rear = node;
     }
 
     void Dequeue()
     {
-        
+        if (front)
+        {
+            front = front->next;
+        }
+        if (!front)
+        {
+            rear = nullptr;
+        }
+    }
+
+    int Peek()
+    {
+        if (front)
+        {
+            return front->data;
+        }
+
+        return -1;
+    }
+
+    bool Empty()
+    {
+        return front == nullptr;
     }
 
 };
@@ -50,6 +71,15 @@ int main()
     que.Enqueue(2);
     que.Enqueue(3);
     que.Enqueue(4);
+    que.Enqueue(5);
+    que.Enqueue(6);
+    que.Enqueue(7);
+    que.Dequeue();
+    que.Dequeue();
+    que.Dequeue();
+
+    cout<<que.Peek()<<endl;
+    cout<<boolalpha<<que.Empty()<<endl;
 
 
     return 0;

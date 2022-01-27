@@ -6,51 +6,158 @@
 
 using namespace std;
 
+template<typename T>
 class Stack
 {
     struct Node
     {
-        Node *next{nullptr};
-        int data;
+        shared_ptr<Node> next{nullptr};
+        T data;
 
-        explicit Node(int d) : data{d} {}
+        explicit Node(T d) : data{d} {}
     };
 
-
-    Node *head{nullptr};
+    shared_ptr<Node> head{nullptr};
 public:
 
     Stack() = default;
 
-    ~Stack()
-    {
-        if (head)
-        {
-            delete head;
-            head = nullptr;
-        }
-    }
+    virtual ~Stack() = default;
 
-    void Push(int data)
+    virtual void Push(T data)
     {
-        Node *node = new Node(data);
+        auto node = make_shared<Node>(data);
         node->next = this->head;
         this->head = node;
     }
 
-    int Top()
+    virtual void Pop()
     {
-        if (this->head) return head->data;
-        return -1;
+        head = head->next;
     }
 
-    void Pop()
+    bool Empty()
     {
-        Node *node = head;
-        head = head->next;
-        delete node;
 
+        return head == nullptr;
+    }
+
+    T Top() const
+    {
+        if (this->head) return head->data;
+        throw -1;
+    }
+};
+
+struct MinNode
+{
+    int data;
+    int minVal;
+
+};
+
+class MinStack : public Stack<MinNode>
+{
+public:
+
+    MinStack() = default;
+
+    void Push(int data)
+    {
+        int mn = min(data, MinVal());
+        Stack<MinNode>::Push(MinNode{data, mn});
+    }
+
+    int MinVal()
+    {
+        if (this->Empty())
+        {
+            return INT_MAX;
+        }
+        else
+        {
+            return Top().minVal;
+        }
+    }
+};
+
+template<typename T, typename S = size_t>
+class CapacityStack : public Stack<T>
+{
+    S size{10};
+    S capacity = 0;
+public:
+
+    CapacityStack() = default;
+
+    explicit CapacityStack(S s) : size{s} {}
+
+    void Push(T data) override
+    {
+        if (!IsFull())
+        {
+            Stack<T>::Push(data);
+            ++capacity;
+        }
+        else
+        {
+            throw -1;
+        }
+    }
+
+    void Pop() override
+    {
+        if (Stack<T>::Empty())
+        {
+
+            throw -1;
+        }
+        else
+        {
+            Stack<T>::Pop();
+            --capacity;
+        }
+    }
+
+    bool IsFull()
+    {
+        return capacity == size;
     }
 
 };
+
+int main()
+{
+    Stack<int> st;
+    st.Push(10);
+    st.Push(20);
+    st.Push(30);
+    st.Push(40);
+
+    cout << st.Top() << endl;
+    st.Pop();
+    cout << st.Top() << endl;
+
+    MinStack mnStak;
+    mnStak.Push(10);
+    mnStak.Push(5);
+    mnStak.Push(100);
+    mnStak.Push(3);
+    mnStak.Push(1000);
+
+    MinNode mn = mnStak.Top();
+    cout << mn.minVal << endl;
+
+
+    CapacityStack<int> capaStack;
+    capaStack.Push(10);
+    capaStack.Push(20);
+    capaStack.Push(30);
+    capaStack.Push(40);
+    capaStack.Pop();
+
+    cout << capaStack.Top() << endl;
+
+    return 0;
+}
 
