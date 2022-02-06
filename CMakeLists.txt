@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_C_STANDARD 11)
 
 #include_directories(asio)
-
+set(CMAKE_CXX_FLAGS "-g -Wall -Wextra")
 add_definitions(-std=c++17)
 
 

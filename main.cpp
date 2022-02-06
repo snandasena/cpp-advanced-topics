@@ -46,20 +46,80 @@ struct F : virtual B, virtual D
     }
 };
 
+int BinaryGap(int N)
+{
+    int y = N;
+    int i = 0;
+    while (y != 0)
+    {
+        ++i;
+        y /= 2;
+    }
 
+    int start = 0;
+    int end = 0;
+    bool flag{false};
+    int x = 1;
+    int k = 1;
+    for (int j = 0; j <= i; ++j)
+    {
+        y = (N & x);
+        if (!flag && y != 0)
+        {
+            flag = true;
+            start = j;
+            k = x;
+        }
+
+        if (y != 0)
+        {
+            end = j;
+        }
+
+        x *= 2;
+    }
+
+    if (start == end) return 0;
+    x = k;
+    int curr = 0;
+    int ans = 0;
+    for (int j = start; j <= end; ++j)
+    {
+        y = (N & x);
+        if (y == 0)
+        {
+            ++curr;
+        }
+        else
+        {
+            ans = max(curr, ans);
+            curr = 0;
+        }
+
+        x *= 2;
+    }
+    return ans;
+}
+
+
+int missing_number(vector<int> &v)
+{
+    int N = v.size();
+    sort(v.begin(), v.end());
+    for (int i = 1; i <= N; ++i)
+    {
+        if (i != v[i - 1]) return i;
+    }
+
+    return N + 1;
+}
 
 int main()
 {
-    string s{"waterbottle"};
-    string k{"erbottlewat"};
 
-    s +=s;
-    auto i = s.find(k);
-    cout<<i<<endl;
-    cout<< s.substr(i, k.length())<<endl;
+    vector<int> v{1};//{1, 3, 2, 4, 5};
 
-    string x{"5"};
-    cout<<stoi(x)<<endl;
+    cout << missing_number(v) << endl;
     return 0;
 }
 
