@@ -102,19 +102,24 @@ int BinaryGap(int N)
 }
 
 
-int main()
+int missing_number(vector<int> &v)
 {
-    int N = 529;
-//    cout << BinaryGap(N) << endl;
-
-    int x = 1;
-
-    for (int i = 0; i < 32; ++i)
+    int N = v.size();
+    sort(v.begin(), v.end());
+    for (int i = 1; i <= N; ++i)
     {
-        cout <<(1<<i) << endl;
+        if (i != v[i - 1]) return i;
     }
 
+    return N + 1;
+}
 
+int main()
+{
+
+    vector<int> v{1};//{1, 3, 2, 4, 5};
+
+    cout << missing_number(v) << endl;
     return 0;
 }
 
