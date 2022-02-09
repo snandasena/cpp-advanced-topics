@@ -4,6 +4,8 @@
 
 #include <bits/stdc++.h>
 
+#define LOG(x) cout<<x<<endl
+
 using namespace std;
 
 template<typename T>
@@ -123,7 +125,19 @@ public:
     {
         return capacity == size;
     }
+};
 
+class MyQueue
+{
+    stack<int> stackNewest;
+    stack<int> stackOldest;
+
+    MyQueue() = default;
+
+    int size()
+    {
+        return stackNewest.size() + stackOldest.size();
+    }
 };
 
 int main()
@@ -134,9 +148,9 @@ int main()
     st.Push(30);
     st.Push(40);
 
-    cout << st.Top() << endl;
+    LOG(st.Top());
     st.Pop();
-    cout << st.Top() << endl;
+    LOG(st.Top());
 
     MinStack mnStak;
     mnStak.Push(10);
@@ -146,7 +160,7 @@ int main()
     mnStak.Push(1000);
 
     MinNode mn = mnStak.Top();
-    cout << mn.minVal << endl;
+    LOG (mn.minVal);
 
 
     CapacityStack<int> capaStack;
@@ -156,8 +170,7 @@ int main()
     capaStack.Push(40);
     capaStack.Pop();
 
-    cout << capaStack.Top() << endl;
-
+    LOG(capaStack.Top());
     return 0;
 }
 
