@@ -6,8 +6,10 @@
 #define ADVANCED_TOPICS_BASE_H
 
 #include <bits/stdc++.h>
+#define LOG(x) cout<<x<<endl
 
 using namespace std;
+
 
 
 struct Node
