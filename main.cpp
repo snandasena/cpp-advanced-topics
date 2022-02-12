@@ -1,6 +1,7 @@
 
 
 #include <bits/stdc++.h>
+#include <type_traits>
 
 using namespace std;
 
@@ -114,13 +115,209 @@ int missing_number(vector<int> &v)
     return N + 1;
 }
 
+
+void ptest(int *pVal)
+{
+    *pVal = 10;
+}
+
+void reftest(int &pVal)
+{
+    pVal = 50;
+}
+
+
+struct PStruct
+{
+    int x;
+    int y;
+};
+
+void pStructTest(PStruct &pStruct)
+{
+    pStruct.x = 10;
+    pStruct.y = 50;
+}
+
+PStruct *Get()
+{
+    PStruct ref{};
+    ref.x = 9999;
+    ref.y = 66666;
+    auto p = make_shared<PStruct>(ref);
+    return p.get();
+}
+
+class Account
+{
+    double balance;
+public:
+
+    Account(double initBal) : balance{initBal} {}
+
+    double GetBalance() const { return balance; }
+};
+
+double Account = 23.999;
+
+
+struct X
+{
+    char a; // 1+3
+    char _pad1[3];
+    int b; // 4
+    short c; // 2
+    char d; // 1+1
+    char _pad2[1];
+} bar[3];
+
+class CX
+{
+    char a;
+    int b;
+    short c;
+    char d;
+
+    int temp() { return 0; }
+};
+
+union UX
+{
+    int b;
+    short c;
+    double e;
+    char d;
+};
+
+
+class Animal
+{
+    string name;
+    string type;
+
+public:
+    Animal(string n, string t) : name{move(n)}, type{move(t)} {}
+
+    Animal(Animal &animal) = default;
+
+    Animal &operator=(Animal const &other) = default;
+
+    virtual void Noise()
+    {
+        cout << "Animal Noise\n";
+    };
+
+    virtual ~Animal()
+    {
+        cout << "Deleted Animal\n";
+    }
+
+    string GetName() const { return name; }
+
+    string GetType() const { return type; }
+};
+
+class Cat : public Animal
+{
+    string bread;
+
+public:
+    Cat(string b, string n, string t) : Animal(move(n), move(t)), bread{move(b)} {}
+
+    ~Cat()
+    {
+        cout << "Deleted Cat\n";
+    }
+
+    void Noise() override
+    {
+        cout << "Cat Noise\n";
+    }
+
+    string GetBread() const { return bread; }
+};
+
+
+class AnimalBest
+{
+    string name;
+    string type;
+
+public:
+
+    AnimalBest(string n, string t) : name{move(n)}, type{move(t)} {}
+
+    virtual void Noise()
+    {
+        cout << "Animal Noise\n";
+    }
+
+    virtual ~AnimalBest() = default;
+
+    string GetName() const { return name; }
+
+    string GetType() const { return type; }
+};
+
+class CatBest : public AnimalBest
+{
+    string bread;
+public:
+    CatBest(string b, string n, string t) : AnimalBest(move(n), move(t)), bread{move(b)} {}
+
+    void Noise() override
+    {
+        cout << "Cat Noise\n";
+    }
+
+    string GetBread() const { return bread; }
+};
+
+void AnimalBestTestAPI()
+{
+    unique_ptr<CatBest> cat = make_unique<CatBest>("B", "N", "T");
+    cout << cat->GetName() << endl;
+    cout << cat->GetType() << endl;
+}
+
 int main()
 {
 
-    vector<int> v{1};//{1, 3, 2, 4, 5};
+//    Cat cat("Bengal", "Puffy", "Tiger"); // value
+//
+//    cout << cat.GetName() << endl;
+//    cout << cat.GetType() << endl;
+//    cout << cat.GetBread() << endl;
 
-    cout << missing_number(v) << endl;
+
+//    Animal *pCat = new Cat("Siberia", "Alex", "Tiger");
+//    cout<<pCat->GetName()<<endl;
+//    cout<<pCat->GetType()<<endl;
+//    delete pCat;
+
+//    unique_ptr<Animal> uptrCat = make_unique<Cat>("Siberia", "Alex", "Tiger");
+//    cout<<uptrCat->GetName()<<endl;
+//    cout<<uptrCat->GetType()<<endl;
+
+//    unique_ptr<Cat> uptrCat = make_unique<Cat>("Siberia", "Alex", "Tiger");
+//    cout<<uptrCat->GetName()<<endl;
+//    cout<<uptrCat->GetType()<<endl;
+//    cout<<uptrCat->GetBread()<<endl;
+
+//    unique_ptr<Animal> uptrCat = make_unique<Animal>("Alex", "Tiger");
+//    cout << uptrCat->GetName() << endl;
+//    cout << uptrCat->GetType() << endl;
+//    cout << uptrCat->GetBread() << endl;
+
+    AnimalBestTestAPI();
+    cout<<boolalpha;
+    cout<<is_standard_layout<CatBest>()<< endl;
+    cout<<is_trivial<CatBest>()<< endl;
+    cout<<is_trivial<CX>()<< endl;
+    cout<<is_standard_layout<CX>()<< endl;
+
     return 0;
+
 }
 
 // 14 + 13 = 27
