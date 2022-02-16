@@ -6,10 +6,11 @@
 #define ADVANCED_TOPICS_BASE_H
 
 #include <bits/stdc++.h>
-#define LOG(x) cout<<x<<endl
+
+#define LOG(x) cout<<x<<'\t'
+#define LOGN(x) cout<<x<<'\n'
 
 using namespace std;
-
 
 
 struct Node
@@ -68,5 +69,26 @@ struct ListNode
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
+void InsertElementsToHead(ListNode *head, vector<int> &nums)
+{
+    for (auto it = nums.begin(); it != nums.end(); ++it)
+    {
+        ListNode *temp = new ListNode(*it);
+        temp->next = nullptr;
+        head->next = temp;
+        head = temp;
+    }
+}
+
+
+void PrintLinkedList(ListNode const *head)
+{
+    while (head)
+    {
+        LOG(head->val);
+        head = head->next;
+    }
+    LOGN("");
+}
 
 #endif //ADVANCED_TOPICS_BASE_H
