@@ -1,6 +1,6 @@
 project(leetcode)
 
-#add_subdirectory(14days-cracking)
+add_subdirectory(14days-cracking)
 add_subdirectory(linkedlist)
 add_subdirectory(backtracking)
 
