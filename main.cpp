@@ -280,6 +280,15 @@ void AnimalBestTestAPI()
     cout << cat->GetType() << endl;
 }
 
+class AC
+{
+    int a; // 4
+    char c; // 1
+    char ac; // 1
+    int d; // 4
+
+};
+
 int main()
 {
 
@@ -309,13 +318,14 @@ int main()
 //    cout << uptrCat->GetType() << endl;
 //    cout << uptrCat->GetBread() << endl;
 
-    AnimalBestTestAPI();
-    cout<<boolalpha;
-    cout<<is_standard_layout<CatBest>()<< endl;
-    cout<<is_trivial<CatBest>()<< endl;
-    cout<<is_trivial<CX>()<< endl;
-    cout<<is_standard_layout<CX>()<< endl;
+//    AnimalBestTestAPI();
+//    cout << boolalpha;
+//    cout << is_standard_layout<CatBest>() << endl;
+//    cout << is_trivial<CatBest>() << endl;
+//    cout << is_trivial<CX>() << endl;
+//    cout << is_standard_layout<CX>() << endl;
 
+    cout<<sizeof (AC )<<endl;
     return 0;
 
 }
