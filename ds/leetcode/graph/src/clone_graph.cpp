@@ -10,24 +10,25 @@ public:
     Node *cloneGraph(Node *node)
     {
         if (!node) return node;
-
-        Node *new_graph{nullptr};
-
-        map<Node *, Node *> copied;
-        queue<Node *> to_visit;
-        to_visit.push(node);
-        Node *source;
-        Node *new_node;
-        while (!to_visit.empty())
+        unordered_map<Node *, Node *> graph;
+        graph[node] = new Node(node->val);
+        queue<Node *> que;
+        que.push(node);
+        Node *head;
+        while (!que.empty())
         {
-            source = to_visit.front();
-            new_node = new Node(source->val);
-            to_visit.pop();
-            if (!new_graph)
+            head = que.front();
+            que.pop();
+            for (auto neighbor: head->neighbors)
             {
-                new_graph = new_node;
+                if (graph.find(neighbor) == graph.end())
+                {
+                    graph[neighbor] = new Node(neighbor->val);
+                    que.push(neighbor);
+                }
+                graph[head]->neighbors.push_back(graph[neighbor]);
             }
-            copied[source] = new_graph;
         }
+        return graph[node];
     }
 };
