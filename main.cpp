@@ -325,7 +325,11 @@ int main()
 //    cout << is_trivial<CX>() << endl;
 //    cout << is_standard_layout<CX>() << endl;
 
-    cout<<sizeof (AC )<<endl;
+//    cout<<sizeof (AC )<<endl;
+    cout<<sizeof (string )<<endl;
+
+    cout<< sizeof (string_view)<<endl;
+
     return 0;
 
 }
