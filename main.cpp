@@ -289,49 +289,27 @@ class AC
 
 };
 
+class IndiaBix
+{
+    int val;
+public:
+    void SetValue(char *str1, char *str2)
+    {
+        val = strcspn(str1, str2);
+    }
+
+    void ShowValue()
+    {
+        cout << val;
+    }
+};
+
 int main()
 {
-
-//    Cat cat("Bengal", "Puffy", "Tiger"); // value
-//
-//    cout << cat.GetName() << endl;
-//    cout << cat.GetType() << endl;
-//    cout << cat.GetBread() << endl;
-
-
-//    Animal *pCat = new Cat("Siberia", "Alex", "Tiger");
-//    cout<<pCat->GetName()<<endl;
-//    cout<<pCat->GetType()<<endl;
-//    delete pCat;
-
-//    unique_ptr<Animal> uptrCat = make_unique<Cat>("Siberia", "Alex", "Tiger");
-//    cout<<uptrCat->GetName()<<endl;
-//    cout<<uptrCat->GetType()<<endl;
-
-//    unique_ptr<Cat> uptrCat = make_unique<Cat>("Siberia", "Alex", "Tiger");
-//    cout<<uptrCat->GetName()<<endl;
-//    cout<<uptrCat->GetType()<<endl;
-//    cout<<uptrCat->GetBread()<<endl;
-
-//    unique_ptr<Animal> uptrCat = make_unique<Animal>("Alex", "Tiger");
-//    cout << uptrCat->GetName() << endl;
-//    cout << uptrCat->GetType() << endl;
-//    cout << uptrCat->GetBread() << endl;
-
-//    AnimalBestTestAPI();
-//    cout << boolalpha;
-//    cout << is_standard_layout<CatBest>() << endl;
-//    cout << is_trivial<CatBest>() << endl;
-//    cout << is_trivial<CX>() << endl;
-//    cout << is_standard_layout<CX>() << endl;
-
-//    cout<<sizeof (AC )<<endl;
-    cout<<sizeof (string )<<endl;
-
-    cout<< sizeof (string_view)<<endl;
-
+    IndiaBix objBix;
+    objBix.SetValue((char*)"India", (char*)"Bix");
+    objBix.ShowValue();
     return 0;
-
 }
 
 // 14 + 13 = 27
