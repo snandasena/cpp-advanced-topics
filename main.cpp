@@ -304,11 +304,17 @@ public:
     }
 };
 
+union XU
+{
+    int a;
+    char b;
+};
+
 int main()
 {
-    IndiaBix objBix;
-    objBix.SetValue((char*)"India", (char*)"Bix");
-    objBix.ShowValue();
+    XU x;
+    x.b = 'A';
+    cout<< x.a<<endl;
     return 0;
 }
 
