@@ -6,23 +6,30 @@
 
 class Solution
 {
-    vector<int> ans;
-
-    void postOrder(TreeNode *node)
-    {
-        if (node == nullptr) return;
-
-        postOrder(node->left);
-        postOrder(node->right);
-        ans.push_back(node->val);
-    }
-
+    using LI = long int;
 public:
     int widthOfBinaryTree(TreeNode *root)
     {
-        if (root == nullptr) return 0;
-
-        postOrder(root);
-        return ans[ans.size() - 1] - ans[0];
+        queue<pair<TreeNode *, LI>> que({{root, 1}});
+        size_t sz;
+        LI i;
+        LI j = 1;
+        LI res = 1;
+        while (!que.empty())
+        {
+            sz = que.size();
+            i = que.front().second;
+            while (sz--)
+            {
+                auto[curr, pos] = que.front();
+                que.pop();
+                j = pos;
+                pos = pos * 2 - i;
+                if (curr->left) que.push({curr->left, pos});
+                if (curr->right) que.push({curr->right, pos + 1});
+            }
+            res = max(res, j - i + 1);
+        }
+        return static_cast<int>(res);
     }
 };
