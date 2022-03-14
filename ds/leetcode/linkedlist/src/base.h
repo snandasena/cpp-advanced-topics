@@ -13,16 +13,29 @@
 using namespace std;
 
 
-struct Node
-{
+//struct Node
+//{
+//    int val;
+//    Node *next;
+//
+//    Node() : val(0), next(nullptr) {}
+//
+//    Node(int x) : val(x), next(nullptr) {}
+//
+//    Node(int x, Node *next) : val(x), next(next) {}
+//};
+
+class Node {
+public:
     int val;
-    Node *next;
+    Node* next;
+    Node* random;
 
-    Node() : val(0), next(nullptr) {}
-
-    Node(int x) : val(x), next(nullptr) {}
-
-    Node(int x, Node *next) : val(x), next(next) {}
+    Node(int _val) {
+        val = _val;
+        next = NULL;
+        random = NULL;
+    }
 };
 
 struct TreeNode
