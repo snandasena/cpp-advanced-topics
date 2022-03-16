@@ -310,11 +310,19 @@ union XU
     char b;
 };
 
+
+void test()
+{
+    static int c = 0;
+    ++c;
+    cout << c << endl;
+}
+
 int main()
 {
-    XU x;
-    x.b = 'A';
-    cout<< x.a<<endl;
+    test();
+    test();
+    test();
     return 0;
 }
 
