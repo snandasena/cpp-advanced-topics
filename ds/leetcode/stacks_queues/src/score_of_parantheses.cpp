@@ -20,7 +20,6 @@ public:
             {
                 curr = st.empty()? 1: st.top() * 2;
                 st.push(curr);
-
             }
             else
             {
