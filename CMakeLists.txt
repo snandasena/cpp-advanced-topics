@@ -5,9 +5,10 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_C_STANDARD 11)
 
 #include_directories(asio)
-set(CMAKE_CXX_FLAGS "-g -Wall -Wextra")
+#add_compile_options(-fsanitize=address)
+set(CMAKE_CXX_FLAGS "-fsanitize=address -g -Wall -Wextra")
 add_definitions(-std=c++17)
-
+add_definitions(-DCMAKE_BUILD_TYPE=Debug)
 
 add_subdirectory(asio-samples)
 add_subdirectory(sorting-algo)
