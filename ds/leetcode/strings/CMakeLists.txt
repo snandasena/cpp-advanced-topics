@@ -1,6 +1,7 @@
 project(strings)
 
 #add_executable(decodway src/decode_ways.cpp)
-add_executable(compareversions src/compare_version_numbers.cpp)
-add_executable(issubsequence src/is_subsequence.cpp)
-add_executable(minimum_remove_to_make_valid_paranthesis src/minimum_remove_to_make_valid_paranthesis.cpp)
+#add_executable(compareversions src/compare_version_numbers.cpp)
+#add_executable(issubsequence src/is_subsequence.cpp)
+#add_executable(minimum_remove_to_make_valid_paranthesis src/minimum_remove_to_make_valid_paranthesis.cpp)
+add_executable(smallest_string_with_a_given_neuric_values src/smallest_string_with_a_given_neumaric_values.cpp)
