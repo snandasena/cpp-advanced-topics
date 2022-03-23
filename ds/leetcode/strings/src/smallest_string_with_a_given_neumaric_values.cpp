@@ -19,4 +19,20 @@ public:
         }
         return string(ans, ans + n);
     }
+
+    string getSmallestString1(int n, int k)
+    {
+        string ans(n, 'a');
+        int curr;
+        int i = n - 1;
+        k -= n;
+        while (k > 0)
+        {
+            curr = min(25, k);
+            ans[i] += curr;
+            k -= curr;
+            --i;
+        }
+        return ans;
+    }
 };
