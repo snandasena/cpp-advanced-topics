@@ -4,6 +4,7 @@
 //#include <type_traits>
 //
 using namespace std;
+
 //
 //struct A
 //{
@@ -320,9 +321,7 @@ void test()
 
 int main()
 {
-    test();
-    test();
-    test();
+    cout << sizeof (uint32_t);
     return 0;
 }
 
