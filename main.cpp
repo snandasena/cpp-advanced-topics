@@ -312,16 +312,31 @@ using namespace std;
 //};
 //
 //
-void test()
+
+
+
+
+double fun(double d);
+//int fun(double d);
+
+double fun(double d);
+
+
+double fun(double d)
 {
-    static int c = 0;
-    ++c;
-    cout << c << endl;
+
 }
+
+
+extern  const int x;
+
+extern const int x;
+
+
 
 int main()
 {
-    cout << sizeof (uint32_t);
+
     return 0;
 }
 
