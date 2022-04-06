@@ -328,11 +328,26 @@ double fun(double d)
 }
 
 
-extern  const int x;
+struct Point
+{
+    int x;
+    int y;
+};
 
-extern const int x;
+constexpr int x = 10;
+constexpr int y = 2;
 
+constexpr Point scale(Point p) { return {x * p.x, y * p.y}; }
 
+void user(Point p1)
+{
+    Point p2{10, 20};
+    Point p3 = scale(p1);
+    Point p4 = scale(p2);
+
+//    constexpr Point p5 = scale(p1);
+    constexpr Point p6 = scale(p2);
+}
 
 int main()
 {
@@ -340,4 +355,3 @@ int main()
     return 0;
 }
 
-// 14 + 13 = 27
