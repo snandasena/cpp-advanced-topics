@@ -1,6 +1,7 @@
 
 
 #include <bits/stdc++.h>
+//#include <iostream>
 //#include <type_traits>
 //
 using namespace std;
@@ -346,11 +347,98 @@ void user(Point p1)
     Point p4 = scale(p2);
 
 //    constexpr Point p5 = scale(p1);
-    constexpr Point p6 = scale(p2);
+//    constexpr Point p6 = scale(p2);
 }
+
+enum class Month
+{
+    jan = 1,
+    feb,
+    mar,
+    apr,
+    may,
+    jun,
+    jul,
+    agu,
+    oct,
+    nov,
+    dec
+};
+
+vector<int> month_tbl(12);
+
+ostream &operator<<(ostream &out, const Month &mr)
+{
+    out << "Month number is: " << month_tbl[int(mr)];
+    return out;
+}
+
+class Year
+{
+    static const int min = 1800;
+    static const int max = 2200;
+
+public:
+
+    class Invalid : public std::exception
+    {
+    };
+
+    Year(int x) : y{x}
+    {
+        if (x < min || x > max) throw Invalid{};
+    }
+
+private:
+    int y;
+};
+
+class Date
+{
+public:
+    Date(Year y, Month m, int d);
+
+private:
+    Year _y;
+    Month _m;
+    int _d;
+};
+
+
+int menu(char *optional1 ...)
+{
+    va_list args;
+    char *option = optional1;
+    int count = 0;
+    int choice = 0;
+
+    va_start(args, optional1);
+    do
+    {
+        cout << ++count << " " << option << '\n';
+    } while ((option = va_arg(args, char *)) != nullptr);
+
+    va_end(args);
+}
+
+
+#define MIN(x, y) ( (x<y)?(x):(y))
+#define MAX(x,y)((x>y)?(x):(y))
+#define SUM(x,y)(MIN(x,y) + MAX(x,y))
+//#define REC(x, y)(0+REC(x, y))
 
 int main()
 {
+    std::iota(month_tbl.begin(), month_tbl.end(), 0);
+    max(1, 1);
+    cout << Month::agu << endl;
+
+    menu("option1", "option2", "option3", nullptr);
+
+    int a = SUM(1, 10);
+    int arr[] = {1,10,10,10,10,10};
+    cout<<sizeof(arr)<<endl;
+    cout<<sizeof(*arr) <<endl;
 
     return 0;
 }
