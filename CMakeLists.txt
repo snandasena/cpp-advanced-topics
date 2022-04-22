@@ -26,6 +26,8 @@ add_subdirectory(stl-algo)
 add_subdirectory(CTCI)
 add_subdirectory(test)
 
+add_subdirectory(ipc)
+
 #add_subdirectory(algo)
 
 #add_subdirectory(ds/cf)
