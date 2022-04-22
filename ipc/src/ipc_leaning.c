@@ -18,6 +18,8 @@ int main()
         system("ps -ef");
         sleep(10);
         system("ps -ef");
+        system("ls -al");
+        return 3;
     }
     else
     {
