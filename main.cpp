@@ -103,10 +103,10 @@ public:
 
 class Image
 {
-    const int w;
+    const int w = 1000;
     const int h;
-
     static int x;
+    static  const  int len;
 
 public:
 
@@ -127,7 +127,7 @@ int main()
 
     Image i(10, 20);
 
-    char *entrirs[10];// ["abs", "dssfsd", "dfsdfds"];
+    char *entrirs[10] =  {"abs", "dssfsd", "dfsdfds"};
     entrirs[0] = "sdfsdfds";
 
     int arr[3][2] = {{10,  10},
