@@ -6,7 +6,7 @@ set(CMAKE_C_STANDARD 11)
 
 #include_directories(asio)
 #add_compile_options(-fsanitize=address)
-set(CMAKE_CXX_FLAGS "-fsanitize=address -g -Wall -Wextra")
+set(CMAKE_CXX_FLAGS "-fsanitize=address -ggdb3 -Wall -Wextra")
 add_definitions(-std=c++17)
 add_definitions(-DCMAKE_BUILD_TYPE=Debug)
 
