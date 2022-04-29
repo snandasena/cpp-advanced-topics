@@ -11,6 +11,7 @@ add_subdirectory(dp)
 add_subdirectory(stacks_queues)
 add_subdirectory(greedy)
 add_subdirectory(map_n_set)
+add_subdirectory(disjoint_set)
 
 #add_executable(median_of_two_sorted_arrays src/median_of_two_sorted_arrays.cpp)
 #add_executable(zig_zag_conversion src/zig_zag_conversion.cpp)
