@@ -92,6 +92,8 @@ class Point
 
 public:
 
+    Point() {}
+
     Point(int _x, int _y) : x{_x}, y{_y}
     {
 
@@ -100,6 +102,11 @@ public:
     void Print()
     {
         printf("X %d Y %d\n", x, y);
+    }
+
+    ~Point()
+    {
+        printf("Point %d,%d deleted\n", x, y);
     }
 };
 
@@ -166,6 +173,16 @@ auto Table::Search(const char *item, Compre &comp) -> int
 int Image::x = 10;
 
 
+class Rectangle
+{
+    Point topLeft;
+    Point bottomLeft;
+
+public:
+    Rectangle(int x1, int y1, int x2, int y2) : topLeft(x1, y1), bottomLeft(x2, y2) {}
+
+};
+
 int main()
 {
     Point pt(10, 20);
@@ -177,6 +194,12 @@ int main()
     Table table(10);
 //    table.Search("Hello", std::strcmp);
 
+    Rectangle rec(1, 2, 3, 4);
+
+
+    Point *pentagon[5] = {new Point(1, 3), new Point(12, 223), new Point(1, 2), new Point(2, 3)};
+
+    for (auto &item: pentagon) delete item;
 
     return 0;
 }
