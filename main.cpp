@@ -2,6 +2,8 @@
 
 #include <cstdio>
 #include <iostream>
+#include <cstring>
+#include <functional>
 
 using namespace std;
 
@@ -104,9 +106,11 @@ public:
 class Image
 {
     const int w = 1000;
-    const int h;
+    int h;
     static int x;
-    static  const  int len;
+    static const int len;
+
+    int &width = h;
 
 public:
 
@@ -116,8 +120,51 @@ public:
 
 };
 
+class Table;
+//
+//typedef int (Table::*Compare)(const char *, const char *);
+
+/*
+ * template<class Criterion>
+void filter(DataSet* data, Criterion criterion); // Compliant, uses the more efficient template argument
+
+using Callback = std::function<void(EventInfo const&)>;
+class Button {
+public:
+    void addOnClick(Callback c) {myOnClickHandler = c;} // Compliant, uses the more flexible std::function
+private:
+    Callback myOnClickHandler;
+};
+
+ */
+
+
+using Compare = std::function<int(const char *, const char *)>;
+
+typedef int (Table::*Compre)(const char *, const char *);
+
+using Comp = int (Table::*)(const char *, const char *);
+
+class Table
+{
+public:
+
+    Table(const int clots);
+
+    int Search(const char *item, Compre &);
+
+    int NormalizedComp(const char *, const char *);
+};
+
+Table::Table(const int clots) {}
+
+auto Table::Search(const char *item, Compre &comp) -> int
+{
+    return (this->*comp)(item, item);
+}
 
 int Image::x = 10;
+
 
 int main()
 {
@@ -127,13 +174,9 @@ int main()
 
     Image i(10, 20);
 
-    char *entrirs[10] =  {"abs", "dssfsd", "dfsdfds"};
-    entrirs[0] = "sdfsdfds";
+    Table table(10);
+//    table.Search("Hello", std::strcmp);
 
-    int arr[3][2] = {{10,  10},
-                     {234, 54},
-                     {234, 54}
-    };
 
     return 0;
 }
