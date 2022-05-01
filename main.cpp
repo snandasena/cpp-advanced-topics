@@ -183,6 +183,49 @@ public:
 
 };
 
+class Polygon
+{
+    Point *vertices;
+    int n_vertices;
+};
+
+void func()
+{
+    printf("Global func...\n");
+}
+
+class Process
+{
+public:
+
+    void func();
+
+    class ChildProcess
+    {
+    public:
+        void func()
+        {
+            Process p;
+            p.func();
+        }
+    };
+};
+
+void Process::func()
+{
+    printf("Local func...\n");
+}
+
+void test()
+{
+//    ::func();
+//    Process p;
+//    p.func();
+
+    Process::ChildProcess cp;
+    cp.func();
+}
+
 int main()
 {
     Point pt(10, 20);
@@ -197,9 +240,11 @@ int main()
     Rectangle rec(1, 2, 3, 4);
 
 
-    Point *pentagon[5] = {new Point(1, 3), new Point(12, 223), new Point(1, 2), new Point(2, 3)};
+//    Point pentagon[5] ;//= { Point(1, 3),  Point(12, 223),  Point(1, 2),  Point(2, 3)};
+    Point *pentagon = new Point[5];
+    delete[] pentagon;
 
-    for (auto &item: pentagon) delete item;
+    test();
 
     return 0;
 }
