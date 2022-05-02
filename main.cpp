@@ -226,25 +226,75 @@ void test()
     cp.func();
 }
 
+class Employee
+{
+public:
+//    Employee(int a){}
+    char *name;
+    int age;
+    double salary;
+};
+
+union Value
+{
+    double a;
+    long b;
+    string s;
+    int i;
+};
+
+class B
+{
+    string name;
+public:
+    B(const string &&n) : name{n}
+    {
+        printf("Class B: %s initializing...\n", name.c_str());
+    }
+
+    ~B()
+    {
+        printf("Class B: %s destroying...\n", name.c_str());
+    }
+};
+
+class A
+{
+    B *b3;
+    B b1;
+    B b2;
+
+public:
+    A(string name) : b2{name + " B2"}, b1{name + " B1"}, b3(new B(name + " B3")) {}
+
+
+    ~A()
+    {
+        delete b3;
+    };
+
+};
+
+typedef unsigned int Bit;
+
+class Packet
+{
+//public:
+    Bit type: 2;
+    Bit ack: 1;
+    Bit channel: 4;
+    Bit seqNo: 4;
+    Bit moreData: 1;
+};
+
 int main()
 {
-    Point pt(10, 20);
-    pt.Print();
-    pt.Point::Print();
+//    A a{"AAAA "};
 
-    Image i(10, 20);
+    printf(" Size of packet is %d\n", sizeof(Packet));
 
-    Table table(10);
-//    table.Search("Hello", std::strcmp);
-
-    Rectangle rec(1, 2, 3, 4);
-
-
-//    Point pentagon[5] ;//= { Point(1, 3),  Point(12, 223),  Point(1, 2),  Point(2, 3)};
-    Point *pentagon = new Point[5];
-    delete[] pentagon;
-
-    test();
+    Packet p;
+//    p.type = 1;
 
     return 0;
 }
