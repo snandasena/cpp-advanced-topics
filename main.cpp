@@ -1,6 +1,5 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+
+#include "main.h"
 
 const int bin_size = 16;
 using namespace std;
