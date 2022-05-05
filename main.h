@@ -46,7 +46,7 @@ public:
 
 private:
     int LookUp(const char *name);
-    Contact *contacts;
+    Contact **contacts;
     int dir_size;
     int max_size;
 };
@@ -74,7 +74,22 @@ std::ostream &operator<<(std::ostream &os, Contact &c)
     return os;
 }
 
+ContactDir::ContactDir(const int mx)
+{
+    typedef Contact *ContactPtr;
+    dir_size = 0;
+    max_size = mx;
+    contacts = new ContactPtr[max_size];
+}
 
+ContactDir::~ContactDir()
+{
+    for (int i = 0; i < dir_size; ++i)
+    {
+        delete contacts[i];
+    }
+    delete[] contacts;
+}
 
 
 #endif //ADVANCED_TOPICS_MAIN_H
