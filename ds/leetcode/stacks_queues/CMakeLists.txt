@@ -7,5 +7,6 @@ project(stacknqueues)
 #add_executable(kthlargest src/kth_largest_element.cpp)
 #add_executable(baseballgame src/baseball_game.cpp)
 #add_executable(backspacestring_compare src/backspacestring_compare.cpp)
-add_executable(stack_using_queue src/stack_using_queue.cpp)
+#add_executable(stack_using_queue src/stack_using_queue.cpp)
+add_executable(remove_all_adjacent_duplicates_in_string_ii src/remove_all_adjacent_duplicates_in_string_ii.cpp)
 

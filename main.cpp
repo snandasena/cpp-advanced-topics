@@ -5,25 +5,25 @@ const int bin_size = 16;
 using namespace std;
 
 class Binary
-    {
-    public:
-        Binary(const char *);
+{
+public:
+    Binary(const char *);
 
-        Binary(unsigned int);
+    Binary(unsigned int);
 
-        operator int(); // type convertion
+    operator int(); // type convertion
 
-        friend Binary operator+(const Binary &, const Binary &);
+    friend Binary operator+(const Binary &, const Binary &);
 
-        void Print();
+    void Print();
 
-        friend Binary operator++(Binary &);
+    friend Binary operator++(Binary &);
 
-        friend Binary operator++(Binary &, int);
+    friend Binary operator++(Binary &, int);
 
-    private:
-        char bits[bin_size];
-    };
+private:
+    char bits[bin_size];
+};
 
 Binary::Binary(const char *num)
 {
@@ -100,29 +100,29 @@ class B;
 class Point;
 
 class A
-    {
-    public:
+{
+public:
 
-        B &operator->(void);
-    };
+    B &operator->(void);
+};
 
 class B
-    {
-    public:
-        Point *operator->(void);
+{
+public:
+    Point *operator->(void);
 
-    };
+};
 
 class Point
-    {
-    public:
+{
+public:
 
-        int x;
-        int y;
-    };
+    int x;
+    int y;
+};
 
 struct Book
-    {
+{
     char *raw;
     char *author;
     char *title;
@@ -130,31 +130,34 @@ struct Book
     char *city;
     short vol;
     short year;
-    };
+};
 
 Book defBook = {
-    "raw", "Author?", "Title?", "Publisher?", "City?", 0, 0
+        "raw", "Author?", "Title?", "Publisher?", "City?", 0, 0
 };
 
 const int cache_size = 10;
 
 class RawBook
-    {
-    public:
+{
+public:
 
-        RawBook(char *str) : data(str) {}
+    RawBook(char *str) : data(str) {}
 
-        Book *operator->();
-        Book &operator*();
-        Book *operator&();
+    Book *operator->();
 
-    private:
-        Book *RawToBook();
-        char *data;
-        static Book *cache;
-        static short curr;
-        static short used;
-    };
+    Book &operator*();
+
+    Book *operator&();
+
+private:
+    Book *RawToBook();
+
+    char *data;
+    static Book *cache;
+    static short curr;
+    static short used;
+};
 
 Book *RawBook::cache = new Book[cache_size];
 short RawBook::curr = 0;
@@ -186,21 +189,21 @@ Book *RawBook::RawToBook()
             case 'A':
                 bk->author = str;
                 break;
-                case 'T':
-                    bk->title = str;
-                    break;
-                    case 'P':
-                        bk->publisher = str;
-                        break;
-                        case 'C':
-                            bk->city = str;
-                            break;
-                            case 'V':
-                                bk->vol = atoi(str);
-                                break;
-                                case 'Y':
-                                    bk->year = atoi(str);
-                                    break;
+            case 'T':
+                bk->title = str;
+                break;
+            case 'P':
+                bk->publisher = str;
+                break;
+            case 'C':
+                bk->city = str;
+                break;
+            case 'V':
+                bk->vol = atoi(str);
+                break;
+            case 'Y':
+                bk->year = atoi(str);
+                break;
         }
 
         while (*str++ != '\0');
@@ -215,13 +218,34 @@ Book &RawBook::operator*() { return *RawToBook(); }
 
 Book *RawBook::operator&() { return RawToBook(); }
 
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+
+int solution(vector<int> &nums)
+{
+    // write your code in C++14 (g++ 6.2.0)
+    vector<int> a(10000001, 0);
+    for (const auto &item: nums)
+    {
+        if (item > 0)
+        {
+            a[item] = 1;
+        }
+    }
+    size_t i = 1;
+    for (; i <= a.size(); ++i)
+    {
+        if (a[i] == 0) return i;
+    }
+    return i + 1;
+}
+
 int main()
 {
-    RawBook r1("%AA. Peters\0%TBlue Earth\0%PPhedra\0%CSydney\0%Y1981\0\n");
-    RawBook r2("%TPregnancy\0%AF. Jackson\0%Y1987\0%PMiles\0\n");
 
-    printf("%s\n", r2->title);
-    Book *bk = &r2;
-    printf("%s\n", bk->title);
+
     return 0;
 }
