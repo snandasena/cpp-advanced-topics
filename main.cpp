@@ -2,7 +2,7 @@
 #include "main.h"
 
 const int bin_size = 16;
-using namespace std;
+
 
 class Binary
 {
@@ -245,7 +245,17 @@ int solution(vector<int> &nums)
 
 int main()
 {
-
+    ContactDir dir(10);
+    dir.Insert(Contact("Mary", "11 South Rd", "282 1324"));
+    dir.Insert(Contact("Peter", "9 Port Rd", "678 9862"));
+    dir.Insert(Contact("Jane", "321 Yara Ln", "982 6252"));
+    dir.Insert(Contact("Jack", "42 Wayne St", "663 2989"));
+    dir.Insert(Contact("Fred", "2 High St", "458 2324"));
+    cout << dir;
+    cout << "Find Jane: " << *dir.Find("Jane") << '\n';
+    dir.Delete("Jack");
+    cout << "Deleted Jack\n";
+    cout << dir;
 
     return 0;
 }
