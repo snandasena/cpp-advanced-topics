@@ -1,251 +1,270 @@
 
-#include "main.h"
 
-const int bin_size = 16;
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <iostream>
+#include <memory>
+
 using namespace std;
 
-class Binary
-{
-public:
-    Binary(const char *);
+//class Contact
+//{
+//public:
+//    Contact(const char *name, const char *address, const char *tel);
+//
+//    ~Contact();
+//
+//    const char *Name() const { return name; }
+//
+//    const char *Address() const { return address; }
+//
+//    const char *Tel() const { return tel; }
+//
+//    friend std::ostream &operator<<(std::ostream &os, Contact &c);
+//
+//private:
+//
+//    char *name;
+//    char *address;
+//    char *tel;
+//};
+//
+//class ContactDir
+//{
+//public:
+//    ContactDir(const int max_size);
+//
+//    ~ContactDir();
+//
+//    void Insert(const Contact &);
+//
+//    void Delete(const char *name);
+//
+//    Contact *Find(const char *name);
+//
+//    friend std::ostream &operator<<(std::ostream &, ContactDir &);
+//
+//private:
+//    int LookUp(const char *name);
+//
+//    Contact **contacts;
+//    int dir_size;
+//    int max_size;
+//};
+//
+//Contact::Contact(const char *name, const char *address, const char *tel)
+//{
+//    Contact::name = new char[strlen(name) + 1];
+//    Contact::address = new char[strlen(address) + 1];
+//    Contact::tel = new char[strlen(tel) + 1];
+//    strcpy(Contact::name, name);
+//    strcpy(Contact::address, address);
+//    strcpy(Contact::tel, tel);
+//}
+//
+//Contact::~Contact()
+//{
+//    delete name;
+//    delete address;
+//    delete tel;
+//}
+//
+//std::ostream &operator<<(std::ostream &os, Contact &c)
+//{
+//    os << "( " << c.name << " , " << c.address << " , " << c.tel << " )\n";
+//    return os;
+//}
+//
+//ContactDir::ContactDir(const int mx)
+//{
+//    typedef Contact *ContactPtr;
+//    dir_size = 0;
+//    max_size = mx;
+//    contacts = new ContactPtr[max_size];
+//}
+//
+//ContactDir::~ContactDir()
+//{
+//    for (int i = 0; i < dir_size; ++i)
+//    {
+//        delete contacts[i];
+//    }
+//    delete[] contacts;
+//}
+//
+//void ContactDir::Insert(const Contact &c)
+//{
+//    if (dir_size < max_size)
+//    {
+//        int idx = LookUp(c.Name());
+//        if (idx > 0 && strcmp(c.Name(), contacts[idx]->Name()) == 0)
+//        {
+//            delete contacts[idx];
+//        }
+//        else
+//        {
+//            for (int i = dir_size; i > idx; --i)
+//            {
+//                contacts[i] = contacts[i - 1];
+//            }
+//            ++dir_size;
+//        }
+//        contacts[idx] = new Contact(c.Name(), c.Address(), c.Tel());
+//    }
+//}
+//
+//void ContactDir::Delete(const char *name)
+//{
+//    int idx = LookUp(name);
+//    if (idx < dir_size)
+//    {
+//        delete contacts[idx];
+//        --dir_size;
+//        for (int i = idx; i < dir_size; ++i)
+//        {
+//            contacts[i] = contacts[i + 1];
+//        }
+//    }
+//}
+//
+//Contact *ContactDir::Find(const char *name)
+//{
+//    int idx = LookUp(name);
+//    return (idx < dir_size && strcmp(contacts[idx]->Name(), name) == 0) ? contacts[idx] : nullptr;
+//}
+//
+//int ContactDir::LookUp(const char *name)
+//{
+//    for (int i = 0; i < dir_size; ++i)
+//    {
+//        if (strcmp(contacts[i]->Name(), name) == 0) return i;
+//    }
+//    return dir_size;
+//}
+//
+//
+//std::ostream &operator<<(std::ostream &os, ContactDir &c)
+//{
+//    for (int i = 0; i < c.dir_size; ++i)
+//    {
+//        os << *(c.contacts[i]) << '\n';
+//    }
+//    return os;
+//}
+//
+//
+//class SmartDir : public ContactDir
+//{
+//public:
+//    SmartDir(const int mx) : ContactDir(mx) {}
+//
+//    Contact *Recent();
+//
+//    Contact *Find(const char *name);
+//
+//private:
+//
+//    char *recent = nullptr;
+//};
+//
+//
+//Contact *SmartDir::Recent()
+//{
+//    return recent == nullptr ? nullptr : ContactDir::Find(recent);
+//}
+//
+//Contact *SmartDir::Find(const char *name)
+//{
+//    Contact *c = ContactDir::Find(name);
+//    if (c != nullptr)
+//    {
+//        recent = (char *)c->Name();
+//    }
+//    return c;
+//}
 
-    Binary(unsigned int);
-
-    operator int(); // type convertion
-
-    friend Binary operator+(const Binary &, const Binary &);
-
-    void Print();
-
-    friend Binary operator++(Binary &);
-
-    friend Binary operator++(Binary &, int);
-
-private:
-    char bits[bin_size];
-};
-
-Binary::Binary(const char *num)
-{
-    int iSrc = strlen(num) - 1;
-    int iDes = bin_size - 1;
-
-    while (iSrc >= 0 && iDes >= 0)
-    {
-        bits[iDes--] == (num[iSrc--] == '0' ? '0' : '1');
-    }
-
-    while (iDes >= 0)
-    {
-        bits[iDes--] = '0';
-    }
-}
-
-Binary::Binary(unsigned int num)
-{
-    for (int i = bin_size - 1; i >= 0; --i)
-    {
-        bits[i] = (num % 2 == 0 ? '0' : '1');
-        num >>= 1;
-    }
-}
-
-Binary operator+(const Binary &n1, const Binary &n2)
-{
-    unsigned carry = 0;
-    unsigned value;
-    Binary res = "0";
-
-    for (int i = bin_size - 1; i >= 0; --i)
-    {
-        value = (n1.bits[i] == '0' ? 0 : 1) + (n2.bits[i] == '0' ? 0 : 1) + carry;
-        res.bits[i] = (value % 2 == 0 ? '0' : '1');
-        carry = value >> 1;
-    }
-    return res;
-}
-
-Binary::operator int()
-{
-    unsigned value = 0;
-    for (int i = bin_size - 1; i >= 0; --i)
-    {
-        value = (value << 1) + (bits[i] == '0' ? 0 : 1);
-    }
-    return value;
-}
-
-void Binary::Print()
-{
-    char str[bin_size + 1];
-    strncpy(str, bits, bin_size);
-    str[bin_size] = '\0';
-    printf("%s\n", str);
-}
-
-Binary operator++(Binary &b)
-{
-    return b = b + Binary(1);
-}
-
-Binary operator++(Binary &b, int)
-{
-    Binary m = b;
-    b = b + Binary(1);
-    return m;
-}
-
-class B;
-
-class Point;
 
 class A
 {
-public:
-
-    B &operator->(void);
-};
-
-class B
-{
-public:
-    Point *operator->(void);
-
-};
-
-class Point
-{
-public:
-
-    int x;
-    int y;
-};
-
-struct Book
-{
-    char *raw;
-    char *author;
-    char *title;
-    char *publisher;
-    char *city;
-    short vol;
-    short year;
-};
-
-Book defBook = {
-        "raw", "Author?", "Title?", "Publisher?", "City?", 0, 0
-};
-
-const int cache_size = 10;
-
-class RawBook
-{
-public:
-
-    RawBook(char *str) : data(str) {}
-
-    Book *operator->();
-
-    Book &operator*();
-
-    Book *operator&();
-
 private:
-    Book *RawToBook();
+    int x{10};
 
-    char *data;
-    static Book *cache;
-    static short curr;
-    static short used;
+    void Fx() {};
+protected:
+    int y{20};
+
+    void Fy() {}
+
+public:
+    int z{30};
+
+    void Fz() {}
+
+public:
+
+    A()
+    {
+        printf("A called\n");
+    }
+
+    ~A()
+    {
+        printf("A deleted\n");
+    }
 };
 
-Book *RawBook::cache = new Book[cache_size];
-short RawBook::curr = 0;
-short RawBook::used = 0;
-
-Book *RawBook::RawToBook()
+class B : public A
 {
-    char *str = data;
-    for (int i = 0; i < used; ++i)
+public:
+    B()
     {
-        if (data == cache[i].raw)
-        {
-            return cache + i;
-        }
+        printf("%d\n", A::z);
+        printf("B called\n");
     }
 
-    curr = used < cache_size ? used++ : (curr < 9 ? ++curr : 0);
-    Book *bk = cache + curr;
-    *bk = defBook;
-
-    bk->raw = data;
-
-    for (;;)
+    ~B()
     {
-        while (*str++ != '%');
-
-        switch (*str++)
-        {
-            case 'A':
-                bk->author = str;
-                break;
-            case 'T':
-                bk->title = str;
-                break;
-            case 'P':
-                bk->publisher = str;
-                break;
-            case 'C':
-                bk->city = str;
-                break;
-            case 'V':
-                bk->vol = atoi(str);
-                break;
-            case 'Y':
-                bk->year = atoi(str);
-                break;
-        }
-
-        while (*str++ != '\0');
-        if (*str == '\n')break;
+        printf("B deleted\n");
     }
-    return bk;
-}
+};
 
-Book *RawBook::operator->() { return RawToBook(); }
-
-Book &RawBook::operator*() { return *RawToBook(); }
-
-Book *RawBook::operator&() { return RawToBook(); }
-
-
-#include <bits/stdc++.h>
-
-using namespace std;
-
-
-int solution(vector<int> &nums)
+class C : protected A
 {
-    // write your code in C++14 (g++ 6.2.0)
-    vector<int> a(10000001, 0);
-    for (const auto &item: nums)
+public:
+    C()
     {
-        if (item > 0)
-        {
-            a[item] = 1;
-        }
+        printf("%d\n", A::z);
+        printf("C called\n");
     }
-    size_t i = 1;
-    for (; i <= a.size(); ++i)
+
+    ~C()
     {
-        if (a[i] == 0) return i;
+        printf("C deleted\n");
     }
-    return i + 1;
-}
+};
+
+class D : private A
+{
+
+public:
+
+
+    D()
+    {
+        printf("%d\n", A::z);
+        printf("D called");
+    }
+
+
+};
 
 int main()
 {
 
+    {
+        C *c = new C();
+    }
 
     return 0;
 }

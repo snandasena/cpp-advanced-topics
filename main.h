@@ -10,6 +10,8 @@
 #include <stdlib.h>
 #include <iostream>
 
+using namespace std;
+
 class Contact
 {
 public:
@@ -36,16 +38,20 @@ class ContactDir
 {
 public:
     ContactDir(const int max_size);
+
     ~ContactDir();
 
     void Insert(const Contact &);
+
     void Delete(const char *name);
+
     Contact *Find(const char *name);
 
     friend std::ostream &operator<<(std::ostream &, ContactDir &);
 
 private:
     int LookUp(const char *name);
+
     Contact **contacts;
     int dir_size;
     int max_size;
@@ -90,6 +96,67 @@ ContactDir::~ContactDir()
     }
     delete[] contacts;
 }
+
+void ContactDir::Insert(const Contact &c)
+{
+    if (dir_size < max_size)
+    {
+        int idx = LookUp(c.Name());
+        if (idx > 0 && strcmp(c.Name(), contacts[idx]->Name()) == 0)
+        {
+            delete contacts[idx];
+        }
+        else
+        {
+            for (int i = dir_size; i > idx; --i)
+            {
+                contacts[i] = contacts[i - 1];
+            }
+            ++dir_size;
+        }
+        contacts[idx] = new Contact(c.Name(), c.Address(), c.Tel());
+    }
+}
+
+void ContactDir::Delete(const char *name)
+{
+    int idx = LookUp(name);
+    if (idx < dir_size)
+    {
+        delete contacts[idx];
+        --dir_size;
+        for (int i = idx; i < dir_size; ++i)
+        {
+            contacts[i] = contacts[i + 1];
+        }
+    }
+}
+
+Contact *ContactDir::Find(const char *name)
+{
+    int idx = LookUp(name);
+    return (idx < dir_size && strcmp(contacts[idx]->Name(), name) == 0) ? contacts[idx] : nullptr;
+}
+
+int ContactDir::LookUp(const char *name)
+{
+    for (int i = 0; i < dir_size; ++i)
+    {
+        if (strcmp(contacts[i]->Name(), name) == 0) return i;
+    }
+    return dir_size;
+}
+
+
+std::ostream &operator<<(std::ostream &os, ContactDir &c)
+{
+    for (int i = 0; i < c.dir_size; ++i)
+    {
+        os << *(c.contacts[i]) << '\n';
+    }
+    return os;
+}
+
 
 
 #endif //ADVANCED_TOPICS_MAIN_H
