@@ -184,87 +184,248 @@ using namespace std;
 //    return c;
 //}
 
+//
+//class A
+//{
+//private:
+//    int x{10};
+//
+//    void Fx() {};
+//protected:
+//    int y{20};
+//
+//    void Fy() {}
+//
+//public:
+//    int z{30};
+//
+//    void Fz() {}
+//
+//public:
+//
+//    A()
+//    {
+//        printf("A called\n");
+//    }
+//
+//    ~A()
+//    {
+//        printf("A deleted\n");
+//    }
+//};
+//
+//class B : public A
+//{
+//public:
+//    B()
+//    {
+//        printf("%d\n", A::z);
+//        printf("B called\n");
+//    }
+//
+//    ~B()
+//    {
+//        printf("B deleted\n");
+//    }
+//};
+//
+//class C : protected A
+//{
+//public:
+//    C()
+//    {
+//        printf("%d\n", A::z);
+//        printf("C called\n");
+//    }
+//
+//    ~C()
+//    {
+//        printf("C deleted\n");
+//    }
+//};
+//
+//class D : private A
+//{
+//
+//public:
+//
+//
+//    D()
+//    {
+//        printf("%d\n", A::z);
+//        printf("D called");
+//    }
+//
+//
+//};
+
+class OptionList
+{
+public:
+    OptionList(int n);
+};
+
+class Rect;
+
+class Window
+{
+public:
+    Window(Rect &bounds);
+};
+
+
+class Menu : public OptionList, public Window
+{
+public:
+
+    Menu(int n, Rect &bounds);
+};
+
+
+//Menu::Menu(int n, Rect &bounds) : OptionList(n), Window(bounds) {}
+
+//class A
+//{
+//public:
+//    A()
+//    {
+//        printf("From A\n");
+//    }
+//
+//    ~A()
+//    {
+//        printf("A deleted\n");
+//    }
+//
+//    void Func()
+//    {
+//        printf("Called func from A\n");
+//    }
+//};
+//
+//class B
+//{
+//public:
+//
+//    B()
+//    {
+//        printf("From B\n");
+//    }
+//
+//    ~B()
+//    {
+//        printf("B deleted\n");
+//    }
+//
+//    void Func()
+//    {
+//        printf("Called func from B\n");
+//    }
+//};
+//
+//
+//class C : public B, public A
+//{
+//public:
+//    C() :B(), A()
+//    {
+//        printf("From C\n");
+//    }
+//
+//    ~C()
+//    {
+//        printf("C deleted\n");
+//    }
+//};
+
 
 class A
 {
-private:
-    int x{10};
-
-    void Fx() {};
-protected:
-    int y{20};
-
-    void Fy() {}
-
 public:
-    int z{30};
-
-    void Fz() {}
-
-public:
-
     A()
     {
         printf("A called\n");
     }
-
-    ~A()
-    {
-        printf("A deleted\n");
-    }
 };
 
-class B : public A
+class B : virtual public A
 {
 public:
     B()
     {
-        printf("%d\n", A::z);
         printf("B called\n");
-    }
-
-    ~B()
-    {
-        printf("B deleted\n");
     }
 };
 
-class C : protected A
+
+class C : virtual public A
 {
 public:
     C()
     {
-        printf("%d\n", A::z);
         printf("C called\n");
     }
-
-    ~C()
-    {
-        printf("C deleted\n");
-    }
 };
 
-class D : private A
+class D : public B, public C
 {
-
 public:
-
-
     D()
     {
-        printf("%d\n", A::z);
-        printf("D called");
+        printf("D called\n");
     }
-
-
 };
+
+using ll = long long;
+
+ll fib(ll n)
+{
+    if (n == 0)return 0;
+    ll a = 0;
+    ll b = 1;
+    ll c;
+    for (ll i = 2; i < n; ++i)
+    {
+        c = a + b;
+        a = b;
+        b = c;
+    }
+    return a + b;
+}
+
+template<typename T>
+T MAX(T &t1, T &t2)
+{
+    return t1 < t2 ? t2 : t1;
+}
+
+class Temp
+{
+    int x;
+public:
+    Temp(int _x) : x{_x} {};
+
+    friend bool operator<(const Temp &t1, const Temp &t2);
+};
+
+bool operator<(const Temp &t1, const Temp &t2)
+{
+    return t1.x < t2.x;
+}
+
+#define CheckPtr(ptr) \
+    if((ptr) !=nullptr) \
+        cout<<(#ptr)<<'\n'
+
+#define internal(var) internal##var
+
 
 int main()
 {
+    const char *str = "Hello";
+//    CheckPtr(str);
 
-    {
-        C *c = new C();
-    }
+    long internal(str);
 
     return 0;
 }
