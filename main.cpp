@@ -393,8 +393,39 @@ ll fib(ll n)
     return a + b;
 }
 
+template<typename T>
+T MAX(T &t1, T &t2)
+{
+    return t1 < t2 ? t2 : t1;
+}
+
+class Temp
+{
+    int x;
+public:
+    Temp(int _x) : x{_x} {};
+
+    friend bool operator<(const Temp &t1, const Temp &t2);
+};
+
+bool operator<(const Temp &t1, const Temp &t2)
+{
+    return t1.x < t2.x;
+}
+
+#define CheckPtr(ptr) \
+    if((ptr) !=nullptr) \
+        cout<<(#ptr)<<'\n'
+
+#define internal(var) internal##var
+
+
 int main()
 {
-    
+    const char *str = "Hello";
+//    CheckPtr(str);
+
+    long internal(str);
+
     return 0;
 }
