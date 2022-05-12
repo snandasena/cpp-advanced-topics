@@ -425,6 +425,7 @@ int main()
     const char *str = "Hello";
 //    CheckPtr(str);
 
+    cout << __FILE__ << ' ' << __LINE__  << '\n';
     long internal(str);
 
     return 0;
