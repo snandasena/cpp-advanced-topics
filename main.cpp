@@ -4,6 +4,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <iostream>
+#include <vector>
 #include <memory>
 
 using namespace std;
@@ -273,7 +274,6 @@ public:
     Window(Rect &bounds);
 };
 
-
 class Menu : public OptionList, public Window
 {
 public:
@@ -357,7 +357,6 @@ public:
     }
 };
 
-
 class C : virtual public A
 {
 public:
@@ -419,13 +418,121 @@ bool operator<(const Temp &t1, const Temp &t2)
 
 #define internal(var) internal##var
 
+class AA
+{
+    int x;
+public:
+    AA() = default;
+    virtual int Get();
+};
+
+class BB : public AA
+{
+
+};
+
+class Ctor
+{
+
+};
+
+class Box
+{
+
+public:
+    Box() = default;
+
+    Box(initializer_list<string> list, int i, int j, int k) : m_width{i}, m_height{j}, m_length{k}, contents(list) {}
+
+    explicit Box(int i) : m_width{i}, m_height{i}, m_length{i} {}
+
+    Box(int i, int j, int k) : m_width{i}, m_height{j}, m_length{k} {}
+
+    Box(const Box &other) : m_width{other.m_width}, m_height{other.m_height}, m_length{other.m_length}
+    {
+        printf("COPY CTOR\n");
+    }
+
+    Box &operator=(const Box &other)
+    {
+        printf("COPY ASSIGMENT\n");
+        this->m_width = other.m_width;
+        this->m_height = other.m_height;
+        this->m_length = other.m_length;
+        this->contents = other.contents;
+        return *this;
+    }
+
+    Box(Box &&other) noexcept: m_width{other.m_width}, m_height{other.m_height}, m_length{other.m_length},
+                               contents(move(other.contents))
+    {
+        printf("MOVE CTOR\n");
+    }
+
+    Box &operator=(Box &&other) noexcept
+    {
+        printf("MOVE ASSIGMENT\n");
+        this->m_width = other.m_width;
+        this->m_height = other.m_height;
+        this->m_length = other.m_length;
+        this->contents = move(other.contents);
+        return *this;
+    }
+
+private:
+
+    int m_width{0};
+    int m_height{0};
+    int m_length{0};
+    vector<string> contents;
+};
+
+class Base
+{
+
+public:
+    Base()
+    {
+        printf("Base ctor\n");
+    }
+
+    Base(const Base &other)
+    {
+        printf("Base Copy ctor\n");
+    }
+
+    explicit Base(int i) : num{i}
+    {
+        printf("Base(int)\n");
+    }
+
+    explicit Base(char c) : letter{c}
+    {
+        printf("Base(char)\n");
+    }
+
+private:
+    int num;
+    char letter;
+
+};
+
+class Derived : public Base
+{
+public:
+
+    using Base::Base;
+
+private:
+
+    int new_num{0};
+};
 
 int main()
 {
-    const char *str = "Hello";
-//    CheckPtr(str);
-
-    long internal(str);
-
+    Derived d(5);
+    Derived c('C');
+    Derived d2 = d;
+    Derived d3;
     return 0;
 }
