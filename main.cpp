@@ -539,9 +539,7 @@ struct Date
 
 int main()
 {
-    Date d{1,25,12,100};
-
-    printf("%d", d.year);
+    printf("%lu", sizeof(int *));
 
     return 0;
 }
