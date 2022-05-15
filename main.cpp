@@ -534,14 +534,12 @@ struct Date
     unsigned short week_day: 3;
     unsigned short month_day: 6;
     unsigned short month: 5;
-    unsigned short year: 8  ;
+    unsigned short year: 8;
 };
+
 
 int main()
 {
-    Date d{1,25,12,100};
-
-    printf("%d", d.year);
 
     return 0;
 }
