@@ -534,12 +534,12 @@ struct Date
     unsigned short week_day: 3;
     unsigned short month_day: 6;
     unsigned short month: 5;
-    unsigned short year: 8  ;
+    unsigned short year: 8;
 };
+
 
 int main()
 {
-    printf("%lu", sizeof(int *));
 
     return 0;
 }
