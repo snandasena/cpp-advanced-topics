@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <vector>
+#include <list>
 #include <memory>
 
 using namespace std;
@@ -537,9 +538,276 @@ struct Date
     unsigned short year: 8;
 };
 
+class ShallowCopy
+{
+    int x;
+    int y;
+    int z;
+    int *ptr;
+
+public:
+    ShallowCopy(int _x, int _y, int _z, int vptr) : x{_x}, y{_y}, z{_z}, ptr{new int{vptr}} {}
+
+    void SetData(int _x, int _y, int _z, int vptr)
+    {
+        x = _x;
+        y = _y;
+        z = _z;
+        *ptr = vptr;
+    }
+
+    void ShowData()
+    {
+        printf("(%d, %d, %d, (%d, %p))\n", x, y, z, *ptr, ptr);
+    }
+
+    ~ShallowCopy()
+    {
+        delete ptr;
+    }
+};
+
+class DeepCopy
+{
+    int x{0};
+    int y{0};
+    int *ptr{nullptr};
+
+public:
+    DeepCopy() = default;
+
+    DeepCopy(int _x, int _y, int vptr) : x{_x}, y{_y}, ptr{new int{vptr}} {}
+
+    DeepCopy(const DeepCopy &other) : x{other.x}, y{other.y}, ptr{new int{*other.ptr}} {}
+
+    DeepCopy &operator=(const DeepCopy &other)
+    {
+        this->x = other.x;
+        this->y = other.y;
+        this->ptr = new int{*other.ptr};
+        return *this;
+    }
+
+    void ShwData()
+    {
+        printf("(%d, %d, (%d, %p))\n", x, y, *ptr, ptr);
+    }
+
+    void SetData(int _x, int _y, int vptr)
+    {
+        x = _x;
+        y = _y;
+        *ptr = vptr;
+    }
+
+    ~DeepCopy()
+    {
+        delete ptr;
+    }
+};
+
+void CopyTest()
+{
+    printf("Shallow Copy Started\n");
+    ShallowCopy sc1{1, 2, 3, 4};
+    sc1.ShowData();
+
+    ShallowCopy sc2 = sc1;
+    sc2.ShowData();
+
+    sc2.SetData(4, 5, 6, 7);
+    sc2.ShowData();
+    sc1.ShowData();
+
+    printf("Shallow Copy Finished\n\n");
+
+    printf("Deep Copy Started\n");
+    DeepCopy dc1{1, 2, 3};
+    dc1.ShwData();
+
+    DeepCopy dc2 = dc1;
+    dc2.ShwData();
+
+    dc2.SetData(4, 5, 6);
+    dc2.ShwData();
+    dc1.ShwData();
+
+    printf("Deep Copy Finished\n");
+    DeepCopy dc3;
+
+    dc3 = dc2;
+    dc3.ShwData();
+    dc3.SetData(7, 8, 9);
+    dc3.ShwData();
+    dc2.ShwData();
+}
+
+struct Link
+{
+    string value;
+    Link *prev;
+    Link *succ;
+
+    Link(const string &&v, Link *p = nullptr, Link *s = nullptr) : value{v}, prev{p}, succ{s} {}
+};
+
+
+Link *Insert(Link *p, Link *n)
+{
+    if (n == nullptr) return p;
+    if (p == nullptr) return n;
+
+    n->succ = p;
+    if (p->prev) p->prev->succ = n;
+    n->prev = p->prev;
+    p->prev = n;
+    return n;
+}
+
+void ListTest()
+{
+    Link *norse_gods = new Link{"Thor", nullptr, nullptr};
+    norse_gods = Insert(norse_gods, new Link{"Odin"});
+    norse_gods = Insert(norse_gods, new Link{"Freia"});
+    printf("");
+}
+
+class Vector
+{
+    size_t sz;
+    double *elem;
+
+public:
+    Vector(size_t s) : sz{s}, elem{new double[sz]}
+    {
+        for (size_t i = 0; i < sz; ++i)
+        {
+            elem[i] = 0.0;
+        }
+    }
+
+    Vector(initializer_list<double> lst) : sz{lst.size()}, elem{new double[sz]}
+    {
+        copy(lst.begin(), lst.end(), elem);
+    }
+
+    Vector(const Vector &arg) : sz{arg.sz}, elem{new double[sz]}
+    {
+        copy(arg.elem, arg.elem + sz, elem);
+    }
+
+    Vector &operator=(const Vector &other)
+    {
+        if (this != &other)
+        {
+            double *temp = new double[other.sz];
+            copy(other.elem, other.elem + other.sz, temp);
+            delete[] elem;
+            elem = temp;
+            sz = other.sz;
+        }
+        return *this;
+    }
+
+    Vector(Vector &&other) noexcept: sz{other.sz}, elem{other.elem}
+    {
+        other.sz = 0;
+        other.elem = nullptr;
+    }
+
+    Vector &operator=(Vector &&other)
+    {
+        if (this != &other)
+        {
+            delete[] elem;
+            elem = other.elem;
+            sz = other.sz;
+            other.elem = nullptr;
+            other.sz = 0;
+        }
+
+        return *this;
+    }
+
+    double &operator[](int n)
+    {
+        if (n >= sz) throw -1;
+        return elem[n];
+    }
+
+    double operator[](int n) const
+    {
+        return elem[n];
+    }
+
+    void Set(size_t idx, double val)
+    {
+        if (idx >= sz) throw -1;
+        elem[idx] = val;
+    }
+
+    double Get(size_t idx)
+    {
+        if (idx >= sz) throw -1;
+        return elem[idx];
+    }
+
+    ~Vector()
+    {
+        delete[] elem;
+    }
+
+};
+
+void VectorTest()
+{
+    Vector v{1.2, 2.3, 3.4, 4.5};
+    Vector v2 = {2.2, 3.3, 4.4, 5.5};
+
+    Vector v3 = v2;
+    printf("%f\n", v3.Get(0));
+
+    v3 = v;
+    printf("%f\n", v3[1]);
+    v3[1] = 10.0;
+    printf("%f\n", v3[1]);
+
+    const Vector v4 = v2;
+    double ele = v4[1];
+    printf("%f\n", ele);
+}
+
+
+bool is_palindrome(const char *first, const char *last)
+{
+    if (first < last)
+    {
+        if (*first != *last) return false;
+        return is_palindrome(first + 1, last - 1);
+    }
+    return true;
+}
+
+class AAA
+{
+public:
+    AAA()
+    {
+        printf("AAA CALLED\n");
+    }
+    
+    ~AAA()
+    {
+        printf("AAA DELETED\n");
+    }
+};
+
 
 int main()
 {
+
+    vector<AAA> *v = new vector<AAA>(10);
+    delete v;
 
     return 0;
 }
