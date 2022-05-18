@@ -34,7 +34,7 @@ class Solution
 public:
     vector<vector<int>> criticalConnections(int n, vector<vector<int>> &connections)
     {
-        vector<vector<int>> adj(n+1);
+        vector<vector<int>> adj(n + 1);
         for (auto &v: connections)
         {
             auto a = v[0];
@@ -44,8 +44,8 @@ public:
             adj[b].push_back(a);
         }
 
-        vector<bool> visited(n+1);
-        vector<int> timestamps(n+1);
+        vector<bool> visited(n + 1);
+        vector<int> timestamps(n + 1);
         dfs(adj, visited, timestamps, 0, -1);
         return ans;
     }
@@ -55,7 +55,7 @@ public:
 int main()
 {
 
-    vector<vector<int>> v{{0,1}};
+    vector<vector<int>> v{{0, 1}};
 
     Solution solution;
     auto ans = solution.criticalConnections(2, v);

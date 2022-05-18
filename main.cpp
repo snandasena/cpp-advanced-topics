@@ -795,7 +795,7 @@ public:
     {
         printf("AAA CALLED\n");
     }
-    
+
     ~AAA()
     {
         printf("AAA DELETED\n");
@@ -803,11 +803,41 @@ public:
 };
 
 
+template<typename T, int N>
+struct Array
+{
+    T elem[N];
+
+    T &operator[](int n);
+
+    const T &operator[](int n) const;
+
+    const T *data() const { return elem; }
+
+    int size() const { return N; }
+};
+
+template<typename T, int N>
+void fill(Array<T, N> &b, const T &val)
+{
+    for (int i = 0; i < N; ++i)
+    {
+        b[i] = val;
+    }
+}
+
+void ArrayTest()
+{
+    Array<char, 1024> buf;
+    Array<int, 10> b2;
+
+    fill(buf, 'x');
+    fill(b2, 10);
+}
+
 int main()
 {
 
-    vector<AAA> *v = new vector<AAA>(10);
-    delete v;
 
     return 0;
 }
