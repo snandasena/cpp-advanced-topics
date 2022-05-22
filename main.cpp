@@ -7,8 +7,9 @@
 #include <vector>
 #include <list>
 #include <memory>
+#include <algorithm>
 
-using namespace std;
+//using namespace std;
 
 //class Contact
 //{
@@ -261,26 +262,26 @@ using namespace std;
 //
 //};
 
-class OptionList
-{
-public:
-    OptionList(int n);
-};
-
-class Rect;
-
-class Window
-{
-public:
-    Window(Rect &bounds);
-};
-
-class Menu : public OptionList, public Window
-{
-public:
-
-    Menu(int n, Rect &bounds);
-};
+//class OptionList
+//{
+//public:
+//    OptionList(int n);
+//};
+//
+//class Rect;
+//
+//class Window
+//{
+//public:
+//    Window(Rect &bounds);
+//};
+//
+//class Menu : public OptionList, public Window
+//{
+//public:
+//
+//    Menu(int n, Rect &bounds);
+//};
 
 
 //Menu::Menu(int n, Rect &bounds) : OptionList(n), Window(bounds) {}
@@ -339,505 +340,653 @@ public:
 //    }
 //};
 
+//
+//class A
+//{
+//public:
+//    A()
+//    {
+//        printf("A called\n");
+//    }
+//};
+//
+//class B : virtual public A
+//{
+//public:
+//    B()
+//    {
+//        printf("B called\n");
+//    }
+//};
+//
+//class C : virtual public A
+//{
+//public:
+//    C()
+//    {
+//        printf("C called\n");
+//    }
+//};
+//
+//class D : public B, public C
+//{
+//public:
+//    D()
+//    {
+//        printf("D called\n");
+//    }
+//};
+//
+//using ll = long long;
+//
+//ll fib(ll n)
+//{
+//    if (n == 0)return 0;
+//    ll a = 0;
+//    ll b = 1;
+//    ll c;
+//    for (ll i = 2; i < n; ++i)
+//    {
+//        c = a + b;
+//        a = b;
+//        b = c;
+//    }
+//    return a + b;
+//}
+//
+//template<typename T>
+//T MAX(T &t1, T &t2)
+//{
+//    return t1 < t2 ? t2 : t1;
+//}
+//
+//class Temp
+//{
+//    int x;
+//public:
+//    Temp(int _x) : x{_x} {};
+//
+//    friend bool operator<(const Temp &t1, const Temp &t2);
+//};
+//
+//bool operator<(const Temp &t1, const Temp &t2)
+//{
+//    return t1.x < t2.x;
+//}
+//
+//#define CheckPtr(ptr) \
+//    if((ptr) !=nullptr) \
+//        cout<<(#ptr)<<'\n'
+//
+//#define internal(var) internal##var
+//
+//class AA
+//{
+//    int x;
+//public:
+//    AA() = default;
+//
+//    virtual int Get();
+//};
+//
+//class BB : public AA
+//{
+//
+//};
+//
+//class Ctor
+//{
+//
+//};
+//
+//class Box
+//{
+//
+//public:
+//    Box() = default;
+//
+//    Box(initializer_list<string> list, int i, int j, int k) : m_width{i}, m_height{j}, m_length{k}, contents(list) {}
+//
+//    explicit Box(int i) : m_width{i}, m_height{i}, m_length{i} {}
+//
+//    Box(int i, int j, int k) : m_width{i}, m_height{j}, m_length{k} {}
+//
+//    Box(const Box &other) : m_width{other.m_width}, m_height{other.m_height}, m_length{other.m_length}
+//    {
+//        printf("COPY CTOR\n");
+//    }
+//
+//    Box &operator=(const Box &other)
+//    {
+//        printf("COPY ASSIGMENT\n");
+//        this->m_width = other.m_width;
+//        this->m_height = other.m_height;
+//        this->m_length = other.m_length;
+//        this->contents = other.contents;
+//        return *this;
+//    }
+//
+//    Box(Box &&other) noexcept: m_width{other.m_width}, m_height{other.m_height}, m_length{other.m_length},
+//                               contents(move(other.contents))
+//    {
+//        printf("MOVE CTOR\n");
+//    }
+//
+//    Box &operator=(Box &&other) noexcept
+//    {
+//        printf("MOVE ASSIGMENT\n");
+//        this->m_width = other.m_width;
+//        this->m_height = other.m_height;
+//        this->m_length = other.m_length;
+//        this->contents = move(other.contents);
+//        return *this;
+//    }
+//
+//private:
+//
+//    int m_width{0};
+//    int m_height{0};
+//    int m_length{0};
+//    vector<string> contents;
+//};
+//
+//class Base
+//{
+//
+//public:
+//    Base()
+//    {
+//        printf("Base ctor\n");
+//    }
+//
+//    Base(const Base &other)
+//    {
+//        printf("Base Copy ctor\n");
+//    }
+//
+//    explicit Base(int i) : num{i}
+//    {
+//        printf("Base(int)\n");
+//    }
+//
+//    explicit Base(char c) : letter{c}
+//    {
+//        printf("Base(char)\n");
+//    }
+//
+//private:
+//    int num;
+//    char letter;
+//
+//};
+//
+//class Derived : public Base
+//{
+//public:
+//
+//    using Base::Base;
+//
+//private:
+//
+//    int new_num{0};
+//};
+//
+//struct Date
+//{
+//    unsigned short week_day: 3;
+//    unsigned short month_day: 6;
+//    unsigned short month: 5;
+//    unsigned short year: 8;
+//};
+//
+//class ShallowCopy
+//{
+//    int x;
+//    int y;
+//    int z;
+//    int *ptr;
+//
+//public:
+//    ShallowCopy(int _x, int _y, int _z, int vptr) : x{_x}, y{_y}, z{_z}, ptr{new int{vptr}} {}
+//
+//    void SetData(int _x, int _y, int _z, int vptr)
+//    {
+//        x = _x;
+//        y = _y;
+//        z = _z;
+//        *ptr = vptr;
+//    }
+//
+//    void ShowData()
+//    {
+//        printf("(%d, %d, %d, (%d, %p))\n", x, y, z, *ptr, ptr);
+//    }
+//
+//    ~ShallowCopy()
+//    {
+//        delete ptr;
+//    }
+//};
+//
+//class DeepCopy
+//{
+//    int x{0};
+//    int y{0};
+//    int *ptr{nullptr};
+//
+//public:
+//    DeepCopy() = default;
+//
+//    DeepCopy(int _x, int _y, int vptr) : x{_x}, y{_y}, ptr{new int{vptr}} {}
+//
+//    DeepCopy(const DeepCopy &other) : x{other.x}, y{other.y}, ptr{new int{*other.ptr}} {}
+//
+//    DeepCopy &operator=(const DeepCopy &other)
+//    {
+//        this->x = other.x;
+//        this->y = other.y;
+//        this->ptr = new int{*other.ptr};
+//        return *this;
+//    }
+//
+//    void ShwData()
+//    {
+//        printf("(%d, %d, (%d, %p))\n", x, y, *ptr, ptr);
+//    }
+//
+//    void SetData(int _x, int _y, int vptr)
+//    {
+//        x = _x;
+//        y = _y;
+//        *ptr = vptr;
+//    }
+//
+//    ~DeepCopy()
+//    {
+//        delete ptr;
+//    }
+//};
+//
+//void CopyTest()
+//{
+//    printf("Shallow Copy Started\n");
+//    ShallowCopy sc1{1, 2, 3, 4};
+//    sc1.ShowData();
+//
+//    ShallowCopy sc2 = sc1;
+//    sc2.ShowData();
+//
+//    sc2.SetData(4, 5, 6, 7);
+//    sc2.ShowData();
+//    sc1.ShowData();
+//
+//    printf("Shallow Copy Finished\n\n");
+//
+//    printf("Deep Copy Started\n");
+//    DeepCopy dc1{1, 2, 3};
+//    dc1.ShwData();
+//
+//    DeepCopy dc2 = dc1;
+//    dc2.ShwData();
+//
+//    dc2.SetData(4, 5, 6);
+//    dc2.ShwData();
+//    dc1.ShwData();
+//
+//    printf("Deep Copy Finished\n");
+//    DeepCopy dc3;
+//
+//    dc3 = dc2;
+//    dc3.ShwData();
+//    dc3.SetData(7, 8, 9);
+//    dc3.ShwData();
+//    dc2.ShwData();
+//}
+//
+//struct Link
+//{
+//    string value;
+//    Link *prev;
+//    Link *succ;
+//
+//    Link(const string &&v, Link *p = nullptr, Link *s = nullptr) : value{v}, prev{p}, succ{s} {}
+//};
+//
+//
+//Link *Insert(Link *p, Link *n)
+//{
+//    if (n == nullptr) return p;
+//    if (p == nullptr) return n;
+//
+//    n->succ = p;
+//    if (p->prev) p->prev->succ = n;
+//    n->prev = p->prev;
+//    p->prev = n;
+//    return n;
+//}
+//
+//void ListTest()
+//{
+//    Link *norse_gods = new Link{"Thor", nullptr, nullptr};
+//    norse_gods = Insert(norse_gods, new Link{"Odin"});
+//    norse_gods = Insert(norse_gods, new Link{"Freia"});
+//    printf("");
+//}
+//
+//class Vector
+//{
+//    size_t sz;
+//    double *elem;
+//
+//public:
+//    Vector(size_t s) : sz{s}, elem{new double[sz]}
+//    {
+//        for (size_t i = 0; i < sz; ++i)
+//        {
+//            elem[i] = 0.0;
+//        }
+//    }
+//
+//    Vector(initializer_list<double> lst) : sz{lst.size()}, elem{new double[sz]}
+//    {
+//        copy(lst.begin(), lst.end(), elem);
+//    }
+//
+//    Vector(const Vector &arg) : sz{arg.sz}, elem{new double[sz]}
+//    {
+//        copy(arg.elem, arg.elem + sz, elem);
+//    }
+//
+//    Vector &operator=(const Vector &other)
+//    {
+//        if (this != &other)
+//        {
+//            double *temp = new double[other.sz];
+//            copy(other.elem, other.elem + other.sz, temp);
+//            delete[] elem;
+//            elem = temp;
+//            sz = other.sz;
+//        }
+//        return *this;
+//    }
+//
+//    Vector(Vector &&other) noexcept: sz{other.sz}, elem{other.elem}
+//    {
+//        other.sz = 0;
+//        other.elem = nullptr;
+//    }
+//
+//    Vector &operator=(Vector &&other)
+//    {
+//        if (this != &other)
+//        {
+//            delete[] elem;
+//            elem = other.elem;
+//            sz = other.sz;
+//            other.elem = nullptr;
+//            other.sz = 0;
+//        }
+//
+//        return *this;
+//    }
+//
+//    double &operator[](int n)
+//    {
+//        if (n >= sz) throw -1;
+//        return elem[n];
+//    }
+//
+//    double operator[](int n) const
+//    {
+//        return elem[n];
+//    }
+//
+//    void Set(size_t idx, double val)
+//    {
+//        if (idx >= sz) throw -1;
+//        elem[idx] = val;
+//    }
+//
+//    double Get(size_t idx)
+//    {
+//        if (idx >= sz) throw -1;
+//        return elem[idx];
+//    }
+//
+//    ~Vector()
+//    {
+//        delete[] elem;
+//    }
+//
+//};
+//
+//void VectorTest()
+//{
+//    Vector v{1.2, 2.3, 3.4, 4.5};
+//    Vector v2 = {2.2, 3.3, 4.4, 5.5};
+//
+//    Vector v3 = v2;
+//    printf("%f\n", v3.Get(0));
+//
+//    v3 = v;
+//    printf("%f\n", v3[1]);
+//    v3[1] = 10.0;
+//    printf("%f\n", v3[1]);
+//
+//    const Vector v4 = v2;
+//    double ele = v4[1];
+//    printf("%f\n", ele);
+//}
+//
+//
+//bool is_palindrome(const char *first, const char *last)
+//{
+//    if (first < last)
+//    {
+//        if (*first != *last) return false;
+//        return is_palindrome(first + 1, last - 1);
+//    }
+//    return true;
+//}
+//
+//class AAA
+//{
+//public:
+//    AAA()
+//    {
+//        printf("AAA CALLED\n");
+//    }
+//
+//    ~AAA()
+//    {
+//        printf("AAA DELETED\n");
+//    }
+//};
+//
+//
+//template<typename T, int N>
+//struct Array
+//{
+//    T elem[N];
+//
+//    T &operator[](int n);
+//
+//    const T &operator[](int n) const;
+//
+//    const T *data() const { return elem; }
+//
+//    int size() const { return N; }
+//};
+//
+//template<typename T, int N>
+//void fill(Array<T, N> &b, const T &val)
+//{
+//    for (int i = 0; i < N; ++i)
+//    {
+//        b[i] = val;
+//    }
+//}
+//
+//void ArrayTest()
+//{
+//    Array<char, 1024> buf;
+//    Array<int, 10> b2;
+//
+//    fill(buf, 'x');
+//    fill(b2, 10);
+//}
 
-class A
+//
+//class A
+//{
+//    string *str;
+//public:
+//    A(const string &s) : str{new string{s}}
+//    {
+//        printf("A CALLED\n");
+//    }
+//
+//    ~A()
+//    {
+//        printf("A DELETED\n");
+//        delete str;
+//    }
+//};
+//
+//void test()
+//{
+//    vector<A> *v = new vector<A>(10, A("Hello"));
+//}
+
+//
+//template<typename Iterator>
+//Iterator high(Iterator first, Iterator last)
+//{
+//    Iterator val = first;
+//    for (auto itr = first; itr != last; ++itr)
+//    {
+//        if (*val < *itr) val = itr;
+//    }
+//    return val;
+//}
+//
+//void test()
+//{
+//
+//    vector<int> v{1, 3, 4, 2, 6, 7, 9, 20, 0};
+//    int arr[] = {1, 3, 4, 2, 6, 7, 9, 20, 0};
+//    auto res = high(arr, arr+9);
+//
+//    printf("%d", *res);
+//}
+
+
+namespace cpp_practice
 {
-public:
-    A()
+
+    template<typename Elem>
+    struct Link
     {
-        printf("A called\n");
-    }
-};
+        Link *prev;
+        Link *succ;
+        Elem val;
+    };
 
-class B : virtual public A
-{
-public:
-    B()
+    template<typename Elem>
+    class List
     {
-        printf("B called\n");
-    }
-};
+    public:
+        class Iterator;
 
-class C : virtual public A
-{
-public:
-    C()
+        Iterator begin();
+
+        Iterator end();
+
+        Iterator insert(Iterator p, const Elem &v);
+
+        Iterator erase(Iterator p);
+
+        void push_back(const Elem &v);
+
+        void push_front(const Elem &v);
+
+        void pop_back();
+
+        void pop_front();
+
+        Elem &front();
+
+        Elem &back();
+    };
+
+
+    template<typename Elem>
+    class List<Elem>::Iterator
     {
-        printf("C called\n");
-    }
-};
+        Link<Elem> *curr;
 
-class D : public B, public C
-{
-public:
-    D()
-    {
-        printf("D called\n");
-    }
-};
+        Iterator(Link<Elem> *p) : curr{p} {}
 
-using ll = long long;
-
-ll fib(ll n)
-{
-    if (n == 0)return 0;
-    ll a = 0;
-    ll b = 1;
-    ll c;
-    for (ll i = 2; i < n; ++i)
-    {
-        c = a + b;
-        a = b;
-        b = c;
-    }
-    return a + b;
-}
-
-template<typename T>
-T MAX(T &t1, T &t2)
-{
-    return t1 < t2 ? t2 : t1;
-}
-
-class Temp
-{
-    int x;
-public:
-    Temp(int _x) : x{_x} {};
-
-    friend bool operator<(const Temp &t1, const Temp &t2);
-};
-
-bool operator<(const Temp &t1, const Temp &t2)
-{
-    return t1.x < t2.x;
-}
-
-#define CheckPtr(ptr) \
-    if((ptr) !=nullptr) \
-        cout<<(#ptr)<<'\n'
-
-#define internal(var) internal##var
-
-class AA
-{
-    int x;
-public:
-    AA() = default;
-
-    virtual int Get();
-};
-
-class BB : public AA
-{
-
-};
-
-class Ctor
-{
-
-};
-
-class Box
-{
-
-public:
-    Box() = default;
-
-    Box(initializer_list<string> list, int i, int j, int k) : m_width{i}, m_height{j}, m_length{k}, contents(list) {}
-
-    explicit Box(int i) : m_width{i}, m_height{i}, m_length{i} {}
-
-    Box(int i, int j, int k) : m_width{i}, m_height{j}, m_length{k} {}
-
-    Box(const Box &other) : m_width{other.m_width}, m_height{other.m_height}, m_length{other.m_length}
-    {
-        printf("COPY CTOR\n");
-    }
-
-    Box &operator=(const Box &other)
-    {
-        printf("COPY ASSIGMENT\n");
-        this->m_width = other.m_width;
-        this->m_height = other.m_height;
-        this->m_length = other.m_length;
-        this->contents = other.contents;
-        return *this;
-    }
-
-    Box(Box &&other) noexcept: m_width{other.m_width}, m_height{other.m_height}, m_length{other.m_length},
-                               contents(move(other.contents))
-    {
-        printf("MOVE CTOR\n");
-    }
-
-    Box &operator=(Box &&other) noexcept
-    {
-        printf("MOVE ASSIGMENT\n");
-        this->m_width = other.m_width;
-        this->m_height = other.m_height;
-        this->m_length = other.m_length;
-        this->contents = move(other.contents);
-        return *this;
-    }
-
-private:
-
-    int m_width{0};
-    int m_height{0};
-    int m_length{0};
-    vector<string> contents;
-};
-
-class Base
-{
-
-public:
-    Base()
-    {
-        printf("Base ctor\n");
-    }
-
-    Base(const Base &other)
-    {
-        printf("Base Copy ctor\n");
-    }
-
-    explicit Base(int i) : num{i}
-    {
-        printf("Base(int)\n");
-    }
-
-    explicit Base(char c) : letter{c}
-    {
-        printf("Base(char)\n");
-    }
-
-private:
-    int num;
-    char letter;
-
-};
-
-class Derived : public Base
-{
-public:
-
-    using Base::Base;
-
-private:
-
-    int new_num{0};
-};
-
-struct Date
-{
-    unsigned short week_day: 3;
-    unsigned short month_day: 6;
-    unsigned short month: 5;
-    unsigned short year: 8;
-};
-
-class ShallowCopy
-{
-    int x;
-    int y;
-    int z;
-    int *ptr;
-
-public:
-    ShallowCopy(int _x, int _y, int _z, int vptr) : x{_x}, y{_y}, z{_z}, ptr{new int{vptr}} {}
-
-    void SetData(int _x, int _y, int _z, int vptr)
-    {
-        x = _x;
-        y = _y;
-        z = _z;
-        *ptr = vptr;
-    }
-
-    void ShowData()
-    {
-        printf("(%d, %d, %d, (%d, %p))\n", x, y, z, *ptr, ptr);
-    }
-
-    ~ShallowCopy()
-    {
-        delete ptr;
-    }
-};
-
-class DeepCopy
-{
-    int x{0};
-    int y{0};
-    int *ptr{nullptr};
-
-public:
-    DeepCopy() = default;
-
-    DeepCopy(int _x, int _y, int vptr) : x{_x}, y{_y}, ptr{new int{vptr}} {}
-
-    DeepCopy(const DeepCopy &other) : x{other.x}, y{other.y}, ptr{new int{*other.ptr}} {}
-
-    DeepCopy &operator=(const DeepCopy &other)
-    {
-        this->x = other.x;
-        this->y = other.y;
-        this->ptr = new int{*other.ptr};
-        return *this;
-    }
-
-    void ShwData()
-    {
-        printf("(%d, %d, (%d, %p))\n", x, y, *ptr, ptr);
-    }
-
-    void SetData(int _x, int _y, int vptr)
-    {
-        x = _x;
-        y = _y;
-        *ptr = vptr;
-    }
-
-    ~DeepCopy()
-    {
-        delete ptr;
-    }
-};
-
-void CopyTest()
-{
-    printf("Shallow Copy Started\n");
-    ShallowCopy sc1{1, 2, 3, 4};
-    sc1.ShowData();
-
-    ShallowCopy sc2 = sc1;
-    sc2.ShowData();
-
-    sc2.SetData(4, 5, 6, 7);
-    sc2.ShowData();
-    sc1.ShowData();
-
-    printf("Shallow Copy Finished\n\n");
-
-    printf("Deep Copy Started\n");
-    DeepCopy dc1{1, 2, 3};
-    dc1.ShwData();
-
-    DeepCopy dc2 = dc1;
-    dc2.ShwData();
-
-    dc2.SetData(4, 5, 6);
-    dc2.ShwData();
-    dc1.ShwData();
-
-    printf("Deep Copy Finished\n");
-    DeepCopy dc3;
-
-    dc3 = dc2;
-    dc3.ShwData();
-    dc3.SetData(7, 8, 9);
-    dc3.ShwData();
-    dc2.ShwData();
-}
-
-struct Link
-{
-    string value;
-    Link *prev;
-    Link *succ;
-
-    Link(const string &&v, Link *p = nullptr, Link *s = nullptr) : value{v}, prev{p}, succ{s} {}
-};
-
-
-Link *Insert(Link *p, Link *n)
-{
-    if (n == nullptr) return p;
-    if (p == nullptr) return n;
-
-    n->succ = p;
-    if (p->prev) p->prev->succ = n;
-    n->prev = p->prev;
-    p->prev = n;
-    return n;
-}
-
-void ListTest()
-{
-    Link *norse_gods = new Link{"Thor", nullptr, nullptr};
-    norse_gods = Insert(norse_gods, new Link{"Odin"});
-    norse_gods = Insert(norse_gods, new Link{"Freia"});
-    printf("");
-}
-
-class Vector
-{
-    size_t sz;
-    double *elem;
-
-public:
-    Vector(size_t s) : sz{s}, elem{new double[sz]}
-    {
-        for (size_t i = 0; i < sz; ++i)
+        Iterator &operator++()
         {
-            elem[i] = 0.0;
+            curr = curr->succ;
+            return *this;
         }
-    }
 
-    Vector(initializer_list<double> lst) : sz{lst.size()}, elem{new double[sz]}
-    {
-        copy(lst.begin(), lst.end(), elem);
-    }
-
-    Vector(const Vector &arg) : sz{arg.sz}, elem{new double[sz]}
-    {
-        copy(arg.elem, arg.elem + sz, elem);
-    }
-
-    Vector &operator=(const Vector &other)
-    {
-        if (this != &other)
+        Iterator &operator--()
         {
-            double *temp = new double[other.sz];
-            copy(other.elem, other.elem + other.sz, temp);
-            delete[] elem;
-            elem = temp;
-            sz = other.sz;
+            curr = curr->prev;
+            return *this;
         }
-        return *this;
-    }
 
-    Vector(Vector &&other) noexcept: sz{other.sz}, elem{other.elem}
-    {
-        other.sz = 0;
-        other.elem = nullptr;
-    }
-
-    Vector &operator=(Vector &&other)
-    {
-        if (this != &other)
+        Elem &operator*()
         {
-            delete[] elem;
-            elem = other.elem;
-            sz = other.sz;
-            other.elem = nullptr;
-            other.sz = 0;
+            return curr->val;
         }
 
-        return *this;
-    }
+        bool operator==(const Iterator &b)
+        {
+            return curr == b.curr;
+        }
 
-    double &operator[](int n)
+        bool operator!=(const Iterator &b)
+        {
+            return curr != b.curr;
+        }
+    };
+
+
+    template<typename T>
+    class vector
     {
-        if (n >= sz) throw -1;
-        return elem[n];
-    }
+    public:
+        using size_type = unsigned long;
+        using value_type = T;
+        using iterator = T *;
+        using const_iterator = const T *;
 
-    double operator[](int n) const
-    {
-        return elem[n];
-    }
+        iterator begin();
 
-    void Set(size_t idx, double val)
-    {
-        if (idx >= sz) throw -1;
-        elem[idx] = val;
-    }
+        const_iterator begin() const;
 
-    double Get(size_t idx)
-    {
-        if (idx >= sz) throw -1;
-        return elem[idx];
-    }
+        iterator end();
 
-    ~Vector()
-    {
-        delete[] elem;
-    }
+        const_iterator end() const;
 
-};
+        size_type size();
 
-void VectorTest()
-{
-    Vector v{1.2, 2.3, 3.4, 4.5};
-    Vector v2 = {2.2, 3.3, 4.4, 5.5};
-
-    Vector v3 = v2;
-    printf("%f\n", v3.Get(0));
-
-    v3 = v;
-    printf("%f\n", v3[1]);
-    v3[1] = 10.0;
-    printf("%f\n", v3[1]);
-
-    const Vector v4 = v2;
-    double ele = v4[1];
-    printf("%f\n", ele);
+    };
 }
 
-
-bool is_palindrome(const char *first, const char *last)
+void test()
 {
-    if (first < last)
-    {
-        if (*first != *last) return false;
-        return is_palindrome(first + 1, last - 1);
-    }
-    return true;
-}
+    cpp_practice::vector<int> v;
+    cpp_practice::vector<int>::iterator itr = std::find(v.begin(), v.end(), 34);
 
-class AAA
-{
-public:
-    AAA()
-    {
-        printf("AAA CALLED\n");
-    }
-
-    ~AAA()
-    {
-        printf("AAA DELETED\n");
-    }
-};
-
-
-template<typename T, int N>
-struct Array
-{
-    T elem[N];
-
-    T &operator[](int n);
-
-    const T &operator[](int n) const;
-
-    const T *data() const { return elem; }
-
-    int size() const { return N; }
-};
-
-template<typename T, int N>
-void fill(Array<T, N> &b, const T &val)
-{
-    for (int i = 0; i < N; ++i)
-    {
-        b[i] = val;
-    }
-}
-
-void ArrayTest()
-{
-    Array<char, 1024> buf;
-    Array<int, 10> b2;
-
-    fill(buf, 'x');
-    fill(b2, 10);
 }
 
 int main()
 {
-
 
     return 0;
 }
