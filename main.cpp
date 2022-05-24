@@ -978,15 +978,79 @@ namespace cpp_practice
     };
 }
 
-void test()
-{
-    cpp_practice::vector<int> v;
-    cpp_practice::vector<int>::iterator itr = std::find(v.begin(), v.end(), 34);
+//void test()
+//{
+//    cpp_practice::vector<int> v;
+//    cpp_practice::vector<int>::iterator itr = std::find(v.begin(), v.end(), 34);
+//
+//}
 
+class A
+{
+public:
+
+    virtual inline void fun()
+    {
+        printf("A\n");
+    }
+
+    virtual ~A() = default;
+};
+
+class B : public A
+{
+public:
+
+    void fun() override
+    {
+        printf("B\n");
+    }
+};
+
+int &f()
+{
+    static int x = 10;
+    return x;
 }
+
+class Test
+{
+    static int a;
+    int b;
+};
+
+int Test::a;
+
+class calculate
+{
+    int x;
+    int y;
+
+public:
+    void val(int, int);
+
+    int sum()
+    {
+        return x + y;
+    }
+};
+
+void calculate::val(int a, int b)
+{
+    x = a;
+    y = b;
+}
+
 
 int main()
 {
+//    printf("%ld", sizeof(float ));
+
+    char x;
+    std::cin.get(x);
+
+    printf("%c\n", x);
+    std::cout.put(x);
 
     return 0;
 }

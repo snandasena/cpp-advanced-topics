@@ -27,6 +27,7 @@ add_subdirectory(CTCI)
 add_subdirectory(test)
 
 add_subdirectory(ipc)
+add_subdirectory(interviews)
 
 #add_subdirectory(algo)
 
