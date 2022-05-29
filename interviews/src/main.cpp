@@ -320,18 +320,27 @@ std::istream &operator>>(std::istream &is, text_editor::Document &doc)
     return is;
 }
 
+
+std::ostream &operator<<(std::ostream &out, text_editor::Document &doc)
+{
+    return out;
+}
+
 void print(text_editor::Document &doc)
 {
     for (auto p: doc)
     {
-        std::cout << *p;
+        std::cout << &p;
     }
 }
+
 
 int main()
 {
     text_editor::Document document;
     std::cin >> document;
+
+
 
     return 0;
 }
