@@ -3,6 +3,13 @@
 //
 
 #include <iostream>
+#include <memory>
+#include <vector>
+#include <list>
+
+using std::vector;
+using std::list;
+
 //
 //class A
 //{
@@ -160,53 +167,180 @@
 //public:
 //    Test(int &x) : t{x} {}
 //};
+//
+//class Test1
+//{
+//    int y;
+//};
+//
+//class Test2
+//{
+//    int x;
+//    Test1 t1;
+//
+//public:
+//
+//    operator Test1()
+//    {
+//        return t1;
+//    }
+//
+//    operator int()
+//    {
+//        return x;
+//    }
+//};
+//
+//void func(int x)
+//{
+//}
+//
+//void func(Test1 t)
+//{
+//
+//}
+//
+//void test6()
+//{
+//    Test2 t;
+//    func(t);
+//}
+//
+//class AA
+//{
+//public:
+//
+//    ~AA()
+//    {
+//        printf("~A\n");
+//    }
+//};
+//
+//class BB : public AA
+//{
+//public:
+//    ~BB()
+//    {
+//        printf("~B\n");
+//    }
+//};
 
-class Test1
+//void test7()
+//{
+//    auto b = std::shared_ptr<AA>(new BB());
+//    b.reset();
+//
+//    for (vector<int> v{1, 3, 4, 5, 6}; auto &i: v)
+//    {
+//        printf("%d\t", i);
+//    }
+//}
+
+namespace text_editor
 {
-    int y;
-};
+    using Line = vector<char>;
 
-class Test2
-{
-    int x;
-    Test1 t1;
+    class Text_iterator;
 
-public:
-
-    operator Test1()
+    class Text_iterator
     {
-        return t1;
+        list<Line>::iterator itr;
+        Line::iterator pos;
+
+    public:
+
+        Text_iterator(list<Line>::iterator it, Line::iterator pp) : itr{it}, pos{pp} {}
+
+        char &operator*() { return *pos; }
+
+        Text_iterator &operator++();
+
+        bool operator==(const Text_iterator &other) const
+        {
+            return (itr == other.itr && pos == other.pos);
+        }
+
+        bool operator!=(const Text_iterator &other) const
+        {
+            return !(*this == other);
+        }
+    };
+
+    Text_iterator &Text_iterator::operator++()
+    {
+        ++pos;
+        if (pos == (*itr).end())
+        {
+            ++itr;
+            pos = (*itr).begin();
+        }
+        return *this;
     }
 
-    operator int()
+    struct Document
     {
-        return x;
+        list<Line> line;
+
+        Document()
+        {
+            line.push_back(Line{});
+        }
+
+        Text_iterator begin()
+        {
+            return {line.begin(), (*line.begin()).begin()};
+        }
+
+        Text_iterator end()
+        {
+            auto last = line.end();
+            --last;
+            return {last, (*last).end()};
+        }
+    };
+
+}
+
+std::istream &operator>>(std::istream &is, text_editor::Document &doc)
+{
+    for (char ch; is.get(ch);)
+    {
+        doc.line.back().push_back(ch);
+        if (ch == '\n')
+        {
+            doc.line.push_back(text_editor::Line{});
+        }
+
+        if (doc.line.back().size())
+        {
+            doc.line.push_back(text_editor::Line{});
+        }
     }
-};
 
-void func(int x)
-{
+    return is;
 }
 
-void func(Test1 t)
-{
 
+std::ostream &operator<<(std::ostream &out, text_editor::Document &doc)
+{
+    return out;
 }
 
-void test6()
+void print(text_editor::Document &doc)
 {
-    Test2 t;
-    func(t);
+    for (auto p: doc)
+    {
+        std::cout << &p;
+    }
 }
+
 
 int main()
 {
-//    test1();
-//    test2();
-//    test3();
-//    test4();
-//    test5();
-    test6();
+    text_editor::Document document;
+    std::cin >> document;
+
+
 
     return 0;
 }
