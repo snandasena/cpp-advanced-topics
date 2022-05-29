@@ -334,12 +334,42 @@ void print(text_editor::Document &doc)
     }
 }
 
+template<typename T, int N>
+struct Array
+{
+    using value_t = T;
+    using iterator = T *;
+    using const_itearor = const T *;
+    using size_type = unsigned int;
+
+    T elem[N];
+
+    iterator begin() { return elem; }
+
+    const_itearor begin() const { return elem; }
+
+    iterator end() { return elem + N; }
+
+    const_itearor end() const { return elem + N; }
+
+    size_type size() const;
+
+    T &operator[](int n) { return elem[n]; }
+
+    const T &operator[](int n) const { return elem[n]; }
+
+    const T &at(int n) const;
+
+    T &at(int n);
+
+    T *data() { return elem; }
+
+    const T *data() const { return elem; }
+};
+
 
 int main()
 {
-    text_editor::Document document;
-    std::cin >> document;
-
 
 
     return 0;
