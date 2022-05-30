@@ -370,7 +370,7 @@ struct Array
 
 int main()
 {
-
+    int ans = (INT32_MIN/-1);
 
     return 0;
 }
