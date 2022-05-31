@@ -1,3 +1,4 @@
 project(bitmanupulation)
 
 add_executable(maxproduct src/max_product_of_word_len.cpp)
+add_executable(checkallbinnumbers src/check_if_a_string_cotains_all_binary_codes_of_sizes_k.cpp)
