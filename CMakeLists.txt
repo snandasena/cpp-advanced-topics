@@ -28,6 +28,7 @@ add_subdirectory(test)
 
 add_subdirectory(ipc)
 add_subdirectory(interviews)
+add_subdirectory(io)
 
 #add_subdirectory(algo)
 
@@ -144,7 +145,7 @@ add_executable(main main.cpp)
 #add_executable(btree ds/b_tree.cpp)
 
 #add_executable(lambda lambdaexp/polymorphic_lambda.cpp)
-#add_executable(sol2 test/sol2.cpp)
+#add_executable(sol2 OutputStreamTest/sol2.cpp)
 
 add_executable(pub publisher.cpp)
 add_executable(con consumer.cpp)
