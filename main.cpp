@@ -853,7 +853,7 @@
 //    }
 //};
 //
-//void test()
+//void OutputStreamTest()
 //{
 //    vector<A> *v = new vector<A>(10, A("Hello"));
 //}
@@ -870,7 +870,7 @@
 //    return val;
 //}
 //
-//void test()
+//void OutputStreamTest()
 //{
 //
 //    vector<int> v{1, 3, 4, 2, 6, 7, 9, 20, 0};
@@ -919,7 +919,6 @@ namespace cpp_practice
         Elem &back();
     };
 
-
     template<typename Elem>
     class List<Elem>::Iterator
     {
@@ -955,7 +954,6 @@ namespace cpp_practice
         }
     };
 
-
     template<typename T>
     class vector
     {
@@ -978,7 +976,7 @@ namespace cpp_practice
     };
 }
 
-//void test()
+//void OutputStreamTest()
 //{
 //    cpp_practice::vector<int> v;
 //    cpp_practice::vector<int>::iterator itr = std::find(v.begin(), v.end(), 34);
@@ -1041,16 +1039,19 @@ void calculate::val(int a, int b)
     y = b;
 }
 
+struct ConstExprTest
+{
+    static constexpr double PI = 3.14;
+};
+
+void tests()
+{
+    const ConstExprTest ct1;
+    printf("%0.2f\n", ConstExprTest::PI);
+}
 
 int main()
 {
-//    printf("%ld", sizeof(float ));
-
-    char x;
-    std::cin.get(x);
-
-    printf("%c\n", x);
-    std::cout.put(x);
 
     return 0;
 }
