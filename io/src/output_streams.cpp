@@ -61,6 +61,12 @@ int main()
 //    OutputStreamTest();
 //    OutputBinTest();
 //        CountTest();
-    TestOutManipulation();
+//    TestOutManipulation();
+
+    int  t;
+    cin>>t;
+
+    cout<<"INPUT "<<t<<'\n';
+
     return 0;
 }

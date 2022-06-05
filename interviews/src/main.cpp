@@ -88,11 +88,31 @@ bool find_from_addr(const Message *m, string &s)
 
 }
 
+class A
+{
+public:
+
+    A()
+    {
+        printf("A CALLED\n");
+    }
+
+    ~A()
+    {
+        printf("A DELETED");
+    }
+};
+
+
 int main()
 {
 
-    auto res = is_prefix("hello", "hell");
-    printf("%d", res);
+    A *a = new A;
+    ++a;
+//    delete a;
 
+    cout<<static_cast<char>(5)<<'\n';
     return 0;
 }
+
+//0701516906
