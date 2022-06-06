@@ -13,7 +13,7 @@ add_definitions(-DCMAKE_BUILD_TYPE=Debug)
 add_subdirectory(asio-samples)
 add_subdirectory(sorting-algo)
 
-set(CXX_FLAGS "-Wall")
+set(CXX_FLAGS "-fsanitize=address -ggdb3 -Wall -Wextra")
 #add_subdirectory(c-things)
 #add_subdirectory(cppnano)
 #add_subdirectory(embbed-programming)

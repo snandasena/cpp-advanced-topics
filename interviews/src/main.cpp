@@ -109,9 +109,9 @@ int main()
 
     A *a = new A;
     ++a;
-//    delete a;
+    delete a;
 
-    cout<<static_cast<char>(5)<<'\n';
+    cout<<static_cast<char>(0x05)<<'\n';
     return 0;
 }
 
