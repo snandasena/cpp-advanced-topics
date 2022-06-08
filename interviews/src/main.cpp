@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <map>
 #include <fstream>
+#include <typeinfo>
 
 using namespace std;
 
@@ -104,44 +105,115 @@ using namespace std;
 //};
 
 
-class Base
+//class Base
+//{
+//public:
+//    Base()
+//    {
+//        printf("BASE\n");
+//    }
+//
+//    virtual     ~Base()
+//    {
+//        printf("~BASE\n");
+//    }
+//};
+//
+//class Derived : public Base
+//{
+//public:
+//    Derived()
+//    {
+//        printf("DERIVED\n");
+//    }
+//
+//    ~Derived()
+//    {
+//        printf("~DERIVED\n");
+//    }
+//};
+
+//void test()
+//{
+//
+//    Derived d;
+//    Base *ptr;
+//    ptr = &d;
+//
+//    delete ptr;
+//}
+
+//class Base
+//{
+//private:
+//    virtual void testM() = 0;
+//
+//    void testM2() {}
+//
+//public:
+//
+//    virtual ~Base() = default;
+//
+//    virtual void memFuc() final
+//    {
+//        printf("This final func()\n");
+//    };
+//};
+//
+//class Derived final : public Base
+//{
+//
+//public:
+//
+//    void testM() override
+//    {
+//        printf("Private virtual override\n");
+//    }
+//
+//};
+
+//void test()
+//{
+//    Base *bPtr;
+//    Derived d;
+//    bPtr = &d;
+//
+//    printf("%s", typeid(*bPtr).name());
+//}
+//
+//void readFile(const string &name)
+//{
+//    std::ifstream input{name.c_str(), std::ios::in | std::ios::binary};
+//    string line;
+//    char  c;
+//    if (input.is_open())
+//        while (input.get(c))
+//        {
+//            printf("%c", c);
+//        }
+//
+//    input.close();
+//}
+struct X
 {
-public:
-    Base()
-    {
-        printf("BASE\n");
-    }
-
-    virtual     ~Base()
-    {
-        printf("~BASE\n");
-    }
-};
-
-class Derived : public Base
-{
-public:
-    Derived()
-    {
-        printf("DERIVED\n");
-    }
-
-    ~Derived()
-    {
-        printf("~DERIVED\n");
-    }
+    int a;
+    int b;
 };
 
 int main()
 {
-    {
-        Derived d;
-        Base *ptr;
-        ptr  = &d;
 
-        delete ptr;
-    }
+    const X *p;
+    p = new X;
+    p->a = 10;
 
+    X *const p1 = new X;
+//    p1 = new X;
+    p1->a = 10;
+
+    const X *const p2 = new X;
+    p2->a = 10;
+    
     return 0;
 }
 
