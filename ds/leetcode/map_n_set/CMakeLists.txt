@@ -2,5 +2,6 @@ project(mapnset)
 
 
 #add_executable(designhasmap src/design_hasmap.cpp)
-add_executable(designunderground src/design_underground_system.cpp)
-add_executable(letter_combinations_of_a_phone_number src/letter_combinations_of_a_phone_number.cpp)
+#add_executable(designunderground src/design_underground_system.cpp)
+#add_executable(letter_combinations_of_a_phone_number src/letter_combinations_of_a_phone_number.cpp)
+add_executable(longest_substring_without_repeating_chars src/longest_substring_without_repeating_chars.cpp)
