@@ -9,5 +9,6 @@ project(stacknqueues)
 #add_executable(backspacestring_compare src/backspacestring_compare.cpp)
 #add_executable(stack_using_queue src/stack_using_queue.cpp)
 #add_executable(remove_all_adjacent_duplicates_in_string_ii src/remove_all_adjacent_duplicates_in_string_ii.cpp)
-add_executable(furthest_building_you_can_reach src/furthest_building_you_can_reach.cpp)
+#add_executable(furthest_building_you_can_reach src/furthest_building_you_can_reach.cpp)
+add_executable(kth_largest_number_in_an_array src/kth_largest_number_in_an_array.cpp)
 
