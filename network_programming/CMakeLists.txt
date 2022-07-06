@@ -1,0 +1,7 @@
+project(networks)
+
+set(CMAKE_CXX_FLAGS "-std=c++17 -fsanitize=address -ggdb3 -Wall -Wextra -pedantic -Werror")
+
+add_executable(get_host_details src/get_host_details.cpp)
+add_executable(get_local_network_details src/get_local_network_details.cpp)
+add_executable(get_interfaces_details src/get_intefaces_details.cpp)
