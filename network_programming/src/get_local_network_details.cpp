@@ -77,5 +77,6 @@ int main()
     }
 
     close(sockfd);
+    freeaddrinfo(peer_address);
     return 0;
 }
