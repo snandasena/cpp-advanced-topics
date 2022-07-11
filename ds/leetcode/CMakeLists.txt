@@ -16,6 +16,7 @@ add_subdirectory(matrix)
 add_subdirectory(bitmanupulations)
 add_subdirectory(math)
 add_subdirectory(practice)
+add_subdirectory(contests)
 
 #add_executable(median_of_two_sorted_arrays src/median_of_two_sorted_arrays.cpp)
 #add_executable(zig_zag_conversion src/zig_zag_conversion.cpp)
