@@ -2,16 +2,27 @@ project(networks)
 
 set(CMAKE_CXX_FLAGS "-std=c++17 -fsanitize=address -ggdb3 -Wall -Wextra -pedantic -Werror")
 
-add_executable(get_host_details src/get_host_details.cpp)
-add_executable(get_local_network_details src/get_local_network_details.cpp)
-add_executable(get_interfaces_details src/get_intefaces_details.cpp)
-add_executable(get_address_info src/get_address_info.cpp)
-add_executable(socket01 src/socket01.cpp)
-add_executable(socket02 src/socket02.cpp)
-add_executable(socket_connect src/socket_connect.cpp)
-add_executable(socket_listen src/socket_listern.cpp)
-add_executable(server01 src/server01.cpp)
-add_executable(client01 src/client01.cpp)
-add_executable(dual_stack_server src/dual_stack_server.cpp)
-add_executable(generic_tcp_client src/generic_tcp_client.cpp)
-add_executable(generic_tcp_server src/generic_tcp_server.cpp)
+# TCP Works
+
+#add_executable(get_host_details src/TCP/get_host_details.cpp)
+#add_executable(get_local_network_details src/TCP/get_local_network_details.cpp)
+#add_executable(get_interfaces_details src/TCP/get_intefaces_details.cpp)
+#add_executable(get_address_info src/TCP/get_address_info.cpp)
+#add_executable(socket01 src/TCP/socket01.cpp)
+#add_executable(socket02 src/TCP/socket02.cpp)
+#add_executable(socket_connect src/TCP/socket_connect.cpp)
+#add_executable(socket_listen src/TCP/socket_listern.cpp)
+#add_executable(server01 src/TCP/server01.cpp)
+#add_executable(client01 src/TCP/client01.cpp)
+#add_executable(dual_stack_server src/TCP/dual_stack_server.cpp)
+#add_executable(generic_tcp_client src/TCP/generic_tcp_client.cpp)
+#add_executable(generic_tcp_server src/TCP/generic_tcp_server.cpp)
+#
+#
+
+# UDP Works
+add_executable(udpserver01 src/UDP/udp_server.cpp)
+add_executable(udpclient01 src/UDP/udp_client.cpp)
+
+add_executable(reversestring_server src/UDP/string_reverse_server.cpp)
+add_executable(reversestring_client src/UDP/string_reverse_client.cpp)
