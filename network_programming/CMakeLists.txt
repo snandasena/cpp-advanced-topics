@@ -28,5 +28,7 @@ set(CMAKE_CXX_FLAGS "-std=c++17 -fsanitize=address -ggdb3 -Wall -Wextra -pedanti
 #add_executable(reversestring_client src/UDP/string_reverse_client.cpp)
 
 # CH05
-add_executable(server01 src/CH05/server01.cpp)
-add_executable(client01 src/CH05/client01.cpp)
+#add_executable(server01 src/CH05/tcp_server01.cpp)
+#add_executable(client01 src/CH05/tcp_client01.cpp)
+add_executable(server01 src/CH05/udp_server01.cpp)
+add_executable(client01 src/CH05/udp_client01.cpp)
