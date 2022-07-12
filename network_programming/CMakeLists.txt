@@ -23,3 +23,6 @@ set(CMAKE_CXX_FLAGS "-std=c++17 -fsanitize=address -ggdb3 -Wall -Wextra -pedanti
 # UDP Works
 add_executable(udpserver01 src/UDP/udp_server.cpp)
 add_executable(udpclient01 src/UDP/udp_client.cpp)
+
+add_executable(reversestring_server src/UDP/string_reverse_server.cpp)
+add_executable(reversestring_client src/UDP/string_reverse_client.cpp)
