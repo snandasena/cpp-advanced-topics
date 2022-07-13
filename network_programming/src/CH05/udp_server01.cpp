@@ -62,7 +62,7 @@ int main()
             perror("failed");
             return 1;
         }
-
+        
         input[r] = '\0';
         strcpy(output, "SERVER> ");
         strcat(output, input);
