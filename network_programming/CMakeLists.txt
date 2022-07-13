@@ -30,5 +30,8 @@ set(CMAKE_CXX_FLAGS "-std=c++17 -fsanitize=address -ggdb3 -Wall -Wextra -pedanti
 # CH05
 #add_executable(server01 src/CH05/tcp_server01.cpp)
 #add_executable(client01 src/CH05/tcp_client01.cpp)
-add_executable(server01 src/CH05/udp_server01.cpp)
-add_executable(client01 src/CH05/udp_client01.cpp)
+#add_executable(server01 src/CH05/udp_server01.cpp)
+#add_executable(client01 src/CH05/udp_client01.cpp)
+
+add_executable(chatserver src/CH05/chat_server.cpp)
+add_executable(chatclient src/CH05/chat_client.cpp)
