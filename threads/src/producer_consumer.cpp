@@ -10,7 +10,6 @@ using namespace std;
 
 class ServingLine
 {
-
 public:
 
     void server_soup(int i)
