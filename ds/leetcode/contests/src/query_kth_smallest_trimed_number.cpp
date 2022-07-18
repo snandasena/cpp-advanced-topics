@@ -13,7 +13,7 @@ public:
         vector<int> ans;
         for (const auto &query: queries)
         {
-            vector<pair<string , int>> v;
+            vector<pair<string, int>> v;
             int i = 0;
             for (const auto &item: nums)
             {
@@ -22,11 +22,7 @@ public:
                 ++i;
             }
 
-            sort(v.begin(), v.end(), [](pair<string, int> &p1, pair<string, int> &p2)
-            {
-                return p1.first < p2.first;
-            });
-
+            sort(v.begin(), v.end());
             auto val = v[query[0] - 1].second;
             ans.push_back(val);
 
