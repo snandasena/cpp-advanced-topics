@@ -2,12 +2,11 @@
 // Created by sajith on 5/24/22.
 //
 
-
-using namespace std;
+#include "friends.h"
 
 int main()
 {
-
+    test();
 
     
     return 0;

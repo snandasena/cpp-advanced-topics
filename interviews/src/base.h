@@ -15,4 +15,6 @@
 #include <typeinfo>
 
 
+using namespace std;
+
 #endif //ADVANCED_TOPICS_BASE_H
