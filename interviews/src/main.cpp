@@ -618,54 +618,95 @@
 //    return 0;
 //}
 
-class Base
+//class Base
+//{
+//    int _x;
+//public:
+//
+//    Base()
+//    {
+//        cout<<"Base default\n";
+//    }
+//    Base(int x) : _x{x}
+//    {
+//        cout << "Base with params\n";
+//    }
+//
+//    Base(const Base &other)
+//    {
+//        this->_x = other._x;
+//        cout << "Base copy constructor\n";
+//    }
+//
+//    Base &operator=(const Base &rhs)
+//    {
+//        this->_x = rhs._x;
+//        cout << "Base copy assigment\n";
+//        return *this;
+//    }
+//
+//};
+//
+//class MyClass
+//{
+//    Base b;
+//public:
+//    MyClass()
+//    {
+//        cout << "my class constructor\n";
+//    }
+//    MyClass(Base a):b{a}
+//    {
+//        cout << "my class parameter\n";
+//    }
+//};
+//
+//int main()
+//{
+//    Base b(10);
+//    MyClass m(b);
+//
+//    return 0;
+//}
+
+class Foo
 {
-    int _x;
+    int x;
+
 public:
-
-    Base()
+    Foo(int _x) : x{_x}
     {
-        cout<<"Base default\n";
-    }
-    Base(int x) : _x{x}
-    {
-        cout << "Base with params\n";
+        cout << "Foo\n";
     }
 
-    Base(const Base &other)
+    ~Foo()
     {
-        this->_x = other._x;
-        cout << "Base copy constructor\n";
+        cout << "~Foo\n";
     }
 
-    Base &operator=(const Base &rhs)
-    {
-        this->_x = rhs._x;
-        cout << "Base copy assigment\n";
-        return *this;
-    }
+    int getX() const
+    { return x; }
 
+    void setX(int newX)
+    {
+        x = newX;
+    }
 };
 
-class MyClass
+void func(const shared_ptr<Foo> &sp)
 {
-    Base b;
-public:
-    MyClass()
-    {
-        cout << "my class constructor\n";
-    }
-    MyClass(Base a)
-    {
-        b = a;
-        cout << "my class parameter\n";
-    }
-};
+    cout << "use count " << sp.use_count() << endl;
+    sp->setX(100);
+}
 
 int main()
 {
-    Base b(10);
-    MyClass m(b);
+    auto sp = make_shared<Foo>(10);
+    cout << "Value " << sp->getX() << endl;
+    cout << "use count " << sp.use_count() << endl;
+    func(sp);
+    cout << "use count " << sp.use_count() << endl;
 
+    cout << "Value " << sp->getX() << endl;
     return 0;
 }
