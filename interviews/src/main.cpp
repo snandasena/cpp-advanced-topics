@@ -669,44 +669,144 @@
 //    return 0;
 //}
 
-class Foo
-{
-    int x;
+//class Foo
+//{
+//    int x;
+//
+//public:
+//    Foo(int _x) : x{_x}
+//    {
+//        cout << "Foo\n";
+//    }
+//
+//    ~Foo()
+//    {
+//        cout << "~Foo\n";
+//    }
+//
+//    int getX() const
+//    { return x; }
+//
+//    void setX(int newX)
+//    {
+//        x = newX;
+//    }
+//};
+//
+//void func(const shared_ptr<Foo> &sp)
+//{
+//    cout << "use count " << sp.use_count() << endl;
+//    sp->setX(100);
+//}
+//
+//int main()
+//{
+//    auto sp = make_shared<Foo>(10);
+//    cout << "Value " << sp->getX() << endl;
+//    cout << "use count " << sp.use_count() << endl;
+//    func(sp);
+//    cout << "use count " << sp.use_count() << endl;
+//    cout << "Value " << sp->getX() << endl;
+//    return 0;
+//}
 
-public:
-    Foo(int _x) : x{_x}
-    {
-        cout << "Foo\n";
-    }
+//
+//class Storable
+//{
+//public:
+//
+//    virtual void read() = 0;
+//
+//    virtual void write();
+//
+//    virtual ~Storable() = default;
+//
+//};
+//
+//class Transmitter : public virtual Storable
+//{
+//public:
+//
+//    void read()
+//    {
+//        cout << "Transmitter read()\n";
+//    }
+//};
+//
+//class Receiver : public virtual Storable
+//{
+//public:
+//
+//    void write()
+//    {
+//        cout << "Receiver write()\n";
+//    }
+//};
+//
+//class Radio : public Transmitter, public Receiver
+//{
+//public:
+//
+//};
+//
+//int main()
+//{
+//    Radio *rad = new Radio;
+//
+//    Receiver *receiv = rad;
+//    Transmitter *trans = rad;
+//
+//    rad->Receiver::write();
+//    rad->Storable::write();
+//    receiv->write();
+//    trans->write();
+//
+//    return 0;
+//}
 
-    ~Foo()
-    {
-        cout << "~Foo\n";
-    }
-
-    int getX() const
-    { return x; }
-
-    void setX(int newX)
-    {
-        x = newX;
-    }
-};
-
-void func(const shared_ptr<Foo> &sp)
-{
-    cout << "use count " << sp.use_count() << endl;
-    sp->setX(100);
-}
-
-int main()
-{
-    auto sp = make_shared<Foo>(10);
-    cout << "Value " << sp->getX() << endl;
-    cout << "use count " << sp.use_count() << endl;
-    func(sp);
-    cout << "use count " << sp.use_count() << endl;
-
-    cout << "Value " << sp->getX() << endl;
-    return 0;
-}
+//class A
+//{
+//public:
+//    A()
+//    {
+//        cout << "A()\n";
+//    }
+//    void func()
+//    {
+//        cout << "A func()\n";
+//    }
+//};
+//
+//class B : public virtual A
+//{
+//public:
+//    B()
+//    {
+//        cout << "B()\n";
+//    }
+//};
+//
+//class C : public virtual A
+//{
+//public:
+//    C()
+//    {
+//        cout << "C()\n";
+//    }
+//};
+//
+//class D : public  B, public  C
+//{
+//public:
+//    D()
+//    {
+//        cout << "D()\n";
+//    }
+//};
+//
+//int main()
+//{
+//    D d;
+//    d.B::func();
+//    return 0;
+//}
