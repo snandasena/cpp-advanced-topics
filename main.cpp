@@ -188,7 +188,7 @@
 //}
 
 //
-//class A
+//class Base1
 //{
 //private:
 //    int x{10};
@@ -206,23 +206,23 @@
 //
 //public:
 //
-//    A()
+//    Base1()
 //    {
-//        printf("A called\n");
+//        printf("Base1 called\n");
 //    }
 //
-//    ~A()
+//    Base1ase1()
 //    {
-//        printf("A deleted\n");
+//        printf("Base1 deleted\n");
 //    }
 //};
 //
-//class B : public A
+//class B : public Base1
 //{
 //public:
 //    B()
 //    {
-//        printf("%d\n", A::z);
+//        printf("%d\n", Base1::z);
 //        printf("B called\n");
 //    }
 //
@@ -232,12 +232,12 @@
 //    }
 //};
 //
-//class C : protected A
+//class C : protected Base1
 //{
 //public:
 //    C()
 //    {
-//        printf("%d\n", A::z);
+//        printf("%d\n", Base1::z);
 //        printf("C called\n");
 //    }
 //
@@ -247,7 +247,7 @@
 //    }
 //};
 //
-//class D : private A
+//class D : private Base1
 //{
 //
 //public:
@@ -255,7 +255,7 @@
 //
 //    D()
 //    {
-//        printf("%d\n", A::z);
+//        printf("%d\n", Base1::z);
 //        printf("D called");
 //    }
 //
@@ -286,22 +286,22 @@
 
 //Menu::Menu(int n, Rect &bounds) : OptionList(n), Window(bounds) {}
 
-//class A
+//class Base1
 //{
 //public:
-//    A()
+//    Base1()
 //    {
-//        printf("From A\n");
+//        printf("From Base1\n");
 //    }
 //
-//    ~A()
+//    Base1ase1()
 //    {
-//        printf("A deleted\n");
+//        printf("Base1 deleted\n");
 //    }
 //
 //    void Func()
 //    {
-//        printf("Called func from A\n");
+//        printf("Called func from Base1\n");
 //    }
 //};
 //
@@ -326,10 +326,10 @@
 //};
 //
 //
-//class C : public B, public A
+//class C : public B, public Base1
 //{
 //public:
-//    C() :B(), A()
+//    C() :B(), Base1()
 //    {
 //        printf("From C\n");
 //    }
@@ -341,16 +341,16 @@
 //};
 
 //
-//class A
+//class Base1
 //{
 //public:
-//    A()
+//    Base1()
 //    {
-//        printf("A called\n");
+//        printf("Base1 called\n");
 //    }
 //};
 //
-//class B : virtual public A
+//class B : virtual public Base1
 //{
 //public:
 //    B()
@@ -359,7 +359,7 @@
 //    }
 //};
 //
-//class C : virtual public A
+//class C : virtual public Base1
 //{
 //public:
 //    C()
@@ -837,25 +837,25 @@
 //}
 
 //
-//class A
+//class Base1
 //{
 //    string *str;
 //public:
-//    A(const string &s) : str{new string{s}}
+//    Base1(const string &s) : str{new string{s}}
 //    {
-//        printf("A CALLED\n");
+//        printf("Base1 CALLED\n");
 //    }
 //
-//    ~A()
+//    Base1ase1()
 //    {
-//        printf("A DELETED\n");
+//        printf("Base1 DELETED\n");
 //        delete str;
 //    }
 //};
 //
 //void OutputStreamTest()
 //{
-//    vector<A> *v = new vector<A>(10, A("Hello"));
+//    vector<Base1> *v = new vector<Base1>(10, Base1("Hello"));
 //}
 
 //
@@ -983,19 +983,19 @@ namespace cpp_practice
 //
 //}
 
-class A
+class Base1
 {
 public:
 
     virtual inline void fun()
     {
-        printf("A\n");
+        printf("Base1\n");
     }
 
-    virtual ~A() = default;
+    virtual ~Base1() = default;
 };
 
-class B : public A
+class B : public Base1
 {
 public:
 

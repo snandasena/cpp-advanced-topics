@@ -416,7 +416,7 @@
 //    MyStruct s;
 //    s.x = 10;
 //    s.y = 20;
-//    s.c = 'A';
+//    s.c = 'Base1';
 //    s.b = true;
 //
 //    int *p = reinterpret_cast<int *>(&s);
@@ -483,7 +483,7 @@
 //    return 0;
 //}
 
-//struct A
+//struct Base1
 //{
 //    double b;
 //    int a;
@@ -492,13 +492,13 @@
 //
 //struct B
 //{
-//    A a;
+//    Base1 a;
 //    int c;
 //};
 //
 //int main()
 //{
-//    cout<<sizeof(A)<<endl;
+//    cout<<sizeof(Base1)<<endl;
 //    cout<<sizeof(B)<<endl;
 //}
 
@@ -531,7 +531,7 @@
 //
 //tuple<int, double, char> func()
 //{
-//    return {10, 22.222, 'A'};
+//    return {10, 22.222, 'Base1'};
 //}
 //
 //
@@ -551,21 +551,21 @@
 //    return 0;
 //}
 
-//class A
+//class Base1
 //{
 //    int x;
 //public:
 //
-//    A(int i) : x{i}
+//    Base1(int i) : x{i}
 //    {}
 //};
 //
 //
 //class B
 //{
-//    A a;
+//    Base1 a;
 //public:
-//    B(A _a) : a{_a}
+//    B(Base1 _a) : a{_a}
 //    {
 //    }
 //};
@@ -764,20 +764,20 @@
 //    return 0;
 //}
 
-//class A
+//class Base1
 //{
 //public:
-//    A()
+//    Base1()
 //    {
-//        cout << "A()\n";
+//        cout << "Base1()\n";
 //    }
 //    void func()
 //    {
-//        cout << "A func()\n";
+//        cout << "Base1 func()\n";
 //    }
 //};
 //
-//class B : public virtual A
+//class B : public virtual Base1
 //{
 //public:
 //    B()
@@ -786,7 +786,7 @@
 //    }
 //};
 //
-//class C : public virtual A
+//class C : public virtual Base1
 //{
 //public:
 //    C()
@@ -808,5 +808,269 @@
 //{
 //    D d;
 //    d.B::func();
+//    return 0;
+//}
+
+//class Base1
+//{
+//    int _x;
+//public:
+//    Base1(int x) : _x{x}
+//    {
+//        cout << "Base1()\n";
+//    }
+//
+//    void func()
+//    {
+//        cout << "Base1 func()\n";
+//    }
+//
+//    void funcB1()
+//    {
+//        cout << "Base1 funcB1()\n";
+//    }
+//};
+//
+//class Base2
+//{
+//    int _y;
+//public:
+//    Base2(int y) : _y{y}
+//    {
+//        cout << "Base2()\n";
+//    }
+//
+//    void func()
+//    {
+//        cout << "Base2 func()\n";
+//    }
+//
+//    void funcB2()
+//    {
+//        cout << "Base2 funcB2()\n";
+//    }
+//};
+//
+//class Derived : public Base1, public Base2
+//{
+//public:
+//    Derived(int x, int y) : Base1{x}, Base2{y}
+//    {
+//        cout << "Derived()\n";
+//    }
+//};
+//
+//int main()
+//{
+//    Derived d{10, 20};
+////    d.Base1::func();
+////    d.Base2::func();
+////
+////
+////    Base2 b2 = d;
+////    b2.func();
+////
+////    static_cast<Base2>(d).func();
+//
+//    d.funcB1();
+//    d.funcB2();
+//    return 0;
+//}
+
+
+//class Base
+//{
+//public:
+//
+//    Base()
+//    {
+//        cout << "Base()\n";
+//    }
+//
+//    void func()
+//    {
+//        cout << "Base func()\n";
+//    }
+//
+//};
+//
+//class A : public Base
+//{
+//public:
+//
+//    A()
+//    {
+//        cout << "A()\n";
+//    }
+//
+//    void func()
+//    {
+//        cout << "A func()\n";
+//    }
+//};
+//
+//
+//class B : public Base
+//{
+//public:
+//    B()
+//    {
+//        cout << "B()\n";
+//    }
+//
+//    void func()
+//    {
+//        cout << "B func()\n";
+//    }
+//};
+//
+//
+//class C : public Base
+//{
+//public:
+//
+//    C()
+//    {
+//        cout << "C()\n";
+//    }
+//
+//    void func()
+//    {
+//        cout << "C func()\n";
+//    }
+//};
+//
+//void API(Base &b)
+//{
+//    b.func();
+//}
+//
+//int main()
+//{
+////    Base b;
+////    API(b);
+//
+//    A a;
+//    API(a);
+//    return 0;
+//}
+
+//class Base
+//{
+//    int *ptrI = nullptr;
+//    int x;
+//public:
+//
+//    Base(int _x = 0, int _y = 0) : ptrI{new int{_y}}, x{_x}
+//    {
+//        cout << "Base::Base()\n";
+//    }
+//
+//    virtual void func()
+//    {
+//        cout << "Base::func()\n";
+//    }
+//
+//    virtual  ~Base()
+//    {
+//        cout << "Base::~Base()\n";
+//        delete ptrI;
+//
+//    };
+//
+//    Base(const Base &other);
+//
+//    Base &operator=(const Base &other);
+//
+//    Base(Base &&other) noexcept;
+//
+//    Base &operator=(Base &&other) noexcept;
+//};
+//
+//Base::Base(const Base &other)
+//{
+//    this->x = other.x;
+//    this->ptrI = new int{*other.ptrI};
+//}
+//
+//Base &Base::operator=(const Base &other)
+//{
+//    this->ptrI = new int{*other.ptrI};
+//    this->x = other.x;
+//    return *this;
+//}
+//Base::Base(Base &&other) noexcept: ptrI{other.ptrI}, x{other.x}
+//{
+//    other.ptrI = nullptr;
+//    other.x = 0;
+//}
+//Base &Base::operator=(Base &&other) noexcept
+//{
+//    ptrI = other.ptrI;
+//    x = other.x;
+//
+//    other.ptrI = nullptr;
+//    other.x = 0;
+//    return *this;
+//}
+//
+//class Derived : public Base
+//{
+//public:
+//
+//    Derived(int x, int y) : Base(x, y)
+//    {
+//        cout << "Derived::Derived()\n";
+//    }
+//    void func() override
+//    {
+//        cout << "Derived::func()\n";
+//    }
+//
+//    void base_func()
+//    {
+//        cout << "Derived::base_func()\n";
+//    }
+//
+//};
+//
+//struct AB
+//{
+//    int x;
+//    int y;
+//};
+//
+//struct A : AB
+//{
+//    int a;
+//    int b;
+//
+//    A(int x) : a{x}, b{x}
+//    {}
+//};
+//
+//int main()
+//{
+////    Derived d;
+////    d.func();
+////    d.base_func();
+////
+////    Base &b = d;
+////    b.func();
+////
+////    Derived *pD = new Derived;
+////    pD->func();
+////
+////    delete pD;
+//
+////    Derived d{10, 20};
+////
+////    Derived d2 = d;
+//
+//    if (std::is_standard_layout_v<A>)
+//    {
+//        cout << "TRUE";
+//    }
+//
 //    return 0;
 //}
