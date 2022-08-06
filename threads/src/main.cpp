@@ -174,28 +174,52 @@ using namespace std;
 //
 //
 
-recursive_mutex mtx;
+//recursive_mutex mtx;
+//int main()
+//{
+//    for (int i = 0; i < 5; ++i)
+//    {
+//        mtx.lock();
+//        cout << "Locked " << i << '\t';
+//    }
+//
+//    cout<<endl;
+//    for (int i = 0; i < 5; ++i)
+//    {
+//        mtx.unlock();
+//        cout << "Unlocked " << i << '\t';
+//    }
+//
+//    return 0;
+//}
+
+
+
+mutex mtx;
+
+void task(int task_id)
+{
+    unique_lock lock(mtx);
+    for (int i = 0; i < 10; ++i)
+    {
+        cout << "T ID: " << task_id << " " << i << '\t';
+        if (i == 9)
+        {
+            cout << '\n';
+        }
+    }
+}
+
 int main()
 {
-    for (int i = 0; i < 5; ++i)
-    {
-        mtx.lock();
-        cout << "Locked " << i << '\t';
-    }
+    thread t1{task, 1};
+    thread t2{task, 2};
 
-    cout<<endl;
-    for (int i = 0; i < 5; ++i)
-    {
-        mtx.unlock();
-        cout << "Unlocked " << i << '\t';
-    }
+    t1.join();
+    t2.join();
 
     return 0;
 }
-
-
-
-
 
 
 
