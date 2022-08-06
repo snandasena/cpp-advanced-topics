@@ -2,10 +2,10 @@
 
 using namespace std;
 
-class A
+class Base1
 {
 public:
-    A()
+    Base1()
     {
         callA = 0;
     }
@@ -81,7 +81,7 @@ public:
     }
 };
 
-class D : public A, public B, public C
+class D : public Base1, public B, public C
 {
 
     int val;
@@ -98,7 +98,7 @@ public:
     {
         while (new_val % 2 == 0)
         {
-            A::func(val);
+            Base1::func(val);
             new_val /= 2;
         }
 
@@ -122,7 +122,7 @@ public:
 void D::check(int new_val)
 {
     update_val(new_val);
-    cout << "Value = " << val << endl << "A's func called " << getA() << " times " << endl << "B's func called "
+    cout << "Value = " << val << endl << "Base1's func called " << getA() << " times " << endl << "B's func called "
          << getB() << " times" << endl << "C's func called " << getC() << " times" << endl;
 }
 
