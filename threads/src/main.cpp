@@ -53,7 +53,33 @@ using namespace std;
 //}
 
 
+int common_int = 0;
+mutex mtx;
+void add()
+{
+    mtx.lock();
+    for (int i = 0; i < 100000; ++i)
+    {
+        ++common_int;
+    }
+    mtx.unlock();
+}
 
+int main()
+{
+    thread t1{add};
+    thread t2{add};
+    thread t3{add};
+    thread t4{add};
+
+    t1.join();
+    t2.join();
+    t3.join();
+    t4.join();
+
+    cout << common_int << endl;
+    return 0;
+}
 
 
 
