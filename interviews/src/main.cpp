@@ -1198,10 +1198,17 @@
 int main()
 {
     vector<int> v{1, 1, 1, 2, 2};
-    sort(v.begin(), v.end());
+    int cnt = 10;
 
-    unordered_map<int, int> mp;
-    unordered_set<int> st;
+    for_each(v.begin(), v.end(), [&](int &x)
+    {
+        x += cnt;
+    });
+
+    for_each(v.begin(), v.end(), [](const auto &i)
+    { cout << i << '\t'; });
+
+
 
     return 0;
 }
