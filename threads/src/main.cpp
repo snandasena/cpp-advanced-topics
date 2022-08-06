@@ -195,35 +195,73 @@ using namespace std;
 
 
 
+//mutex mtx;
+//int counter =0;
+//void task(int task_id)
+//{
+//    unique_lock lock(mtx, defer_lock);
+//    for (int i = 0; i < 10; ++i)
+//    {
+//        cout << "T ID: " << task_id << " " << i << '\t';
+//        ++counter;
+//        if (i == 9)
+//        {
+//            cout << '\n';
+//        }
+//    }
+//}
+//
+//int main()
+//{
+//    thread t1{task, 1};
+//    thread t2{task, 2};
+//
+//    t1.join();
+//    t2.join();
+//
+//    cout<< counter<<endl;
+//    return 0;
+//}
+//
+//
+
+condition_variable cv;
 mutex mtx;
-int counter =0;
-void task(int task_id)
+
+long balance = 0;
+
+void addMoney(int money)
 {
-    unique_lock lock(mtx, defer_lock);
-    for (int i = 0; i < 10; ++i)
+    lock_guard lock(mtx);
+    balance += money;
+    cout << "[Added] current balance: " << balance;
+    cv.notify_one();
+}
+
+void withdrawMoney(int money)
+{
+    unique_lock lock(mtx);
+    cv.wait(lock, []()
     {
-        cout << "T ID: " << task_id << " " << i << '\t';
-        ++counter;
-        if (i == 9)
-        {
-            cout << '\n';
-        }
+        return balance != 0;
+    });
+
+    if (balance >= money)
+    {
+        balance -= money;
+        cout << "\nokay";
     }
 }
 
 int main()
 {
-    thread t1{task, 1};
-    thread t2{task, 2};
+    thread t1{withdrawMoney, 500};
+    thread t2{addMoney, 500};
 
     t1.join();
     t2.join();
-
-    cout<< counter<<endl;
     return 0;
 }
-
-
 
 
 
