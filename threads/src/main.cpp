@@ -31,19 +31,42 @@ using namespace std;
 //    cout << "Main thread after\n";
 //    return 0;
 //}
+//
+//void run()
+//{
+//    cout << "child thread\n";
+//    this_thread::sleep_for(chrono::seconds{4});
+//    cout << "child thread finished\n";
+//}
+//
+//int main()
+//{
+//    thread t{run};
+//    t.detach();
+//    cout << "main thread\n";
+//    this_thread::sleep_for(chrono::seconds{2});
+//    if (t.joinable())
+//    {
+//        t.detach();
+//    }
+//    return 0;
+//}
 
-void run()
-{
-    cout << "child thread\n";
-    this_thread::sleep_for(chrono::seconds{5});
-    cout << "child thread finished\n";
-}
 
-int main()
-{
-    thread t{run};
-    t.detach();
-    cout << "main thread\n";
-    this_thread::sleep_for(chrono::seconds{2});
-    return 0;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
