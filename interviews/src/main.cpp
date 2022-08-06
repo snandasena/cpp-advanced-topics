@@ -1195,7 +1195,16 @@
 //    return 0;
 //}
 
+int main()
+{
+    vector<int> v{1, 1, 1, 2, 2};
+    sort(v.begin(), v.end());
 
+    unordered_map<int, int> mp;
+    unordered_set<int> st;
+
+    return 0;
+}
 
 
 
