@@ -196,13 +196,14 @@ using namespace std;
 
 
 mutex mtx;
-
+int counter =0;
 void task(int task_id)
 {
     unique_lock lock(mtx);
     for (int i = 0; i < 10; ++i)
     {
         cout << "T ID: " << task_id << " " << i << '\t';
+        ++counter;
         if (i == 9)
         {
             cout << '\n';
@@ -218,6 +219,7 @@ int main()
     t1.join();
     t2.join();
 
+    cout<< counter<<endl;
     return 0;
 }
 
