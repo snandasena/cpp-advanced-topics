@@ -1074,3 +1074,138 @@
 //
 //    return 0;
 //}
+
+//class Base
+//{
+//public:
+//    Base() = default;
+//};
+//
+//
+//class Derived : public Base
+//{
+//public:
+//    Derived() = default;
+//};
+//
+//int main()
+//{
+//    Derived d;
+//    cout<<sizeof(d)<<endl;
+//
+//    return 0;
+//}
+
+//class A
+//{
+//public:
+//    int x = 10;
+//    void func()
+//    {
+//        cout << "A::func()\n";
+//    }
+//
+//};
+//
+//class B : public virtual A
+//{
+//public:
+//    int y = 20;
+//};
+//
+//class C : public virtual A
+//{
+//public:
+//    int w = 30;
+//
+//};
+//
+//class D : public B, public C
+//{
+//public:
+//    int z = 40;
+//
+//};
+//
+//
+//int main()
+//{
+//    D d;
+//    d.func();
+//    cout << sizeof(D) << endl;
+//    return 0;
+//}
+//
+//
+
+
+
+//class A
+//{
+//private:
+//    A()
+//    {}
+//
+//public:
+//    A(int a)
+//    {}
+//};
+//
+//
+//class B : public A
+//{
+//public:
+//    B() : A(10)
+//    {}
+//};
+//
+//int main()
+//{
+//    B b;
+//    return 0;
+//}
+
+//
+//class Final
+//{
+//private:
+//    Final() = default;
+//
+//    friend class Base;
+//};
+//
+//class Base :  virtual public Final
+//{
+//public:
+//    Base()
+//    {};
+//};
+//
+//class Derived : public Base
+//{
+//public:
+//    Derived()
+//    {}
+//};
+//
+//int main()
+//{
+//    Derived d;
+//
+//    return 0;
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
