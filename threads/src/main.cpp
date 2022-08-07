@@ -251,11 +251,14 @@ void withdrawMoney(int money)
         balance -= money;
         cout << "\nokay";
     }
+
+    cout << "Current balance: " << balance << endl;
 }
 
 int main()
 {
     thread t1{withdrawMoney, 500};
+    this_thread::sleep_for(chrono::seconds{2});
     thread t2{addMoney, 500};
 
     t1.join();
