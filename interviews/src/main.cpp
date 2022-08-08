@@ -1195,29 +1195,56 @@
 //    return 0;
 //}
 
-int main()
+//int main()
+//{
+//    vector<int> v{1, 1, 1, 2, 2};
+//    int cnt = 10;
+//
+//    for_each(v.begin(), v.end(), [&](int &x)
+//    {
+//        x += cnt;
+//    });
+//
+//    for_each(v.begin(), v.end(), [](const auto &i)
+//    { cout << i << '\t'; });
+//
+//
+//
+//    return 0;
+//}
+
+
+
+class A
 {
-    vector<int> v{1, 1, 1, 2, 2};
-    int cnt = 10;
-
-    for_each(v.begin(), v.end(), [&](int &x)
+public:
+    int x;
+    A(int _x = 0) : x{_x}
     {
-        x += cnt;
-    });
+        cout << "Construct\n";
+    }
 
-    for_each(v.begin(), v.end(), [](const auto &i)
-    { cout << i << '\t'; });
+    A(const A &other) : x{other.x}
+    {
+        cout << "Copy\n";
+    }
 
+    friend bool operator<(const A &lhs, const A &rhs);
+};
 
-
-    return 0;
+bool operator<(const A &lhs, const A &rhs)
+{
+    return lhs.x < rhs.x;
 }
 
+int main()
+{
+    set<A> st;
+    st.insert(A(10));
 
-
-
-
-
+    st.emplace(10);
+    return 0;
+}
 
 
 
