@@ -14,6 +14,7 @@
 #include <map>
 #include <unordered_set>
 #include <set>
+#include <forward_list>
 #include <fstream>
 #include <typeinfo>
 

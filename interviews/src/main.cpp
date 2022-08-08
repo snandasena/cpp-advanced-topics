@@ -1215,40 +1215,122 @@
 
 
 
-class A
-{
-public:
-    int x;
-    A(int _x = 0) : x{_x}
-    {
-        cout << "Construct\n";
-    }
+//class A
+//{
+//public:
+//    int x;
+//    A(int _x = 0) : x{_x}
+//    {
+//        cout << "Construct\n";
+//    }
+//
+//    A(const A &other) : x{other.x}
+//    {
+//        cout << "Copy\n";
+//    }
+//
+//    friend bool operator<(const A &lhs, const A &rhs);
+//};
+//
+//bool operator<(const A &lhs, const A &rhs)
+//{
+//    return lhs.x < rhs.x;
+//}
+//
+//int main()
+//{
+//    set<A> st;
+//    st.insert(A(10));
+//
+//    st.emplace(10);
+//    return 0;
+//}
+//
+//
+//
 
-    A(const A &other) : x{other.x}
-    {
-        cout << "Copy\n";
-    }
 
-    friend bool operator<(const A &lhs, const A &rhs);
-};
+//class A
+//{
+//public:
+//    A()
+//    {
+//        cout << "Construct\n";
+//    }
+//
+//    ~A()
+//    {
+//        cout << "Destruct\n";
+//    }
+//
+//    A(const A &)
+//    {
+//        cout << "Copy construct\n";
+//    }
+//
+//    A &operator=(const A &)
+//    {
+//        cout << "Copy assigment\n";
+//    }
+//};
+//
+//
+//int main()
+//{
+//    unique_ptr<A> obj{new A};
+//    auto obj2 = make_unique<A>();
+//    return 0;
+//}
 
-bool operator<(const A &lhs, const A &rhs)
-{
-    return lhs.x < rhs.x;
-}
+//class Person
+//{
+//
+//public:
+//    Person() = default;
+//};
+//
+//class Engineer : public Person
+//{
+//public:
+//    Engineer() = default;
+//};
+//
+//
+//int main()
+//{
+//    Person p;
+//    cout << typeid(p).name() << endl;
+//
+//    Person *pPtr;
+//    cout << typeid(pPtr).name() << endl;
+//
+//    Person &rP = p;
+//    cout << typeid(rP).name() << endl;
+//
+//    Person *pP = new Engineer;
+//
+//    cout<<typeid(pP).name()<<endl;
+//    Person &pr = *pP;
+//    cout<<typeid(pr).name()<<endl;
+//
+//    return 0;
+//}
 
 int main()
 {
-    set<A> st;
-    st.insert(A(10));
+    forward_list<int> fl{2, 3, 4, 5, 6, 1};
 
-    st.emplace(10);
+    list<int> l;
+
+    l.push_front(10);
+    l.push_back(20);
+    l.push_back(30);
+    l.push_back(40);
+    l.push_back(50);
+    l.push_back(60);
+
+    auto pos = next(l.begin(), 3);
+    l.erase(pos);
+
     return 0;
 }
-
-
-
-
-
-
-
