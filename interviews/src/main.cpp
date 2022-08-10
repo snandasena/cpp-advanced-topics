@@ -1313,24 +1313,42 @@
 //    Person &pr = *pP;
 //    cout<<typeid(pr).name()<<endl;
 //
+////    return 0;
+////}
+//
+//int main()
+//{
+//    forward_list<int> fl{2, 3, 4, 5, 6, 1};
+//
+//    list<int> l;
+//
+//    l.push_front(10);
+//    l.push_back(20);
+//    l.push_back(30);
+//    l.push_back(40);
+//    l.push_back(50);
+//    l.push_back(60);
+//
+//    auto pos = next(l.begin(), 3);
+//    l.erase(pos);
+//
 //    return 0;
 //}
+//st DATA;
+
+
+struct A
+{
+    int a;
+    int x;
+} const DATA{10, 30};
+
+constexpr A D{
+        10, 30};
 
 int main()
 {
-    forward_list<int> fl{2, 3, 4, 5, 6, 1};
-
-    list<int> l;
-
-    l.push_front(10);
-    l.push_back(20);
-    l.push_back(30);
-    l.push_back(40);
-    l.push_back(50);
-    l.push_back(60);
-
-    auto pos = next(l.begin(), 3);
-    l.erase(pos);
-
+    cout << D.a << endl;
+    cout << DATA.x << endl;
     return 0;
 }
