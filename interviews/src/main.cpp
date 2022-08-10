@@ -1337,18 +1337,47 @@
 //st DATA;
 
 
-struct A
-{
-    int a;
-    int x;
-} const DATA{10, 30};
+//struct A
+//{
+//    int a;
+//    int x;
+//} const DATA{10, 30};
+//
+//constexpr A D{
+//        10, 30};
+//
+//int main()
+//{
+//    cout << D.a << endl;
+//    cout << DATA.x << endl;
+//    return 0;
+//}
 
-constexpr A D{
-        10, 30};
+struct Singleton
+{
+    int x;
+    Singleton(int _x) : x{_x}
+    {}
+};
+
+ inline Singleton &GetInstance()
+{
+    static Singleton x{10};
+    return x;
+}
+
 
 int main()
 {
-    cout << D.a << endl;
-    cout << DATA.x << endl;
+
+    auto st = GetInstance();
+    cout << st.x << endl;
+
+    st.x = 50;
+
+    auto st2 = GetInstance();
+    cout<<st2.x<<endl;
+
+
     return 0;
 }
