@@ -6,14 +6,12 @@ set(CMAKE_C_STANDARD 11)
 
 #include_directories(asio)
 #add_compile_options(-fsanitize=address)
-set(CMAKE_CXX_FLAGS "-fsanitize=address -ggdb3 -Wall -Wextra")
-add_definitions(-std=c++17)
+set(CMAKE_CXX_FLAGS "-fsanitize=address -ggdb3 -Wall  -ansi  -Wextra")
 add_definitions(-DCMAKE_BUILD_TYPE=Debug)
 
 add_subdirectory(asio-samples)
 add_subdirectory(sorting-algo)
 
-set(CXX_FLAGS "-fsanitize=address -fsanitize=thread -ggdb3 -Wall -ansi -Wextra")
 #add_subdirectory(c-things)
 #add_subdirectory(cppnano)
 #add_subdirectory(embbed-programming)
