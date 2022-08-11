@@ -1353,31 +1353,84 @@
 //    return 0;
 //}
 
-struct Singleton
+//struct Singleton
+//{
+//    int x;
+//    Singleton(int _x) : x{_x}
+//    {}
+//};
+//
+// inline Singleton &GetInstance()
+//{
+//    static Singleton x{10};
+//    return x;
+//}
+//
+//
+//int main()
+//{
+//
+//    auto st = GetInstance();
+//    cout << st.x << endl;
+//
+//    st.x = 50;
+//
+//    auto st2 = GetInstance();
+//    cout<<st2.x<<endl;
+//
+//
+//    return 0;
+//}
+
+class A
 {
-    int x;
-    Singleton(int _x) : x{_x}
-    {}
+    int _x = 0;
+public:
+    explicit A(int x) : _x{x}
+    {
+        cout << "A::A(int x)\n";
+    }
+
+    ~A()
+    {
+        cout << "A::~A()\n";
+    }
+
+    A(A &&other) noexcept: _x{other._x}
+    {
+        other._x = 0;
+        cout << "Move constructor\n";
+    }
+
+    A &operator=(A &&other) noexcept
+    {
+        cout << "Move assignment\n";
+        this->_x = other._x;
+        other._x = 0;
+        return *this;
+    }
+
+    int Get() const
+    {
+        return _x;
+    }
 };
 
- inline Singleton &GetInstance()
+unique_ptr<A> compute()
 {
-    static Singleton x{10};
-    return x;
+    auto pA = make_unique<A>(10);
+    return pA;
 }
 
+void print(unique_ptr<A> aPtr)
+{
+    cout << aPtr->Get() << endl;
+}
 
 int main()
 {
-
-    auto st = GetInstance();
-    cout << st.x << endl;
-
-    st.x = 50;
-
-    auto st2 = GetInstance();
-    cout<<st2.x<<endl;
-
+    auto pA = compute();
+    print(move(pA));
 
     return 0;
 }
