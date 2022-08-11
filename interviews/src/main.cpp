@@ -1195,33 +1195,347 @@
 //    return 0;
 //}
 
+//int main()
+//{
+//    vector<int> v{1, 1, 1, 2, 2};
+//    int cnt = 10;
+//
+//    for_each(v.begin(), v.end(), [&](int &x)
+//    {
+//        x += cnt;
+//    });
+//
+//    for_each(v.begin(), v.end(), [](const auto &i)
+//    { cout << i << '\t'; });
+//
+//
+//
+//    return 0;
+//}
+
+
+
+//class A
+//{
+//public:
+//    int x;
+//    A(int _x = 0) : x{_x}
+//    {
+//        cout << "Construct\n";
+//    }
+//
+//    A(const A &other) : x{other.x}
+//    {
+//        cout << "Copy\n";
+//    }
+//
+//    friend bool operator<(const A &lhs, const A &rhs);
+//};
+//
+//bool operator<(const A &lhs, const A &rhs)
+//{
+//    return lhs.x < rhs.x;
+//}
+//
+//int main()
+//{
+//    set<A> st;
+//    st.insert(A(10));
+//
+//    st.emplace(10);
+//    return 0;
+//}
+//
+//
+//
+
+
+//class A
+//{
+//public:
+//    A()
+//    {
+//        cout << "Construct\n";
+//    }
+//
+//    ~A()
+//    {
+//        cout << "Destruct\n";
+//    }
+//
+//    A(const A &)
+//    {
+//        cout << "Copy construct\n";
+//    }
+//
+//    A &operator=(const A &)
+//    {
+//        cout << "Copy assigment\n";
+//    }
+//};
+//
+//
+//int main()
+//{
+//    unique_ptr<A> obj{new A};
+//    auto obj2 = make_unique<A>();
+//    return 0;
+//}
+
+//class Person
+//{
+//
+//public:
+//    Person() = default;
+//};
+//
+//class Engineer : public Person
+//{
+//public:
+//    Engineer() = default;
+//};
+//
+//
+//int main()
+//{
+//    Person p;
+//    cout << typeid(p).name() << endl;
+//
+//    Person *pPtr;
+//    cout << typeid(pPtr).name() << endl;
+//
+//    Person &rP = p;
+//    cout << typeid(rP).name() << endl;
+//
+//    Person *pP = new Engineer;
+//
+//    cout<<typeid(pP).name()<<endl;
+//    Person &pr = *pP;
+//    cout<<typeid(pr).name()<<endl;
+//
+////    return 0;
+////}
+//
+//int main()
+//{
+//    forward_list<int> fl{2, 3, 4, 5, 6, 1};
+//
+//    list<int> l;
+//
+//    l.push_front(10);
+//    l.push_back(20);
+//    l.push_back(30);
+//    l.push_back(40);
+//    l.push_back(50);
+//    l.push_back(60);
+//
+//    auto pos = next(l.begin(), 3);
+//    l.erase(pos);
+//
+//    return 0;
+//}
+//st DATA;
+
+
+//struct A
+//{
+//    int a;
+//    int x;
+//} const DATA{10, 30};
+//
+//constexpr A D{
+//        10, 30};
+//
+//int main()
+//{
+//    cout << D.a << endl;
+//    cout << DATA.x << endl;
+//    return 0;
+//}
+
+//struct Singleton
+//{
+//    int x;
+//    Singleton(int _x) : x{_x}
+//    {}
+//};
+//
+// inline Singleton &GetInstance()
+//{
+//    static Singleton x{10};
+//    return x;
+//}
+//
+//
+//int main()
+//{
+//
+//    auto st = GetInstance();
+//    cout << st.x << endl;
+//
+//    st.x = 50;
+//
+//    auto st2 = GetInstance();
+//    cout<<st2.x<<endl;
+//
+//
+//    return 0;
+//}
+
+//class A
+//{
+//    int _x = 0;
+//public:
+//    explicit A(int x) : _x{x}
+//    {
+//        cout << "A::A(int x)\n";
+//    }
+//
+//    ~A()
+//    {
+//        cout << "A::~A()\n";
+//    }
+//
+//    A(A &&other) noexcept: _x{other._x}
+//    {
+//        other._x = 0;
+//        cout << "Move constructor\n";
+//    }
+//
+//    A &operator=(A &&other) noexcept
+//    {
+//        cout << "Move assignment\n";
+//        this->_x = other._x;
+//        other._x = 0;
+//        return *this;
+//    }
+//
+//    int Get() const
+//    {
+//        return _x;
+//    }
+//};
+//
+//unique_ptr<A> compute()
+//{
+//    auto pA = make_unique<A>(10);
+//    return pA;
+//}
+//
+//void print(unique_ptr<A> aPtr)
+//{
+//    cout << aPtr->Get() << endl;
+//}
+//
+//int main()
+//{
+//    auto pA = compute();
+//    print(move(pA));
+//
+//    return 0;
+//}
+
+
+//class B
+//{
+//    int *ptr = nullptr;
+//
+//public:
+//
+//    B() = default;
+//
+//    explicit B(int x) : ptr{new int{x}}
+//    {
+//        cout << "B::B(int x)\n";
+//    }
+//
+//    B(const B &other);
+//
+//    B &operator=(const B &other);
+//
+//    B(B &&other) noexcept;
+//
+//    B &operator=(B &&other) noexcept;
+//
+//    ~B();
+//};
+//
+//B::~B()
+//{
+//    cout << "B::~B()\n";
+//    delete ptr;
+//}
+//
+//B::B(const B &other) : ptr{new int{*other.ptr}}
+//{
+//    cout << "B copy constructor\n";
+//}
+//
+//B &B::operator=(const B &other)
+//{
+//    cout << "B copy assignment\n";
+//    this->ptr = new int{*other.ptr};
+//    return *this;
+//}
+//
+//B::B(B &&other) noexcept: ptr{new int{*other.ptr}}
+//{
+//    cout << "B move constructor\n";
+//    other.ptr = nullptr;
+//}
+//
+//B &B::operator=(B &&other) noexcept
+//{
+//    cout << "B move assignment\n";
+//    this->ptr = new int{*other.ptr};
+//    other.ptr = nullptr;
+//
+//    return *this;
+//}
+//
+//int main()
+//{
+////    B b{10};
+////    B *bPtr = new B{10};
+////    delete bPtr;
+////
+////    B b2{20};
+////    B b3{b2};
+//
+////    B b4{20};
+////    B b5;
+////    b5 = b4;
+//
+//    auto bPtr = make_unique<B>(20);
+//    auto mBPtr = move(bPtr);
+//
+//
+//    return 0;
+//}
+
+
+class C
+{
+    unique_ptr<int> ptr;
+
+public:
+    explicit C(int x) : ptr{make_unique<int>(x)}
+    {
+        cout << "Constructor\n";
+    }
+
+    ~C()
+    {
+        cout << "Destructor\n";
+    }
+};
+
+
 int main()
 {
-    vector<int> v{1, 1, 1, 2, 2};
-    int cnt = 10;
-
-    for_each(v.begin(), v.end(), [&](int &x)
-    {
-        x += cnt;
-    });
-
-    for_each(v.begin(), v.end(), [](const auto &i)
-    { cout << i << '\t'; });
-
-
+    auto cPtr = make_unique<C>(10);
+    auto copyPtr = move(cPtr);
 
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
