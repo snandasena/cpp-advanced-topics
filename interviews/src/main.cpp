@@ -1436,79 +1436,106 @@
 //}
 
 
-class B
+//class B
+//{
+//    int *ptr = nullptr;
+//
+//public:
+//
+//    B() = default;
+//
+//    explicit B(int x) : ptr{new int{x}}
+//    {
+//        cout << "B::B(int x)\n";
+//    }
+//
+//    B(const B &other);
+//
+//    B &operator=(const B &other);
+//
+//    B(B &&other) noexcept;
+//
+//    B &operator=(B &&other) noexcept;
+//
+//    ~B();
+//};
+//
+//B::~B()
+//{
+//    cout << "B::~B()\n";
+//    delete ptr;
+//}
+//
+//B::B(const B &other) : ptr{new int{*other.ptr}}
+//{
+//    cout << "B copy constructor\n";
+//}
+//
+//B &B::operator=(const B &other)
+//{
+//    cout << "B copy assignment\n";
+//    this->ptr = new int{*other.ptr};
+//    return *this;
+//}
+//
+//B::B(B &&other) noexcept: ptr{new int{*other.ptr}}
+//{
+//    cout << "B move constructor\n";
+//    other.ptr = nullptr;
+//}
+//
+//B &B::operator=(B &&other) noexcept
+//{
+//    cout << "B move assignment\n";
+//    this->ptr = new int{*other.ptr};
+//    other.ptr = nullptr;
+//
+//    return *this;
+//}
+//
+//int main()
+//{
+////    B b{10};
+////    B *bPtr = new B{10};
+////    delete bPtr;
+////
+////    B b2{20};
+////    B b3{b2};
+//
+////    B b4{20};
+////    B b5;
+////    b5 = b4;
+//
+//    auto bPtr = make_unique<B>(20);
+//    auto mBPtr = move(bPtr);
+//
+//
+//    return 0;
+//}
+
+
+class C
 {
-    int *ptr = nullptr;
+    unique_ptr<int> ptr;
 
 public:
-
-    B() = default;
-
-    explicit B(int x) : ptr{new int{x}}
+    explicit C(int x) : ptr{make_unique<int>(x)}
     {
-        cout << "B::B(int x)\n";
+        cout << "Constructor\n";
     }
 
-    B(const B &other);
-
-    B &operator=(const B &other);
-
-    B(B &&other) noexcept;
-
-    B &operator=(B &&other) noexcept;
-
-    ~B();
+    ~C()
+    {
+        cout << "Destructor\n";
+    }
 };
 
-B::~B()
-{
-    cout << "B::~B()\n";
-    delete ptr;
-}
-
-B::B(const B &other) : ptr{new int{*other.ptr}}
-{
-    cout << "B copy constructor\n";
-}
-
-B &B::operator=(const B &other)
-{
-    cout << "B copy assignment\n";
-    this->ptr = new int{*other.ptr};
-    return *this;
-}
-
-B::B(B &&other) noexcept: ptr{new int{*other.ptr}}
-{
-    cout << "B move constructor\n";
-    other.ptr = nullptr;
-}
-
-B &B::operator=(B &&other) noexcept
-{
-    cout << "B move assignment\n";
-    this->ptr = new int{*other.ptr};
-    other.ptr = nullptr;
-
-    return *this;
-}
 
 int main()
 {
-//    B b{10};
-//    B *bPtr = new B{10};
-//    delete bPtr;
-//
-//    B b2{20};
-//    B b3{b2};
-
-//    B b4{20};
-//    B b5;
-//    b5 = b4;
-
-    auto bPtr = make_unique<B>(20);
-    auto mBPtr = move(bPtr);
-
+    auto cPtr = make_unique<C>(10);
+    auto copyPtr = move(cPtr);
 
     return 0;
 }
+
