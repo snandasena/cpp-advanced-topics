@@ -1513,29 +1513,46 @@
 //    return 0;
 //}
 
-
-class C
-{
-    unique_ptr<int> ptr;
-
-public:
-    explicit C(int x) : ptr{make_unique<int>(x)}
-    {
-        cout << "Constructor\n";
-    }
-
-    ~C()
-    {
-        cout << "Destructor\n";
-    }
-};
+//
+//class C
+//{
+//    unique_ptr<int> ptr;
+//
+//public:
+//    explicit C(int x) : ptr{make_unique<int>(x)}
+//    {
+//        cout << "Constructor\n";
+//    }
+//
+//    ~C()
+//    {
+//        cout << "Destructor\n";
+//    }
+//};
+//
+//
+//int main()
+//{
+//    auto cPtr = make_unique<C>(10);
+//    auto copyPtr = move(cPtr);
+//
+//    return 0;
+//}
+//
 
 
 int main()
 {
-    auto cPtr = make_unique<C>(10);
-    auto copyPtr = move(cPtr);
+    int a = 20;
+    auto increment = [=](int i) mutable noexcept
+    {
+        cout << i << endl;
+        return ++a;
+    };
+
+    int x = 10;
+    cout << increment(x) << endl;
+    cout << a << endl;
 
     return 0;
 }
-
