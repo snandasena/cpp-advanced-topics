@@ -1540,19 +1540,20 @@
 //}
 //
 
+//
+//int main()
+//{
+//    int a = 20;
+//    auto increment = [=](int i) mutable noexcept
+//    {
+//        cout << i << endl;
+//        return ++a;
+//    };
+//
+//    int x = 10;
+//    cout << increment(x) << endl;
+//    cout << a << endl;
+//
+//    return 0;
+//}
 
-int main()
-{
-    int a = 20;
-    auto increment = [=](int i) mutable noexcept
-    {
-        cout << i << endl;
-        return ++a;
-    };
-
-    int x = 10;
-    cout << increment(x) << endl;
-    cout << a << endl;
-
-    return 0;
-}

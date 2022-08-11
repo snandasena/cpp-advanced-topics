@@ -224,51 +224,81 @@ using namespace std;
 //}
 //
 //
+//
+//condition_variable cv;
+//mutex mtx;
+//
+//long balance = 0;
+//
+//void addMoney(int money)
+//{
+//    lock_guard lock(mtx);
+//    balance += money;
+//    cout << "[Added] current balance: " << balance;
+//    cv.notify_one();
+//}
+//
+//void withdrawMoney(int money)
+//{
+//    unique_lock lock(mtx);
+//    cv.wait(lock, []()
+//    {
+//        return balance != 0;
+//    });
+//
+//    if (balance >= money)
+//    {
+//        balance -= money;
+//        cout << "\nokay";
+//    }
+//
+//    cout << "Current balance: " << balance << endl;
+//}
+//
+//int main()
+//{
+//    thread t1{withdrawMoney, 500};
+//    this_thread::sleep_for(chrono::seconds{2});
+//    thread t2{addMoney, 500};
+//
+//    t1.join();
+//    t2.join();
+//    return 0;
+//}
 
-condition_variable cv;
-mutex mtx;
 
-long balance = 0;
 
-void addMoney(int money)
+mutex m1;
+mutex m2;
+
+void task_a()
 {
-    lock_guard lock(mtx);
-    balance += money;
-    cout << "[Added] current balance: " << balance;
-    cv.notify_one();
+    while (1)
+    {
+        scoped_lock  l(m1, m2);
+        cout << "task_a\n";
+    }
 }
 
-void withdrawMoney(int money)
+void task_b()
 {
-    unique_lock lock(mtx);
-    cv.wait(lock, []()
+    while (1)
     {
-        return balance != 0;
-    });
-
-    if (balance >= money)
-    {
-        balance -= money;
-        cout << "\nokay";
+        scoped_lock l(m1, m2);
+        cout << "task_b\n";
     }
 
-    cout << "Current balance: " << balance << endl;
 }
 
 int main()
 {
-    thread t1{withdrawMoney, 500};
-    this_thread::sleep_for(chrono::seconds{2});
-    thread t2{addMoney, 500};
+    thread t1{task_a};
+    thread t2{task_b};
 
     t1.join();
     t2.join();
     return 0;
 }
-
-
-
-
 
 
 
