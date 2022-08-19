@@ -1,6 +1,8 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
 #include <iostream>
 #include <algorithm>
-#include <vector>
 
 using namespace std;
 
@@ -96,8 +98,7 @@ public:
     }
 };
 
-
-int main()
+void solve()
 {
     MessageFactory message_factory;
     Recipient recipient;
@@ -109,4 +110,37 @@ int main()
     }
     Network::send_messages(messages, recipient);
     recipient.print_messages();
+}
+
+class Matrix
+{
+public:
+    Matrix() = default;
+
+    Matrix operator+(Matrix &other)
+    {
+        Matrix res;
+        res.a.resize(other.a.size(), vector<int>(other.a[0].size(), 0));
+        for (int i = 0; i < this->a.size(); ++i)
+        {
+            for (int j = 0; j < this->a[i].size(); ++j)
+            {
+                res.a[i][j] = (this->a[i][j] + other.a[i][j]);
+            }
+
+        }
+        return res;
+    }
+
+public:
+    vector<vector<int>> a;
+};
+
+
+int main()
+{
+    Matrix x;
+    Matrix y;
+    Matrix res;
+    res = x + y;
 }
