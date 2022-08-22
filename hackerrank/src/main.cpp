@@ -127,7 +127,6 @@ public:
             {
                 res.a[i][j] = (this->a[i][j] + other.a[i][j]);
             }
-
         }
         return res;
     }
@@ -136,11 +135,100 @@ public:
     vector<vector<int>> a;
 };
 
-
-int main()
+void solve2()
 {
     Matrix x;
     Matrix y;
     Matrix res;
     res = x + y;
+}
+
+struct Workshop
+{
+    int start_time;
+    int duration;
+    int end_time;
+
+    Workshop() = default;
+
+    Workshop(int startTime, int duration, int endTime) : start_time(startTime), duration(duration), end_time(endTime)
+    {}
+
+    bool operator<(const Workshop &other)
+    {
+        return this->end_time < other.end_time;
+    }
+};
+
+struct Available_Workshops
+{
+    int n;
+    Workshop *workshops;
+
+    Available_Workshops() = default;
+
+    Available_Workshops(int x) : n{x}
+    {
+        workshops = new Workshop[n];
+    }
+
+    ~Available_Workshops()
+    {
+        delete[] workshops;
+    }
+};
+
+Available_Workshops *initialize(int start_time[], int duration[], int n)
+{
+    Available_Workshops *availableWorkshops = new Available_Workshops(n);
+
+    for (int i = 0; i < n; ++i)
+    {
+        availableWorkshops->workshops[i] = Workshop(start_time[i], duration[i], start_time[i] + duration[i]);
+    }
+    return availableWorkshops;
+}
+
+int CalculateMaxWorkshops(Available_Workshops *ptr)
+{
+    int n = ptr->n;
+    int ans = 0;
+    sort(ptr->workshops, ptr->workshops + n);
+    int start_time = 0;
+    for (int i = 0; i < n; ++i)
+    {
+        if (ptr->workshops[i].start_time >= start_time)
+        {
+            ++ans;
+            start_time = ptr->workshops[i].end_time;
+        }
+    }
+    return ans;
+}
+
+int main()
+{
+    int n = 6; // number of workshops
+//    cin >> n;
+    // create arrays of unknown size n
+    int *start_time = new int[n]{1, 3, 0, 5, 5, 8};
+    int *duration = new int[n]{1, 1, 6, 2, 4, 1};
+
+//    for (int i = 0; i < n; i++)
+//    {
+//        cin >> start_time[i];
+//    }
+//    for (int i = 0; i < n; i++)
+//    {
+//        cin >> duration[i];
+//    }
+
+    Available_Workshops *ptr;
+    ptr = initialize(start_time, duration, n);
+    cout << CalculateMaxWorkshops(ptr);
+
+    delete ptr;
+    delete[] start_time;
+    delete[] duration;
+    return 0;
 }
