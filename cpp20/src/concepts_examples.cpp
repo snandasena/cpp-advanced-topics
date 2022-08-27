@@ -17,12 +17,10 @@ TinyType auto add(T a, T b)
     return a + b;
 }
 
-
 template<typename T>
-concept Addable =
-requires(T a, T b)
+concept Addable = requires(T a, T b)
 {
-    { a + b }->std::convertible_to<int>;
+    { a + b } noexcept ->std::convertible_to<int>;
 };
 
 Addable auto add2(Addable auto a, Addable auto b)
