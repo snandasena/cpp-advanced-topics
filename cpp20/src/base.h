@@ -7,5 +7,6 @@
 
 #include <bits/stdc++.h>
 #include <concepts>
+#include <coroutine>
 
 #endif //ADVANCED_TOPICS_BASE_H
