@@ -1,16 +1,24 @@
 cmake_minimum_required(VERSION 3.10)
 project(advanced_topics)
 
-set(CMAKE_CXX_STANDARD 17)
+#set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_C_STANDARD 11)
+
+
+set(CMAKE_CXX_STANDARD 20)
+
+set(CMAKE_CXX_FLAGS "-fsanitize=address -std=c++20 -ggdb3 -Wall  -ansi  -Wextra -Wpedantic")
+add_definitions(-DCMAKE_BUILD_TYPE=Debug)
+
 
 #include_directories(asio)
 #add_compile_options(-fsanitize=address)
-set(CMAKE_CXX_FLAGS "-fsanitize=address -ggdb3 -Wall  -ansi  -Wextra")
-add_definitions(-DCMAKE_BUILD_TYPE=Debug)
+#set(CMAKE_CXX_FLAGS "-fsanitize=address -ggdb3 -Wall  -ansi  -Wextra")
+#add_definitions(-DCMAKE_BUILD_TYPE=Debug)
 
 add_subdirectory(asio-samples)
 add_subdirectory(sorting-algo)
+add_subdirectory(cpp20)
 
 #add_subdirectory(c-things)
 #add_subdirectory(cppnano)

@@ -1540,19 +1540,102 @@
 //}
 //
 
+//
+//int main()
+//{
+//    int a = 20;
+//    auto increment = [=](int i) mutable noexcept
+//    {
+//        cout << i << endl;
+//        return ++a;
+//    };
+//
+//    int x = 10;
+//    cout << increment(x) << endl;
+//    cout << a << endl;
+//
+//    return 0;
+//}
+
+//class A
+//{
+//    unique_ptr<int> ptr;
+//public:
+//
+//    A(int x) : ptr{make_unique<int>(x)}
+//    {
+//        cout << "A()\n";
+//    }
+//
+////    A(const A &other) : ptr{make_unique<int>(*other.ptr)}
+////    {}
+////
+////    ~A()
+////    {
+////        cout << "~A()\n";
+////    }
+//};
+//
+//void caller(int x)
+//{
+//    A a{x};
+//    if (x < 10)
+//    {
+//        throw runtime_error{"bad error"};
+//    }
+//    cout << x << endl;
+//}
+//
+//int main()
+//{
+//    vector<A> v(10, A{10});
+//
+//    A a{20};
+//
+//    return 0;
+//}
+//
+//template<typename T>
+//class Incrementable
+//{
+//};
+//
+//template<typename T> requires Incrementable<T>
+//T sum()
+//{}
+
+//class String
+//{
+//    std::string s;
+//
+//public:
+//    String(const string &str) : s{str}
+//    {}
+//
+//    size_t get_length() const
+//    { return s.length(); }
+//};
+//
+//
+//int main()
+//{
+//
+//    String s{"Hello"};
+//
+//    cout << s.get_length();
+//
+//    return 0;
+//}
+
+
+struct A
+{
+    int a;
+    float vals[2];
+};
 
 int main()
 {
-    int a = 20;
-    auto increment = [=](int i) mutable noexcept
-    {
-        cout << i << endl;
-        return ++a;
-    };
-
-    int x = 10;
-    cout << increment(x) << endl;
-    cout << a << endl;
-
+    A a{1, 2, 3};
     return 0;
-}
+    }
