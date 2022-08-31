@@ -8,6 +8,8 @@
 #include <list>
 #include <memory>
 #include <algorithm>
+#include <numeric>
+#include <cmath>
 
 //using namespace std;
 
@@ -924,7 +926,8 @@ namespace cpp_practice
     {
         Link<Elem> *curr;
 
-        Iterator(Link<Elem> *p) : curr{p} {}
+        Iterator(Link<Elem> *p) : curr{p}
+        {}
 
         Iterator &operator++()
         {
@@ -1050,8 +1053,126 @@ void tests()
     printf("%0.2f\n", ConstExprTest::PI);
 }
 
+
+template<typename First, typename... Args>
+auto sum(const First first, const Args ... args)
+{
+    const auto values = {first, args...};
+    return std::accumulate(values.begin(), values.end(), First{0});
+}
+//
+//int main()
+//{
+//    auto res = sum(1, 2, 3, 4, 5);
+//    std::cout << res << '\n';
+//
+//    auto res2 = sum(1.2, 2.3, 3.4);
+//    std::cout << res2;
+//    return 0;
+//}
+
+void func()
+{
+    int x = 10;
+    auto f = [x]() mutable
+    {
+        x = 100;
+    };
+
+    f();
+    std::cout << x << '\n';
+}
+
+//int main()
+//{
+//    func();
+//    return 0;
+//}
+
+
+long long operator "" _C(unsigned long long temp)
+{
+    return std::llround(temp * 1.8 + 32);
+}
+
+
+//int main()
+//{
+//    auto temp = 23_C;
+//    std::cout << temp << '\n';
+//    return 0;
+//}
+
+namespace Programme
+{
+    namespace version1
+    {
+        int getVersion()
+        {
+            return 1;
+        }
+
+        bool isFirstVersion()
+        {
+            return true;
+        }
+    }
+
+    inline namespace version2
+    {
+        int getVersion()
+        {
+            return 2;
+        }
+    }
+}
+
+//int main()
+//{
+//    auto version = Programme::getVersion();
+//    std::cout << version << '\n';
+//
+////    auto first_version = Programme::isFirstVersion(); ERROR
+//    return 0;
+//}
+
+
+void func_print(const std::initializer_list<int> &vals)
+{
+    for (const auto &ele: vals)
+    {
+        std::cout << ele << '\t';
+    }
+
+    std::cout << '\n';
+}
+
+template<typename Func, typename ... T>
+void func_var(const Func &function, const T &... vals)
+{
+    const auto packs = {vals...};
+    function(packs);
+}
+
+void call_func_var()
+{
+    func_var(func_print, 1, 2, 3, 4, 5, 5, 6, 6);
+}
+
+
+//int main()
+//{
+//    call_func_var();
+//    return 0;
+//}
+
+constexpr int square(int x)
+{
+    return x * x;
+}
+
 int main()
 {
-
-    return 0;
+    auto ans = square(10);
+    std::cout<<ans<<'\n';
 }
