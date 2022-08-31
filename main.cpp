@@ -1127,11 +1127,42 @@ namespace Programme
     }
 }
 
+//int main()
+//{
+//    auto version = Programme::getVersion();
+//    std::cout << version << '\n';
+//
+////    auto first_version = Programme::isFirstVersion(); ERROR
+//    return 0;
+//}
+
+
+void func_print(const std::initializer_list<int> &vals)
+{
+    for (const auto &ele: vals)
+    {
+        std::cout << ele << '\t';
+    }
+
+    std::cout << '\n';
+}
+
+template<typename Func, typename ... T>
+void func_var(const Func &function, const T &... vals)
+{
+    const auto packs = {vals...};
+    function(packs);
+}
+
+void call_func_var()
+{
+    func_var(func_print, 1, 2, 3, 4, 5, 5, 6, 6);
+}
+
+
 int main()
 {
-    auto version = Programme::getVersion();
-    std::cout << version << '\n';
-
-//    auto first_version = Programme::isFirstVersion(); ERROR
+    call_func_var();
     return 0;
 }
+
