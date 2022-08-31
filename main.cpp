@@ -1096,9 +1096,42 @@ long long operator "" _C(unsigned long long temp)
 }
 
 
+//int main()
+//{
+//    auto temp = 23_C;
+//    std::cout << temp << '\n';
+//    return 0;
+//}
+
+namespace Programme
+{
+    namespace version1
+    {
+        int getVersion()
+        {
+            return 1;
+        }
+
+        bool isFirstVersion()
+        {
+            return true;
+        }
+    }
+
+    inline namespace version2
+    {
+        int getVersion()
+        {
+            return 2;
+        }
+    }
+}
+
 int main()
 {
-    auto temp = 23_C;
-    std::cout << temp << '\n';
+    auto version = Programme::getVersion();
+    std::cout << version << '\n';
+
+//    auto first_version = Programme::isFirstVersion(); ERROR
     return 0;
 }
