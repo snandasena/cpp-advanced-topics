@@ -1160,9 +1160,19 @@ void call_func_var()
 }
 
 
-int main()
+//int main()
+//{
+//    call_func_var();
+//    return 0;
+//}
+
+constexpr int square(int x)
 {
-    call_func_var();
-    return 0;
+    return x * x;
 }
 
+int main()
+{
+    auto ans = square(10);
+    std::cout<<ans<<'\n';
+}
