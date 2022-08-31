@@ -8,6 +8,8 @@
 #include <list>
 #include <memory>
 #include <algorithm>
+#include <numeric>
+#include <cmath>
 
 //using namespace std;
 
@@ -924,7 +926,8 @@ namespace cpp_practice
     {
         Link<Elem> *curr;
 
-        Iterator(Link<Elem> *p) : curr{p} {}
+        Iterator(Link<Elem> *p) : curr{p}
+        {}
 
         Iterator &operator++()
         {
@@ -1050,8 +1053,52 @@ void tests()
     printf("%0.2f\n", ConstExprTest::PI);
 }
 
+
+template<typename First, typename... Args>
+auto sum(const First first, const Args ... args)
+{
+    const auto values = {first, args...};
+    return std::accumulate(values.begin(), values.end(), First{0});
+}
+//
+//int main()
+//{
+//    auto res = sum(1, 2, 3, 4, 5);
+//    std::cout << res << '\n';
+//
+//    auto res2 = sum(1.2, 2.3, 3.4);
+//    std::cout << res2;
+//    return 0;
+//}
+
+void func()
+{
+    int x = 10;
+    auto f = [x]() mutable
+    {
+        x = 100;
+    };
+
+    f();
+    std::cout << x << '\n';
+}
+
+//int main()
+//{
+//    func();
+//    return 0;
+//}
+
+
+long long operator "" _C(unsigned long long temp)
+{
+    return std::llround(temp * 1.8 + 32);
+}
+
+
 int main()
 {
-
+    auto temp = 23_C;
+    std::cout << temp << '\n';
     return 0;
 }
