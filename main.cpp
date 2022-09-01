@@ -10,7 +10,7 @@
 #include <algorithm>
 #include <numeric>
 #include <cmath>
-
+#include <variant>
 
 #define ENDL '\n'
 #define LOG(x) std::cout<<x
@@ -1280,17 +1280,31 @@ void lambda_this_test()
     LOG(copy()) << ENDL;
 }
 
-int main()
+//int main()
+//{
+//    lambda_this_test();
+//    return 0;
+//}
+//
+
+
+
+void variant_test()
 {
-    lambda_this_test();
-    return 0;
+    std::variant<int, char> v{10};
+    auto val = std::get<int>(v);
+    LOG(val) << ENDL;
+
+    v = 'A';
+    auto ch = std::get<char>(v);
+    LOG(ch) << ENDL;
 }
 
-
-
-
-
-
+int main()
+{
+    variant_test();
+    return 0;
+}
 
 
 
