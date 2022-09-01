@@ -1300,17 +1300,64 @@ void variant_test()
     LOG(ch) << ENDL;
 }
 
-int main()
+//int main()
+//{
+//    variant_test();
+//    return 0;
+//}
+
+
+
+void weak_ptr_test()
 {
-    variant_test();
-    return 0;
+    std::shared_ptr<int> iPtr = std::make_shared<int>(10);
+    std::weak_ptr<int> wPtr(iPtr);
+
+    LOG("weak_ptr use count: ");
+    LOG(wPtr.use_count()) << ENDL;
+
+    LOG("shared_ptr use count: ");
+    LOG(iPtr.use_count()) << ENDL;
+
+    LOG("weak_ptr expired: ");
+    LOG(wPtr.expired()) << ENDL;
+
+    if (std::shared_ptr<int> sPtr = wPtr.lock())
+    {
+        LOG("*sPtr: ");
+        LOG(*iPtr) << ENDL;
+
+        LOG("shared_ptr use count: ");
+        LOG(sPtr.use_count()) << ENDL;
+    }
+    else
+    {
+        LOG("Don't get the resource\n");
+    }
+
+    wPtr.reset();
+
+    if (std::shared_ptr<int> sPtr = wPtr.lock())
+    {
+        LOG("*sPtr: ");
+        LOG(*iPtr) << ENDL;
+
+        LOG("shared_ptr use count: ");
+        LOG(sPtr.use_count()) << ENDL;
+    }
+    else
+    {
+        LOG("shared_ptr use count: ");
+        LOG(sPtr.use_count()) << ENDL;
+        LOG("Don't get the resource\n");
+    }
 }
 
-
-
-
-
-
+int main()
+{
+    weak_ptr_test();
+    return 0;
+}
 
 
 
