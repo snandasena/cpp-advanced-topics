@@ -11,6 +11,10 @@
 #include <numeric>
 #include <cmath>
 
+
+#define ENDL '\n'
+#define LOG(x) std::cout<<x
+
 //using namespace std;
 
 //class Contact
@@ -1171,8 +1175,180 @@ constexpr int square(int x)
     return x * x;
 }
 
+//int main()
+//{
+//    auto ans = square(10);
+//    std::cout<<ans<<'\n';
+//}
+
+
+
+struct Bar
+{
+};
+
+struct Foo
+{
+    Bar getBar() &
+    {
+        std::cout << "Bar getBar() &\n";
+        return bar;
+    }
+
+    Bar getBar() const &
+    {
+        std::cout << "Bar getBar() const &\n";
+        return bar;
+    }
+
+    Bar getBar() &&
+    {
+        std::cout << "Bar getBar() &&\n";
+
+        return std::move(bar);
+    }
+
+private:
+    Bar bar;
+};
+
+
+constexpr int get(int param)
+{
+    if (param == 10)
+    {
+        return 10;
+    }
+    return 3 * 4;
+}
+
+
+void ref_qualifier_test()
+{
+    Foo foo;
+    auto res = foo.getBar();
+
+    const Foo fooo;
+    auto resFoo = fooo.getBar();
+    Foo{}.getBar();
+
+    auto ress = std::move(foo);
+    ress.getBar();
+}
+
+//int main()
+//{
+//    ref_qualifier_test();
+//    return 0;
+//}
+
+
+
+struct MyObj
+{
+    int val{123};
+
+    auto getValueCopy()
+    {
+        return [*this]()
+        {
+            return val;
+        };
+    }
+
+    auto getValueByRef()
+    {
+        return [this]()
+        {
+            return val;
+        };
+    }
+};
+
+void lambda_this_test()
+{
+
+    MyObj obj;
+    auto copy = obj.getValueCopy();
+    std::cout << copy() << '\n';
+
+    auto ref = obj.getValueByRef();
+    LOG(ref()) << ENDL;
+
+    obj.val = 1000;
+    LOG(ref()) << ENDL;
+    LOG(copy()) << ENDL;
+}
+
 int main()
 {
-    auto ans = square(10);
-    std::cout<<ans<<'\n';
+    lambda_this_test();
+    return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
