@@ -10,6 +10,10 @@
 #include <algorithm>
 #include <numeric>
 #include <cmath>
+#include <variant>
+
+#define ENDL '\n'
+#define LOG(x) std::cout<<x
 
 //using namespace std;
 
@@ -1171,8 +1175,241 @@ constexpr int square(int x)
     return x * x;
 }
 
+//int main()
+//{
+//    auto ans = square(10);
+//    std::cout<<ans<<'\n';
+//}
+
+
+
+struct Bar
+{
+};
+
+struct Foo
+{
+    Bar getBar() &
+    {
+        std::cout << "Bar getBar() &\n";
+        return bar;
+    }
+
+    Bar getBar() const &
+    {
+        std::cout << "Bar getBar() const &\n";
+        return bar;
+    }
+
+    Bar getBar() &&
+    {
+        std::cout << "Bar getBar() &&\n";
+
+        return std::move(bar);
+    }
+
+private:
+    Bar bar;
+};
+
+
+constexpr int get(int param)
+{
+    if (param == 10)
+    {
+        return 10;
+    }
+    return 3 * 4;
+}
+
+
+void ref_qualifier_test()
+{
+    Foo foo;
+    auto res = foo.getBar();
+
+    const Foo fooo;
+    auto resFoo = fooo.getBar();
+    Foo{}.getBar();
+
+    auto ress = std::move(foo);
+    ress.getBar();
+}
+
+//int main()
+//{
+//    ref_qualifier_test();
+//    return 0;
+//}
+
+
+
+struct MyObj
+{
+    int val{123};
+
+    auto getValueCopy()
+    {
+        return [*this]()
+        {
+            return val;
+        };
+    }
+
+    auto getValueByRef()
+    {
+        return [this]()
+        {
+            return val;
+        };
+    }
+};
+
+void lambda_this_test()
+{
+
+    MyObj obj;
+    auto copy = obj.getValueCopy();
+    std::cout << copy() << '\n';
+
+    auto ref = obj.getValueByRef();
+    LOG(ref()) << ENDL;
+
+    obj.val = 1000;
+    LOG(ref()) << ENDL;
+    LOG(copy()) << ENDL;
+}
+
+//int main()
+//{
+//    lambda_this_test();
+//    return 0;
+//}
+//
+
+
+
+void variant_test()
+{
+    std::variant<int, char> v{10};
+    auto val = std::get<int>(v);
+    LOG(val) << ENDL;
+
+    v = 'A';
+    auto ch = std::get<char>(v);
+    LOG(ch) << ENDL;
+}
+
+//int main()
+//{
+//    variant_test();
+//    return 0;
+//}
+
+
+
+void weak_ptr_test()
+{
+    std::shared_ptr<int> iPtr = std::make_shared<int>(10);
+    std::weak_ptr<int> wPtr(iPtr);
+
+    LOG("weak_ptr use count: ");
+    LOG(wPtr.use_count()) << ENDL;
+
+    LOG("shared_ptr use count: ");
+    LOG(iPtr.use_count()) << ENDL;
+
+    LOG("weak_ptr expired: ");
+    LOG(wPtr.expired()) << ENDL;
+
+    if (std::shared_ptr<int> sPtr = wPtr.lock())
+    {
+        LOG("*sPtr: ");
+        LOG(*iPtr) << ENDL;
+
+        LOG("shared_ptr use count: ");
+        LOG(sPtr.use_count()) << ENDL;
+    }
+    else
+    {
+        LOG("Don't get the resource\n");
+    }
+
+    wPtr.reset();
+
+    if (std::shared_ptr<int> sPtr = wPtr.lock())
+    {
+        LOG("*sPtr: ");
+        LOG(*iPtr) << ENDL;
+
+        LOG("shared_ptr use count: ");
+        LOG(sPtr.use_count()) << ENDL;
+    }
+    else
+    {
+        LOG("shared_ptr use count: ");
+        LOG(sPtr.use_count()) << ENDL;
+        LOG("Don't get the resource\n");
+    }
+}
+
 int main()
 {
-    auto ans = square(10);
-    std::cout<<ans<<'\n';
+    weak_ptr_test();
+    return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
