@@ -1353,23 +1353,90 @@ void weak_ptr_test()
     }
 }
 
-int main()
+//int main()
+//{
+//    weak_ptr_test();
+//    return 0;
+//}
+//
+
+struct Son;
+struct Daughter;
+
+struct Mother
 {
-    weak_ptr_test();
-    return 0;
+    ~Mother()
+    {
+        LOG("Mother gone\n");
+    }
+
+    void setSon(const std::shared_ptr<Son> s)
+    {
+        son = s;
+    }
+
+    void setDaughter(const std::shared_ptr<Daughter> d)
+    {
+        daughter = d;
+    }
+
+    std::weak_ptr<Son> son;
+    std::weak_ptr<Daughter> daughter;
+};
+
+
+struct Son
+{
+    Son(std::shared_ptr<Mother> m) : mother{m}
+    {};
+
+    ~Son()
+    {
+        LOG("Son gone\n");
+    }
+    std::shared_ptr<Mother> mother;
+};
+
+struct Daughter
+{
+    Daughter(std::shared_ptr<Mother> m) : mother{m}
+    {};
+
+    ~Daughter()
+    {
+        LOG("Daughter gone\n");
+    }
+
+    std::shared_ptr<Mother> mother;
+};
+
+
+void weak_ptr_api_test()
+{
+    std::shared_ptr<Mother> mother = std::make_shared<Mother>();
+    std::shared_ptr<Son> son = std::make_shared<Son>(mother);
+    std::shared_ptr<Daughter> daughter = std::make_shared<Daughter>(mother);
+
+    mother->setSon(son);
+    mother->setDaughter(daughter);
+}
+
+void unique_pass_as_arg( std::unique_ptr<int> ptr)
+{
+    LOG(*ptr);
+    exit(0);
 }
 
 
+int main()
+{
+    weak_ptr_api_test();
 
+    auto ptr = std::make_unique<int>(10);
+    unique_pass_as_arg(std::move(ptr));
 
-
-
-
-
-
-
-
-
+   LOG(*ptr);
+}
 
 
 
