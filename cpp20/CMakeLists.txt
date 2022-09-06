@@ -10,3 +10,5 @@ set(HEADERS src/base.h)
 set(SOURCE src/main.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCE} ${HEADERS})
+
+add_executable(templates src/function_template.cpp)
