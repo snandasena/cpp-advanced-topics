@@ -57,19 +57,80 @@ T temp_func(const T &a, const T &b)
 }
 
 
+
+
+
+//int main()
+//{
+//    A a = 10;
+//    A b = 20;
+//
+////    auto res = maximum<int>(a, b); not compile
+//    auto res = maximum(a, b); // will compile
+//
+//    func(a);
+//
+//    auto res2 = temp_func(a, b);
+//    cout << "REF B" << &b << endl;
+//    cout << "REF A" << &a << endl;
+//
+//    return 0;
+//}
+
+template<typename T>
+int hunt_down(T value, T *collection, unsigned int size)
+{
+    for (unsigned int i = 0; i < size; ++i)
+    {
+        if (collection[i] == value)
+        {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+template<>
+int hunt_down<const char *>(const char *value, const char **collection, unsigned int size)
+{
+    for (unsigned int i = 0; i < size; ++i)
+    {
+        if (strcmp(collection[i], value) == 0)
+        {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+
 int main()
 {
-    A a = 10;
-    A b = 20;
-
-//    auto res = maximum<int>(a, b); not compile
-    auto res = maximum(a, b); // will compile
-
-    func(a);
-
-    auto res2 = temp_func(a, b);
-    cout << "REF B" << &b << endl;
-    cout << "REF A" << &a << endl;
-
-    return 0;
+    string student_to_find{"Kumar"};
+    const char *students[]{"Mary", "Steve", "Kumar", "Ahmed"};
+    int index {hunt_down(student_to_find.c_str(), students, 4)};
+    cout<<"index "<<index<<endl;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
