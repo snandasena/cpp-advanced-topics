@@ -9,7 +9,7 @@
 
 using namespace std;
 
-//#define DEBUG
+#define DEBUG
 
 class Widget
 {
@@ -37,11 +37,30 @@ public:
     }
 };
 
+void API01(const unique_ptr<Widget> &ptr)
+{
+    cout << ptr->get_str() << endl;
+}
+
+void API02(unique_ptr<Widget> ptr)
+{
+    cout << ptr->get_str() << endl;
+}
+
+void API03(const Widget *ptr)
+{
+    cout << ptr->get_str() << endl;
+}
+
+
 void test()
 {
     auto w1 = make_unique<Widget>("W1");
-//    w1.reset();
+    API02(move(w1));
     auto w2 = make_unique<Widget>("W2");
+    API01(w2);
+    API03(w2.get());
+//    API03(move(w1));
 }
 
 int main()
