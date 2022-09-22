@@ -52,15 +52,16 @@ void API03(const Widget *ptr)
     cout << ptr->get_str() << endl;
 }
 
+void API04(const unique_ptr<Widget> &ptr)
+{
+    ptr->set_str("new str");
+}
 
 void test()
 {
     auto w1 = make_unique<Widget>("W1");
-    API02(move(w1));
-    auto w2 = make_unique<Widget>("W2");
-    API01(w2);
-    API03(w2.get());
-//    API03(move(w1));
+    API04(w1);
+    cout<<w1->get_str()<<endl;
 }
 
 int main()
