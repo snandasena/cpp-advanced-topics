@@ -12,4 +12,5 @@ set(SOURCE src/main.cpp)
 add_executable(${PROJECT_NAME} ${SOURCE} ${HEADERS})
 
 #add_executable(templates src/function_template.cpp)
-add_executable(unique_pointers src/unique_pointers.cpp)
+#add_executable(unique_pointers src/unique_pointers.cpp)
+add_executable(shared_pointers src/shared_pointers.cpp)
