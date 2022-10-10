@@ -157,5 +157,6 @@ add_executable(main main.cpp)
 #add_executable(lambda lambdaexp/polymorphic_lambda.cpp)
 #add_executable(sol2 OutputStreamTest/sol2.cpp)
 
-add_executable(pub publisher.cpp)
-add_executable(con consumer.cpp)
+#add_executable(pub publisher.cpp)
+#add_executable(con consumer.cpp)
+add_executable(funtional_programming functional_programming.cpp)
