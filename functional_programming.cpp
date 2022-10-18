@@ -14,5 +14,6 @@ int main()
     { return a + b; });
 
     cout << res << endl;
+
     return 0;
 }

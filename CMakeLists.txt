@@ -39,6 +39,7 @@ add_subdirectory(network_programming)
 add_subdirectory(threads)
 add_subdirectory(hackerrank)
 add_subdirectory(designpatterns)
+add_subdirectory(unit_tests)
 
 #add_subdirectory(algo)
 
