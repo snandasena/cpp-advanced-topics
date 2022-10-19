@@ -8,10 +8,10 @@
 
 #include "EmployeeManager.h"
 
-class MockDatabaseConenction : public IDatabaseConnection
+class MockDatabaseConnection : public IDatabaseConnection
 {
 public:
-    MockDatabaseConenction(const std::string &serverAddress);
+    MockDatabaseConnection(const std::string &serverAddress);
 
     MOCK_METHOD0(connect, void());
     MOCK_METHOD0(disconnect, void());
@@ -24,16 +24,33 @@ public:
 
 };
 
-MockDatabaseConenction::MockDatabaseConenction(const std::string &serverAddress) : IDatabaseConnection(serverAddress)
+MockDatabaseConnection::MockDatabaseConnection(const std::string &serverAddress) : IDatabaseConnection(serverAddress)
 {
 
 }
-
 
 TEST(TestEmployeManager, TestConnectionError)
 {
+    MockDatabaseConnection dbConnection("dummyAddress");
+    EXPECT_CALL(dbConnection, connect()).WillOnce(testing::Throw(std::runtime_error{"Dummy error"}));
 
+    ASSERT_THROW(EmployeeManager employeeManager(&dbConnection), std::runtime_error);
 }
+
+ACTION(myThrow)
+{
+    std::cout << "Throwing an error!\n";
+    throw std::runtime_error{"Dummy error"};
+}
+
+TEST(TestEmployeManager, TestConnectionErrorAction)
+{
+    MockDatabaseConnection dbConnection("dummyAddress");
+    EXPECT_CALL(dbConnection, connect()).WillOnce(myThrow());
+
+    ASSERT_THROW(EmployeeManager _(&dbConnection), std::runtime_error);
+}
+
 
 int main(int argc, char **argv)
 {

@@ -21,9 +21,9 @@ public:
 
     virtual void updateSalary(int id, float newSalary) = 0;
 
-    virtual std::vector<Employee> getSalariesRange(float low) = 0;
+    virtual std::vector<Employee> getSalariesRange(float low) const = 0;
 
-    virtual std::vector<Employee> getSalariesRange(float low, float high) = 0;
+    virtual std::vector<Employee> getSalariesRange(float low, float high) const = 0;
 
     virtual void connect();
 
