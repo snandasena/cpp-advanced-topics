@@ -22,6 +22,12 @@ public:
     MOCK_CONST_METHOD1(getSalariesRange, std::vector<Employee>(float));
     MOCK_CONST_METHOD2(getSalariesRange, std::vector<Employee>(float, float));
 
+    void someMemberMethod(std::string param)
+    {
+        std::cout << "Member method called with param = " << param << '\n';
+        throw std::runtime_error{"Dummy error"};
+    }
+
 };
 
 MockDatabaseConnection::MockDatabaseConnection(const std::string &serverAddress) : IDatabaseConnection(serverAddress)
@@ -51,6 +57,21 @@ TEST(TestEmployeManager, TestConnectionErrorAction)
     ASSERT_THROW(EmployeeManager _(&dbConnection), std::runtime_error);
 }
 
+void someFreeFunction()
+{
+    std::cout << "Free function\n";
+    throw std::runtime_error{"Dummy exception"};
+}
+
+TEST(TestEmployeManager, TestConnectionErorInvoke)
+{
+    MockDatabaseConnection dbConnection("dummyAddress");
+
+    auto boundMethod = std::bind(&MockDatabaseConnection::someMemberMethod, &dbConnection, "Some param");
+    EXPECT_CALL(dbConnection, connect()).WillOnce(testing::InvokeWithoutArgs(boundMethod));
+
+    ASSERT_THROW(EmployeeManager employeeManager(&dbConnection), std::runtime_error);
+}
 
 int main(int argc, char **argv)
 {
