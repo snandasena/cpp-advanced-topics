@@ -13,7 +13,7 @@
 class IDatabaseConnection
 {
 public:
-    IDatabaseConnection(const std::string &&serverAddress);
+    IDatabaseConnection(const std::string &serverAddress);
 
     virtual ~IDatabaseConnection() = default;
 

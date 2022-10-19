@@ -6,7 +6,7 @@
 
 #include "IDatabaseConnection.h"
 
-IDatabaseConnection::IDatabaseConnection(const std::string &&serverAddress) : mServerAddress{serverAddress}
+IDatabaseConnection::IDatabaseConnection(const std::string &serverAddress) : mServerAddress{serverAddress}
 {
 }
 
