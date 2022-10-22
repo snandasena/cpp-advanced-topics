@@ -41,6 +41,7 @@ add_subdirectory(hackerrank)
 add_subdirectory(designpatterns)
 add_subdirectory(unit_tests)
 add_subdirectory(cpp_architecture)
+add_subdirectory(fortran_learn)
 
 #add_subdirectory(algo)
 
