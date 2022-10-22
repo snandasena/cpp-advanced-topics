@@ -19,3 +19,20 @@ void ChatRoom::message(const string &origin, const string &who, const string &me
     }
 
 }
+void ChatRoom::brodcast(const string &origin, const string &message)
+{
+    for (const auto &p: people)
+    {
+        if (p->name != origin)
+        {
+            p->receive(origin, message);
+        }
+    }
+}
+void ChatRoom::join(Person *p)
+{
+    auto join_msg = p->name + " joins the chat";
+    brodcast("room", join_msg);
+    p->room = this;
+    people.push_back(p);
+}
