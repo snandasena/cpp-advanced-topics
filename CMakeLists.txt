@@ -39,6 +39,9 @@ add_subdirectory(network_programming)
 add_subdirectory(threads)
 add_subdirectory(hackerrank)
 add_subdirectory(designpatterns)
+add_subdirectory(unit_tests)
+add_subdirectory(cpp_architecture)
+add_subdirectory(fortran_learn)
 
 #add_subdirectory(algo)
 
@@ -157,5 +160,6 @@ add_executable(main main.cpp)
 #add_executable(lambda lambdaexp/polymorphic_lambda.cpp)
 #add_executable(sol2 OutputStreamTest/sol2.cpp)
 
-add_executable(pub publisher.cpp)
-add_executable(con consumer.cpp)
+#add_executable(pub publisher.cpp)
+#add_executable(con consumer.cpp)
+add_executable(funtional_programming functional_programming.cpp)
