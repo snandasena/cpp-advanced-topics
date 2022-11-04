@@ -1451,11 +1451,27 @@ int max_t(int a, int b)
     return 10;
 }
 
-int main()
+void TEST()
 {
     LOGL(max_t(10, 20));
 
     LOGL(max_t("abs", "abd"));
+}
+
+int main()
+{
+
+    std::list<int> l;
+    l.push_front(10);
+    l.push_front(20);
+    l.push_front(30);
+    l.push_front(40);
+
+    LOGL(l.front());
+    l.pop_back();
+    LOGL(l.back());
+    return 0;
+
 }
 
 
