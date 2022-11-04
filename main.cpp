@@ -14,6 +14,7 @@
 
 #define ENDL '\n'
 #define LOG(x) std::cout<<x
+#define LOGL(x) std::cout<<x<<'\n'
 
 //using namespace std;
 
@@ -1421,21 +1422,56 @@ void weak_ptr_api_test()
     mother->setDaughter(daughter);
 }
 
-void unique_pass_as_arg( std::unique_ptr<int> ptr)
+void unique_pass_as_arg(std::unique_ptr<int> ptr)
 {
     LOG(*ptr);
     exit(0);
 }
 
-
-int main()
+void TEST_1()
 {
     weak_ptr_api_test();
 
     auto ptr = std::make_unique<int>(10);
     unique_pass_as_arg(std::move(ptr));
 
-   LOG(*ptr);
+    LOG(*ptr);
+}
+
+
+template<typename T>
+T max_t(T a, T b)
+{
+    return a > b ? a : b;
+}
+
+
+int max_t(int a, int b)
+{
+    return 10;
+}
+
+void TEST()
+{
+    LOGL(max_t(10, 20));
+
+    LOGL(max_t("abs", "abd"));
+}
+
+int main()
+{
+
+    std::list<int> l;
+    l.push_front(10);
+    l.push_front(20);
+    l.push_front(30);
+    l.push_front(40);
+
+    LOGL(l.front());
+    l.pop_back();
+    LOGL(l.back());
+    return 0;
+
 }
 
 
