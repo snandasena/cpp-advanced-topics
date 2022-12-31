@@ -43,6 +43,7 @@ add_subdirectory(unit_tests)
 add_subdirectory(cpp_architecture)
 add_subdirectory(fortran_learn)
 add_subdirectory(detect_memory_issues)
+add_subdirectory(cppthings)
 
 #add_subdirectory(algo)
 
