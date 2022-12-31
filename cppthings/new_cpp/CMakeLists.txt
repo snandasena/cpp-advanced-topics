@@ -1,0 +1,3 @@
+project(newcpp)
+
+add_executable(move_only_constructors move_only_constructor.cpp)
