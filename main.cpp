@@ -931,8 +931,7 @@ namespace cpp_practice
     {
         Link<Elem> *curr;
 
-        Iterator(Link<Elem> *p) : curr{p}
-        {}
+        Iterator(Link<Elem> *p) : curr{p} {}
 
         Iterator &operator++()
         {
@@ -1330,8 +1329,7 @@ void weak_ptr_test()
 
         LOG("shared_ptr use count: ");
         LOG(sPtr.use_count()) << ENDL;
-    }
-    else
+    } else
     {
         LOG("Don't get the resource\n");
     }
@@ -1345,8 +1343,7 @@ void weak_ptr_test()
 
         LOG("shared_ptr use count: ");
         LOG(sPtr.use_count()) << ENDL;
-    }
-    else
+    } else
     {
         LOG("shared_ptr use count: ");
         LOG(sPtr.use_count()) << ENDL;
@@ -1388,20 +1385,19 @@ struct Mother
 
 struct Son
 {
-    Son(std::shared_ptr<Mother> m) : mother{m}
-    {};
+    Son(std::shared_ptr<Mother> m) : mother{m} {};
 
     ~Son()
     {
         LOG("Son gone\n");
     }
+
     std::shared_ptr<Mother> mother;
 };
 
 struct Daughter
 {
-    Daughter(std::shared_ptr<Mother> m) : mother{m}
-    {};
+    Daughter(std::shared_ptr<Mother> m) : mother{m} {};
 
     ~Daughter()
     {
@@ -1458,9 +1454,8 @@ void TEST()
     LOGL(max_t("abs", "abd"));
 }
 
-int main()
+void SomeRandomStuffs()
 {
-
     std::list<int> l;
     l.push_front(10);
     l.push_front(20);
@@ -1470,6 +1465,18 @@ int main()
     LOGL(l.front());
     l.pop_back();
     LOGL(l.back());
+}
+
+int main()
+{
+//    int *ptr = nullptr;
+//    int x = *ptr;
+//    LOG(x);
+//
+    volatile unsigned x = 1;
+    volatile unsigned y = 33;
+    volatile unsigned res = x<<y;
+    LOG(res);
     return 0;
 
 }
